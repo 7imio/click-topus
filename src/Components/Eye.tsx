@@ -1,4 +1,5 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
+import { getGradientFromColor } from '../Helpers/color-utils';
 
 type EyeProps = {
   irisColor: string;
@@ -50,7 +51,7 @@ export const Eye: FC<EyeProps> = ({ irisColor, handleClick, children }) => {
         {/* Iris + pupille */}
         <div
           className="w-12 h-12 rounded-full flex items-center justify-center"
-          style={{ backgroundColor: irisColor }}
+          style={{ backgroundColor: getGradientFromColor(irisColor) }}
         >
           <div className="w-4 h-4 rounded-full bg-black" />
         </div>
