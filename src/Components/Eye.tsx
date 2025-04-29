@@ -3,11 +3,17 @@ import { getGradientFromColor } from '../Helpers/color-utils';
 
 type EyeProps = {
   irisColor: string;
+  tentacleColor: string;
   handleClick: () => void;
   children?: ReactNode;
 };
 
-export const Eye: FC<EyeProps> = ({ irisColor, handleClick, children }) => {
+export const Eye: FC<EyeProps> = ({
+  irisColor,
+  handleClick,
+  tentacleColor,
+  children,
+}) => {
   const [blinking, setBlinking] = useState(false);
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -42,16 +48,23 @@ export const Eye: FC<EyeProps> = ({ irisColor, handleClick, children }) => {
       {children}
 
       <div
-        className="absolute inset-0 rounded-full border-[1px] border-black bg-white flex items-center justify-center shadow-inner overflow-hidden"
+        className="absolute inset-0 rounded-full flex items-center justify-center overflow-hidden shadow-inner"
+        style={{
+          backgroundColor: 'white',
+          border: `4px solid ${tentacleColor}`,
+        }}
         onClick={handleClick}
       >
         {/* Paupière animée */}
-        <div className={`eye-lid ${blinking ? 'closed' : ''}`} />
+        <div
+          className={`eye-lid ${blinking ? 'closed' : ''}`}
+          style={{ background: getGradientFromColor(tentacleColor) }}
+        />
 
         {/* Iris + pupille */}
         <div
           className="w-12 h-12 rounded-full flex items-center justify-center"
-          style={{ backgroundColor: getGradientFromColor(irisColor) }}
+          style={{ background: getGradientFromColor(irisColor) }}
         >
           <div className="w-4 h-4 rounded-full bg-black" />
         </div>
