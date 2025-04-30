@@ -1,54 +1,85 @@
-# React + TypeScript + Vite
+# 🐙 Eldritch Clicker - An Abyssal Idle Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Plongez dans les abysses pour cliquer au nom d’anciens dieux oubliés. Élevez votre pieuvre cosmique et menez l’invasion de la Terre... et au-delà.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 👁️ Description
 
-## Expanding the ESLint configuration
+**Eldritch Clicker** est un idle game tentaculaire où chaque clic sur l’œil d’un ancien dieu engendre la croissance d’une entité cosmique.
+Ajoutez des tentacules, des ventouses, débloquez des auto-clickers, et débutez l’invasion de l’humanité… puis de la galaxie.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🎮 Fonctionnalités
+
+- ✅ Clics sur l’œil central pour accumuler de l’énergie
+- ✅ Tentacules générées dynamiquement à chaque 100 points
+- ✅ Ventouses ajoutées automatiquement toutes les 10 points
+- ✅ Œil animé avec paupière clignante verte
+- ✅ Animation de tentacules vivantes (`wiggle`)
+- ✅ Bulles d’arrière-plan animées
+- ✅ Système de sauvegarde local (`localStorage`)
+- 🛠️ Skins à débloquer pour les tentacules, ventouses et l’œil
+- 🔜 Progression narrative : invasion des côtes > continents > espace
+- 🔜 Système de prestige : réinitialisez pour gagner des bonus
+
+---
+
+## 🧠 Tech Stack
+
+- ⚛️ **React** (TypeScript)
+- 🌀 **TailwindCSS** pour le style
+- 📦 **Redux Toolkit** (prévu pour montée en charge)
+- 💾 `localStorage` pour la persistance
+- 🧰 Architecture modulaire ultra-scalable
+
+---
+
+## 🗂️ Arborescence du projet
+
+```
+src/
+├── components/        # Composants visuels
+├── features/          # Logique métier : clicker, tentacle, invasion...
+├── store/             # Gestion d’état globale
+├── hooks/             # Hooks personnalisés (ex: useInterval)
+├── utils/             # Fonctions utilitaires (ex: save/load)
+├── data/              # Skins, upgrades, textes narratifs...
+└── styles/            # Fichiers CSS (animations, thèmes)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 💡 Inspirations
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- [Universal Paperclips](https://www.decisionproblem.com/paperclips)
+- Cookie Clicker
+- L’univers de H.P. Lovecraft
+- Subnautica
+- Une pieuvre qui t'observe pendant que tu dors
+
+---
+
+## 🧬 À venir
+
+- Système de skins déblocables (couleurs via props)
+- Générations successives de pieuvres (chaque 800 points)
+- Conquête narrative : planète, espace, multivers
+- Sons et FX cosmiques
+- Succès + galerie des pieuvres passées
+
+---
+
+## 🚀 Lancer le projet
+
+```bash
+npm install
+npm run dev
 ```
+
+---
+
+## ✨ Par Bébou et ChatGPT
+
+Code avec ❤️, ventouses, et un peu de corruption interdimensionnelle.
