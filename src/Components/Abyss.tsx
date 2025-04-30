@@ -1,7 +1,8 @@
 import { FC, useState } from 'react';
-import Tentacle from './Tentacle';
-import Eye from './Eye';
 import { loadScore, saveScore } from '../Helpers/save-utils';
+import Bubbles from './Bubbles';
+import Eye from './Eye';
+import Tentacle from './Tentacle';
 
 const Abyss: FC = () => {
   const [score, setScore] = useState(loadScore());
@@ -28,22 +29,7 @@ const Abyss: FC = () => {
 
   return (
     <div className="overflow-hidden">
-      {Array.from({ length: 20 }).map((_, i) => {
-        const size = Math.random() * 20 + 5;
-        return (
-          <div
-            key={i}
-            className="bubble"
-            style={{
-              left: `${Math.random() * 100}%`,
-              width: `${size}px`,
-              height: `${size}px`,
-              animationDuration: `${Math.random() * 5 + 5}s`,
-              animationDelay: `${Math.random() * 10}s`,
-            }}
-          />
-        );
-      })}
+      <Bubbles />
 
       <div className="min-h-screen flex flex-col items-center justify-center gap-8 bg-gradient-to-b from-green-800 to-neutral-800">
         <h1 className="text-4xl font-bold bg-neutral-500 p-4 rounded-4xl text-purple-800 text-shadow-indigo-500 text-shadow">
@@ -57,15 +43,16 @@ const Abyss: FC = () => {
               tentacleColor="#00cc66"
             >
               {score > 0 &&
-                suctionsPerTentacle.map((suctionNb, idx) => (
+                suctionsPerTentacle.map((suctionNb, index) => (
                   <div
-                    key={idx}
+                    key={index}
                     onClick={handleClick}
                     className="absolute top-[50%] left-[50%]"
                     style={{
-                      transform: `translateX(-30px) rotate(${idx * angleStep}deg)`,
+                      transform: `translateX(-30px) rotate(${index * angleStep}deg)`,
                       transformOrigin: 'top center',
                     }}
+                    aria-hidden={true}
                   >
                     <Tentacle
                       suctionCount={suctionNb}

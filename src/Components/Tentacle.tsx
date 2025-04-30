@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
-import Sucker from './Sucker';
 import { getGradientFromColor } from '../Helpers/color-utils';
+import Sucker from './Sucker';
 
 type TentacleProps = {
   suctionCount: number;
@@ -13,16 +13,17 @@ export const Tentacle: FC<TentacleProps> = ({
   bodyColor,
   suctionColor,
 }) => {
-  const [factor, setFactor] = useState<number>();
+  const [colorGradientFactor, setColorGradientFactor] = useState<number>();
   useEffect(() => {
-    setFactor(Math.random());
-    console.log(factor);
+    setColorGradientFactor(Math.random());
   }, []);
 
   return (
     <div
       className={`tentacle origin-top animate-tentacle translate-y-4`}
-      style={{ background: getGradientFromColor(bodyColor, factor) }}
+      style={{
+        background: getGradientFromColor(bodyColor, colorGradientFactor),
+      }}
     >
       {[...Array(suctionCount)].map((_, i) => (
         <Sucker key={i} color={suctionColor} />

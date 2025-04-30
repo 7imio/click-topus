@@ -54,6 +54,7 @@ export const Eye: FC<EyeProps> = ({
           border: `4px solid ${tentacleColor}`,
         }}
         onClick={handleClick}
+        aria-hidden={true}
       >
         {/* Paupière animée */}
         <div
