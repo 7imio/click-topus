@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import TentacleSegment from './TentacleSegment';
 import Sucker from './Sucker';
+import { SEGMENTS_PER_TENTACLE } from '../constants/tentacles';
 
 type SegmentedTentacleProps = {
   totalClicks: number;
@@ -13,7 +14,7 @@ export const SegmentedTentacle: FC<SegmentedTentacleProps> = ({
   bodyColor,
   suctionColor,
 }) => {
-  const maxSegments = 10;
+  const maxSegments = SEGMENTS_PER_TENTACLE;
   const segmentCount = Math.min(Math.floor(totalClicks / 10), maxSegments);
 
   return (
