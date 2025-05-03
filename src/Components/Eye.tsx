@@ -6,6 +6,7 @@ type EyeProps = {
   tentacleColor: string;
   handleClick: () => void;
   children?: ReactNode;
+  popEffect: boolean;
 };
 
 export const Eye: FC<EyeProps> = ({
@@ -13,6 +14,7 @@ export const Eye: FC<EyeProps> = ({
   handleClick,
   tentacleColor,
   children,
+  popEffect,
 }) => {
   const [blinking, setBlinking] = useState(false);
   useEffect(() => {
@@ -44,14 +46,16 @@ export const Eye: FC<EyeProps> = ({
   }, []);
 
   return (
-    <div className="relative z-10 w-24 h-24">
+    <div className="relative z-10 w-20 h-20">
       {children}
 
       <div
-        className="absolute inset-0 rounded-full flex items-center justify-center overflow-hidden shadow-inner"
+        className={`absolute inset-0 rounded-full border-[1px] border-black bg-white flex items-center justify-center shadow-inner overflow-hidden transition-transform duration-500 ${
+          popEffect ? 'animate-eye-pop' : ''
+        }`}
         style={{
-          backgroundColor: 'white',
-          border: `4px solid ${tentacleColor}`,
+          backgroundColor: '#EEEECC',
+          border: `6px solid ${tentacleColor}`,
         }}
         onClick={handleClick}
         aria-hidden={true}
@@ -64,10 +68,10 @@ export const Eye: FC<EyeProps> = ({
 
         {/* Iris + pupille */}
         <div
-          className="w-12 h-12 rounded-full flex items-center justify-center"
+          className="w-10 h-10 rounded-full flex items-center justify-center"
           style={{ background: getGradientFromColor(irisColor) }}
         >
-          <div className="w-4 h-4 rounded-full bg-black" />
+          <div className="w-3 h-3 rounded-full bg-black" />
         </div>
       </div>
     </div>

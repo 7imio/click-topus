@@ -1,4 +1,5 @@
 import { FC, ReactNode } from 'react';
+import { getGradientFromColor } from '../Helpers/color-utils';
 
 type TentacleSegmentProps = {
   index: number; // pour calculer le delay
@@ -15,7 +16,7 @@ export const TentacleSegment: FC<TentacleSegmentProps> = ({
     <div
       className="tentacle-segment"
       style={{
-        background: bodyColor,
+        background: getGradientFromColor(bodyColor),
         animationDelay: `${index * 100}ms`,
       }}
     >
