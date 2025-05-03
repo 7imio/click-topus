@@ -2,6 +2,16 @@
 
 
 @layer components {
+  body {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+
+  .text-shadow {
+    text-shadow: 0px 0px 3px #222222BB;
+  }
+
   .tentacle {
     width: 60px;
     height: 200px;
@@ -88,6 +98,77 @@
     animation: fadeInSucker .5s ease-out;
   }
 
+  .animate-floaty {
+    animation: floaty 4s ease-in-out infinite;
+  }
+
+  .animate-dance {
+    animation: dance 3s ease-in-out infinite;
+  }
+
+  .animate-eye-pop {
+    animation: eyePop 0.5s ease-in-out;
+    z-index: 50;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  @keyframes eyePop {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(20);
+      /* assez pour couvrir l'écran */
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+
+
+  @keyframes floaty {
+    0% {
+      transform: translateY(0px) rotate(-1deg);
+    }
+
+    50% {
+      transform: translateY(-10px) rotate(1deg);
+    }
+
+    100% {
+      transform: translateY(0px) rotate(-1deg);
+    }
+  }
+
+  @keyframes dance {
+    0%, 100% {
+      transform: scale(0.5) rotate(-3deg);
+    }
+
+    50% {
+      transform: scale(0.55) rotate(3deg);
+    }
+  }
+
+
   @keyframes rise {
     0% {
       transform: translateY(0) scale(1);
@@ -134,13 +215,4 @@
     }
   }
 
-  /* @keyframes wiggle {
-    0%, 100% {
-      transform: rotate(0deg);
-    }
-
-    50% {
-      transform: rotate(5deg);
-    }
-  } */
 }

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface SkinColor {
+export interface SkinColor {
   irisColor: string;
   bodyColor: string;
   suckerColor: string;

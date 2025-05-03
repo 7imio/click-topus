@@ -6,6 +6,7 @@ type EyeProps = {
   tentacleColor: string;
   handleClick: () => void;
   children?: ReactNode;
+  popEffect: boolean;
 };
 
 export const Eye: FC<EyeProps> = ({
@@ -13,6 +14,7 @@ export const Eye: FC<EyeProps> = ({
   handleClick,
   tentacleColor,
   children,
+  popEffect,
 }) => {
   const [blinking, setBlinking] = useState(false);
   useEffect(() => {
@@ -48,7 +50,9 @@ export const Eye: FC<EyeProps> = ({
       {children}
 
       <div
-        className="absolute inset-0 rounded-full flex items-center justify-center overflow-hidden shadow-inner"
+        className={`absolute inset-0 rounded-full border-[1px] border-black bg-white flex items-center justify-center shadow-inner overflow-hidden transition-transform duration-500 ${
+          popEffect ? 'animate-eye-pop' : ''
+        }`}
         style={{
           backgroundColor: '#EEEECC',
           border: `6px solid ${tentacleColor}`,

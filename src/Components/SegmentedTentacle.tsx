@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import TentacleSegment from './TentacleSegment';
 import Sucker from './Sucker';
-import { SEGMENTS_PER_TENTACLE, SEGMENTS_TYPE } from '../constants/tentacles';
+import { SEGMENTS_PER_TENTACLE, SEGMENTS_TYPE } from '../constants/creatures';
 
 type SegmentedTentacleProps = {
   totalClicks: number;

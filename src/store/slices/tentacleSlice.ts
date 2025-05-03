@@ -4,7 +4,7 @@ import {
   MAX_TENTACLES,
   SEGMENTS_PER_TENTACLE,
   SEGMENTS_TYPE,
-} from '../../constants/tentacles';
+} from '../../constants/creatures';
 
 export interface Tentacle {
   id: string;
