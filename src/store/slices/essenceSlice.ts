@@ -5,6 +5,7 @@ type EssenceState = {
   essence: number;
   purchasedItems: string[];
 };
+
 const initialState: EssenceState = {
   totalHarvestedEssence: 0,
   essence: 0,

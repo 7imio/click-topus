@@ -44,7 +44,7 @@ export const Eye: FC<EyeProps> = ({
   }, []);
 
   return (
-    <div className="relative z-10 w-24 h-24">
+    <div className="relative z-10 w-20 h-20">
       {children}
 
       <div
@@ -64,10 +64,10 @@ export const Eye: FC<EyeProps> = ({
 
         {/* Iris + pupille */}
         <div
-          className="w-12 h-12 rounded-full flex items-center justify-center"
+          className="w-10 h-10 rounded-full flex items-center justify-center"
           style={{ background: getGradientFromColor(irisColor) }}
         >
-          <div className="w-4 h-4 rounded-full bg-black" />
+          <div className="w-3 h-3 rounded-full bg-black" />
         </div>
       </div>
     </div>

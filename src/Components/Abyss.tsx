@@ -25,7 +25,7 @@ const Abyss: FC = () => {
       essence: 0,
     },
   ]);
-  const angleStep = tentacles.length ? 360 / tentacles.length : 0;
+  const angleStep = 360 / MAX_TENTACLES;
 
   const onEssenceIncrement = () => {
     // Increment first tentacle;
@@ -59,7 +59,7 @@ const Abyss: FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-8 bg-gradient-to-b from-green-900 to-gray-900">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-green-900 to-gray-900">
       <h1 className="text-4xl font-bold text-purple-800">Essence: {essence}</h1>
       <Bubbles />
       <div className="relative w-[600px] h-[600px]">
