@@ -2,15 +2,9 @@ import { FC, useState } from 'react';
 import Eye from './Eye';
 import SegmentedTentacle from './SegmentedTentacle';
 import Bubbles from './Bubbles';
-import { ESSENCE_FOR_CREATURE, MAX_TENTACLES } from '../constants/creatures';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { increment } from '../store/slices/essenceSlice';
+import { MAX_TENTACLES } from '../constants/creatures';
+import { useAppSelector } from '../store/hooks';
 import SkinSwitcherButton from './SkinSwitcherButton';
-import {
-  incrementTentacleEssence,
-  resetTentacles,
-} from '../store/slices/tentacleSlice';
-import { addTentacleEssence } from '../store/slices/creatureSlice';
 import MiniCreature from './MiniCreature';
 import AutoClickerPrompt from './AutoClickerPrompt';
 import useEssenceIncrement from '../Hooks/useEssenceIncrement';

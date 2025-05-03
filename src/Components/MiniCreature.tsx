@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, useRef, useState } from 'react';
+import { FC, memo, useRef, useState } from 'react';
 import { MAX_TENTACLES, SEGMENTS_PER_TENTACLE } from '../constants/creatures';
 import Eye from './Eye';
 import SegmentedTentacle from './SegmentedTentacle';
@@ -19,7 +19,7 @@ const MiniCreature: FC<MiniCreatureProps> = ({
 
   const [size] = useState(20 + Math.random() * 10);
 
-  const [actualSkin, setActualSkin] = useState({
+  const [actualSkin] = useState({
     bodyColor,
     suckerColor,
     irisColor,

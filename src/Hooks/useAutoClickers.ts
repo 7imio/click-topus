@@ -1,10 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { increment } from '../store/slices/essenceSlice';
+import { useAppSelector } from '../store/hooks';
 import useEssenceIncrement from './useEssenceIncrement';
 
 const useAutoClickers = () => {
-  const dispatch = useAppDispatch();
   const count = useAppSelector((state) => state.autoClicker.count);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
