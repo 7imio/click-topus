@@ -50,8 +50,8 @@ export const Eye: FC<EyeProps> = ({
       <div
         className="absolute inset-0 rounded-full flex items-center justify-center overflow-hidden shadow-inner"
         style={{
-          backgroundColor: 'white',
-          border: `4px solid ${tentacleColor}`,
+          backgroundColor: '#EEEECC',
+          border: `6px solid ${tentacleColor}`,
         }}
         onClick={handleClick}
         aria-hidden={true}

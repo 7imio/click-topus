@@ -7,7 +7,7 @@ type SegmentedTentacleProps = {
   totalClicks: number;
   bodyColor: string;
   suctionColor: string;
-  debug?: boolean; // ✅ pour activer le mode dev/test rapide
+  debug?: boolean; // ✅ quick dev / test mode
 };
 
 const maxSegments = SEGMENTS_PER_TENTACLE;
@@ -36,7 +36,7 @@ export const SegmentedTentacle: FC<SegmentedTentacleProps> = ({
           </TentacleSegment>
         );
       })}
-      {/* Debug / progression visuelle */}
+      {/* Debug */}
       {debug ?? (
         <div className="text-xs text-white mt-1">{totalClicks}/200 essence</div>
       )}

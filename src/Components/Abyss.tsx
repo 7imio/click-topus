@@ -42,7 +42,7 @@ const Abyss: FC = () => {
               <div
                 key={tentacle.id}
                 onClick={handleClick}
-                className="absolute top-[50%]"
+                className="absolute top-1/2 left-1/3"
                 style={{
                   transform: `rotate(${idx * angleStep}deg)`,
                   transformOrigin: 'top center',
