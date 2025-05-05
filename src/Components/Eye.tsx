@@ -1,5 +1,6 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
 import { getGradientFromColor } from '../Helpers/color-utils';
+import { triggerBlinkSequence } from '../Helpers/anim-utils';
 
 type EyeProps = {
   irisColor: string;
@@ -17,31 +18,18 @@ export const Eye: FC<EyeProps> = ({
   popEffect,
 }) => {
   const [blinking, setBlinking] = useState(false);
+
   useEffect(() => {
     let timeout: NodeJS.Timeout;
 
-    const triggerBlink = () => {
-      setBlinking(true);
+    const scheduleBlink = () => {
+      triggerBlinkSequence(setBlinking);
 
-      // durée du clignement (fermé)
-      setTimeout(() => {
-        setBlinking(false);
-
-        // chance d’un double clignement
-        if (Math.random() < 0.2) {
-          setTimeout(() => {
-            setBlinking(true);
-            setTimeout(() => setBlinking(false), 200);
-          }, 200);
-        }
-      }, 200);
-
-      // prochain blink entre 4s et 10s
       const nextBlink = Math.random() * 6000 + 4000;
-      timeout = setTimeout(triggerBlink, nextBlink);
+      timeout = setTimeout(scheduleBlink, nextBlink);
     };
 
-    triggerBlink();
+    scheduleBlink();
     return () => clearTimeout(timeout);
   }, []);
 

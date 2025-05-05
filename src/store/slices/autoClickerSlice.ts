@@ -17,7 +17,7 @@ const autoClickerState = createSlice({
   reducers: {
     buyAutoClicker: (state) => {
       state.count += 1;
-      state.currentCost = Math.floor(
+      state.currentCost += Math.floor(
         state.baseCost * Math.pow(1.2, state.count)
       );
     },

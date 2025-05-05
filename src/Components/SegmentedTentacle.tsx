@@ -18,8 +18,8 @@ export const SegmentedTentacle: FC<SegmentedTentacleProps> = ({
   suctionColor,
   debug = false,
 }) => {
-  const segmentStep = debug ? 1 : SEGMENTS_PER_TENTACLE;
-  const suckerStep = debug ? 2 : SEGMENTS_PER_TENTACLE * SEGMENTS_TYPE;
+  const segmentStep = SEGMENTS_PER_TENTACLE;
+  const suckerStep = SEGMENTS_PER_TENTACLE * SEGMENTS_TYPE;
 
   const segmentCount = Math.min(
     Math.floor(totalClicks / segmentStep),
@@ -37,7 +37,7 @@ export const SegmentedTentacle: FC<SegmentedTentacleProps> = ({
         );
       })}
       {/* Debug */}
-      {debug ?? (
+      {debug && (
         <div className="text-xs text-white mt-1">{totalClicks}/200 essence</div>
       )}
     </div>

@@ -1,20 +1,20 @@
 import { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { buyAutoClicker } from '../store/slices/autoClickerSlice';
-import { spendEssence } from '../store/slices/essenceSlice';
+import { buyItem } from '../store/slices/essenceSlice';
 
 const AutoClickerPrompt: FC = () => {
   const dispatch = useAppDispatch();
 
   const { count, currentCost } = useAppSelector((state) => state.autoClicker);
 
-  const essence = useAppSelector((state) => state.essence.essence);
+  const { totalHarvestedEssence } = useAppSelector((state) => state.essence);
 
-  const canAfford = essence >= currentCost;
+  const canAfford = totalHarvestedEssence >= currentCost;
 
   const handleBuy = () => {
     if (!canAfford) return;
-    dispatch(spendEssence({ name: 'autoClicker', cost: currentCost }));
+    dispatch(buyItem({ name: 'autoClicker', cost: currentCost }));
     dispatch(buyAutoClicker());
   };
 

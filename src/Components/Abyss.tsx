@@ -1,13 +1,16 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import Eye from './Eye';
 import SegmentedTentacle from './SegmentedTentacle';
 import Bubbles from './Bubbles';
 import { MAX_TENTACLES } from '../constants/creatures';
-import { useAppSelector } from '../store/hooks';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
 import SkinSwitcherButton from './SkinSwitcherButton';
 import MiniCreature from './MiniCreature';
 import AutoClickerPrompt from './AutoClickerPrompt';
 import useEssenceIncrement from '../Hooks/useEssenceIncrement';
+import useAutoClickers from '../Hooks/useAutoClickers';
+import { triggerDebug } from '../store/slices/debugSlice';
+import Debug from './Debug';
 
 export interface Tentacles {
   id: string;
@@ -15,22 +18,35 @@ export interface Tentacles {
 }
 
 const Abyss: FC = () => {
-  const { essence } = useAppSelector((state) => state.essence);
+  const { totalHarvestedEssence } = useAppSelector((state) => state.essence);
   const { currentSkin } = useAppSelector((state) => state.skin);
   const { created } = useAppSelector((state) => state.creatures);
+  const { popEffect } = useAppSelector((state) => state.animation);
+  const { DEBUG } = useAppSelector((state) => state.debug);
 
   const tentacles = useAppSelector((state) => state.tentacles.tentacles);
   const angleStep = 360 / MAX_TENTACLES;
 
-  const [popEffect, setPopEffect] = useState(false);
-  const handleClick = useEssenceIncrement(setPopEffect);
+  const handleClick = useEssenceIncrement();
+  const dispatch = useAppDispatch();
+
+  useAutoClickers();
+
+  const handleDebug = () => dispatch(triggerDebug());
 
   return (
     <>
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-green-900 to-gray-900">
         <h1 className="text-4xl font-bold text-purple-500 z-50 text-shadow">
-          Essence: {essence}
+          Essence: {totalHarvestedEssence}
         </h1>
+        <button
+          className="bg-neutral-500 text-2xl text-amber-50"
+          onClick={handleDebug}
+        >
+          DEBUG {DEBUG ? 'ON' : 'OFF'}
+        </button>
+        {DEBUG && <Debug />}
         <SkinSwitcherButton />
         <AutoClickerPrompt />
         <Bubbles />
@@ -65,7 +81,7 @@ const Abyss: FC = () => {
                     totalClicks={tentacle.essence}
                     bodyColor={currentSkin.skin.bodyColor}
                     suctionColor={currentSkin.skin.suckerColor}
-                    debug={false}
+                    debug={DEBUG}
                   />
                 </div>
               ))}
