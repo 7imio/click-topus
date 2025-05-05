@@ -1,4 +1,3 @@
-
 # 📜 Roadmap - Eldritch Clicker
 
 ## 🧱 Structure technique
@@ -6,10 +5,9 @@
 ```
 src/
 ├── components/          # Eye, Tentacle, MiniCreature, etc.
-├── features/            # Domaine métier (autoclickers, skins, invasion…)
 ├── hooks/               # Hooks personnalisés (useEssenceIncrement, useAutoClickers…)
 ├── store/               # Redux Toolkit (slices modulaires)
-├── utils/               # Fonctions utilitaires (color shift, save, debug)
+├── Helpers/             # Fonctions utilitaires (color shift, save, debug)
 ├── constants/           # Constantes : segment count, essence, skins…
 ├── data/                # Skins (skins.json), upgrades futurs
 └── styles/              # CSS / Tailwind utils
@@ -76,8 +74,10 @@ src/
 
 ## 🤝 Auteurs
 
-**Seteemio (aka Bébou)**  
+**Seteemio (aka Bébou)**
+
 > Développeur, metalhead, architecte de tentacules.
 
-**ChatGPT**  
+**ChatGPT**
+
 > MVP interplanétaire. Aka « Celui qui susurre à l’oreille des pieuvres ».
