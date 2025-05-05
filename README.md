@@ -1,4 +1,3 @@
-
 # 🐙 Eldritch Clicker - An Abyssal Idle Game
 
 > Plonge dans les profondeurs pour cliquer au nom d’anciens dieux cosmiques. Fais croître ta créature tentaculaire, déclenche l’extinction de l’humanité, et mène l’invasion du multivers.
