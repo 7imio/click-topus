@@ -1,73 +1,40 @@
+
 # 🐙 Eldritch Clicker - An Abyssal Idle Game
 
-> Plongez dans les abysses pour cliquer au nom d’anciens dieux oubliés. Élevez votre pieuvre cosmique et menez l’invasion de la Terre... et au-delà.
+> Plonge dans les profondeurs pour cliquer au nom d’anciens dieux cosmiques. Fais croître ta créature tentaculaire, déclenche l’extinction de l’humanité, et mène l’invasion du multivers.
 
 ---
 
 ## 👁️ Description
 
-**Eldritch Clicker** est un idle game tentaculaire où chaque clic sur l’œil d’un ancien dieu engendre la croissance d’une entité cosmique.
-Ajoutez des tentacules, des ventouses, débloquez des auto-clickers, et débutez l’invasion de l’humanité… puis de la galaxie.
+**Eldritch Clicker** est un idle game narratif et cosmique. Chaque clic sur l’œil d’une entité ancestrale nourrit sa croissance. Une fois complète, elle donne naissance à un rejeton, avançant ton culte dans la conquête intergalactique.
 
 ---
 
-## 🎮 Fonctionnalités
+## 🎮 Fonctionnalités principales
 
-- ✅ Clics sur l’œil central pour accumuler de l’énergie
-- ✅ Tentacules générées dynamiquement à chaque 100 points
-- ✅ Ventouses ajoutées automatiquement toutes les 10 points
-- ✅ Œil animé avec paupière clignante verte
-- ✅ Animation de tentacules vivantes (`wiggle`)
-- ✅ Bulles d’arrière-plan animées
-- ✅ Système de sauvegarde local (`localStorage`)
-- 🛠️ Skins à débloquer pour les tentacules, ventouses et l’œil
-- 🔜 Progression narrative : invasion des côtes > continents > espace
-- 🔜 Système de prestige : réinitialisez pour gagner des bonus
+- ✅ Clic sur l’œil principal
+- ✅ Tentacules segmentées dynamiques (jusqu'à 8 tentacules x 10 segments x 10 essence)
+- ✅ Ventouses ajoutées automatiquement
+- ✅ Skins de tentacules déblocables
+- ✅ Paupière animée et clignements aléatoires
+- ✅ Mini créatures générées en fond une fois la créature principale complétée
+- ✅ Autoclickers achetables (1 clic/s chacun, coût exponentiel)
+- ✅ Animations visuelles (wiggle, floaty, eye-pop)
+- ✅ Mode debug intégré (toggle & affichage des états Redux)
+- ✅ Stockage des skins via JSON externe
+- ✅ Architecture Redux complète et modulaire
 
 ---
 
 ## 🧠 Tech Stack
 
-- ⚛️ **React** (TypeScript)
-- 🌀 **TailwindCSS** pour le style
-- 📦 **Redux Toolkit** (prévu pour montée en charge)
-- 💾 `localStorage` pour la persistance
-- 🧰 Architecture modulaire ultra-scalable
-
----
-
-## 🗂️ Arborescence du projet
-
-```
-src/
-├── components/        # Composants visuels
-├── features/          # Logique métier : clicker, tentacle, invasion...
-├── store/             # Gestion d’état globale
-├── hooks/             # Hooks personnalisés (ex: useInterval)
-├── utils/             # Fonctions utilitaires (ex: save/load)
-├── data/              # Skins, upgrades, textes narratifs...
-└── styles/            # Fichiers CSS (animations, thèmes)
-```
-
----
-
-## 💡 Inspirations
-
-- [Universal Paperclips](https://www.decisionproblem.com/paperclips)
-- Cookie Clicker
-- L’univers de H.P. Lovecraft
-- Subnautica
-- Une pieuvre qui t'observe pendant que tu dors
-
----
-
-## 🧬 À venir
-
-- Système de skins déblocables (couleurs via props)
-- Générations successives de pieuvres (chaque 800 points)
-- Conquête narrative : planète, espace, multivers
-- Sons et FX cosmiques
-- Succès + galerie des pieuvres passées
+- ⚛️ **React** + **TypeScript**
+- 💅 **TailwindCSS**
+- ⚙️ **Redux Toolkit** pour la gestion d'état
+- 💾 `localStorage` (persistance prévue)
+- 🧪 Debugging friendly (avec slice dédiée)
+- 🎨 Modularité des composants (Skin, Eye, Tentacles, Bubbles…)
 
 ---
 
@@ -80,6 +47,16 @@ npm run dev
 
 ---
 
-## ✨ Par Bébou et ChatGPT
+## 💡 Inspirations
 
-Code avec ❤️, ventouses, et un peu de corruption interdimensionnelle.
+- Universal Paperclips
+- Cookie Clicker
+- H.P. Lovecraft & Subnautica
+- Cthulhu mythos
+- Les abysses de ton âme
+
+---
+
+## ✨ Par Bébou & ChatGPT
+
+Code avec ❤️, ventouses, et corruption interdimensionnelle.

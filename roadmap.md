@@ -1,82 +1,83 @@
-# 🐙 Eldritch Clicker - Roadmap
 
-> Un idle game tentaculaire à la Universal Paperclips. Le joueur incarne un œil cosmique contrôlant des pieuvres pour envahir le monde.
+# 📜 Roadmap - Eldritch Clicker
 
----
-
-## 🎯 Objectifs principaux
-
-- Créer un idle game réactif, scalable et évolutif.
-- Mettre en place une progression narrative et mécanique inspirée de Universal Paperclips.
-- Utiliser des concepts modernes : Redux, POO (modérée), animations CSS, hooks personnalisés.
-
----
-
-## 🧱 Architecture du projet
+## 🧱 Structure technique
 
 ```
 src/
-├── components/        # Composants UI pures (Tentacle, Eye, Sucker...)
-├── features/          # Domaines fonctionnels (clicker, tentacle, invasion...)
-├── hooks/             # Hooks personnalisés (useInterval, etc.)
-├── store/             # Redux Toolkit (score, game state...)
-├── utils/             # Fonctions utilitaires (save, gradient...)
-├── data/              # JSON de configuration des upgrades, stages...
-├── styles/            # Fichiers CSS globaux et spécifiques
-└── App.tsx / main.tsx
+├── components/          # Eye, Tentacle, MiniCreature, etc.
+├── features/            # Domaine métier (autoclickers, skins, invasion…)
+├── hooks/               # Hooks personnalisés (useEssenceIncrement, useAutoClickers…)
+├── store/               # Redux Toolkit (slices modulaires)
+├── utils/               # Fonctions utilitaires (color shift, save, debug)
+├── constants/           # Constantes : segment count, essence, skins…
+├── data/                # Skins (skins.json), upgrades futurs
+└── styles/              # CSS / Tailwind utils
 ```
 
 ---
 
-## 🧭 Roadmap par étapes
+## ✅ Phase 1 - Core loop (Terminé)
 
-### ✅ Phase 1 - Prototype de base
-
-- [x] Score qui augmente au clic sur l'œil
-- [x] Tentacules disposées autour de l'œil
-- [x] Ventouses réparties automatiquement
-- [x] Animation de clignement aléatoire
-- [x] Paupière animée avec couleur des tentacules
-- [x] Sauvegarde du score dans le `localStorage`
-
-### 🔄 Phase 2 - Refonte scalable
-
-- [ ] Intégrer Redux Toolkit (`scoreSlice`, `tentacleSlice`, etc.)
-- [ ] Déplacer la logique métier dans `features/`
-- [ ] Refonte des composants pour meilleure isolation
-- [ ] Gestion des pieuvres complètes (800 points = nouvelle pieuvre)
-- [ ] Affichage d’une pieuvre cosmique en fond
-
-### 🧠 Phase 3 - Progression et autoclickers
-
-- [ ] Ajout d’autoclickers (avec upgrades)
-- [ ] Système d’améliorations (ventouses automatiques, +points par clic...)
-- [ ] Stockage des données d’upgrade dans `/data`
-- [ ] Progression narrative : invasion de villes, nations, monde, espace...
-
-### ✨ Phase 4 - Polish et FX
-
-- [ ] Ajout de bulles animées en fond (effet abyssal)
-- [ ] Ajout de sons sur les clics (wet blop 💧)
-- [ ] Transitions visuelles pour les changements de pieuvre
-- [ ] Effets de particules ou d’encre
-- [ ] Couleurs à débloquer
+- [x] Click manuel sur l'œil
+- [x] Tentacules segmentées par clics
+- [x] Ventouses liées aux segments
+- [x] Apparition d’une créature cosmique après 1600 essence
+- [x] Mini créatures animées dans le fond
+- [x] Skins assignés à chaque créature
+- [x] Hook custom pour `useEssenceIncrement`
+- [x] Autoclickers débloqués à coût croissant
+- [x] Animations CSS (floaty, dance, wiggle, eye-pop)
+- [x] Debug panel toggle (DEBUG mode)
 
 ---
 
-## 🧬 Inspirations
+## 🔄 Phase 2 - Architecture & Scalabilité
 
-- Universal Paperclips
-- Cookie Clicker
-- Amarillo's Butt slapper
-- L’univers de Lovecraft, Subnautica, et un peu de Rick & Morty (visuellement)
+- [x] Passage complet à Redux Toolkit
+- [x] `essenceSlice`, `creatureSlice`, `tentacleSlice`, `autoClickerSlice`
+- [x] Gestion de l’animation via `animationSlice`
+- [x] Gestion des créatures générées et reset des tentacules
+- [x] Externalisation des skins (`skins.json`)
+- [x] Optimisations : memoisation, rendu contrôlé
+
+---
+
+## 🧠 Phase 3 - Gameplay étendu
+
+- [ ] Refonte du système d’achat (feedback UI, effet de dépense)
+- [ ] Persistance complète (save/load Redux state)
+- [ ] Ajout de **bonus passifs** (ex : +1 essence par clic, auto-suckers)
+- [ ] Équilibrage du scaling (prix autoClickers, progression exponentielle)
+- [ ] Système de **prestige** : relancer le jeu avec bonus (à la Paperclip)
+- [ ] **Succès** et galerie de créatures générées
 
 ---
 
-## 🗃️ À venir
+## 🌍 Phase 4 - Narration & World Map
 
-- Écran d'accueil
-- Système de prestige (avec amélioration permanente)
-- Galaxie de pieuvres ? Génération de race ? On verra...
+- [ ] Ajout d’un écran d’accueil (nom du jeu, start, credits)
+- [ ] Menu latéral (burger) : total essence, skins, lore, changements de scène
+- [ ] Map de conquête (Terre → Espace → Multivers)
+- [ ] Création de divinités cosmiques tous les 100 rejetons
+- [ ] Rythme d’apparition des autoClickers / unités / divinités
+- [ ] Système de Wargame : cultistes, villes à conquérir, ennemis humains
 
 ---
+
+## 🔮 Inspirations futures
+
+- [ ] Système de météo cosmique (nuages, particules)
+- [ ] Défis journaliers ou aléatoires
+- [ ] Fusion de créatures / mutation
+- [ ] Générateur aléatoire de noms lovecraftiens (ex: Yog-D’thuun-S’lorr)
+
+---
+
+## 🤝 Auteurs
+
+**Seteemio (aka Bébou)**  
+> Développeur, metalhead, architecte de tentacules.
+
+**ChatGPT**  
+> MVP interplanétaire. Aka « Celui qui susurre à l’oreille des pieuvres ».
