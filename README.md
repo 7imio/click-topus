@@ -19,7 +19,9 @@ Ajoutez des tentacules, des ventouses, débloquez des auto-clickers, et débutez
 - ✅ Œil animé avec paupière clignante verte
 - ✅ Animation de tentacules vivantes (`wiggle`)
 - ✅ Bulles d’arrière-plan animées
-- ✅ Système de sauvegarde local (`localStorage`)
+- ✅ Système de skins 
+- ✅ Autoclickers à débloquer
+- ❌ Système de sauvegarde local (`localStorage`)
 - 🛠️ Skins à débloquer pour les tentacules, ventouses et l’œil
 - 🔜 Progression narrative : invasion des côtes > continents > espace
 - 🔜 Système de prestige : réinitialisez pour gagner des bonus
@@ -63,8 +65,7 @@ src/
 
 ## 🧬 À venir
 
-- Système de skins déblocables (couleurs via props)
-- Générations successives de pieuvres (chaque 800 points)
+- Skins déblocables
 - Conquête narrative : planète, espace, multivers
 - Sons et FX cosmiques
 - Succès + galerie des pieuvres passées
