@@ -22,7 +22,6 @@ Ajoutez des tentacules, des ventouses, débloquez des auto-clickers, et débutez
 - ✅ Système de skins 
 - ✅ Autoclickers à débloquer
 - ❌ Système de sauvegarde local (`localStorage`)
-- 🛠️ Skins à débloquer pour les tentacules, ventouses et l’œil
 - 🔜 Progression narrative : invasion des côtes > continents > espace
 - 🔜 Système de prestige : réinitialisez pour gagner des bonus
 
