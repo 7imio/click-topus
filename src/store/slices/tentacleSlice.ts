@@ -11,7 +11,7 @@ export interface Tentacle {
   essence: number;
 }
 
-interface TentacleState {
+export interface TentacleState {
   tentacles: Tentacle[];
 }
 

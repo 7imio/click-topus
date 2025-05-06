@@ -52,8 +52,6 @@ const MiniCreature: FC<MiniCreatureProps> = ({
           <Eye
             irisColor={actualSkin.irisColor}
             tentacleColor={actualSkin.bodyColor}
-            handleClick={() => {}}
-            popEffect={false}
           >
             {[...Array(MAX_TENTACLES)].map((_, idx) => (
               <div

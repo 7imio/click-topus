@@ -3,7 +3,7 @@ import { useAppSelector } from '../store/hooks';
 import useEssenceIncrement from './useEssenceIncrement';
 
 const useAutoClickers = () => {
-  const count = useAppSelector((state) => state.autoClicker.count);
+  const { count, click } = useAppSelector((state) => state.autoClicker);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const incrementEssence = useEssenceIncrement();
@@ -17,13 +17,15 @@ const useAutoClickers = () => {
 
     const intervalDuration = Math.max(1000 / count, 50);
     intervalRef.current = setInterval(() => {
-      incrementEssence();
+      for (let i = 0; i < click; i++) {
+        incrementEssence();
+      }
     }, intervalDuration);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [count, incrementEssence]);
+  }, [count, click, incrementEssence]);
 };
 
 export default useAutoClickers;

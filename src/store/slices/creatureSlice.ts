@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ESSENCE_FOR_CREATURE } from '../../constants/creatures';
 
-interface CreatureState {
+export interface CreatureState {
   created: number;
   currentEssence: number;
 }

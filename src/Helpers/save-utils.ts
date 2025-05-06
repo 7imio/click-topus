@@ -1,21 +1,23 @@
+import { GlobalState } from '../store';
+
 // Clé utilisée dans le localStorage
 const STORAGE_KEY = 'abyss-game-save';
 
 // 🔐 Sauvegarder le score
-export const saveScore = (score: number): void => {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ score }));
+export const saveGame = (state: GlobalState): void => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 };
 
 // 📥 Récupérer le score
-export const loadScore = (): number => {
+export const loadGame = (): GlobalState | undefined => {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
-    if (!data) return 0;
+    if (!data) return;
 
     const parsed = JSON.parse(data);
-    return typeof parsed.score === 'number' ? parsed.score : 0;
+    return parsed;
   } catch (err) {
-    console.error('Erreur de chargement du score:', err);
-    return 0;
+    console.error('Erreur de chargement de la sauvegarde:', err);
+    return;
   }
 };

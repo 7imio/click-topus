@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { emptyEssence, increment } from '../store/slices/essenceSlice';
+import { emptyEssence, incrementEssence } from '../store/slices/essenceSlice';
 import {
   incrementTentacleEssence,
   resetTentacles,
@@ -14,20 +14,24 @@ import {
 
 const useEssenceIncrement = () => {
   const dispatch = useAppDispatch();
-  const currentEssence = useAppSelector((state) => state.essence.essence);
-  const incrementEssence = useCallback(() => {
+  // déplace ce useSelector ici pour toujours récupérer la dernière valeur
+  const { essence } = useAppSelector((state) => state.essence);
+
+  const essenceIncrementation = useCallback(() => {
     dispatch(incrementTentacleEssence());
-    dispatch(increment());
+    dispatch(incrementEssence());
     dispatch(addTentacleEssence(1));
+
+    const currentEssence = typeof essence === 'number' ? essence : 0;
     if (currentEssence + 1 >= ESSENCE_FOR_CREATURE) {
       dispatch(triggerPopEffect());
       dispatch(emptyEssence());
       setTimeout(() => dispatch(clearPopEffect()), 500);
       dispatch(resetTentacles());
     }
-  }, [currentEssence, dispatch]);
+  }, [essence, dispatch]);
 
-  return incrementEssence;
+  return essenceIncrementation;
 };
 
 export default useEssenceIncrement;

@@ -1,13 +1,27 @@
 import { configureStore } from '@reduxjs/toolkit';
-import essenceReducer from './slices/essenceSlice';
-import skinReducer from './slices/skinSlice';
-import tentacleReducer from './slices/tentacleSlice';
-import creatureReducer from './slices/creatureSlice';
-import autoClickerReducer from './slices/autoClickerSlice';
-import animationReducer from './slices/animationSlice';
-import debugReducer from './slices/debugSlice';
+import essenceReducer, { EssenceState } from './slices/essenceSlice';
+import skinReducer, { SkinState } from './slices/skinSlice';
+import tentacleReducer, { TentacleState } from './slices/tentacleSlice';
+import creatureReducer, { CreatureState } from './slices/creatureSlice';
+import autoClickerReducer, {
+  AutoClickerState,
+} from './slices/autoClickerSlice';
+import animationReducer, { AnimationState } from './slices/animationSlice';
+import debugReducer, { DebugState } from './slices/debugSlice';
+import corruptionReducer, { CorruptionState } from './slices/corruptionSlice';
 
-export const store = configureStore({
+export interface GlobalState {
+  essence: EssenceState;
+  skin: SkinState;
+  tentacles: TentacleState;
+  creatures: CreatureState;
+  autoClicker: AutoClickerState;
+  animation: AnimationState;
+  debug: DebugState;
+  corruption: CorruptionState;
+}
+
+export const store = configureStore<GlobalState>({
   reducer: {
     essence: essenceReducer,
     skin: skinReducer,
@@ -16,6 +30,7 @@ export const store = configureStore({
     autoClicker: autoClickerReducer,
     animation: animationReducer,
     debug: debugReducer,
+    corruption: corruptionReducer,
   },
 });
 

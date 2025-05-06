@@ -1,13 +1,13 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
 import { getGradientFromColor } from '../Helpers/color-utils';
 import { triggerBlinkSequence } from '../Helpers/anim-utils';
+import { useAppSelector } from '../store/hooks';
 
 type EyeProps = {
   irisColor: string;
   tentacleColor: string;
-  handleClick: () => void;
+  handleClick?: () => void;
   children?: ReactNode;
-  popEffect: boolean;
 };
 
 export const Eye: FC<EyeProps> = ({
@@ -15,9 +15,9 @@ export const Eye: FC<EyeProps> = ({
   handleClick,
   tentacleColor,
   children,
-  popEffect,
 }) => {
   const [blinking, setBlinking] = useState(false);
+  const { popEffect } = useAppSelector((state) => state.animation);
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -34,12 +34,12 @@ export const Eye: FC<EyeProps> = ({
   }, []);
 
   return (
-    <div className="relative z-10 w-20 h-20">
+    <div className="relative z-10 w-[20vw] h-[20vw] max-w-[80px] max-h-[80px] min-w-[40px] min-h-[40px]">
       {children}
 
       <div
         className={`absolute inset-0 rounded-full border-[1px] border-black bg-white flex items-center justify-center shadow-inner overflow-hidden transition-transform duration-500 ${
-          popEffect ? 'animate-eye-pop' : ''
+          handleClick !== undefined && popEffect ? 'animate-eye-pop' : ''
         }`}
         style={{
           backgroundColor: '#EEEECC',

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface AnimationState {
+export interface AnimationState {
   popEffect: boolean;
 }
 

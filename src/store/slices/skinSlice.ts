@@ -11,7 +11,7 @@ export interface Skin {
   skin: SkinColor;
 }
 
-type SkinState = {
+export type SkinState = {
   currentSkin: Skin;
   unlockedSkins: Skin[];
 };

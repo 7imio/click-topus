@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface DebugState {
+export interface DebugState {
   DEBUG: boolean;
 }
 

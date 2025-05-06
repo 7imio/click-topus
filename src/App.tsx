@@ -2,13 +2,7 @@ import './styles/App.css';
 import Abyss from './Components/Abyss';
 
 function App() {
-  return (
-    <>
-      <div>
-        <Abyss />
-      </div>
-    </>
-  );
+  return <Abyss />;
 }
 
 export default App;
