@@ -9,8 +9,8 @@ export interface AutoClickerState {
 const initialState: AutoClickerState = {
   count: 0,
   click: 1,
-  baseCost: 200,
-  currentCost: 200,
+  baseCost: 100,
+  currentCost: 100,
 };
 
 const updateCost = (state: AutoClickerState) => {

@@ -23,8 +23,8 @@ const corruptionSlice = createSlice({
     emptyCorruption: (state) => {
       state.corruption = 0;
     },
-    resetCorruption: (state) => {
-      state = initialState;
+    resetCorruption: (_state) => {
+      return initialState;
     },
     setCorruption: (state, actions) => {
       state.corruption = actions.payload;

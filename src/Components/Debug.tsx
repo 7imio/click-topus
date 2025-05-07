@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useAppSelector } from '../store/hooks';
 
 const Debug: FC = () => {
@@ -55,6 +55,7 @@ const Debug: FC = () => {
         <li>💰 Next AutoClicker Cost: {currentCost}</li>
 
         <li>✨ Pop Effect: {popEffect ? 'ON' : 'OFF'}</li>
+        {corruption && <p>corruption : {corruption.corruption}</p>}
       </ul>
     </div>
   );

@@ -5,27 +5,33 @@ import {
   incrementTentacleEssence,
   resetTentacles,
 } from '../store/slices/tentacleSlice';
-import { ESSENCE_FOR_CREATURE } from '../constants/creatures';
-import { addTentacleEssence } from '../store/slices/creatureSlice';
+import {
+  addTentacleEssence,
+  updateTentacleEssenceNeed,
+} from '../store/slices/creatureSlice';
 import {
   clearPopEffect,
   triggerPopEffect,
 } from '../store/slices/animationSlice';
+import useEssenceHelper from './useEssenceHelper';
 
 const useEssenceIncrement = () => {
   const dispatch = useAppDispatch();
   // déplace ce useSelector ici pour toujours récupérer la dernière valeur
   const { essence } = useAppSelector((state) => state.essence);
 
+  const { essencePerTentacle, essenceForCreature } = useEssenceHelper();
+
   const essenceIncrementation = useCallback(() => {
-    dispatch(incrementTentacleEssence());
+    dispatch(incrementTentacleEssence(essencePerTentacle));
     dispatch(incrementEssence());
-    dispatch(addTentacleEssence(1));
+    dispatch(addTentacleEssence({ essence: 1, essenceForCreature }));
 
     const currentEssence = typeof essence === 'number' ? essence : 0;
-    if (currentEssence + 1 >= ESSENCE_FOR_CREATURE) {
+    if (currentEssence + 1 >= essenceForCreature) {
       dispatch(triggerPopEffect());
       dispatch(emptyEssence());
+      dispatch(updateTentacleEssenceNeed());
       setTimeout(() => dispatch(clearPopEffect()), 500);
       dispatch(resetTentacles());
     }

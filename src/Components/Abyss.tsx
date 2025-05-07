@@ -1,8 +1,7 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import Eye from './Eye';
 import SegmentedTentacle from './SegmentedTentacle';
 import Bubbles from './Bubbles';
-import { MAX_TENTACLES } from '../constants/creatures';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import SkinSwitcherButton from './SkinSwitcherButton';
 import MiniCreature from './MiniCreature';
@@ -20,12 +19,12 @@ export interface Tentacles {
 const Abyss: FC = () => {
   const { totalHarvestedEssence } = useAppSelector((state) => state.essence);
   const { currentSkin } = useAppSelector((state) => state.skin);
-  const { created } = useAppSelector((state) => state.creatures);
+  const { created, maxTentacles } = useAppSelector((state) => state.creatures);
 
   const { DEBUG } = useAppSelector((state) => state.debug);
 
   const tentacles = useAppSelector((state) => state.tentacles.tentacles);
-  const angleStep = 360 / MAX_TENTACLES;
+  const angleStep = 360 / maxTentacles;
 
   const handleClick = useEssenceIncrement();
   const dispatch = useAppDispatch();

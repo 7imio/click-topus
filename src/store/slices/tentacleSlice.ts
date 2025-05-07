@@ -1,10 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
-import {
-  ESSENCE_PER_SEGMENT,
-  MAX_TENTACLES,
-  SEGMENTS_PER_TENTACLE,
-  SEGMENTS_TYPE,
-} from '../../constants/creatures';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface Tentacle {
   id: string;
@@ -23,25 +17,16 @@ const tentacleSlice = createSlice({
   name: 'tentacles',
   initialState,
   reducers: {
-    incrementTentacleEssence: (state) => {
+    incrementTentacleEssence: (state, action: PayloadAction<number>) => {
+      const essenceToAdd = action.payload;
       const tentacles = state.tentacles;
-
-      // Trouve la première tentacule incomplète (strictement < 200)
-      const targetIndex = tentacles.findIndex(
-        (t) =>
-          t.essence <
-          SEGMENTS_PER_TENTACLE * SEGMENTS_TYPE * ESSENCE_PER_SEGMENT
-      );
+      const targetIndex = tentacles.findIndex((t) => t.essence < essenceToAdd);
 
       if (targetIndex !== -1) {
         tentacles[targetIndex].essence += 1;
 
-        // Si la dernière tentacule vient d'être remplie et qu'on peut en créer une nouvelle
         const last = tentacles[tentacles.length - 1];
-        if (
-          last.essence === SEGMENTS_PER_TENTACLE * 2 &&
-          tentacles.length < MAX_TENTACLES
-        ) {
+        if (last.essence >= essenceToAdd) {
           tentacles.push({ id: crypto.randomUUID(), essence: 0 });
         }
       }

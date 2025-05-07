@@ -1,7 +1,8 @@
-import { FC, memo, useRef, useState } from 'react';
-import { MAX_TENTACLES, SEGMENTS_PER_TENTACLE } from '../constants/creatures';
+import { FC, memo, useMemo, useRef, useState } from 'react';
 import Eye from './Eye';
 import SegmentedTentacle from './SegmentedTentacle';
+import { useAppSelector } from '../store/hooks';
+import { CreatureState } from '../store/slices/creatureSlice';
 
 type MiniCreatureProps = {
   bodyColor: string;
@@ -15,9 +16,29 @@ const MiniCreature: FC<MiniCreatureProps> = ({
   suckerColor,
   irisColor,
 }) => {
-  const angleStep = 360 / MAX_TENTACLES;
+  const globalCreature = useAppSelector((state) => state.creatures);
+
+  const [creature] = useState<
+    Pick<
+      CreatureState,
+      | 'maxTentacles'
+      | 'segmentsPerTentacle'
+      | 'essencePerSegment'
+      | 'segmentsType'
+    >
+  >(() => ({
+    maxTentacles: globalCreature.maxTentacles,
+    segmentsPerTentacle: globalCreature.segmentsPerTentacle,
+    essencePerSegment: globalCreature.essencePerSegment,
+    segmentsType: globalCreature.segmentsType,
+  }));
+
+  const angleStep = 360 / 8;
 
   const [size] = useState(20 + Math.random() * 10);
+  const [uuid] = useMemo(() => {
+    return crypto.randomUUID();
+  }, []);
 
   const [actualSkin] = useState({
     bodyColor,
@@ -26,12 +47,12 @@ const MiniCreature: FC<MiniCreatureProps> = ({
   });
 
   const creatureRef = useRef<HTMLDivElement>(null);
-  const [uuid] = useState(() => crypto.randomUUID());
   const [position] = useState(() => ({
     x: Math.floor(20 + Math.random() * (window.innerWidth - 20 * 2 - size)),
     y: Math.floor(20 + Math.random() * (window.innerHeight - 20 * 2 - size)),
   }));
-  return (
+  const [animationDuration] = useState(4 + Math.random() * 3);
+  return creature ? (
     <div
       key={uuid}
       ref={creatureRef}
@@ -44,7 +65,7 @@ const MiniCreature: FC<MiniCreatureProps> = ({
         opacity: 0.5,
         zIndex: 0,
 
-        animationDuration: `${4 + Math.random() * 3}s`,
+        animationDuration: `${animationDuration}s`,
       }}
     >
       <div className="relative w-[100px] h-[100px]">
@@ -52,8 +73,9 @@ const MiniCreature: FC<MiniCreatureProps> = ({
           <Eye
             irisColor={actualSkin.irisColor}
             tentacleColor={actualSkin.bodyColor}
+            disablePopEffect={true}
           >
-            {[...Array(MAX_TENTACLES)].map((_, idx) => (
+            {[...Array(creature.maxTentacles)].map((_, idx) => (
               <div
                 key={idx}
                 className="absolute top-1/2 left-1/2"
@@ -63,7 +85,11 @@ const MiniCreature: FC<MiniCreatureProps> = ({
                 }}
               >
                 <SegmentedTentacle
-                  totalClicks={SEGMENTS_PER_TENTACLE * 2 * 10} // 200
+                  totalClicks={
+                    creature.segmentsPerTentacle *
+                    creature.segmentsType *
+                    creature.essencePerSegment
+                  }
                   bodyColor={actualSkin.bodyColor}
                   suctionColor={actualSkin.suckerColor}
                 />
@@ -73,7 +99,14 @@ const MiniCreature: FC<MiniCreatureProps> = ({
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
-export default memo(MiniCreature);
+export default memo(MiniCreature, (prev, next) => {
+  return (
+    prev.bodyColor === next.bodyColor &&
+    prev.irisColor === next.irisColor &&
+    prev.suckerColor === next.suckerColor &&
+    prev.index === next.index
+  );
+});

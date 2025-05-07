@@ -23,8 +23,8 @@ const essenceSlice = createSlice({
     emptyEssence: (state) => {
       state.essence = 0;
     },
-    resetEssence: (state) => {
-      state = initialState;
+    resetEssence: (_state) => {
+      return initialState;
     },
     setEssence: (state, actions) => {
       state.essence = actions.payload;

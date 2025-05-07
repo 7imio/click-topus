@@ -1,7 +1,9 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import TentacleSegment from './TentacleSegment';
 import Sucker from './Sucker';
-import { SEGMENTS_PER_TENTACLE, SEGMENTS_TYPE } from '../constants/creatures';
+import { useAppSelector } from '../store/hooks';
+import useEssenceHelper from '../Hooks/useEssenceHelper';
+import { CreatureState } from '../store/slices/creatureSlice';
 
 type SegmentedTentacleProps = {
   totalClicks: number;
@@ -10,21 +12,36 @@ type SegmentedTentacleProps = {
   debug?: boolean; // ✅ quick dev / test mode
 };
 
-const maxSegments = SEGMENTS_PER_TENTACLE;
-
 export const SegmentedTentacle: FC<SegmentedTentacleProps> = ({
   totalClicks,
   bodyColor,
   suctionColor,
   debug = false,
 }) => {
-  const segmentStep = SEGMENTS_PER_TENTACLE;
-  const suckerStep = SEGMENTS_PER_TENTACLE * SEGMENTS_TYPE;
+  const globalCreature = useAppSelector((state) => state.creatures);
+  const [creature] = useState<
+    Pick<
+      CreatureState,
+      | 'maxTentacles'
+      | 'segmentsPerTentacle'
+      | 'essencePerSegment'
+      | 'segmentsType'
+    >
+  >(() => ({
+    maxTentacles: globalCreature.maxTentacles,
+    segmentsPerTentacle: globalCreature.segmentsPerTentacle,
+    essencePerSegment: globalCreature.essencePerSegment,
+    segmentsType: globalCreature.segmentsType,
+  }));
+
+  const suckerStep = creature.essencePerSegment * creature.segmentsType;
 
   const segmentCount = Math.min(
-    Math.floor(totalClicks / segmentStep),
-    maxSegments
+    Math.floor(totalClicks / creature.essencePerSegment),
+    creature.segmentsPerTentacle
   );
+
+  const { essencePerTentacle } = useEssenceHelper();
 
   return (
     <div className="flex flex-col items-center animate-fade-in">
@@ -38,7 +55,9 @@ export const SegmentedTentacle: FC<SegmentedTentacleProps> = ({
       })}
       {/* Debug */}
       {debug && (
-        <div className="text-xs text-white mt-1">{totalClicks}/200 essence</div>
+        <div className="text-xs text-white mt-1">
+          {totalClicks}/{essencePerTentacle} essence
+        </div>
       )}
     </div>
   );
