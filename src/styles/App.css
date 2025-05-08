@@ -120,6 +120,10 @@
     animation: glow 2s ease-in-out infinite;
   }
 
+  .animate-eye-click {
+    animation: eye-click .05s ease-in-out;
+  }
+
   @keyframes eyePop {
     0% {
       transform: scale(1);
@@ -133,6 +137,17 @@
     100% {
       transform: scale(1);
     }
+  }
+
+  @keyframes eye-click {
+    0% {
+      transform: scale(.8);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+
   }
 
   @keyframes fadeIn {

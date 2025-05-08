@@ -9,7 +9,7 @@ type EyeProps = {
   handleClick?: () => void;
   children?: ReactNode;
   disablePopEffect?: boolean;
-  disableBlink?: boolean;
+  blink?: boolean;
 };
 
 export const Eye: FC<EyeProps> = ({
@@ -18,9 +18,11 @@ export const Eye: FC<EyeProps> = ({
   tentacleColor,
   children,
   disablePopEffect,
+  blink,
 }) => {
   const [blinking, setBlinking] = useState(false);
   const { popEffect } = useAppSelector((state) => state.animation);
+  const [click, setClick] = useState(false);
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -36,12 +38,19 @@ export const Eye: FC<EyeProps> = ({
     return () => clearTimeout(timeout);
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => setClick(false), 50);
+  }, [click]);
+
   return (
-    <div className="relative z-10 w-[20vw] h-[20vw] max-w-[80px] max-h-[80px] min-w-[40px] min-h-[40px]">
+    <div
+      className={`relative z-10 w-[20vw] h-[20vw] max-w-[80px] max-h-[80px] min-w-[40px] min-h-[40px]`}
+      onClick={() => setClick(true)}
+    >
       {children}
 
       <div
-        className={`absolute inset-0 rounded-full border-[1px] border-black bg-white flex items-center justify-center shadow-inner overflow-hidden transition-transform duration-500 ${
+        className={`${blink && click ? 'animate-eye-click ' : ''}absolute inset-0 rounded-full border-[1px] border-black bg-white flex items-center justify-center shadow-inner overflow-hidden transition-transform duration-500 ${
           !disablePopEffect && handleClick !== undefined && popEffect
             ? 'animate-eye-pop'
             : ''

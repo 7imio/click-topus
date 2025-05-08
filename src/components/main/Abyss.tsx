@@ -49,6 +49,7 @@ const Abyss: FC = () => {
             irisColor={currentSkin.skin.irisColor}
             tentacleColor={currentSkin.skin.bodyColor}
             handleClick={handleClick}
+            blink={true}
           >
             {tentacles.map((tentacle, idx) => (
               <div
