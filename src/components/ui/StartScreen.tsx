@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 const StartScreen = () => {
   return (
-    <div className="flex flex-col items-center justify-center">
-      <h1 className="text-5xl md:text-7xl font-extrabold text-green-300 drop-shadow-lg mb-8 tracking-widest animate-pulse">
+    <div className="flex flex-col items-center justify-center align-middle">
+      <h1 className="w-full text-center text-4xl md:text-7xl font-extrabold text-green-300 drop-shadow-lg mb-8 tracking-widest animate-pulse">
         Eldritch Clicker
       </h1>
 
