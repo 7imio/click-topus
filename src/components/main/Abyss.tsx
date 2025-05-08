@@ -24,7 +24,7 @@ const Abyss: FC = () => {
 
   const { totalHarvestedEssence } = useAppSelector((state) => state.essence);
   const { currentSkin } = useAppSelector((state) => state.skin);
-  const { created, maxTentacles, creatures } = useAppSelector(
+  const { maxTentacles, creatures } = useAppSelector(
     (state) => state.creatures
   );
 
