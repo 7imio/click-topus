@@ -39,10 +39,17 @@ const tentacleSlice = createSlice({
     setTentacles: (state, action) => {
       state.tentacles = action.payload;
     },
+    hydrate: (state, action: PayloadAction<TentacleState>) => {
+      return { ...state, ...action.payload };
+    },
   },
 });
 
-export const { incrementTentacleEssence, resetTentacles, setTentacles } =
-  tentacleSlice.actions;
+export const {
+  incrementTentacleEssence,
+  resetTentacles,
+  setTentacles,
+  hydrate,
+} = tentacleSlice.actions;
 
 export default tentacleSlice.reducer;

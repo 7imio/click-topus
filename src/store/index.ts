@@ -9,6 +9,7 @@ import autoClickerReducer, {
 import animationReducer, { AnimationState } from './slices/animationSlice';
 import debugReducer, { DebugState } from './slices/debugSlice';
 import corruptionReducer, { CorruptionState } from './slices/corruptionSlice';
+import hydrationReducer, { HydrationState } from './slices/hydrationSlice';
 
 export interface GlobalState {
   essence: EssenceState;
@@ -19,6 +20,7 @@ export interface GlobalState {
   animation: AnimationState;
   debug: DebugState;
   corruption: CorruptionState;
+  hydration: HydrationState;
 }
 
 export const store = configureStore<GlobalState>({
@@ -31,6 +33,7 @@ export const store = configureStore<GlobalState>({
     animation: animationReducer,
     debug: debugReducer,
     corruption: corruptionReducer,
+    hydration: hydrationReducer,
   },
 });
 

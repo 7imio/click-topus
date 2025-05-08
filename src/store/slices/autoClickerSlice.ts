@@ -43,6 +43,9 @@ const autoClickerState = createSlice({
       state.baseCost = action.payload.baseCost;
       state.currentCost = action.payload.currentCost;
     },
+    hydrate: (state, action: PayloadAction<AutoClickerState>) => {
+      return { ...state, ...action.payload };
+    },
   },
 });
 
@@ -52,5 +55,6 @@ export const {
   resetAutoClickers,
   setAutoClickers,
   upgradeAutoclicker,
+  hydrate,
 } = autoClickerState.actions;
 export default autoClickerState.reducer;

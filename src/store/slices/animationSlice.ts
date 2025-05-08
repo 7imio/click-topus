@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface AnimationState {
   popEffect: boolean;
@@ -18,8 +18,12 @@ const animationSlice = createSlice({
     clearPopEffect: (state) => {
       state.popEffect = false;
     },
+    hydrate: (state, action: PayloadAction<AnimationState>) => {
+      return { ...state, ...action.payload };
+    },
   },
 });
 
-export const { triggerPopEffect, clearPopEffect } = animationSlice.actions;
+export const { triggerPopEffect, clearPopEffect, hydrate } =
+  animationSlice.actions;
 export default animationSlice.reducer;
