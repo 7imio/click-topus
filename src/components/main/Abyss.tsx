@@ -49,7 +49,7 @@ const Abyss: FC = () => {
       </h1>
 
       {DEBUG && <Debug />}
-      <SkinSwitcherButton />
+
       <AutoClickerPrompt />
       {creatureList?.map((creature, i) => (
         <MiniCreature

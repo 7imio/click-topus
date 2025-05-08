@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../store/hooks';
 import { triggerDebug } from '../../store/slices/debugSlice';
+import SkinSwitcherButton from './SkinSwitcherButton';
 
 const BurgerMenu = () => {
   const [open, setOpen] = useState(false);
@@ -43,6 +44,7 @@ const BurgerMenu = () => {
           >
             DEBUG
           </button>
+          <SkinSwitcherButton />
         </div>
       )}
     </div>
