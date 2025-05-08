@@ -16,7 +16,12 @@ const Debug: FC = () => {
   const { essence, purchasedItems, totalHarvestedEssence } = essenceState;
   const { currentSkin } = skin;
   const { tentacles: tentacleList } = tentacles;
-  const { currentEssence, created, essencePerSegment } = creatures;
+  const {
+    currentEssence,
+    created,
+    essencePerSegment,
+    creatures: creatureList,
+  } = creatures;
   const { count, currentCost, click } = autoClicker;
   const { popEffect } = animation;
 
@@ -49,6 +54,17 @@ const Debug: FC = () => {
         <li>🐙 Tentacles: {tentacleList.length}</li>
         <li>👁️ Creature Essence: {currentEssence}</li>
         <li>👾 Rejetons créés: {created}</li>
+        {creatureList && (
+          <ul>
+            {creatureList.map((c) => {
+              return (
+                <li>
+                  {c.creatureName} - power : {c.essence}
+                </li>
+              );
+            })}
+          </ul>
+        )}
         <li>
           🤖 Force : {count} - Cultistes : {click}
         </li>

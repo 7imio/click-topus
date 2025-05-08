@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import useAutoClickers from '../../hooks/useAutoClickers';
 import useEssenceIncrement from '../../hooks/useEssenceIncrement';
 import useSaveGame from '../../hooks/useSaveGame';
@@ -12,6 +12,7 @@ import AutoClickerPrompt from '../ui/AutoClickerPrompt';
 import Debug from '../ui/Debug';
 import ResetButton from '../ui/ResetButton';
 import SkinSwitcherButton from '../ui/SkinSwitcherButton';
+import { Creature } from '../../store/slices/creatureSlice';
 
 export interface Tentacles {
   id: string;
@@ -26,6 +27,12 @@ const Abyss: FC = () => {
   const { created, maxTentacles, creatures } = useAppSelector(
     (state) => state.creatures
   );
+
+  const [creatureList, setCreatureList] = useState<Creature[]>();
+
+  useEffect(() => {
+    setCreatureList(creatures?.slice(-10));
+  }, [creatures]);
 
   const { DEBUG } = useAppSelector((state) => state.debug);
 
@@ -59,7 +66,7 @@ const Abyss: FC = () => {
         <SkinSwitcherButton />
         <AutoClickerPrompt />
         <Bubbles />
-        {creatures?.map((creature, i) => (
+        {creatureList?.map((creature, i) => (
           <MiniCreature
             bodyColor={creature.skin.bodyColor}
             irisColor={creature.skin.irisColor}

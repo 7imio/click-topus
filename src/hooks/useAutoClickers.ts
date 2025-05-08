@@ -14,7 +14,7 @@ const useAutoClickers = () => {
 
     if (count <= 0) return;
 
-    const intervalDuration = Math.max(1000 / count, 50);
+    const intervalDuration = 1000 / count;
     intervalRef.current = setInterval(() => {
       for (let i = 0; i < click; i++) {
         incrementEssence();

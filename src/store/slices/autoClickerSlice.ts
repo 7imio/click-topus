@@ -36,6 +36,7 @@ const autoClickerState = createSlice({
 
     resetAutoClickers: (state) => {
       state.count = 0;
+      state.click = 1;
       state.currentCost = state.baseCost;
     },
     setAutoClickers: (state, action: PayloadAction<AutoClickerState>) => {
