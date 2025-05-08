@@ -23,7 +23,9 @@ const Abyss: FC = () => {
 
   const { totalHarvestedEssence } = useAppSelector((state) => state.essence);
   const { currentSkin } = useAppSelector((state) => state.skin);
-  const { created, maxTentacles } = useAppSelector((state) => state.creatures);
+  const { created, maxTentacles, creatures } = useAppSelector(
+    (state) => state.creatures
+  );
 
   const { DEBUG } = useAppSelector((state) => state.debug);
 
@@ -57,15 +59,14 @@ const Abyss: FC = () => {
         <SkinSwitcherButton />
         <AutoClickerPrompt />
         <Bubbles />
-        {created > 0 &&
-          Array.from({ length: created }).map((_, i) => (
-            <MiniCreature
-              bodyColor={currentSkin.skin.bodyColor}
-              irisColor={currentSkin.skin.irisColor}
-              suckerColor={currentSkin.skin.suckerColor}
-              index={i}
-            />
-          ))}
+        {creatures?.map((creature, i) => (
+          <MiniCreature
+            bodyColor={creature.skin.bodyColor}
+            irisColor={creature.skin.irisColor}
+            suckerColor={creature.skin.suckerColor}
+            index={i}
+          />
+        ))}
         <div className="relative w-full h-[600px] aspect-square">
           <div className="absolute inset-0 flex items-center justify-center z-10">
             <Eye

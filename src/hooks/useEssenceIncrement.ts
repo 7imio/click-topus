@@ -20,11 +20,12 @@ const useEssenceIncrement = () => {
   // déplace ce useSelector ici pour toujours récupérer la dernière valeur
   const { essence } = useAppSelector((state) => state.essence);
   const { essencePerTentacle, essenceForCreature } = useEssenceHelper();
+  const skin = useAppSelector((state) => state.skin.currentSkin.skin);
 
   const essenceIncrementation = useCallback(() => {
     dispatch(incrementTentacleEssence(essencePerTentacle));
     dispatch(incrementEssence());
-    dispatch(addTentacleEssence({ essence: 1, essenceForCreature }));
+    dispatch(addTentacleEssence({ essence: 1, essenceForCreature, skin }));
 
     const currentEssence = typeof essence === 'number' ? essence : 0;
     if (currentEssence + 1 >= essenceForCreature) {

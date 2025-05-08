@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useAppSelector } from '../../store/hooks';
+import useEssenceHelper from '../../hooks/useEssenceHelper';
 
 const Debug: FC = () => {
   const {
@@ -15,9 +16,11 @@ const Debug: FC = () => {
   const { essence, purchasedItems, totalHarvestedEssence } = essenceState;
   const { currentSkin } = skin;
   const { tentacles: tentacleList } = tentacles;
-  const { currentEssence, created } = creatures;
+  const { currentEssence, created, essencePerSegment } = creatures;
   const { count, currentCost, click } = autoClicker;
   const { popEffect } = animation;
+
+  const { essencePerTentacle, essenceForCreature } = useEssenceHelper();
 
   return (
     <div className="absolute top-0 left-0 pointer-events-none bg-black/70 text-green-300 text-xs p-3 rounded-tr-lg z-50 max-w-xs overflow-y-auto">
@@ -43,19 +46,20 @@ const Debug: FC = () => {
           )}
         </ul>
         <li>🎨 Skin: {currentSkin.name}</li>
-
         <li>🐙 Tentacles: {tentacleList.length}</li>
-
         <li>👁️ Creature Essence: {currentEssence}</li>
         <li>👾 Rejetons créés: {created}</li>
-
         <li>
           🤖 Force : {count} - Cultistes : {click}
         </li>
         <li>💰 Next AutoClicker Cost: {currentCost}</li>
-
         <li>✨ Pop Effect: {popEffect ? 'ON' : 'OFF'}</li>
-        {corruption && <p>corruption : {corruption.corruption}</p>}
+        {corruption && <li>☣️ Corruption: {corruption.corruption}</li>}
+        <hr className="my-2 border-green-500" />
+        <li>📈 Coûts en essence :</li>
+        <li> • Par segment : {essencePerSegment}</li>
+        <li> • Par tentacule : {essencePerTentacle}</li>
+        <li> • Par créature (octopode) : {essenceForCreature}</li>
       </ul>
     </div>
   );

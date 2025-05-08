@@ -1,12 +1,16 @@
 // src/Components/ResetButton.tsx
 import { FC } from 'react';
 import { clearGame } from '../../helpers/save-utils';
+import { useAppDispatch } from '../../store/hooks';
+import { resetAllGameState } from '../../store/actions/reset';
 
 const ResetButton: FC = () => {
+  const dispatch = useAppDispatch();
+
   const handleReset = () => {
     if (confirm('Réinitialiser complètement la partie ?')) {
       clearGame();
-      location.reload(); // Recharge l'app depuis zéro
+      dispatch(resetAllGameState());
     }
   };
 
