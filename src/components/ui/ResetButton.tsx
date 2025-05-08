@@ -1,6 +1,6 @@
 // src/Components/ResetButton.tsx
 import { FC } from 'react';
-import { clearGame } from '../Helpers/save-utils';
+import { clearGame } from '../../helpers/save-utils';
 
 const ResetButton: FC = () => {
   const handleReset = () => {

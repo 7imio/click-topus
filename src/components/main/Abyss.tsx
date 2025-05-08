@@ -1,17 +1,17 @@
 import { FC } from 'react';
-import Eye from './Eye';
-import SegmentedTentacle from './SegmentedTentacle';
-import Bubbles from './Bubbles';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import SkinSwitcherButton from './SkinSwitcherButton';
-import MiniCreature from './MiniCreature';
-import AutoClickerPrompt from './AutoClickerPrompt';
-import useEssenceIncrement from '../Hooks/useEssenceIncrement';
-import useAutoClickers from '../Hooks/useAutoClickers';
-import { triggerDebug } from '../store/slices/debugSlice';
-import Debug from './Debug';
-import useSaveGame from '../Hooks/useSaveGame';
-import ResetButton from './ResetButton';
+import useAutoClickers from '../../hooks/useAutoClickers';
+import useEssenceIncrement from '../../hooks/useEssenceIncrement';
+import useSaveGame from '../../hooks/useSaveGame';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { triggerDebug } from '../../store/slices/debugSlice';
+import Bubbles from '../background/Bubbles';
+import MiniCreature from '../background/MiniCreature';
+import Eye from '../creatures/Eye';
+import SegmentedTentacle from '../creatures/SegmentedTentacle';
+import AutoClickerPrompt from '../ui/AutoClickerPrompt';
+import Debug from '../ui/Debug';
+import ResetButton from '../ui/ResetButton';
+import SkinSwitcherButton from '../ui/SkinSwitcherButton';
 
 export interface Tentacles {
   id: string;

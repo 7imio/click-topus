@@ -1,7 +1,7 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
-import { getGradientFromColor } from '../Helpers/color-utils';
-import { triggerBlinkSequence } from '../Helpers/anim-utils';
-import { useAppSelector } from '../store/hooks';
+import { triggerBlinkSequence } from '../../helpers/anim-utils';
+import { getGradientFromColor } from '../../helpers/color-utils';
+import { useAppSelector } from '../../store/hooks';
 
 type EyeProps = {
   irisColor: string;

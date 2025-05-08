@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import './styles/App.css';
-import Abyss from './Components/Abyss';
 import { useAppDispatch } from './store/hooks';
-import { loadGame } from './Helpers/save-utils';
+import { loadGame } from './helpers/save-utils';
 import { hydrate as hydrateEssence } from './store/slices/essenceSlice';
 import { hydrate as hydrateCreatures } from './store/slices/creatureSlice';
 import { hydrate as hydrateTentacles } from './store/slices/tentacleSlice';
@@ -12,6 +11,7 @@ import { hydrate as hydrateCorruption } from './store/slices/corruptionSlice';
 import { hydrate as hydrateSkin } from './store/slices/skinSlice';
 import { hydrate as hydrateDebug } from './store/slices/debugSlice';
 import { setHydrated } from './store/slices/hydrationSlice';
+import Abyss from './components/main/Abyss';
 
 function App() {
   const dispatch = useAppDispatch();

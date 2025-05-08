@@ -3,7 +3,7 @@ import {
   ColorShift,
   getGradientFromColor,
   shiftHexColor,
-} from '../Helpers/color-utils';
+} from '../../helpers/color-utils';
 
 type SuckerProps = {
   color: string;

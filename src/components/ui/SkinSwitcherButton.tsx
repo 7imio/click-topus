@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { applySkin } from '../store/slices/skinSlice';
-import { allSkins } from '../constants/skins';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { applySkin } from '../../store/slices/skinSlice';
+import { allSkins } from '../../constants/skins';
 
 const SkinSwitcherButton: FC = () => {
   const dispatch = useAppDispatch();

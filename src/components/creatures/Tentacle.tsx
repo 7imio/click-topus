@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { getGradientFromColor } from '../Helpers/color-utils';
+import { getGradientFromColor } from '../../helpers/color-utils';
 import Sucker from './Sucker';
 
 type TentacleProps = {

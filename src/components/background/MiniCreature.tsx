@@ -1,8 +1,8 @@
 import { FC, memo, useMemo, useRef, useState } from 'react';
-import Eye from './Eye';
-import SegmentedTentacle from './SegmentedTentacle';
-import { useAppSelector } from '../store/hooks';
-import { CreatureState } from '../store/slices/creatureSlice';
+import Eye from '../creatures/Eye';
+import SegmentedTentacle from '../creatures/SegmentedTentacle';
+import { useAppSelector } from '../../store/hooks';
+import { CreatureState } from '../../store/slices/creatureSlice';
 
 type MiniCreatureProps = {
   bodyColor: string;

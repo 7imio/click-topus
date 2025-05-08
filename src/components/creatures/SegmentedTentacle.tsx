@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
 import TentacleSegment from './TentacleSegment';
 import Sucker from './Sucker';
-import { useAppSelector } from '../store/hooks';
-import useEssenceHelper from '../Hooks/useEssenceHelper';
-import { CreatureState } from '../store/slices/creatureSlice';
+import useEssenceHelper from '../../hooks/useEssenceHelper';
+import { useAppSelector } from '../../store/hooks';
+import { CreatureState } from '../../store/slices/creatureSlice';
 
 type SegmentedTentacleProps = {
   totalClicks: number;

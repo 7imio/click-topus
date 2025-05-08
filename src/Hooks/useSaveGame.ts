@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppSelector } from '../store/hooks';
-import { saveGame } from '../Helpers/save-utils';
+import { saveGame } from '../helpers/save-utils';
 
 const useSaveGame = () => {
   const state = useAppSelector((s) => s);

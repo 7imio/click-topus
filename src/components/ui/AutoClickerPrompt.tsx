@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
-  buyAutoClicker,
   buyFirstAutoclicker,
+  buyAutoClicker,
   upgradeAutoclicker,
-} from '../store/slices/autoClickerSlice';
-import { buyEssenceItem } from '../store/slices/essenceSlice';
+} from '../../store/slices/autoClickerSlice';
+import { buyEssenceItem } from '../../store/slices/essenceSlice';
 
 const AutoClickerPrompt: FC = () => {
   const dispatch = useAppDispatch();

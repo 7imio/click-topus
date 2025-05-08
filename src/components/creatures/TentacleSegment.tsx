@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { getGradientFromColor } from '../Helpers/color-utils';
+import { getGradientFromColor } from '../../helpers/color-utils';
 
 type TentacleSegmentProps = {
   index: number; // pour calculer le delay
