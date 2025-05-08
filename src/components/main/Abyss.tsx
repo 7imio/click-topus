@@ -1,16 +1,11 @@
 import { FC, useEffect, useState } from 'react';
-import useAutoClickers from '../../hooks/useAutoClickers';
 import useEssenceIncrement from '../../hooks/useEssenceIncrement';
-import useSaveGame from '../../hooks/useSaveGame';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { triggerDebug } from '../../store/slices/debugSlice';
+import { useAppSelector } from '../../store/hooks';
 import MiniCreature from '../background/MiniCreature';
 import Eye from '../creatures/Eye';
 import SegmentedTentacle from '../creatures/SegmentedTentacle';
 import AutoClickerPrompt from '../ui/AutoClickerPrompt';
-import Debug from '../ui/Debug';
-import ResetButton from '../ui/ResetButton';
-import SkinSwitcherButton from '../ui/SkinSwitcherButton';
+import InformationPanel from '../ui/InformationPanel';
 import { Creature } from '../../store/slices/creatureSlice';
 
 export interface Tentacles {
@@ -19,8 +14,6 @@ export interface Tentacles {
 }
 
 const Abyss: FC = () => {
-  useSaveGame();
-
   const { totalHarvestedEssence } = useAppSelector((state) => state.essence);
   const { currentSkin } = useAppSelector((state) => state.skin);
   const { maxTentacles, creatures } = useAppSelector(
@@ -40,15 +33,13 @@ const Abyss: FC = () => {
 
   const handleClick = useEssenceIncrement();
 
-  useAutoClickers();
-
   return (
     <>
       <h1 className="text-4xl font-bold text-purple-500 z-50 text-shadow">
         Essence: {totalHarvestedEssence}
       </h1>
 
-      {DEBUG && <Debug />}
+      {DEBUG && <InformationPanel />}
 
       <AutoClickerPrompt />
       {creatureList?.map((creature, i) => (

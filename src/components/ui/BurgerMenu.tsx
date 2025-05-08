@@ -1,14 +1,23 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { triggerDebug } from '../../store/slices/debugSlice';
-import SkinSwitcherButton from './SkinSwitcherButton';
+import { allSkins } from '../../constants/skins';
+import { applySkin } from '../../store/slices/skinSlice';
 
 const BurgerMenu = () => {
   const [open, setOpen] = useState(false);
 
   const dispatch = useAppDispatch();
   const handleDebug = () => dispatch(triggerDebug());
+
+  const currentSkin = useAppSelector((state) => state.skin.currentSkin);
+
+  const handleChangeSkin = () => {
+    const currentIndex = allSkins.findIndex((s) => s.name === currentSkin.name);
+    const nextIndex = (currentIndex + 1) % allSkins.length;
+    dispatch(applySkin({ skin: allSkins[nextIndex] }));
+  };
 
   return (
     <div className="fixed top-4 left-4 z-50">
@@ -26,9 +35,21 @@ const BurgerMenu = () => {
           <Link to="/game" onClick={() => setOpen(false)}>
             👁️ The Void
           </Link>
-          <Link to="/infos" onClick={() => setOpen(false)}>
-            📦 Infos
-          </Link>
+          <div className="flex flex-row">
+            <Link to="/info" onClick={() => setOpen(false)}>
+              📦 Infos
+            </Link>
+            <span className="mx-1">-</span>
+            <p
+              className="cursor-pointer"
+              onClick={() => {
+                handleDebug();
+                setOpen(false);
+              }}
+            >
+              Panel
+            </p>
+          </div>
           <Link to="/conquest" onClick={() => setOpen(false)}>
             🌍 Conquest
           </Link>
@@ -38,13 +59,12 @@ const BurgerMenu = () => {
           <Link to="/reset" onClick={() => setOpen(false)}>
             💀 Reset
           </Link>
-          <button
-            className="bg-neutral-500 text-2xl text-amber-50"
-            onClick={handleDebug}
-          >
-            DEBUG
-          </button>
-          <SkinSwitcherButton />
+          <Link to="/offsprings" onClick={() => setOpen(false)}>
+            🪼 Offsprings
+          </Link>
+          <p className="cursor-pointer" onClick={handleChangeSkin}>
+            🐙 Change Skin
+          </p>
         </div>
       )}
     </div>

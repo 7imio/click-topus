@@ -14,7 +14,6 @@ const debugSlice = createSlice({
   reducers: {
     triggerDebug: (state) => {
       state.DEBUG = !state.DEBUG;
-      console.warn(`DEBUG MOD IS NOW ${state.DEBUG ? 'ON' : 'OFF'}`);
     },
     hydrate: (state, action: PayloadAction<DebugState>) => {
       return { ...state, ...action.payload };

@@ -4,7 +4,7 @@ import { GlobalState } from '../store';
 const STORAGE_KEY = 'abyss-game-save';
 
 // 🔐 Sauvegarder le score
-export const saveGame = (state: GlobalState): void => {
+export const saveGame = (state: Partial<GlobalState>): void => {
   try {
     const serialized = JSON.stringify(state);
     localStorage.setItem(STORAGE_KEY, serialized);

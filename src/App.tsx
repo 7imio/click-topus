@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './styles/App.css';
-import { useAppDispatch } from './store/hooks';
+import { useAppDispatch, useAppSelector } from './store/hooks';
 import { loadGame } from './helpers/save-utils';
 import { hydrate as hydrateEssence } from './store/slices/essenceSlice';
 import { hydrate as hydrateCreatures } from './store/slices/creatureSlice';
@@ -14,10 +14,16 @@ import { setHydrated } from './store/slices/hydrationSlice';
 import Router from './components/router/Router';
 import Bubbles from './components/background/Bubbles';
 import BurgerMenu from './components/ui/BurgerMenu';
+import useAutoClickers from './hooks/useAutoClickers';
+import useSaveGame from './hooks/useSaveGame';
 
 function App() {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
+  const { hydrated } = useAppSelector((s) => s.hydration);
+
+  useSaveGame(hydrated);
+  useAutoClickers();
 
   useEffect(() => {
     const game = loadGame();
@@ -33,7 +39,7 @@ function App() {
     }
     dispatch(setHydrated(true));
     setLoading(false);
-  }, []);
+  }, [hydrated]);
 
   return (
     <div className="min-h-screen w-full overflow-hidden flex flex-col items-center justify-center p-4 bg-gradient-to-b from-green-900 to-gray-900">

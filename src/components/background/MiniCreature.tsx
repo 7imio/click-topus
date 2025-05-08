@@ -1,4 +1,4 @@
-import { FC, memo, useMemo, useRef, useState } from 'react';
+import { FC, memo, useRef, useState } from 'react';
 import Eye from '../creatures/Eye';
 import SegmentedTentacle from '../creatures/SegmentedTentacle';
 import { useAppSelector } from '../../store/hooks';
