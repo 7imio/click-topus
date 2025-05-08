@@ -10,6 +10,8 @@ import useEssenceIncrement from '../Hooks/useEssenceIncrement';
 import useAutoClickers from '../Hooks/useAutoClickers';
 import { triggerDebug } from '../store/slices/debugSlice';
 import Debug from './Debug';
+import useSaveGame from '../Hooks/useSaveGame';
+import ResetButton from './ResetButton';
 
 export interface Tentacles {
   id: string;
@@ -17,6 +19,8 @@ export interface Tentacles {
 }
 
 const Abyss: FC = () => {
+  useSaveGame();
+
   const { totalHarvestedEssence } = useAppSelector((state) => state.essence);
   const { currentSkin } = useAppSelector((state) => state.skin);
   const { created, maxTentacles } = useAppSelector((state) => state.creatures);
@@ -43,6 +47,7 @@ const Abyss: FC = () => {
           >
             DEBUG {DEBUG ? 'ON' : 'OFF'}
           </button>
+          <ResetButton />
         </div>
         <h1 className="text-4xl font-bold text-purple-500 z-50 text-shadow">
           Essence: {totalHarvestedEssence}

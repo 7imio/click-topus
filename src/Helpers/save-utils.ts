@@ -5,19 +5,32 @@ const STORAGE_KEY = 'abyss-game-save';
 
 // 🔐 Sauvegarder le score
 export const saveGame = (state: GlobalState): void => {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  try {
+    const serialized = JSON.stringify(state);
+    localStorage.setItem(STORAGE_KEY, serialized);
+  } catch (err) {
+    console.error('Error while saving ! ', err);
+  }
 };
 
 // 📥 Récupérer le score
-export const loadGame = (): GlobalState | undefined => {
+export const loadGame = (): Partial<GlobalState> | undefined => {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
-    if (!data) return;
+    if (!data) {
+      console.warn('NO DATA');
+      return;
+    }
 
     const parsed = JSON.parse(data);
+    console.log('Game loaded !');
     return parsed;
   } catch (err) {
-    console.error('Erreur de chargement de la sauvegarde:', err);
+    console.error('Error while loading save ! ', err);
     return;
   }
+};
+
+export const clearGame = () => {
+  localStorage.removeItem(STORAGE_KEY);
 };

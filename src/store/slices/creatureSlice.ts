@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface CreatureState {
   created: number;
@@ -44,9 +44,13 @@ const creatureSlice = createSlice({
     },
     updateTentacleEssenceNeed: (state) => {
       const adjustedEssencePerSegment = Math.floor(
-        state.essencePerSegment * Math.pow(state.multiplier, state.created)
+        state.essencePerSegment *
+          Math.pow(state.multiplier, state.created / 10 + 1)
       );
       state.essencePerSegment = adjustedEssencePerSegment;
+    },
+    hydrate: (state, action: PayloadAction<CreatureState>) => {
+      return { ...state, ...action.payload };
     },
   },
 });
@@ -56,5 +60,6 @@ export const {
   resetCreatures,
   setCreatedCreatures,
   updateTentacleEssenceNeed,
+  hydrate,
 } = creatureSlice.actions;
 export default creatureSlice.reducer;

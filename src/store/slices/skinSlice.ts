@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface SkinColor {
   irisColor: string;
@@ -41,8 +41,11 @@ const skinSlice = createSlice({
       const unlockedSkin = actions.payload;
       unlockedSkins.push(unlockedSkin);
     },
+    hydrate: (state, action: PayloadAction<SkinState>) => {
+      return { ...state, ...action.payload };
+    },
   },
 });
 
-export const { applySkin, unlockSkin } = skinSlice.actions;
+export const { applySkin, unlockSkin, hydrate } = skinSlice.actions;
 export default skinSlice.reducer;

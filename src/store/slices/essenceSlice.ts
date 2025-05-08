@@ -38,6 +38,9 @@ const essenceSlice = createSlice({
         state.purchasedItems.push(name);
       }
     },
+    hydrate: (state, action: PayloadAction<EssenceState>) => {
+      return { ...state, ...action.payload };
+    },
   },
 });
 
@@ -47,5 +50,6 @@ export const {
   setEssence,
   buyEssenceItem,
   emptyEssence,
+  hydrate,
 } = essenceSlice.actions;
 export default essenceSlice.reducer;

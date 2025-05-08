@@ -38,6 +38,9 @@ const corruptionSlice = createSlice({
         state.purchasedItems.push(name);
       }
     },
+    hydrate: (state, action: PayloadAction<CorruptionState>) => {
+      return { ...state, ...action.payload };
+    },
   },
 });
 
@@ -47,5 +50,6 @@ export const {
   setCorruption,
   buyCorruptionItem,
   emptyCorruption,
+  hydrate,
 } = corruptionSlice.actions;
 export default corruptionSlice.reducer;
