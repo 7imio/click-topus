@@ -11,7 +11,9 @@ import { hydrate as hydrateCorruption } from './store/slices/corruptionSlice';
 import { hydrate as hydrateSkin } from './store/slices/skinSlice';
 import { hydrate as hydrateDebug } from './store/slices/debugSlice';
 import { setHydrated } from './store/slices/hydrationSlice';
-import Abyss from './components/main/Abyss';
+import Router from './components/router/Router';
+import Bubbles from './components/background/Bubbles';
+import BurgerMenu from './components/ui/BurgerMenu';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -33,9 +35,19 @@ function App() {
     setLoading(false);
   }, []);
 
-  if (loading)
-    return <div className="text-white p-4">Chargement abyssal en cours...</div>;
-  return <Abyss />;
+  return (
+    <div className="min-h-screen w-full overflow-hidden flex flex-col items-center justify-center p-4 bg-gradient-to-b from-green-900 to-gray-900">
+      <BurgerMenu />
+      {loading ? (
+        <div className="text-white p-4">Chargement abyssal en cours...</div>
+      ) : (
+        <>
+          <Router />
+          <Bubbles />
+        </>
+      )}
+    </div>
+  );
 }
 
 export default App;

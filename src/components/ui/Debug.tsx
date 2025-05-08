@@ -28,7 +28,7 @@ const Debug: FC = () => {
   const { essencePerTentacle, essenceForCreature } = useEssenceHelper();
 
   return (
-    <div className="absolute top-0 left-0 pointer-events-none bg-black/70 text-green-300 text-xs p-3 rounded-tr-lg z-50 max-w-xs overflow-y-auto">
+    <div className="absolute bottom-0 left-0 pointer-events-none bg-black/70 text-green-300 text-xs p-3 rounded-tr-lg z-50 max-w-xs overflow-y-auto">
       <h2 className="text-sm font-bold mb-2 text-white">🧪 Debug Info</h2>
       <ul className="space-y-1">
         <li>🧬 Essence: {essence}</li>
