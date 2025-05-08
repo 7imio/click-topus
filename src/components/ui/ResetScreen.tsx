@@ -16,42 +16,42 @@ const ResetScreen = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-green-100 text-center px-4">
+    <div className="rounded-2xl p-12 shadow-2xl flex flex-col items-center justify-center bg-black text-green-100 text-center">
       {!cleared ? (
         <>
           <h1 className="text-4xl font-bold mb-6 text-red-500">
-            ⚠️ Réinitialisation abyssale
+            ⚠️ Abyssal Reset
           </h1>
           <p className="mb-8 max-w-md">
-            Êtes-vous sûr de vouloir tout effacer ? Cette action détruira votre
-            progression et bannira vos rejetons dans le néant pour l’éternité.
+            Are you sure you want to erase everything? This action will destroy
+            your progress and banish your octopods into the void for eternity.
           </p>
           <div className="flex flex-col md:flex-row gap-4">
             <button
               onClick={handleReset}
               className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-6 rounded"
             >
-              Oui, tout effacer
+              Yes, erase all
             </button>
             <button
               onClick={() => navigate('/game')}
               className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-6 rounded"
             >
-              Annuler
+              Cancel
             </button>
           </div>
         </>
       ) : (
         <>
           <h1 className="text-4xl font-bold mb-6 text-emerald-400">
-            🧼 Purification complète
+            🧼 Purification complete
           </h1>
-          <p className="mb-6">La corruption a été effacée.</p>
+          <p className="mb-6">Corruption has been vanished.</p>
           <button
             onClick={() => navigate('/')}
             className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-6 rounded"
           >
-            Retourner dans les abysses
+            Return into the void
           </button>
         </>
       )}

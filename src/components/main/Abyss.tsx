@@ -56,6 +56,7 @@ const Abyss: FC = () => {
           bodyColor={creature.skin.bodyColor}
           irisColor={creature.skin.irisColor}
           suckerColor={creature.skin.suckerColor}
+          creature={creature}
           index={i}
         />
       ))}

@@ -14,12 +14,12 @@ const About: FC = () => {
       </p>
 
       <p className="max-w-2xl text-sm md:text-base">
-        This game was created by [' ']
+        This game was created by
         <a
           href="https://www.twitch.tv/seteemio"
           className="hover:text-violet-500 transition-colors"
         >
-          <strong>Seteemio</strong>
+          <strong> Seteemio</strong>
         </a>
         , a metalhead developer from France, who likes skulls, tentacles, weird
         cryptids, and writing absurd code at 2am.

@@ -2,23 +2,20 @@ import { FC, memo, useMemo, useRef, useState } from 'react';
 import Eye from '../creatures/Eye';
 import SegmentedTentacle from '../creatures/SegmentedTentacle';
 import { useAppSelector } from '../../store/hooks';
-import { CreatureState } from '../../store/slices/creatureSlice';
+import { Creature, CreatureState } from '../../store/slices/creatureSlice';
 
 type MiniCreatureProps = {
   bodyColor: string;
   suckerColor: string;
   irisColor: string;
   index: number;
+  creature: Creature;
 };
 
-const MiniCreature: FC<MiniCreatureProps> = ({
-  bodyColor,
-  suckerColor,
-  irisColor,
-}) => {
+const MiniCreature: FC<MiniCreatureProps> = ({ creature }) => {
   const globalCreature = useAppSelector((state) => state.creatures);
-
-  const [creature] = useState<
+  const { bodyColor, suckerColor, irisColor } = creature.skin;
+  const [creatureData] = useState<
     Pick<
       CreatureState,
       | 'maxTentacles'
@@ -36,9 +33,7 @@ const MiniCreature: FC<MiniCreatureProps> = ({
   const angleStep = 360 / 8;
 
   const [size] = useState(20 + Math.random() * 10);
-  const [uuid] = useMemo(() => {
-    return crypto.randomUUID();
-  }, []);
+  const uuid = creature.creatureId;
 
   const [actualSkin] = useState({
     bodyColor,
@@ -75,7 +70,7 @@ const MiniCreature: FC<MiniCreatureProps> = ({
             tentacleColor={actualSkin.bodyColor}
             disablePopEffect={true}
           >
-            {[...Array(creature.maxTentacles)].map((_, idx) => (
+            {[...Array(creatureData.maxTentacles)].map((_, idx) => (
               <div
                 key={idx}
                 className="absolute top-1/2 left-1/2"
@@ -86,9 +81,9 @@ const MiniCreature: FC<MiniCreatureProps> = ({
               >
                 <SegmentedTentacle
                   totalClicks={
-                    creature.segmentsPerTentacle *
-                    creature.segmentsType *
-                    creature.essencePerSegment
+                    creatureData.segmentsPerTentacle *
+                    creatureData.segmentsType *
+                    creatureData.essencePerSegment
                   }
                   bodyColor={actualSkin.bodyColor}
                   suctionColor={actualSkin.suckerColor}
