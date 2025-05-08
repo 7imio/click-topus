@@ -42,15 +42,7 @@ const Abyss: FC = () => {
       {DEBUG && <InformationPanel />}
 
       <AutoClickerPrompt />
-      {creatureList?.map((creature, i) => (
-        <MiniCreature
-          bodyColor={creature.skin.bodyColor}
-          irisColor={creature.skin.irisColor}
-          suckerColor={creature.skin.suckerColor}
-          creature={creature}
-          index={i}
-        />
-      ))}
+      {creatureList?.map((creature) => <MiniCreature creature={creature} />)}
       <div className="relative w-full h-[600px] aspect-square">
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <Eye

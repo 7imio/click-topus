@@ -5,14 +5,11 @@ import { useAppSelector } from '../../store/hooks';
 import { Creature, CreatureState } from '../../store/slices/creatureSlice';
 
 type MiniCreatureProps = {
-  bodyColor: string;
-  suckerColor: string;
-  irisColor: string;
-  index: number;
   creature: Creature;
+  isCentered?: boolean;
 };
 
-const MiniCreature: FC<MiniCreatureProps> = ({ creature }) => {
+const MiniCreature: FC<MiniCreatureProps> = ({ creature, isCentered }) => {
   const globalCreature = useAppSelector((state) => state.creatures);
   const { bodyColor, suckerColor, irisColor } = creature.skin;
   const [creatureData] = useState<
@@ -42,10 +39,18 @@ const MiniCreature: FC<MiniCreatureProps> = ({ creature }) => {
   });
 
   const creatureRef = useRef<HTMLDivElement>(null);
-  const [position] = useState(() => ({
-    x: Math.floor(20 + Math.random() * (window.innerWidth - 20 * 2 - size)),
-    y: Math.floor(20 + Math.random() * (window.innerHeight - 20 * 2 - size)),
-  }));
+  const [position] = useState(() => {
+    if (isCentered) {
+      return {
+        x: window.innerWidth / 2 - size / 2,
+        y: window.innerHeight / 1.5 - size / 2,
+      };
+    }
+    return {
+      x: Math.floor(20 + Math.random() * (window.innerWidth - 20 * 2 - size)),
+      y: Math.floor(20 + Math.random() * (window.innerHeight - 20 * 2 - size)),
+    };
+  });
   const [animationDuration] = useState(4 + Math.random() * 3);
   return creature ? (
     <div
@@ -97,11 +102,4 @@ const MiniCreature: FC<MiniCreatureProps> = ({ creature }) => {
   ) : null;
 };
 
-export default memo(MiniCreature, (prev, next) => {
-  return (
-    prev.bodyColor === next.bodyColor &&
-    prev.irisColor === next.irisColor &&
-    prev.suckerColor === next.suckerColor &&
-    prev.index === next.index
-  );
-});
+export default memo(MiniCreature);

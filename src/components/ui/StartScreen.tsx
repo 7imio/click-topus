@@ -8,7 +8,7 @@ const StartScreen = () => {
       </h1>
 
       <Link to="/game">
-        <button className="bg-emerald-700 hover:bg-emerald-600 text-green-100 font-bold py-3 px-6 rounded-2xl text-xl shadow-md transition-all duration-300 animate-glow hover:scale-105">
+        <button className="bg-emerald-700 text-green-100 font-bold py-3 px-6 rounded-2xl text-xl shadow-md transition-all duration-300 animate-glow hover:bg-emerald-600 hover:scale-105">
           Click here to enter the void
         </button>
       </Link>

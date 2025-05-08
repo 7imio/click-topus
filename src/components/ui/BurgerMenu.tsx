@@ -23,7 +23,7 @@ const BurgerMenu = () => {
     <div className="fixed top-4 left-4 z-50">
       <button
         onClick={() => setOpen(!open)}
-        className="bg-green-900 text-white px-3 py-2 rounded"
+        className="bg-green-900 text-white px-3 py-2 rounded shadow-md transition-all duration-300 hover:bg-emerald-600 hover:scale-105"
       >
         ☰ Menu
       </button>
