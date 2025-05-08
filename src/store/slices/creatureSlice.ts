@@ -14,6 +14,7 @@ export interface CreatureState {
 
 export interface Creature {
   creatureId: string;
+  creatureName?: string;
   essence: number;
   skin: SkinColor;
 }
