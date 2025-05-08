@@ -1,6 +1,5 @@
 export const triggerBlinkSequence = (setBlinking: (value: boolean) => void) => {
   setBlinking(true);
-
   setTimeout(() => {
     setBlinking(false);
 

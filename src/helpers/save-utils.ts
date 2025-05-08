@@ -13,7 +13,6 @@ export const saveGame = (state: GlobalState): void => {
   }
 };
 
-// 📥 Récupérer le score
 export const loadGame = (): Partial<GlobalState> | undefined => {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
@@ -30,7 +29,6 @@ export const loadGame = (): Partial<GlobalState> | undefined => {
     return;
   }
 };
-
 export const clearGame = () => {
   localStorage.removeItem(STORAGE_KEY);
 };

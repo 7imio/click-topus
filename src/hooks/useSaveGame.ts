@@ -9,5 +9,4 @@ const useSaveGame = () => {
     saveGame(state);
   }, [state]);
 };
-
 export default useSaveGame;

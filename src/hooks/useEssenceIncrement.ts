@@ -19,7 +19,6 @@ const useEssenceIncrement = () => {
   const dispatch = useAppDispatch();
   // déplace ce useSelector ici pour toujours récupérer la dernière valeur
   const { essence } = useAppSelector((state) => state.essence);
-
   const { essencePerTentacle, essenceForCreature } = useEssenceHelper();
 
   const essenceIncrementation = useCallback(() => {

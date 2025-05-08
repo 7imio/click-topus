@@ -7,7 +7,6 @@ const useAutoClickers = () => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const incrementEssence = useEssenceIncrement();
-
   useEffect(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);

@@ -5,7 +5,6 @@ export const getGradientFromColor = (
   const darker = darkenHex(hex, factor);
   return `linear-gradient(to top, ${hex}, ${darker})`;
 };
-
 export const darkenHex = (color: string, factor: number = 0.8) => {
   const r = Math.max(0, Math.floor(parseInt(color.slice(1, 3), 16) * factor));
   const g = Math.max(0, Math.floor(parseInt(color.slice(3, 5), 16) * factor));
