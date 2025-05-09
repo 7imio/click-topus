@@ -7,6 +7,7 @@ import About from '../ui/About';
 import Informations from '../ui/Informations';
 import Offsprings from '../ui/Offsprings';
 import OffspringDetails from '../ui/OffspringDetails';
+import ConquestScreen from '../ui/ConquestScreen';
 
 const Router: FC = () => {
   return (
@@ -15,7 +16,7 @@ const Router: FC = () => {
       <Route path="/game" element={<Abyss />} />
       <Route path="/about" element={<About />} />
       <Route path="/info" element={<Informations />} />
-      <Route path="/conquest" element={<p>Coming soon</p>} />
+      <Route path="/conquest" element={<ConquestScreen />} />
       <Route path="/reset" element={<ResetScreen />} />
       <Route path="/offsprings" element={<Offsprings />} />
       <Route path="/offsprings/:creatureId" element={<OffspringDetails />} />
