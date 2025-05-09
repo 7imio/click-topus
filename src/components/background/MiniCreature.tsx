@@ -69,7 +69,7 @@ const MiniCreature: FC<MiniCreatureProps> = ({ creature, isCentered }) => {
       }}
     >
       <div className="relative w-[100px] h-[100px]">
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center animate-rotate-creature">
           <Eye
             irisColor={actualSkin.irisColor}
             tentacleColor={actualSkin.bodyColor}
