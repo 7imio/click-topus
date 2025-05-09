@@ -1,11 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
 import { useAppSelector } from '../../store/hooks';
 import MiniCreature from '../background/MiniCreature';
+import { Creature } from '../../store/slices/creatureSlice';
 
 const OffspringDetails = () => {
   const { creatureId } = useParams<{ creatureId: string }>();
   console.log(creatureId);
-  const creature = useAppSelector((state) =>
+  const creature: Creature | undefined = useAppSelector((state) =>
     state.creatures.creatures?.find((c) => c.creatureId === creatureId)
   );
 

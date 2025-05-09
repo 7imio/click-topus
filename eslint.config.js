@@ -37,5 +37,10 @@ export default defineFlatConfig([
       '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
-  prettier, 
+  prettier,
+  {
+    rules: {
+      'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    },
+  },
 ]);

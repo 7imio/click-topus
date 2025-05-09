@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../store/hooks';
-import { darkenHex } from '../../helpers/color-utils';
+import Eye from '../creatures/Eye';
 
 const Offsprings = () => {
   const { creatures } = useAppSelector((state) => state.creatures);
@@ -13,14 +13,11 @@ const Offsprings = () => {
           to={`/offsprings/${c.creatureId}`}
           className="flex items-center gap-3 px-4 py-2 bg-green-900 hover:bg-green-700 text-green-100 rounded-lg shadow-md transition-all duration-200"
         >
-          <span
-            className="w-4 h-4 rounded-full animate-glow"
-            style={{
-              background: `linear-gradient(135deg, ${c.skin.bodyColor}, ${darkenHex(
-                c.skin.bodyColor,
-                1
-              )})`,
-            }}
+          <Eye
+            irisColor={c.skin.irisColor}
+            tentacleColor={c.skin.bodyColor}
+            disablePopEffect={true}
+            miniEye={true}
           />
           <span className="font-semibold text-sm">
             {c.creatureName ?? 'Unnamed'}
