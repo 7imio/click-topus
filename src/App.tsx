@@ -16,6 +16,7 @@ import Bubbles from './components/background/Bubbles';
 import BurgerMenu from './components/ui/BurgerMenu';
 import useAutoClickers from './hooks/useAutoClickers';
 import useSaveGame from './hooks/useSaveGame';
+import useHarvestCorruption from './hooks/useHarvestCorruption';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -24,6 +25,7 @@ function App() {
 
   useSaveGame(hydrated);
   useAutoClickers();
+  useHarvestCorruption();
 
   useEffect(() => {
     const game = loadGame();
@@ -45,7 +47,7 @@ function App() {
     <div className="min-h-screen w-full overflow-hidden flex flex-col items-center justify-center p-4 bg-gradient-to-b from-green-900 to-gray-900">
       <BurgerMenu />
       {loading ? (
-        <div className="text-white p-4">Chargement abyssal en cours...</div>
+        <div className="text-white p-4">Loading...</div>
       ) : (
         <>
           <Router />

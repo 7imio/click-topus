@@ -46,17 +46,17 @@ export const Eye: FC<EyeProps> = ({
 
   return (
     <div
-      className={
+      className={`${
         miniEye
           ? `relative z-10 w-[40px] h-[40px] min-w-[20px] min-h-[20px] max-w-[40px] max-h-[40px]`
           : `relative z-10 w-[20vw] h-[20vw] max-w-[80px] max-h-[80px] min-w-[40px] min-h-[40px]`
-      }
+      }`}
       onClick={() => setClick(true)}
     >
       {children}
 
       <div
-        className={`${blink && click ? 'animate-eye-click ' : ''}absolute inset-0 rounded-full border-[1px] border-black bg-white flex items-center justify-center shadow-inner overflow-hidden transition-transform duration-500 ${
+        className={`${miniEye ? 'animate-glow ' : ''}${blink && click ? 'animate-eye-click ' : ''}absolute inset-0 rounded-full border-[1px] border-black bg-white flex items-center justify-center shadow-inner overflow-hidden transition-transform duration-500 ${
           !disablePopEffect && handleClick !== undefined && popEffect
             ? 'animate-eye-pop'
             : ''
