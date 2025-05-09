@@ -48,7 +48,7 @@ export const SegmentedTentacle: FC<SegmentedTentacleProps> = ({
       {[...Array(segmentCount)].map((_, index) => {
         const hasSucker = totalClicks >= (index + 1) * suckerStep;
         return (
-          <TentacleSegment key={index} index={index} bodyColor={bodyColor}>
+          <TentacleSegment key={index} bodyColor={bodyColor}>
             {hasSucker && <Sucker color={suctionColor} />}
           </TentacleSegment>
         );
