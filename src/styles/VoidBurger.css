@@ -22,8 +22,6 @@
   box-shadow: none;
 }
 
-.bar.bar-transform {}
-
 .bar-upper.bar-transform {
   transform: scale(0) translateY(50px);
 }

@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useState } from 'react';
+import { FC, ReactNode } from 'react';
 import { getGradientFromColor } from '../../helpers/color-utils';
 
 type TentacleSegmentProps = {

@@ -4,7 +4,7 @@ import am5geodata_worldLow from '@amcharts/amcharts5-geodata/worldLow';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import { useEffect } from 'react';
 import { getColorByPotential } from './MapUtils';
-import { useCountryData } from './mapDataProcessor';
+import { useCountryData } from './MapDataProcessor';
 
 const MapRenderer = () => {
   const countryData = useCountryData();
