@@ -1,26 +1,24 @@
-import {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from 'react';
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 
 export type DiceD20Handle = {
-  roll: () => number;
+  roll: () => void;
 };
 
 interface DiceD20Props {
-  color?: string; // Couleur du dé
-  textColor?: string; // Couleur des chiffres
-  onResult?: (result: number) => void; // Callback pour afficher le résultat
+  color?: string;
+  textColor?: string;
+  onResult?: (result: number) => void;
+  resultDelay?: number; // ⏱️ Temps en ms avant de retourner le résultat
 }
 
 const DiceD20 = forwardRef<DiceD20Handle, DiceD20Props>(
-  ({ color = '#004d40', textColor = '#ffffff', onResult }, ref) => {
+  (
+    { color = '#004d40', textColor = '#ffffff', onResult, resultDelay = 500 },
+    ref
+  ) => {
     const groupRef = useRef<THREE.Group>(null);
     const [isRolling, setIsRolling] = useState(false);
     const [targetRotation, setTargetRotation] = useState<THREE.Euler | null>(
@@ -84,33 +82,18 @@ const DiceD20 = forwardRef<DiceD20Handle, DiceD20Props>(
             normal,
             new THREE.Vector3(0, 0, -1)
           );
-
-          // Calcul du "up" vector de la face pour orienter correctement le texte
-          const upVector = new THREE.Vector3(0, 1, 0).applyQuaternion(
-            targetQuat
-          );
-
-          // Calcule l'angle nécessaire pour réaligner l'upVector avec l'écran
-          const correctionAngle = Math.atan2(upVector.x, upVector.y);
-
-          // Applique la rotation autour de la normale de la face
-          const correctionQuat = new THREE.Quaternion().setFromAxisAngle(
-            normal,
-            -correctionAngle
-          );
-
-          targetQuat.multiply(correctionQuat);
-
           const targetEuler = new THREE.Euler().setFromQuaternion(targetQuat);
+
           setTimeout(() => {
             setIsRolling(false);
             setTargetRotation(targetEuler);
-            onResult?.(resultFace + 1); // Appel du callback avec le résultat
-          }, 1000); // 1 seconde de lancer
 
-          return resultFace + 1;
+            // ✅ Appel du résultat UNIQUEMENT après le délai
+            setTimeout(() => {
+              onResult?.(resultFace + 1);
+            }, resultDelay);
+          }, 1000);
         }
-        return 0;
       },
     }));
 
@@ -154,11 +137,7 @@ const DiceD20 = forwardRef<DiceD20Handle, DiceD20Props>(
               color={textColor}
               anchorX="center"
               anchorY="middle"
-              rotation={
-                //new THREE.Euler().setFromVector3(center.clone().normalize())
-                targetEuler
-              }
-              // lookAt={[0, 0, 0]}
+              rotation={targetEuler}
             >
               {i + 1}
             </Text>

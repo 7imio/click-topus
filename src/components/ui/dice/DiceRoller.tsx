@@ -1,4 +1,4 @@
-import { useRef, useState, FC } from 'react';
+import { useRef, FC } from 'react';
 import { Canvas } from '@react-three/fiber';
 import DiceD20, { DiceD20Handle } from './DiceD20';
 import { OrbitControls } from '@react-three/drei';
@@ -6,15 +6,21 @@ import { OrbitControls } from '@react-three/drei';
 export interface DiceRollerProps {
   diceColor: string;
   textColor: string;
+  setResult: (result: number | null) => void;
+  result: number | null;
 }
 
-export const DiceRoller: FC<DiceRollerProps> = ({ diceColor, textColor }) => {
+export const DiceRoller: FC<DiceRollerProps> = ({
+  diceColor,
+  textColor,
+  setResult,
+  result,
+}) => {
   const diceRef = useRef<DiceD20Handle>(null);
-  const [lastResult, setLastResult] = useState<number | null>(null);
 
   const handleRoll = () => {
-    const result = diceRef.current?.roll();
-    if (result !== undefined) setLastResult(null); // Réinitialise le résultat pendant l'animation
+    diceRef.current?.roll(); // On ne récupère plus de résultat directement ici
+    setResult(null); // On réinitialise l'affichage du résultat
   };
 
   return (
@@ -24,10 +30,12 @@ export const DiceRoller: FC<DiceRollerProps> = ({ diceColor, textColor }) => {
         <directionalLight position={[5, 20, 5]} intensity={3} />
         <DiceD20
           ref={diceRef}
-          color={diceColor ?? '#004d40'}
-          textColor={textColor ?? '#ffffff'}
-          onResult={(result) => setLastResult(result)}
+          color={diceColor}
+          textColor={textColor}
+          onResult={(result) => setResult(result)}
+          resultDelay={1000} // ⏱️ Délai en ms avant l'affichage du résultat
         />
+
         <OrbitControls target={[0, 0, 0]} />
       </Canvas>
 
@@ -38,9 +46,9 @@ export const DiceRoller: FC<DiceRollerProps> = ({ diceColor, textColor }) => {
         🎲 Roll D20
       </button>
 
-      {lastResult !== null && (
+      {result !== null && (
         <div className="absolute text-4xl font-bold text-shadow-black text-shadow-xs">
-          Result: {lastResult}
+          Result: {result}
         </div>
       )}
     </div>
