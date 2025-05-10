@@ -1,11 +1,12 @@
-
 [
   {
     "name": "Eldritch Horror",
     "skin": {
       "irisColor": "#6633cc",
       "bodyColor": "#00cc66",
-      "suckerColor": "#9900cc"
+      "suckerColor": "#9900cc",
+      "eyeWhiteColor": "#EEEECC",
+      "retinaColor": "#27272a"
     }
   },
   {
@@ -13,7 +14,9 @@
     "skin": {
       "irisColor": "#000000",
       "bodyColor": "#222222",
-      "suckerColor": "#550088"
+      "suckerColor": "#550088",
+      "eyeWhiteColor": "#333333",
+      "retinaColor": "#111111"
     }
   },
   {
@@ -21,7 +24,9 @@
     "skin": {
       "irisColor": "#FFD700",
       "bodyColor": "#8B0000",
-      "suckerColor": "#800080"
+      "suckerColor": "#800080",
+      "eyeWhiteColor": "#fff8dc",
+      "retinaColor": "#b22222"
     }
   },
   {
@@ -29,7 +34,9 @@
     "skin": {
       "irisColor": "#39FF14",
       "bodyColor": "#00FF00",
-      "suckerColor": "#111111"
+      "suckerColor": "#111111",
+      "eyeWhiteColor": "#d0ffd0",
+      "retinaColor": "#228b22"
     }
   },
   {
@@ -37,7 +44,9 @@
     "skin": {
       "irisColor": "#FF4444",
       "bodyColor": "#FFFFFF",
-      "suckerColor": "#330000"
+      "suckerColor": "#330000",
+      "eyeWhiteColor": "#ffffff",
+      "retinaColor": "#8b0000"
     }
   },
   {
@@ -45,7 +54,9 @@
     "skin": {
       "irisColor": "#f2a900",
       "bodyColor": "#f7931a",
-      "suckerColor": "#c65000"
+      "suckerColor": "#c65000",
+      "eyeWhiteColor": "#fff5cc",
+      "retinaColor": "#a0522d"
     }
   },
   {
@@ -53,7 +64,9 @@
     "skin": {
       "irisColor": "#1b1f23",
       "bodyColor": "#0e0e0e",
-      "suckerColor": "#3f3f3f"
+      "suckerColor": "#3f3f3f",
+      "eyeWhiteColor": "#222222",
+      "retinaColor": "#0a0a0a"
     }
   },
   {
@@ -61,7 +74,9 @@
     "skin": {
       "irisColor": "#ffccff",
       "bodyColor": "#88e0ef",
-      "suckerColor": "#ff6ec7"
+      "suckerColor": "#ff6ec7",
+      "eyeWhiteColor": "#fff0f5",
+      "retinaColor": "#db7093"
     }
   },
   {
@@ -69,7 +84,9 @@
     "skin": {
       "irisColor": "#ff4444",
       "bodyColor": "#b20000",
-      "suckerColor": "#ff9999"
+      "suckerColor": "#ff9999",
+      "eyeWhiteColor": "#ffe4e1",
+      "retinaColor": "#8b0000"
     }
   },
   {
@@ -77,7 +94,9 @@
     "skin": {
       "irisColor": "#ffffff",
       "bodyColor": "#1a0033",
-      "suckerColor": "#9933ff"
+      "suckerColor": "#9933ff",
+      "eyeWhiteColor": "#e0e0ff",
+      "retinaColor": "#4b0082"
     }
   },
   {
@@ -85,7 +104,9 @@
     "skin": {
       "irisColor": "#aaff00",
       "bodyColor": "#66ff66",
-      "suckerColor": "#333300"
+      "suckerColor": "#333300",
+      "eyeWhiteColor": "#ccffcc",
+      "retinaColor": "#556b2f"
     }
   },
   {
@@ -93,7 +114,9 @@
     "skin": {
       "irisColor": "#99ccff",
       "bodyColor": "#3366cc",
-      "suckerColor": "#003366"
+      "suckerColor": "#003366",
+      "eyeWhiteColor": "#e6f7ff",
+      "retinaColor": "#1e3a8a"
     }
   },
   {
@@ -101,7 +124,9 @@
     "skin": {
       "irisColor": "#ffcc00",
       "bodyColor": "#cc3300",
-      "suckerColor": "#cc9900"
+      "suckerColor": "#cc9900",
+      "eyeWhiteColor": "#fff5e6",
+      "retinaColor": "#8b4513"
     }
   },
   {
@@ -109,7 +134,109 @@
     "skin": {
       "irisColor": "#ff0000",
       "bodyColor": "#330000",
-      "suckerColor": "#ff6600"
+      "suckerColor": "#ff6600",
+      "eyeWhiteColor": "#ffe6e6",
+      "retinaColor": "#800000"
+    }
+  },
+  {
+    "name": "Shadow Wraith",
+    "skin": {
+      "irisColor": "#4b0082",
+      "bodyColor": "#0d0d0d",
+      "suckerColor": "#1a1a1a",
+      "eyeWhiteColor": "#444444",
+      "retinaColor": "#1c1c1c"
+    }
+  },
+  {
+    "name": "Molten Maw",
+    "skin": {
+      "irisColor": "#ff4500",
+      "bodyColor": "#cc3300",
+      "suckerColor": "#660000",
+      "eyeWhiteColor": "#ffe5d4",
+      "retinaColor": "#8b0000"
+    }
+  },
+  {
+    "name": "Void Whisperer",
+    "skin": {
+      "irisColor": "#9933ff",
+      "bodyColor": "#1e0033",
+      "suckerColor": "#4b0082",
+      "eyeWhiteColor": "#e0ccff",
+      "retinaColor": "#5e239d"
+    }
+  },
+  {
+    "name": "Azure Serpent",
+    "skin": {
+      "irisColor": "#00ffff",
+      "bodyColor": "#0077b6",
+      "suckerColor": "#00b4d8",
+      "eyeWhiteColor": "#d4f1f9",
+      "retinaColor": "#023e8a"
+    }
+  },
+  {
+    "name": "Ghastly Bloom",
+    "skin": {
+      "irisColor": "#ccffcc",
+      "bodyColor": "#669966",
+      "suckerColor": "#336633",
+      "eyeWhiteColor": "#f0fff0",
+      "retinaColor": "#2e8b57"
+    }
+  },
+  {
+    "name": "Rust Plague",
+    "skin": {
+      "irisColor": "#b7410e",
+      "bodyColor": "#8b4513",
+      "suckerColor": "#5c4033",
+      "eyeWhiteColor": "#f5e0d8",
+      "retinaColor": "#4b2e2e"
+    }
+  },
+  {
+    "name": "Mirage Stalker",
+    "skin": {
+      "irisColor": "#ffd700",
+      "bodyColor": "#ffa500",
+      "suckerColor": "#ff8c00",
+      "eyeWhiteColor": "#fff8dc",
+      "retinaColor": "#ff4500"
+    }
+  },
+  {
+    "name": "Iron Leviathan",
+    "skin": {
+      "irisColor": "#c0c0c0",
+      "bodyColor": "#808080",
+      "suckerColor": "#333333",
+      "eyeWhiteColor": "#eeeeee",
+      "retinaColor": "#4f4f4f"
+    }
+  },
+  {
+    "name": "Venom Glare",
+    "skin": {
+      "irisColor": "#99ff00",
+      "bodyColor": "#4d9900",
+      "suckerColor": "#264d00",
+      "eyeWhiteColor": "#ccffcc",
+      "retinaColor": "#228b22"
+    }
+  },
+  {
+    "name": "Nebula Drifter",
+    "skin": {
+      "irisColor": "#e0b3ff",
+      "bodyColor": "#663399",
+      "suckerColor": "#b366ff",
+      "eyeWhiteColor": "#f3e8ff",
+      "retinaColor": "#7e22ce"
     }
   }
 ]

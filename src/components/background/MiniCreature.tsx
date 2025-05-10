@@ -11,7 +11,8 @@ type MiniCreatureProps = {
 
 const MiniCreature: FC<MiniCreatureProps> = ({ creature, isCentered }) => {
   const globalCreature = useAppSelector((state) => state.creatures);
-  const { bodyColor, suckerColor, irisColor } = creature.skin;
+  const { bodyColor, suckerColor, irisColor, retinaColor, eyeWhiteColor } =
+    creature.skin;
   const [creatureData] = useState<
     Pick<
       CreatureState,
@@ -36,6 +37,8 @@ const MiniCreature: FC<MiniCreatureProps> = ({ creature, isCentered }) => {
     bodyColor,
     suckerColor,
     irisColor,
+    retinaColor,
+    eyeWhiteColor,
   });
 
   const creatureRef = useRef<HTMLDivElement>(null);
@@ -70,11 +73,7 @@ const MiniCreature: FC<MiniCreatureProps> = ({ creature, isCentered }) => {
     >
       <div className="relative w-[100px] h-[100px]">
         <div className="absolute inset-0 flex items-center justify-center animate-rotate-creature">
-          <Eye
-            irisColor={actualSkin.irisColor}
-            tentacleColor={actualSkin.bodyColor}
-            disablePopEffect={true}
-          >
+          <Eye disablePopEffect={true} skin={actualSkin}>
             {[...Array(creatureData.maxTentacles)].map((_, idx) => (
               <div
                 key={idx}
