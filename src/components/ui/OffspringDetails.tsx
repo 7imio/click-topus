@@ -30,7 +30,13 @@ const OffspringDetails = () => {
         </p>
 
         <MiniCreature creature={creature} isCentered={true} />
-        <DiceRoller onResult={() => {}} />
+        <DiceRoller
+          onResult={(r) => {
+            console.log(r);
+          }}
+          textColor={creature.skin.eyeWhiteColor}
+          diceColor={creature.skin.bodyColor}
+        />
         <button className="bg-emerald-700 m-4 text-green-100 font-bold py-3 px-6 rounded-2xl text-xl shadow-md transition-all duration-300 animate-glow hover:bg-emerald-600 hover:scale-105 z-[100]">
           <Link to="/game">Return into the void</Link>
         </button>

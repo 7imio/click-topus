@@ -1,28 +1,34 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, FC } from 'react';
 import { Canvas } from '@react-three/fiber';
 import DiceD20, { DiceD20Handle } from './DiceD20';
 import { OrbitControls } from '@react-three/drei';
 
-interface DiceRollerProps {
+export interface DiceRollerProps {
   diceColor: string;
+  textColor: string;
 }
-export default function DiceRoller({ diceColor }) {
+
+export const DiceRoller: FC<DiceRollerProps> = ({ diceColor, textColor }) => {
   const diceRef = useRef<DiceD20Handle>(null);
   const [lastResult, setLastResult] = useState<number | null>(null);
 
   const handleRoll = () => {
-    const result = Math.ceil(Math.random() * 20);
-    diceRef.current?.roll();
-    setLastResult(result);
+    const result = diceRef.current?.roll();
+    if (result !== undefined) setLastResult(null); // Réinitialise le résultat pendant l'animation
   };
 
   return (
     <div className="flex flex-col items-center justify-center text-white gap-6">
-      <Canvas camera={{ position: [5, 5, 5], fov: 50 }}>
+      <Canvas camera={{ position: [0, 0, -3], fov: 45 }}>
         <ambientLight intensity={0.7} />
-        <directionalLight position={[5, 10, 5]} intensity={1.5} />
-        <DiceD20 ref={diceRef} />
-        <OrbitControls />
+        <directionalLight position={[5, 20, 5]} intensity={3} />
+        <DiceD20
+          ref={diceRef}
+          color={diceColor ?? '#004d40'}
+          textColor={textColor ?? '#ffffff'}
+          onResult={(result) => setLastResult(result)}
+        />
+        <OrbitControls target={[0, 0, 0]} />
       </Canvas>
 
       <button
@@ -31,9 +37,14 @@ export default function DiceRoller({ diceColor }) {
       >
         🎲 Roll D20
       </button>
+
       {lastResult !== null && (
-        <div className="text-4xl font-bold">Result: {lastResult}</div>
+        <div className="absolute text-4xl font-bold text-shadow-black text-shadow-xs">
+          Result: {lastResult}
+        </div>
       )}
     </div>
   );
-}
+};
+
+export default DiceRoller;
