@@ -10,7 +10,6 @@ const MapRenderer = () => {
   const countryData = useCountryData();
 
   useEffect(() => {
-    if (countryData) console.log(countryData);
     const root = am5.Root.new('chartdiv');
     root.setThemes([am5themes_Animated.new(root)]);
 
@@ -38,7 +37,8 @@ const MapRenderer = () => {
       const dataItem = ev.target.dataItem;
       if (dataItem) {
         const country = dataItem.dataContext as { id: string; name?: string };
-        console.log(`Clicked on: ${country.name} (${country.id})`, { country });
+
+        // create tooltip
       }
     });
 
