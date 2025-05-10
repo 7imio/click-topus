@@ -36,8 +36,7 @@ const MapRenderer = () => {
     polygonSeries.mapPolygons.template.events.on('click', (ev) => {
       const dataItem = ev.target.dataItem;
       if (dataItem) {
-        const country = dataItem.dataContext as { id: string; name?: string };
-
+        // const country = dataItem.dataContext as { id: string; name?: string };
         // create tooltip
       }
     });
