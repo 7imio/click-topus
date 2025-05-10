@@ -27,7 +27,7 @@ const useSaveGame = (enabled: boolean, throttleDelay = 5000) => {
         animation,
         corruption,
       };
-      console.log('save', state);
+
       saveGame(state);
     }
   }, [essence, skin, tentacles, creatures, autoClicker, animation, corruption]);

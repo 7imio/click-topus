@@ -45,12 +45,7 @@ const Abyss: FC = () => {
       {creatureList?.map((creature) => <MiniCreature creature={creature} />)}
       <div className="relative w-full h-[600px] aspect-square">
         <div className="absolute inset-0 flex items-center justify-center z-10">
-          <Eye
-            irisColor={currentSkin.skin.irisColor}
-            tentacleColor={currentSkin.skin.bodyColor}
-            handleClick={handleClick}
-            blink={true}
-          >
+          <Eye skin={currentSkin.skin} handleClick={handleClick} blink={true}>
             {tentacles.map((tentacle, idx) => (
               <div
                 key={tentacle.id}

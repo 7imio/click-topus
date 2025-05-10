@@ -4,6 +4,8 @@ export interface SkinColor {
   irisColor: string;
   bodyColor: string;
   suckerColor: string;
+  eyeWhiteColor: string;
+  retinaColor: string;
 }
 
 export interface Skin {
@@ -23,6 +25,8 @@ const initialState: SkinState = {
       irisColor: '#6633cc',
       bodyColor: '#00cc66',
       suckerColor: '#9900cc',
+      eyeWhiteColor: '#EEEECC',
+      retinaColor: '27272a',
     },
   },
   unlockedSkins: [],

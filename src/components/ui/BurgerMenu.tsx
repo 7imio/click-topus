@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { triggerDebug } from '../../store/slices/debugSlice';
-import { allSkins } from '../../constants/skins';
 import { applySkin } from '../../store/slices/skinSlice';
+import skins from '../../data/skins/skins.json';
+import VoidBurger from './VoidBurger';
 
 const BurgerMenu = () => {
   const [open, setOpen] = useState(false);
@@ -14,18 +15,18 @@ const BurgerMenu = () => {
   const currentSkin = useAppSelector((state) => state.skin.currentSkin);
 
   const handleChangeSkin = () => {
-    const currentIndex = allSkins.findIndex((s) => s.name === currentSkin.name);
-    const nextIndex = (currentIndex + 1) % allSkins.length;
-    dispatch(applySkin({ skin: allSkins[nextIndex] }));
+    const currentIndex = skins.findIndex((s) => s.name === currentSkin.name);
+    const nextIndex = (currentIndex + 1) % skins.length;
+    dispatch(applySkin({ skin: skins[nextIndex] }));
   };
 
   return (
     <div className="fixed top-4 left-4 z-50">
       <button
         onClick={() => setOpen(!open)}
-        className="bg-green-900 text-white px-3 py-2 rounded shadow-md transition-all duration-300 hover:bg-emerald-600 hover:scale-105"
+        className="bg-green-900 text-white px-3 py-2 rounded shadow-md transition-all duration-300 hover:bg-emerald-600 hover:scale-105 flex flex-row align-middle justify-center c"
       >
-        ☰ Menu
+        <VoidBurger isOpen={open} />
       </button>
       {open && (
         <div className="mt-2 bg-black/90 text-white p-4 rounded shadow-lg flex flex-col space-y-2">

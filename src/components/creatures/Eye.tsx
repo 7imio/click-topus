@@ -2,10 +2,10 @@ import { FC, ReactNode, useEffect, useState } from 'react';
 import { triggerBlinkSequence } from '../../helpers/anim-utils';
 import { getGradientFromColor } from '../../helpers/color-utils';
 import { useAppSelector } from '../../store/hooks';
+import { SkinColor } from '../../store/slices/skinSlice';
 
 type EyeProps = {
-  irisColor: string;
-  tentacleColor: string;
+  skin: SkinColor;
   handleClick?: () => void;
   children?: ReactNode;
   disablePopEffect?: boolean;
@@ -14,9 +14,8 @@ type EyeProps = {
 };
 
 export const Eye: FC<EyeProps> = ({
-  irisColor,
   handleClick,
-  tentacleColor,
+  skin,
   children,
   disablePopEffect,
   blink,
@@ -25,6 +24,7 @@ export const Eye: FC<EyeProps> = ({
   const [blinking, setBlinking] = useState(false);
   const { popEffect } = useAppSelector((state) => state.animation);
   const [click, setClick] = useState(false);
+  const { irisColor, bodyColor, eyeWhiteColor, retinaColor } = skin;
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -46,24 +46,24 @@ export const Eye: FC<EyeProps> = ({
 
   return (
     <div
-      className={
+      className={`${
         miniEye
           ? `relative z-10 w-[40px] h-[40px] min-w-[20px] min-h-[20px] max-w-[40px] max-h-[40px]`
           : `relative z-10 w-[20vw] h-[20vw] max-w-[80px] max-h-[80px] min-w-[40px] min-h-[40px]`
-      }
+      }`}
       onClick={() => setClick(true)}
     >
       {children}
 
       <div
-        className={`${blink && click ? 'animate-eye-click ' : ''}absolute inset-0 rounded-full border-[1px] border-black bg-white flex items-center justify-center shadow-inner overflow-hidden transition-transform duration-500 ${
+        className={`${miniEye ? 'animate-glow ' : ''}${blink && click ? 'animate-eye-click ' : ''}absolute inset-0 rounded-full border-[1px] border-black bg-white flex items-center justify-center shadow-inner overflow-hidden transition-transform duration-500 ${
           !disablePopEffect && handleClick !== undefined && popEffect
             ? 'animate-eye-pop'
             : ''
         }`}
         style={{
-          backgroundColor: '#EEEECC',
-          border: `${miniEye ? '3px' : '6px'} solid ${tentacleColor}`,
+          backgroundColor: eyeWhiteColor,
+          border: `${miniEye ? '3px' : '6px'} solid ${bodyColor}`,
         }}
         onClick={handleClick}
         aria-hidden={true}
@@ -71,7 +71,7 @@ export const Eye: FC<EyeProps> = ({
         {/* Paupière animée */}
         <div
           className={`eye-lid ${blinking ? 'closed' : ''}`}
-          style={{ background: getGradientFromColor(tentacleColor) }}
+          style={{ background: getGradientFromColor(bodyColor) }}
         />
 
         {/* Iris + pupille */}
@@ -80,7 +80,8 @@ export const Eye: FC<EyeProps> = ({
           style={{ background: getGradientFromColor(irisColor) }}
         >
           <div
-            className={`${miniEye ? 'w-1.5 h-1.5' : 'w-3 h-3'} rounded-full bg-neutral-800`}
+            className={`${miniEye ? 'w-1.5 h-1.5' : 'w-3 h-3'} rounded-full`}
+            style={{ background: retinaColor }}
           />
         </div>
       </div>
