@@ -1,0 +1,273 @@
+[
+  {
+    "id": "high_tech_defense",
+    "name": "High-Tech Defense Systems",
+    "description": "Advanced surveillance and automated defense systems reduce infiltration success.",
+    "type": "defense",
+    "toughnesses": "stealth_infiltration",
+    "weaknesses": "cyber_psychosis",
+    "incompatibilities": ["hidden_bunkers", "mind_shield_training"]
+  },
+  {
+    "id": "hidden_bunkers",
+    "name": "Hidden Bunkers",
+    "description": "Leaders hide underground, making psychic domination harder.",
+    "type": "defense",
+    "toughnesses": "psychic_domination",
+    "weaknesses": "apocalyptic_revelation",
+    "incompatibilities": ["high_tech_defense"]
+  },
+  {
+    "id": "elite_military",
+    "name": "Elite Military Forces",
+    "description": "Highly trained forces efficiently suppress cultist uprisings.",
+    "type": "defense",
+    "toughnesses": "mindless_swarms",
+    "weaknesses": "psychic_domination",
+    "incompatibilities": ["machine_legions"]
+  },
+  {
+    "id": "machine_legions",
+    "name": "Machine Legions",
+    "description": "Autonomous drones patrol the skies and cities tirelessly.",
+    "type": "defense",
+    "toughnesses": "mindless_swarms",
+    "weaknesses": "magnetic_pulse",
+    "incompatibilities": ["elite_military", "cybersecurity_elite"]
+  },
+  {
+    "id": "media_control",
+    "name": "Total Media Control",
+    "description": "Censors any foreign ideologies, delaying indoctrination.",
+    "type": "defense",
+    "toughnesses": "subliminal_messages",
+    "weaknesses": "data_corruption",
+    "incompatibilities": ["propaganda_masters"]
+  },
+  {
+    "id": "propaganda_masters",
+    "name": "Propaganda Masters",
+    "description": "Sophisticated propaganda machines counteract external influences.",
+    "type": "defense",
+    "toughnesses": "cultural_corruption",
+    "weaknesses": "false_prophecy",
+    "incompatibilities": ["media_control"]
+  },
+  {
+    "id": "cybersecurity_elite",
+    "name": "Cybersecurity Elite",
+    "description": "Unbreakable firewalls and counter-hackers protect vital infrastructure.",
+    "type": "defense",
+    "toughnesses": "data_corruption",
+    "weaknesses": "cyber_psychosis",
+    "incompatibilities": ["machine_legions"]
+  },
+  {
+    "id": "bio_defense_labs",
+    "name": "Bio-Defense Laboratories",
+    "description": "Advanced labs develop antibodies against biological threats.",
+    "type": "defense",
+    "toughnesses": "spore_bloom",
+    "weaknesses": "genetic_mutation",
+    "incompatibilities": []
+  },
+  {
+    "id": "weather_control",
+    "name": "Weather Control Systems",
+    "description": "Storm generation systems interfere with aerial cultist approaches.",
+    "type": "defense",
+    "toughnesses": "eldritch_storm",
+    "weaknesses": "deep_sea_horrors",
+    "incompatibilities": []
+  },
+  {
+    "id": "religious_control",
+    "name": "Religious Control",
+    "description": "Religious control belief systems resist foreign cult influences.",
+    "type": "defense",
+    "toughnesses": "false_prophecy",
+    "weaknesses": "apocalyptic_revelation",
+    "incompatibilities": ["mind_shield_training"]
+  },
+
+  {
+    "id": "mind_shield_training",
+    "name": "Mind Shield Training",
+    "description": "Elite agents trained to resist mental invasions.",
+    "type": "defense",
+    "toughnesses": "psychic_domination",
+    "weaknesses": "apocalyptic_revelation",
+    "incompatibilities": ["religious_fanaticism"]
+  },
+  {
+    "id": "economic_sanctions",
+    "name": "Economic Sanctions",
+    "description": "Weakens cultist supplies by cutting off critical resources.",
+    "type": "defense",
+    "toughnesses": "resource_harvesting",
+    "weaknesses": "false_currency",
+    "incompatibilities": []
+  },
+  {
+    "id": "firewall_fortresses",
+    "name": "Firewall Fortresses",
+    "description": "Massive data fortresses make hacking attempts futile.",
+    "type": "defense",
+    "toughnesses": "data_corruption",
+    "weaknesses": "subliminal_messages",
+    "incompatibilities": ["cybersecurity_elite"]
+  },
+  {
+    "id": "heroic_order",
+    "name": "Heroic Order",
+    "description": "Legendary defenders stand as the last bulwark against evil.",
+    "type": "defense",
+    "toughnesses": "mindless_swarms",
+    "weaknesses": "eldritch_storm",
+    "incompatibilities": []
+  },
+  {
+    "id": "population_resilience",
+    "name": "Population Resilience",
+    "description": "High morale makes indoctrination slow and difficult.",
+    "type": "defense",
+    "toughnesses": "hypnotic_songs",
+    "weaknesses": "cultural_corruption",
+    "incompatibilities": []
+  },
+  {
+    "id": "information_blackout",
+    "name": "Information Blackout",
+    "description": "Total control over internet and external information sources.",
+    "type": "defense",
+    "toughnesses": "subliminal_messages",
+    "weaknesses": "data_corruption",
+    "incompatibilities": ["media_control"]
+  },
+  {
+    "id": "psychological_warfare",
+    "name": "Psychological Warfare Experts",
+    "description": "Master manipulators reverse cultist propaganda.",
+    "type": "defense",
+    "toughnesses": "false_prophecy",
+    "weaknesses": "apocalyptic_revelation",
+    "incompatibilities": ["propaganda_masters"]
+  },
+  {
+    "id": "climate_barriers",
+    "name": "Climate Barriers",
+    "description": "Extreme environments make invasion nearly impossible.",
+    "type": "defense",
+    "toughnesses": "spore_bloom",
+    "weaknesses": "deep_sea_horrors",
+    "incompatibilities": []
+  },
+  {
+    "id": "ancient_guardians",
+    "name": "Ancient Guardians",
+    "description": "Mythic warriors from ancient orders protect key sites.",
+    "type": "defense",
+    "toughnesses": "eldritch_storm",
+    "weaknesses": "psychic_domination",
+    "incompatibilities": ["heroic_order"]
+  },
+  {
+    "id": "underground_resistance",
+    "name": "Underground Resistance",
+    "description": "Hidden civilian groups ready to fight back against indoctrination.",
+    "type": "defense",
+    "toughnesses": "cultural_corruption",
+    "weaknesses": "hypnotic_songs",
+    "incompatibilities": []
+  },
+  {
+    "id": "drone_sentinels",
+    "name": "Drone Sentinels",
+    "description": "Swarming surveillance drones constantly monitor urban centers.",
+    "type": "defense",
+    "toughnesses": "stealth_infiltration",
+    "weaknesses": "magnetic_pulse",
+    "incompatibilities": ["machine_legions"]
+  },
+  {
+    "id": "quantum_encryption",
+    "name": "Quantum Encryption",
+    "description": "Unbreakable codes protect state secrets and strategic plans.",
+    "type": "defense",
+    "toughnesses": "data_corruption",
+    "weaknesses": "cyber_psychosis",
+    "incompatibilities": ["firewall_fortresses"]
+  },
+  {
+    "id": "hydraulic_barriers",
+    "name": "Hydraulic Barriers",
+    "description": "Flood barriers protect against aquatic monstrosities.",
+    "type": "defense",
+    "toughnesses": "deep_sea_horrors",
+    "weaknesses": "eldritch_storm",
+    "incompatibilities": []
+  },
+  {
+    "id": "mass_vaccination",
+    "name": "Mass Vaccination Programs",
+    "description": "Prevents biological corruption by inoculating the population.",
+    "type": "defense",
+    "toughnesses": "spore_bloom",
+    "weaknesses": "genetic_mutation",
+    "incompatibilities": ["bio_defense_labs"]
+  },
+  {
+    "id": "hyper_alliance",
+    "name": "Hyper-Alliance Pact",
+    "description": "Nations unite under a shared defense agreement.",
+    "type": "defense",
+    "toughnesses": "mindless_swarms",
+    "weaknesses": "apocalyptic_revelation",
+    "incompatibilities": []
+  },
+  {
+    "id": "advanced_psychology",
+    "name": "Advanced Psychology Units",
+    "description": "Analyzes and counters mental warfare strategies.",
+    "type": "defense",
+    "toughnesses": "psychic_domination",
+    "weaknesses": "apocalyptic_revelation",
+    "incompatibilities": ["mind_shield_training"]
+  },
+  {
+    "id": "magnetic_storm_project",
+    "name": "Magnetic Storm Project",
+    "description": "Generates magnetic pulses that disable cultist tech.",
+    "type": "defense",
+    "toughnesses": "mindless_swarms",
+    "weaknesses": "cyber_psychosis",
+    "incompatibilities": ["weather_control"]
+  },
+  {
+    "id": "underground_sanctuaries",
+    "name": "Underground Sanctuaries",
+    "description": "Entire cities operate beneath the surface as safe zones.",
+    "type": "defense",
+    "toughnesses": "apocalyptic_revelation",
+    "weaknesses": "eldritch_storm",
+    "incompatibilities": ["hidden_bunkers"]
+  },
+  {
+    "id": "social_credit_system",
+    "name": "Social Credit System",
+    "description": "Absolute control over civilian behavior via rewards and punishment.",
+    "type": "defense",
+    "toughnesses": "cultural_corruption",
+    "weaknesses": "data_corruption",
+    "incompatibilities": ["population_resilience"]
+  },
+  {
+    "id": "psy_resonators",
+    "name": "Psy Resonators",
+    "description": "Emit frequencies that suppress psychic interference.",
+    "type": "defense",
+    "toughnesses": "psychic_domination",
+    "weaknesses": "eldritch_storm",
+    "incompatibilities": ["mind_shield_training"]
+  }
+]

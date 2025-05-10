@@ -1,0 +1,1978 @@
+[
+  {
+    "name": "Afghanistan",
+    "ISO_A2": "AF",
+    "ISO_A3": "AFG",
+    "population": 41129000,
+    "defensePotential": 49,
+    "capacities": ["religious_control", "population_resilience"]
+  },
+  {
+    "name": "Albania",
+    "ISO_A2": "AL",
+    "ISO_A3": "ALB",
+    "population": 2776000,
+    "defensePotential": 29,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Algeria",
+    "ISO_A2": "DZ",
+    "ISO_A3": "DZA",
+    "population": 44903000,
+    "defensePotential": 50,
+    "capacities": ["underground_resistance", "media_control"]
+  },
+  {
+    "name": "American Samoa",
+    "ISO_A2": "AS",
+    "ISO_A3": "ASM",
+    "population": 44000,
+    "defensePotential": 13,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Andorra",
+    "ISO_A2": "AD",
+    "ISO_A3": "AND",
+    "population": 80000,
+    "defensePotential": 14,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Angola",
+    "ISO_A2": "AO",
+    "ISO_A3": "AGO",
+    "population": 35589000,
+    "defensePotential": 47,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Anguilla",
+    "ISO_A2": "AI",
+    "ISO_A3": "AIA",
+    "population": 15000,
+    "defensePotential": 3,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Antarctica",
+    "ISO_A2": "AQ",
+    "ISO_A3": "ATA",
+    "population": 0,
+    "defensePotential": 1,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Antigua and Barbuda",
+    "ISO_A2": "AG",
+    "ISO_A3": "ATG",
+    "population": 94000,
+    "defensePotential": 14,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Argentina",
+    "ISO_A2": "AR",
+    "ISO_A3": "ARG",
+    "population": 46235000,
+    "defensePotential": 50,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Armenia",
+    "ISO_A2": "AM",
+    "ISO_A3": "ARM",
+    "population": 2780000,
+    "defensePotential": 29,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Aruba",
+    "ISO_A2": "AW",
+    "ISO_A3": "ABW",
+    "population": 107000,
+    "defensePotential": 15,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Australia",
+    "ISO_A2": "AU",
+    "ISO_A3": "AUS",
+    "population": 25979000,
+    "defensePotential": 60,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Austria",
+    "ISO_A2": "AT",
+    "ISO_A3": "AUT",
+    "population": 8921000,
+    "defensePotential": 44,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Azerbaijan",
+    "ISO_A2": "AZ",
+    "ISO_A3": "AZE",
+    "population": 10397000,
+    "defensePotential": 46,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Bahamas",
+    "ISO_A2": "BS",
+    "ISO_A3": "BHS",
+    "population": 400000,
+    "defensePotential": 19,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Bahrain",
+    "ISO_A2": "BH",
+    "ISO_A3": "BHR",
+    "population": 1502000,
+    "defensePotential": 32,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Bangladesh",
+    "ISO_A2": "BD",
+    "ISO_A3": "BGD",
+    "population": 171186000,
+    "defensePotential": 66,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Barbados",
+    "ISO_A2": "BB",
+    "ISO_A3": "BRB",
+    "population": 281000,
+    "defensePotential": 18,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Belarus",
+    "ISO_A2": "BY",
+    "ISO_A3": "BLR",
+    "population": 9499000,
+    "defensePotential": 45,
+    "capacities": ["underground_resistance"]
+  },
+  {
+    "name": "Belgium",
+    "ISO_A2": "BE",
+    "ISO_A3": "BEL",
+    "population": 11746000,
+    "defensePotential": 49,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Belize",
+    "ISO_A2": "BZ",
+    "ISO_A3": "BLZ",
+    "population": 412000,
+    "defensePotential": 19,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Benin",
+    "ISO_A2": "BJ",
+    "ISO_A3": "BEN",
+    "population": 13412000,
+    "defensePotential": 51,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Bermuda",
+    "ISO_A2": "BM",
+    "ISO_A3": "BMU",
+    "population": 64000,
+    "defensePotential": 12,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Bhutan",
+    "ISO_A2": "BT",
+    "ISO_A3": "BTN",
+    "population": 787000,
+    "defensePotential": 23,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Bolivia",
+    "ISO_A2": "BO",
+    "ISO_A3": "BOL",
+    "population": 12134000,
+    "defensePotential": 53,
+    "capacities": ["underground_resistance", "advanced_psychology"]
+  },
+  {
+    "name": "Bosnia and Herzegovina",
+    "ISO_A2": "BA",
+    "ISO_A3": "BIH",
+    "population": 3280000,
+    "defensePotential": 34,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Botswana",
+    "ISO_A2": "BW",
+    "ISO_A3": "BWA",
+    "population": 2627000,
+    "defensePotential": 30,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Bouvet Island",
+    "ISO_A2": "BV",
+    "ISO_A3": "BVT",
+    "population": 0,
+    "defensePotential": 1,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Brazil",
+    "ISO_A2": "BR",
+    "ISO_A3": "BRA",
+    "population": 215313000,
+    "defensePotential": 69,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "British Indian Ocean Territory",
+    "ISO_A2": "IO",
+    "ISO_A3": "IOT",
+    "population": 0,
+    "defensePotential": 1,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Brunei Darussalam",
+    "ISO_A2": "BN",
+    "ISO_A3": "BRN",
+    "population": 450000,
+    "defensePotential": 18,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Bulgaria",
+    "ISO_A2": "BG",
+    "ISO_A3": "BGR",
+    "population": 6848000,
+    "defensePotential": 41,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Burkina Faso",
+    "ISO_A2": "BF",
+    "ISO_A3": "BFA",
+    "population": 22010000,
+    "defensePotential": 55,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Burundi",
+    "ISO_A2": "BI",
+    "ISO_A3": "BDI",
+    "population": 12396000,
+    "defensePotential": 53,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Cabo Verde",
+    "ISO_A2": "CV",
+    "ISO_A3": "CPV",
+    "population": 567000,
+    "defensePotential": 22,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Cambodia",
+    "ISO_A2": "KH",
+    "ISO_A3": "KHM",
+    "population": 16719000,
+    "defensePotential": 59,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Cameroon",
+    "ISO_A2": "CM",
+    "ISO_A3": "CMR",
+    "population": 27912000,
+    "defensePotential": 62,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Canada",
+    "ISO_A2": "CA",
+    "ISO_A3": "CAN",
+    "population": 38389000,
+    "defensePotential": 63,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Cayman Islands",
+    "ISO_A2": "KY",
+    "ISO_A3": "CYM",
+    "population": 68000,
+    "defensePotential": 12,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Central African Republic",
+    "ISO_A2": "CF",
+    "ISO_A3": "CAF",
+    "population": 5616000,
+    "defensePotential": 39,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Chad",
+    "ISO_A2": "TD",
+    "ISO_A3": "TCD",
+    "population": 17352000,
+    "defensePotential": 58,
+    "capacities": ["religious_control", "elite_military"]
+  },
+  {
+    "name": "Chile",
+    "ISO_A2": "CL",
+    "ISO_A3": "CHL",
+    "population": 19241000,
+    "defensePotential": 56,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "China",
+    "ISO_A2": "CN",
+    "ISO_A3": "CHN",
+    "population": 1412175000,
+    "defensePotential": 95,
+    "capacities": [
+      "high_tech_defense",
+      "cybersecurity_elite",
+      "economic_sanctions"
+    ]
+  },
+  {
+    "name": "Colombia",
+    "ISO_A2": "CO",
+    "ISO_A3": "COL",
+    "population": 51874000,
+    "defensePotential": 68,
+    "capacities": [
+      "underground_resistance",
+      "hyper_alliance",
+      "cybersecurity_elite"
+    ]
+  },
+  {
+    "name": "Comoros",
+    "ISO_A2": "KM",
+    "ISO_A3": "COM",
+    "population": 888000,
+    "defensePotential": 24,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Congo",
+    "ISO_A2": "CG",
+    "ISO_A3": "COG",
+    "population": 5743000,
+    "defensePotential": 38,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Cook Islands",
+    "ISO_A2": "CK",
+    "ISO_A3": "COK",
+    "population": 17500,
+    "defensePotential": 6,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Costa Rica",
+    "ISO_A2": "CR",
+    "ISO_A3": "CRI",
+    "population": 5180000,
+    "defensePotential": 40,
+    "capacities": ["hidden_bunkers", "propaganda_masters"]
+  },
+  {
+    "name": "Côte d'Ivoire",
+    "ISO_A2": "CI",
+    "ISO_A3": "CIV",
+    "population": 28161000,
+    "defensePotential": 59,
+    "capacities": ["hidden_bunkers", "elite_military"]
+  },
+  {
+    "name": "Croatia",
+    "ISO_A2": "HR",
+    "ISO_A3": "HRV",
+    "population": 4043000,
+    "defensePotential": 35,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Cuba",
+    "ISO_A2": "CU",
+    "ISO_A3": "CUB",
+    "population": 11305000,
+    "defensePotential": 52,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Curaçao",
+    "ISO_A2": "CW",
+    "ISO_A3": "CUW",
+    "population": 155000,
+    "defensePotential": 15,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Cyprus",
+    "ISO_A2": "CY",
+    "ISO_A3": "CYP",
+    "population": 1217000,
+    "defensePotential": 32,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Czechia",
+    "ISO_A2": "CZ",
+    "ISO_A3": "CZE",
+    "population": 10513000,
+    "defensePotential": 48,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Democratic Republic of the Congo",
+    "ISO_A2": "CD",
+    "ISO_A3": "COD",
+    "population": 108407000,
+    "defensePotential": 61,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Denmark",
+    "ISO_A2": "DK",
+    "ISO_A3": "DNK",
+    "population": 5898000,
+    "defensePotential": 39,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Djibouti",
+    "ISO_A2": "DJ",
+    "ISO_A3": "DJI",
+    "population": 1014000,
+    "defensePotential": 31,
+    "capacities": ["hidden_bunkers", "population_resilience"]
+  },
+  {
+    "name": "Dominica",
+    "ISO_A2": "DM",
+    "ISO_A3": "DMA",
+    "population": 72000,
+    "defensePotential": 12,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Dominican Republic",
+    "ISO_A2": "DO",
+    "ISO_A3": "DOM",
+    "population": 10948000,
+    "defensePotential": 51,
+    "capacities": ["underground_resistance", "population_resilience"]
+  },
+  {
+    "name": "Ecuador",
+    "ISO_A2": "EC",
+    "ISO_A3": "ECU",
+    "population": 18225000,
+    "defensePotential": 55,
+    "capacities": ["underground_resistance", "population_resilience"]
+  },
+  {
+    "name": "Egypt",
+    "ISO_A2": "EG",
+    "ISO_A3": "EGY",
+    "population": 110990000,
+    "defensePotential": 60,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "El Salvador",
+    "ISO_A2": "SV",
+    "ISO_A3": "SLV",
+    "population": 6550000,
+    "defensePotential": 37,
+    "capacities": ["underground_resistance", "population_resilience"]
+  },
+  {
+    "name": "Equatorial Guinea",
+    "ISO_A2": "GQ",
+    "ISO_A3": "GNQ",
+    "population": 1605000,
+    "defensePotential": 33,
+    "capacities": ["hidden_bunkers", "population_resilience"]
+  },
+  {
+    "name": "Eritrea",
+    "ISO_A2": "ER",
+    "ISO_A3": "ERI",
+    "population": 3546000,
+    "defensePotential": 34,
+    "capacities": ["underground_resistance", "information_blackout"]
+  },
+  {
+    "name": "Estonia",
+    "ISO_A2": "EE",
+    "ISO_A3": "EST",
+    "population": 1333000,
+    "defensePotential": 32,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Eswatini",
+    "ISO_A2": "SZ",
+    "ISO_A3": "SWZ",
+    "population": 1160000,
+    "defensePotential": 32,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Ethiopia",
+    "ISO_A2": "ET",
+    "ISO_A3": "ETH",
+    "population": 123380000,
+    "defensePotential": 61,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Falkland Islands (Malvinas)",
+    "ISO_A2": "FK",
+    "ISO_A3": "FLK",
+    "population": 3500,
+    "defensePotential": 3,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Faroe Islands",
+    "ISO_A2": "FO",
+    "ISO_A3": "FRO",
+    "population": 54000,
+    "defensePotential": 11,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Fiji",
+    "ISO_A2": "FJ",
+    "ISO_A3": "FJI",
+    "population": 929000,
+    "defensePotential": 25,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Finland",
+    "ISO_A2": "FI",
+    "ISO_A3": "FIN",
+    "population": 5541000,
+    "defensePotential": 38,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "France",
+    "ISO_A2": "FR",
+    "ISO_A3": "FRA",
+    "population": 67936000,
+    "defensePotential": 84,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "French Guiana",
+    "ISO_A2": "GF",
+    "ISO_A3": "GUF",
+    "population": 302000,
+    "defensePotential": 17,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "French Polynesia",
+    "ISO_A2": "PF",
+    "ISO_A3": "PYF",
+    "population": 280000,
+    "defensePotential": 18,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "French Southern Territories",
+    "ISO_A2": "TF",
+    "ISO_A3": "ATF",
+    "population": 0,
+    "defensePotential": 1,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Gabon",
+    "ISO_A2": "GA",
+    "ISO_A3": "GAB",
+    "population": 2382000,
+    "defensePotential": 30,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Gambia",
+    "ISO_A2": "GM",
+    "ISO_A3": "GMB",
+    "population": 2750000,
+    "defensePotential": 30,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Georgia",
+    "ISO_A2": "GE",
+    "ISO_A3": "GEO",
+    "population": 3717000,
+    "defensePotential": 34,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Germany",
+    "ISO_A2": "DE",
+    "ISO_A3": "DEU",
+    "population": 84080000,
+    "defensePotential": 72,
+    "capacities": [
+      "high_tech_defense",
+      "cybersecurity_elite",
+      "information_blackout"
+    ]
+  },
+  {
+    "name": "Ghana",
+    "ISO_A2": "GH",
+    "ISO_A3": "GHA",
+    "population": 32395000,
+    "defensePotential": 64,
+    "capacities": [
+      "underground_resistance",
+      "mass_vaccination",
+      "bio_defense_labs"
+    ]
+  },
+  {
+    "name": "Gibraltar",
+    "ISO_A2": "GI",
+    "ISO_A3": "GIB",
+    "population": 34000,
+    "defensePotential": 9,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Greece",
+    "ISO_A2": "GR",
+    "ISO_A3": "GRC",
+    "population": 10336000,
+    "defensePotential": 46,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Greenland",
+    "ISO_A2": "GL",
+    "ISO_A3": "GRL",
+    "population": 57000,
+    "defensePotential": 11,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Grenada",
+    "ISO_A2": "GD",
+    "ISO_A3": "GRD",
+    "population": 126000,
+    "defensePotential": 15,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Guadeloupe",
+    "ISO_A2": "GP",
+    "ISO_A3": "GLP",
+    "population": 400000,
+    "defensePotential": 19,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Guam",
+    "ISO_A2": "GU",
+    "ISO_A3": "GUM",
+    "population": 170000,
+    "defensePotential": 15,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Guatemala",
+    "ISO_A2": "GT",
+    "ISO_A3": "GTM",
+    "population": 17915000,
+    "defensePotential": 56,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Guernsey",
+    "ISO_A2": "GG",
+    "ISO_A3": "GGY",
+    "population": 67000,
+    "defensePotential": 12,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Guinea",
+    "ISO_A2": "GN",
+    "ISO_A3": "GIN",
+    "population": 13821000,
+    "defensePotential": 51,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Guinea-Bissau",
+    "ISO_A2": "GW",
+    "ISO_A3": "GNB",
+    "population": 2028000,
+    "defensePotential": 29,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Guyana",
+    "ISO_A2": "GY",
+    "ISO_A3": "GUY",
+    "population": 808000,
+    "defensePotential": 23,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Haiti",
+    "ISO_A2": "HT",
+    "ISO_A3": "HTI",
+    "population": 11534000,
+    "defensePotential": 50,
+    "capacities": ["underground_resistance", "population_resilience"]
+  },
+  {
+    "name": "Heard Island and McDonald Islands",
+    "ISO_A2": "HM",
+    "ISO_A3": "HMD",
+    "population": 0,
+    "defensePotential": 1,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Holy See (Vatican City State)",
+    "ISO_A2": "VA",
+    "ISO_A3": "VAT",
+    "population": 800,
+    "defensePotential": 1,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Honduras",
+    "ISO_A2": "HN",
+    "ISO_A3": "HND",
+    "population": 11212000,
+    "defensePotential": 50,
+    "capacities": ["underground_resistance", "population_resilience"]
+  },
+  {
+    "name": "Hong Kong",
+    "ISO_A2": "HK",
+    "ISO_A3": "HKG",
+    "population": 7532000,
+    "defensePotential": 42,
+    "capacities": ["underground_resistance", "population_resilience"]
+  },
+  {
+    "name": "Hungary",
+    "ISO_A2": "HU",
+    "ISO_A3": "HUN",
+    "population": 9741000,
+    "defensePotential": 46,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Iceland",
+    "ISO_A2": "IS",
+    "ISO_A3": "ISL",
+    "population": 375000,
+    "defensePotential": 17,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "India",
+    "ISO_A2": "IN",
+    "ISO_A3": "IND",
+    "population": 1417173000,
+    "defensePotential": 90,
+    "capacities": [
+      "underground_resistance",
+      "machine_legions",
+      "advanced_psychology"
+    ]
+  },
+  {
+    "name": "Indonesia",
+    "ISO_A2": "ID",
+    "ISO_A3": "IDN",
+    "population": 275501000,
+    "defensePotential": 72,
+    "capacities": [
+      "underground_resistance",
+      "propaganda_masters",
+      "bio_defense_labs"
+    ]
+  },
+  {
+    "name": "Iran, Islamic Republic of",
+    "ISO_A2": "IR",
+    "ISO_A3": "IRN",
+    "population": 88551000,
+    "defensePotential": 57,
+    "capacities": [
+      "underground_resistance",
+      "religious_control",
+      "population_resilience"
+    ]
+  },
+  {
+    "name": "Iraq",
+    "ISO_A2": "IQ",
+    "ISO_A3": "IRQ",
+    "population": 44496000,
+    "defensePotential": 50,
+    "capacities": ["religious_control", "population_resilience"]
+  },
+  {
+    "name": "Ireland",
+    "ISO_A2": "IE",
+    "ISO_A3": "IRL",
+    "population": 5230000,
+    "defensePotential": 40,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Isle of Man",
+    "ISO_A2": "IM",
+    "ISO_A3": "IMN",
+    "population": 85000,
+    "defensePotential": 14,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Israel",
+    "ISO_A2": "IL",
+    "ISO_A3": "ISR",
+    "population": 9470000,
+    "defensePotential": 67,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Italy",
+    "ISO_A2": "IT",
+    "ISO_A3": "ITA",
+    "population": 58857000,
+    "defensePotential": 64,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Jamaica",
+    "ISO_A2": "JM",
+    "ISO_A3": "JAM",
+    "population": 2973000,
+    "defensePotential": 33,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Japan",
+    "ISO_A2": "JP",
+    "ISO_A3": "JPN",
+    "population": 125125000,
+    "defensePotential": 77,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Jersey",
+    "ISO_A2": "JE",
+    "ISO_A3": "JEY",
+    "population": 102000,
+    "defensePotential": 15,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Jordan",
+    "ISO_A2": "JO",
+    "ISO_A3": "JOR",
+    "population": 11286000,
+    "defensePotential": 50,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Kazakhstan",
+    "ISO_A2": "KZ",
+    "ISO_A3": "KAZ",
+    "population": 19622000,
+    "defensePotential": 56,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Kenya",
+    "ISO_A2": "KE",
+    "ISO_A3": "KEN",
+    "population": 54914000,
+    "defensePotential": 68,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Kiribati",
+    "ISO_A2": "KI",
+    "ISO_A3": "KIR",
+    "population": 131000,
+    "defensePotential": 15,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Korea, Democratic People's Republic of",
+    "ISO_A2": "KP",
+    "ISO_A3": "PRK",
+    "population": 26069000,
+    "defensePotential": 60,
+    "capacities": ["hidden_bunkers", "media_control"]
+  },
+  {
+    "name": "Korea, Republic of",
+    "ISO_A2": "KR",
+    "ISO_A3": "KOR",
+    "population": 51628000,
+    "defensePotential": 67,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Kuwait",
+    "ISO_A2": "KW",
+    "ISO_A3": "KWT",
+    "population": 4271000,
+    "defensePotential": 35,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Kyrgyzstan",
+    "ISO_A2": "KG",
+    "ISO_A3": "KGZ",
+    "population": 6673000,
+    "defensePotential": 39,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Lao People's Democratic Republic",
+    "ISO_A2": "LA",
+    "ISO_A3": "LAO",
+    "population": 7592400,
+    "defensePotential": 42,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Latvia",
+    "ISO_A2": "LV",
+    "ISO_A3": "LVA",
+    "population": 1840000,
+    "defensePotential": 28,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Lebanon",
+    "ISO_A2": "LB",
+    "ISO_A3": "LBN",
+    "population": 5489000,
+    "defensePotential": 39,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Lesotho",
+    "ISO_A2": "LS",
+    "ISO_A3": "LSO",
+    "population": 2332000,
+    "defensePotential": 29,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Liberia",
+    "ISO_A2": "LR",
+    "ISO_A3": "LBR",
+    "population": 5300000,
+    "defensePotential": 37,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Libya",
+    "ISO_A2": "LY",
+    "ISO_A3": "LBY",
+    "population": 7042000,
+    "defensePotential": 43,
+    "capacities": ["religious_control", "underground_resistance"]
+  },
+  {
+    "name": "Liechtenstein",
+    "ISO_A2": "LI",
+    "ISO_A3": "LIE",
+    "population": 39000,
+    "defensePotential": 10,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Lithuania",
+    "ISO_A2": "LT",
+    "ISO_A3": "LTU",
+    "population": 2794000,
+    "defensePotential": 30,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Luxembourg",
+    "ISO_A2": "LU",
+    "ISO_A3": "LUX",
+    "population": 640000,
+    "defensePotential": 21,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Macao",
+    "ISO_A2": "MO",
+    "ISO_A3": "MAC",
+    "population": 682000,
+    "defensePotential": 22,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Madagascar",
+    "ISO_A2": "MG",
+    "ISO_A3": "MDG",
+    "population": 29178000,
+    "defensePotential": 63,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Malawi",
+    "ISO_A2": "MW",
+    "ISO_A3": "MWI",
+    "population": 20082000,
+    "defensePotential": 55,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Malaysia",
+    "ISO_A2": "MY",
+    "ISO_A3": "MYS",
+    "population": 33181000,
+    "defensePotential": 65,
+    "capacities": ["underground_resistance", "high_tech_defense"]
+  },
+  {
+    "name": "Maldives",
+    "ISO_A2": "MV",
+    "ISO_A3": "MDV",
+    "population": 523000,
+    "defensePotential": 21,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Mali",
+    "ISO_A2": "ML",
+    "ISO_A3": "MLI",
+    "population": 21938000,
+    "defensePotential": 55,
+    "capacities": ["religious_control", "underground_resistance"]
+  },
+  {
+    "name": "Malta",
+    "ISO_A2": "MT",
+    "ISO_A3": "MLT",
+    "population": 520000,
+    "defensePotential": 21,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Marshall Islands",
+    "ISO_A2": "MH",
+    "ISO_A3": "MHL",
+    "population": 60000,
+    "defensePotential": 12,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Martinique",
+    "ISO_A2": "MQ",
+    "ISO_A3": "MTQ",
+    "population": 374000,
+    "defensePotential": 18,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Mauritania",
+    "ISO_A2": "MR",
+    "ISO_A3": "MRT",
+    "population": 4741000,
+    "defensePotential": 36,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Mauritius",
+    "ISO_A2": "MU",
+    "ISO_A3": "MUS",
+    "population": 1272000,
+    "defensePotential": 31,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Mayotte",
+    "ISO_A2": "YT",
+    "ISO_A3": "MYT",
+    "population": 290000,
+    "defensePotential": 18,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Mexico",
+    "ISO_A2": "MX",
+    "ISO_A3": "MEX",
+    "population": 127504000,
+    "defensePotential": 62,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Micronesia, Federated States of",
+    "ISO_A2": "FM",
+    "ISO_A3": "FSM",
+    "population": 115000,
+    "defensePotential": 15,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Moldova",
+    "ISO_A2": "MD",
+    "ISO_A3": "MDA",
+    "population": 4033000,
+    "defensePotential": 35,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Monaco",
+    "ISO_A2": "MC",
+    "ISO_A3": "MCO",
+    "population": 36000,
+    "defensePotential": 10,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Mongolia",
+    "ISO_A2": "MN",
+    "ISO_A3": "MNG",
+    "population": 3380000,
+    "defensePotential": 34,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Montenegro",
+    "ISO_A2": "ME",
+    "ISO_A3": "MNE",
+    "population": 621000,
+    "defensePotential": 22,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Montserrat",
+    "ISO_A2": "MS",
+    "ISO_A3": "MSR",
+    "population": 5000,
+    "defensePotential": 3,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Morocco",
+    "ISO_A2": "MA",
+    "ISO_A3": "MAR",
+    "population": 37411000,
+    "defensePotential": 63,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Mozambique",
+    "ISO_A2": "MZ",
+    "ISO_A3": "MOZ",
+    "population": 33089000,
+    "defensePotential": 64,
+    "capacities": [
+      "underground_resistance",
+      "mass_vaccination",
+      "bio_defense_labs"
+    ]
+  },
+  {
+    "name": "Myanmar",
+    "ISO_A2": "MM",
+    "ISO_A3": "MMR",
+    "population": 54410000,
+    "defensePotential": 68,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Namibia",
+    "ISO_A2": "NA",
+    "ISO_A3": "NAM",
+    "population": 2534000,
+    "defensePotential": 30,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Nauru",
+    "ISO_A2": "NR",
+    "ISO_A3": "NRU",
+    "population": 11000,
+    "defensePotential": 4,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Nepal",
+    "ISO_A2": "NP",
+    "ISO_A3": "NPL",
+    "population": 30425000,
+    "defensePotential": 63,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Netherlands",
+    "ISO_A2": "NL",
+    "ISO_A3": "NLD",
+    "population": 17483000,
+    "defensePotential": 55,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "New Caledonia",
+    "ISO_A2": "NC",
+    "ISO_A3": "NCL",
+    "population": 290000,
+    "defensePotential": 18,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "New Zealand",
+    "ISO_A2": "NZ",
+    "ISO_A3": "NZL",
+    "population": 5167000,
+    "defensePotential": 40,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Nicaragua",
+    "ISO_A2": "NI",
+    "ISO_A3": "NIC",
+    "population": 6912000,
+    "defensePotential": 40,
+    "capacities": ["underground_resistance", "population_resilience"]
+  },
+  {
+    "name": "Niger",
+    "ISO_A2": "NE",
+    "ISO_A3": "NER",
+    "population": 27215000,
+    "defensePotential": 59,
+    "capacities": ["religious_control", "elite_military"]
+  },
+  {
+    "name": "Nigeria",
+    "ISO_A2": "NG",
+    "ISO_A3": "NGA",
+    "population": 218541000,
+    "defensePotential": 69,
+    "capacities": ["religious_control", "mind_shield_training"]
+  },
+  {
+    "name": "Niue",
+    "ISO_A2": "NU",
+    "ISO_A3": "NIU",
+    "population": 1600,
+    "defensePotential": 1,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "North Macedonia",
+    "ISO_A2": "MK",
+    "ISO_A3": "MKD",
+    "population": 2077000,
+    "defensePotential": 29,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Northern Mariana Islands",
+    "ISO_A2": "MP",
+    "ISO_A3": "MNP",
+    "population": 48000,
+    "defensePotential": 13,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Norway",
+    "ISO_A2": "NO",
+    "ISO_A3": "NOR",
+    "population": 5421000,
+    "defensePotential": 38,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Oman",
+    "ISO_A2": "OM",
+    "ISO_A3": "OMN",
+    "population": 4540000,
+    "defensePotential": 36,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Pakistan",
+    "ISO_A2": "PK",
+    "ISO_A3": "PAK",
+    "population": 235000000,
+    "defensePotential": 72,
+    "capacities": [
+      "underground_resistance",
+      "religious_control",
+      "mind_shield_training"
+    ]
+  },
+  {
+    "name": "Palau",
+    "ISO_A2": "PW",
+    "ISO_A3": "PLW",
+    "population": 18000,
+    "defensePotential": 6,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Palestine, State of",
+    "ISO_A2": "PS",
+    "ISO_A3": "PSE",
+    "population": 5044000,
+    "defensePotential": 40,
+    "capacities": ["religious_control", "population_resilience"]
+  },
+  {
+    "name": "Panama",
+    "ISO_A2": "PA",
+    "ISO_A3": "PAN",
+    "population": 4414000,
+    "defensePotential": 35,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Papua New Guinea",
+    "ISO_A2": "PG",
+    "ISO_A3": "PNG",
+    "population": 9340000,
+    "defensePotential": 45,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Paraguay",
+    "ISO_A2": "PY",
+    "ISO_A3": "PRY",
+    "population": 6808000,
+    "defensePotential": 39,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Peru",
+    "ISO_A2": "PE",
+    "ISO_A3": "PER",
+    "population": 33742000,
+    "defensePotential": 64,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Philippines",
+    "ISO_A2": "PH",
+    "ISO_A3": "PHL",
+    "population": 115559000,
+    "defensePotential": 60,
+    "capacities": ["underground_resistance", "hyper_alliance"]
+  },
+  {
+    "name": "Pitcairn",
+    "ISO_A2": "PN",
+    "ISO_A3": "PCN",
+    "population": 50,
+    "defensePotential": 1,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Poland",
+    "ISO_A2": "PL",
+    "ISO_A3": "POL",
+    "population": 37562000,
+    "defensePotential": 63,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Portugal",
+    "ISO_A2": "PT",
+    "ISO_A3": "PRT",
+    "population": 10310000,
+    "defensePotential": 46,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Puerto Rico",
+    "ISO_A2": "PR",
+    "ISO_A3": "PRI",
+    "population": 3282000,
+    "defensePotential": 34,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Qatar",
+    "ISO_A2": "QA",
+    "ISO_A3": "QAT",
+    "population": 2917000,
+    "defensePotential": 34,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Réunion",
+    "ISO_A2": "RE",
+    "ISO_A3": "REU",
+    "population": 975000,
+    "defensePotential": 26,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Romania",
+    "ISO_A2": "RO",
+    "ISO_A3": "ROU",
+    "population": 19129000,
+    "defensePotential": 55,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Russian Federation",
+    "ISO_A2": "RU",
+    "ISO_A3": "RUS",
+    "population": 143556000,
+    "defensePotential": 93,
+    "capacities": [
+      "high_tech_defense",
+      "cybersecurity_elite",
+      "magnetic_storm_project"
+    ]
+  },
+  {
+    "name": "Rwanda",
+    "ISO_A2": "RW",
+    "ISO_A3": "RWA",
+    "population": 13713000,
+    "defensePotential": 50,
+    "capacities": ["underground_resistance", "mind_shield_training"]
+  },
+  {
+    "name": "Saint Kitts and Nevis",
+    "ISO_A2": "KN",
+    "ISO_A3": "KNA",
+    "population": 48000,
+    "defensePotential": 13,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Saint Lucia",
+    "ISO_A2": "LC",
+    "ISO_A3": "LCA",
+    "population": 180000,
+    "defensePotential": 16,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Saint Pierre and Miquelon",
+    "ISO_A2": "PM",
+    "ISO_A3": "SPM",
+    "population": 6000,
+    "defensePotential": 3,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Saint Vincent and the Grenadines",
+    "ISO_A2": "VC",
+    "ISO_A3": "VCT",
+    "population": 111000,
+    "defensePotential": 15,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Samoa",
+    "ISO_A2": "WS",
+    "ISO_A3": "WSM",
+    "population": 222000,
+    "defensePotential": 16,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "San Marino",
+    "ISO_A2": "SM",
+    "ISO_A3": "SMR",
+    "population": 33000,
+    "defensePotential": 10,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Sao Tome and Principe",
+    "ISO_A2": "ST",
+    "ISO_A3": "STP",
+    "population": 227000,
+    "defensePotential": 16,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Saudi Arabia",
+    "ISO_A2": "SA",
+    "ISO_A3": "SAU",
+    "population": 36409000,
+    "defensePotential": 48,
+    "capacities": ["underground_resistance", "media_control"]
+  },
+  {
+    "name": "Senegal",
+    "ISO_A2": "SN",
+    "ISO_A3": "SEN",
+    "population": 17732000,
+    "defensePotential": 56,
+    "capacities": ["underground_resistance", "psychological_warfare"]
+  },
+  {
+    "name": "Serbia",
+    "ISO_A2": "RS",
+    "ISO_A3": "SRB",
+    "population": 6975000,
+    "defensePotential": 41,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Seychelles",
+    "ISO_A2": "SC",
+    "ISO_A3": "SYC",
+    "population": 100000,
+    "defensePotential": 15,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Sierra Leone",
+    "ISO_A2": "SL",
+    "ISO_A3": "SLE",
+    "population": 8195000,
+    "defensePotential": 43,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Singapore",
+    "ISO_A2": "SG",
+    "ISO_A3": "SGP",
+    "population": 5686000,
+    "defensePotential": 43,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Sint Maarten (Dutch part)",
+    "ISO_A2": "SX",
+    "ISO_A3": "SXM",
+    "population": 43000,
+    "defensePotential": 13,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Slovakia",
+    "ISO_A2": "SK",
+    "ISO_A3": "SVK",
+    "population": 5448000,
+    "defensePotential": 38,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Slovenia",
+    "ISO_A2": "SI",
+    "ISO_A3": "SVN",
+    "population": 2107000,
+    "defensePotential": 29,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Solomon Islands",
+    "ISO_A2": "SB",
+    "ISO_A3": "SLB",
+    "population": 724000,
+    "defensePotential": 25,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Somalia",
+    "ISO_A2": "SO",
+    "ISO_A3": "SOM",
+    "population": 17049000,
+    "defensePotential": 57,
+    "capacities": ["religious_control", "elite_military"]
+  },
+  {
+    "name": "South Africa",
+    "ISO_A2": "ZA",
+    "ISO_A3": "ZAF",
+    "population": 60542000,
+    "defensePotential": 70,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "South Georgia and the South Sandwich Islands",
+    "ISO_A2": "GS",
+    "ISO_A3": "SGS",
+    "population": 0,
+    "defensePotential": 1,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "South Sudan",
+    "ISO_A2": "SS",
+    "ISO_A3": "SSD",
+    "population": 11425000,
+    "defensePotential": 50,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Spain",
+    "ISO_A2": "ES",
+    "ISO_A3": "ESP",
+    "population": 47350000,
+    "defensePotential": 62,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Sri Lanka",
+    "ISO_A2": "LK",
+    "ISO_A3": "LKA",
+    "population": 21803000,
+    "defensePotential": 55,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Sudan",
+    "ISO_A2": "SD",
+    "ISO_A3": "SDN",
+    "population": 46271000,
+    "defensePotential": 53,
+    "capacities": ["religious_control", "underground_resistance"]
+  },
+  {
+    "name": "Suriname",
+    "ISO_A2": "SR",
+    "ISO_A3": "SUR",
+    "population": 618000,
+    "defensePotential": 22,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Svalbard and Jan Mayen",
+    "ISO_A2": "SJ",
+    "ISO_A3": "SJM",
+    "population": 2650,
+    "defensePotential": 2,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Sweden",
+    "ISO_A2": "SE",
+    "ISO_A3": "SWE",
+    "population": 10408000,
+    "defensePotential": 46,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Switzerland",
+    "ISO_A2": "CH",
+    "ISO_A3": "CHE",
+    "population": 8762000,
+    "defensePotential": 43,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Syrian Arab Republic",
+    "ISO_A2": "SY",
+    "ISO_A3": "SYR",
+    "population": 22218000,
+    "defensePotential": 55,
+    "capacities": ["religious_control", "underground_resistance"]
+  },
+  {
+    "name": "Taiwan, Province of China",
+    "ISO_A2": "TW",
+    "ISO_A3": "TWN",
+    "population": 23000000,
+    "defensePotential": 55,
+    "capacities": ["high_tech_defense", "cybersecurity_elite"]
+  },
+  {
+    "name": "Tajikistan",
+    "ISO_A2": "TJ",
+    "ISO_A3": "TJK",
+    "population": 9960000,
+    "defensePotential": 45,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Tanzania",
+    "ISO_A2": "TZ",
+    "ISO_A3": "TZA",
+    "population": 65233000,
+    "defensePotential": 70,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Thailand",
+    "ISO_A2": "TH",
+    "ISO_A3": "THA",
+    "population": 71697000,
+    "defensePotential": 73,
+    "capacities": [
+      "underground_resistance",
+      "elite_military",
+      "firewall_fortresses"
+    ]
+  },
+  {
+    "name": "Timor-Leste",
+    "ISO_A2": "TL",
+    "ISO_A3": "TLS",
+    "population": 1389000,
+    "defensePotential": 27,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Togo",
+    "ISO_A2": "TG",
+    "ISO_A3": "TGO",
+    "population": 8903000,
+    "defensePotential": 44,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Tokelau",
+    "ISO_A2": "TK",
+    "ISO_A3": "TKL",
+    "population": 1500,
+    "defensePotential": 6,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Tonga",
+    "ISO_A2": "TO",
+    "ISO_A3": "TON",
+    "population": 107000,
+    "defensePotential": 15,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Trinidad and Tobago",
+    "ISO_A2": "TT",
+    "ISO_A3": "TTO",
+    "population": 1403000,
+    "defensePotential": 31,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Tunisia",
+    "ISO_A2": "TN",
+    "ISO_A3": "TUN",
+    "population": 12779000,
+    "defensePotential": 49,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Turkey",
+    "ISO_A2": "TR",
+    "ISO_A3": "TUR",
+    "population": 86369000,
+    "defensePotential": 75,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Turkmenistan",
+    "ISO_A2": "TM",
+    "ISO_A3": "TKM",
+    "population": 6333000,
+    "defensePotential": 39,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Turks and Caicos Islands",
+    "ISO_A2": "TC",
+    "ISO_A3": "TCA",
+    "population": 39000,
+    "defensePotential": 10,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Tuvalu",
+    "ISO_A2": "TV",
+    "ISO_A3": "TUV",
+    "population": 12000,
+    "defensePotential": 5,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Uganda",
+    "ISO_A2": "UG",
+    "ISO_A3": "UGA",
+    "population": 48276000,
+    "defensePotential": 62,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Ukraine",
+    "ISO_A2": "UA",
+    "ISO_A3": "UKR",
+    "population": 39728000,
+    "defensePotential": 62,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "United Arab Emirates",
+    "ISO_A2": "AE",
+    "ISO_A3": "ARE",
+    "population": 9361000,
+    "defensePotential": 44,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "United Kingdom",
+    "ISO_A2": "GB",
+    "ISO_A3": "GBR",
+    "population": 67554000,
+    "defensePotential": 84,
+    "capacities": ["high_tech_defense", "cybersecurity_elite", "heroic_order"]
+  },
+  {
+    "name": "United States",
+    "ISO_A2": "US",
+    "ISO_A3": "USA",
+    "population": 333288000,
+    "defensePotential": 100,
+    "capacities": [
+      "high_tech_defense",
+      "cybersecurity_elite",
+      "machine_legions"
+    ]
+  },
+  {
+    "name": "United States Minor Outlying Islands",
+    "ISO_A2": "UM",
+    "ISO_A3": "UMI",
+    "population": 0,
+    "defensePotential": 1,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Uruguay",
+    "ISO_A2": "UY",
+    "ISO_A3": "URY",
+    "population": 3497000,
+    "defensePotential": 34,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Uzbekistan",
+    "ISO_A2": "UZ",
+    "ISO_A3": "UZB",
+    "population": 34655000,
+    "defensePotential": 65,
+    "capacities": ["underground_resistance", "advanced_psychology"]
+  },
+  {
+    "name": "Vanuatu",
+    "ISO_A2": "VU",
+    "ISO_A3": "VUT",
+    "population": 327000,
+    "defensePotential": 18,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Venezuela",
+    "ISO_A2": "VE",
+    "ISO_A3": "VEN",
+    "population": 29258000,
+    "defensePotential": 63,
+    "capacities": ["underground_resistance", "propaganda_masters"]
+  },
+  {
+    "name": "Viet Nam",
+    "ISO_A2": "VN",
+    "ISO_A3": "VNM",
+    "population": 98169000,
+    "defensePotential": 73,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Virgin Islands, British",
+    "ISO_A2": "VG",
+    "ISO_A3": "VGB",
+    "population": 31000,
+    "defensePotential": 9,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Virgin Islands, U.S.",
+    "ISO_A2": "VI",
+    "ISO_A3": "VIR",
+    "population": 105000,
+    "defensePotential": 15,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Wallis and Futuna",
+    "ISO_A2": "WF",
+    "ISO_A3": "WLF",
+    "population": 11000,
+    "defensePotential": 5,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Western Sahara",
+    "ISO_A2": "EH",
+    "ISO_A3": "ESH",
+    "population": 575000,
+    "defensePotential": 22,
+    "capacities": ["hidden_bunkers"]
+  },
+  {
+    "name": "Yemen",
+    "ISO_A2": "YE",
+    "ISO_A3": "YEM",
+    "population": 33697000,
+    "defensePotential": 63,
+    "capacities": ["religious_control", "underground_resistance"]
+  },
+  {
+    "name": "Zambia",
+    "ISO_A2": "ZM",
+    "ISO_A3": "ZMB",
+    "population": 20018000,
+    "defensePotential": 55,
+    "capacities": ["underground_resistance", "elite_military"]
+  },
+  {
+    "name": "Zimbabwe",
+    "ISO_A2": "ZW",
+    "ISO_A3": "ZWE",
+    "population": 15994000,
+    "defensePotential": 53,
+    "capacities": ["underground_resistance", "elite_military"]
+  }
+]

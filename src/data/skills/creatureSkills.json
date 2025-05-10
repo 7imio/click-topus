@@ -1,0 +1,272 @@
+[
+  {
+    "id": "hypnotic_songs",
+    "name": "Hypnotic Songs",
+    "description": "Mesmerizing chants weaken cultural defenses and bend minds.",
+    "type": "influence",
+    "toughnesses": "cultural_resilience",
+    "weaknesses": "high_tech_defense",
+    "incompatibilities": ["mindless_swarms", "apocalyptic_revelation"]
+  },
+  {
+    "id": "psychic_domination",
+    "name": "Psychic Domination",
+    "description": "Directly invades the minds of leaders, bypassing armies.",
+    "type": "influence",
+    "toughnesses": "elite_military",
+    "weaknesses": "media_control",
+    "incompatibilities": ["mindless_swarms"]
+  },
+  {
+    "id": "false_prophecy",
+    "name": "False Prophecy",
+    "description": "Spreads lies of salvation through divine tentacular messiahs.",
+    "type": "influence",
+    "toughnesses": "religious_fanaticism",
+    "weaknesses": "cultural_resilience",
+    "incompatibilities": ["apocalyptic_revelation"]
+  },
+  {
+    "id": "mindless_swarms",
+    "name": "Mindless Swarms",
+    "description": "Hordes of cultists overwhelm cities through sheer numbers.",
+    "type": "influence",
+    "toughnesses": "media_control",
+    "weaknesses": "elite_military",
+    "incompatibilities": ["psychic_domination", "hypnotic_songs"]
+  },
+  {
+    "id": "data_corruption",
+    "name": "Data Corruption",
+    "description": "Injects viral data worms into critical infrastructures.",
+    "type": "influence",
+    "toughnesses": "high_tech_defense",
+    "weaknesses": "religious_fanaticism",
+    "incompatibilities": ["false_currency"]
+  },
+  {
+    "id": "apocalyptic_revelation",
+    "name": "Apocalyptic Revelation",
+    "description": "Reveals inevitable doom, collapsing faith-based defenses.",
+    "type": "influence",
+    "toughnesses": "religious_fanaticism",
+    "weaknesses": "high_tech_defense",
+    "incompatibilities": ["false_prophecy"]
+  },
+  {
+    "id": "spore_bloom",
+    "name": "Spore Bloom",
+    "description": "Releases hallucinogenic spores to confuse and incapacitate armies.",
+    "type": "influence",
+    "toughnesses": "elite_military",
+    "weaknesses": "bio_defense_labs",
+    "incompatibilities": ["genetic_mutation"]
+  },
+  {
+    "id": "stealth_infiltration",
+    "name": "Stealth Infiltration",
+    "description": "Agents melt into the populace, striking from the shadows.",
+    "type": "influence",
+    "toughnesses": "propaganda_masters",
+    "weaknesses": "high_tech_defense",
+    "incompatibilities": ["mindless_swarms"]
+  },
+  {
+    "id": "cyber_psychosis",
+    "name": "Cyber Psychosis",
+    "description": "Breaks the minds of AI, turning machines against their creators.",
+    "type": "influence",
+    "toughnesses": "cybersecurity_elite",
+    "weaknesses": "bio_defense_labs",
+    "incompatibilities": ["data_corruption"]
+  },
+  {
+    "id": "cultural_corruption",
+    "name": "Cultural Corruption",
+    "description": "Dissolves cultural values, paving the way for cultist rule.",
+    "type": "influence",
+    "toughnesses": "cultural_resilience",
+    "weaknesses": "propaganda_masters",
+    "incompatibilities": []
+  },
+  {
+    "id": "eldritch_storm",
+    "name": "Eldritch Storm",
+    "description": "Summons storms of chaos that cripple military defenses.",
+    "type": "influence",
+    "toughnesses": "machine_legions",
+    "weaknesses": "weather_control",
+    "incompatibilities": ["deep_sea_horrors"]
+  },
+  {
+    "id": "deep_sea_horrors",
+    "name": "Deep Sea Horrors",
+    "description": "Unleashes ancient leviathans from the depths to ravage ports.",
+    "type": "influence",
+    "toughnesses": "weather_control",
+    "weaknesses": "elite_military",
+    "incompatibilities": ["eldritch_storm"]
+  },
+  {
+    "id": "magnetic_pulse",
+    "name": "Magnetic Pulse",
+    "description": "Emits pulses that disable electronic defenses.",
+    "type": "influence",
+    "toughnesses": "machine_legions",
+    "weaknesses": "cybersecurity_elite",
+    "incompatibilities": []
+  },
+  {
+    "id": "resource_harvesting",
+    "name": "Resource Harvesting",
+    "description": "Harvests the planet’s resources to empower the cult.",
+    "type": "influence",
+    "toughnesses": "economic_sanctions",
+    "weaknesses": "bio_defense_labs",
+    "incompatibilities": ["false_currency"]
+  },
+  {
+    "id": "false_currency",
+    "name": "False Currency",
+    "description": "Destabilizes economies by flooding them with counterfeit resources.",
+    "type": "influence",
+    "toughnesses": "economic_sanctions",
+    "weaknesses": "propaganda_masters",
+    "incompatibilities": ["data_corruption", "resource_harvesting"]
+  },
+  {
+    "id": "genetic_mutation",
+    "name": "Genetic Mutation",
+    "description": "Alters the DNA of populations, creating obedient hybrids.",
+    "type": "influence",
+    "toughnesses": "bio_defense_labs",
+    "weaknesses": "mass_vaccination",
+    "incompatibilities": ["spore_bloom"]
+  },
+  {
+    "id": "dimension_rift",
+    "name": "Dimension Rift",
+    "description": "Opens portals to unknown horrors, destabilizing entire cities.",
+    "type": "influence",
+    "toughnesses": "heroic_order",
+    "weaknesses": "ancient_guardians",
+    "incompatibilities": ["deep_sea_horrors"]
+  },
+  {
+    "id": "dream_invasion",
+    "name": "Dream Invasion",
+    "description": "Manipulates leaders during their dreams to sow chaos.",
+    "type": "influence",
+    "toughnesses": "mind_shield_training",
+    "weaknesses": "psy_resonators",
+    "incompatibilities": ["psychic_domination"]
+  },
+  {
+    "id": "temporal_distortion",
+    "name": "Temporal Distortion",
+    "description": "Slows time perception for enemy forces, reducing effectiveness.",
+    "type": "influence",
+    "toughnesses": "elite_military",
+    "weaknesses": "advanced_psychology",
+    "incompatibilities": []
+  },
+  {
+    "id": "subterranean_spread",
+    "name": "Subterranean Spread",
+    "description": "Cult structures expand underground, hidden from sight.",
+    "type": "influence",
+    "toughnesses": "hidden_bunkers",
+    "weaknesses": "underground_sanctuaries",
+    "incompatibilities": []
+  },
+  {
+    "id": "eldritch_melody",
+    "name": "Eldritch Melody",
+    "description": "A haunting melody that erodes the will of entire populations.",
+    "type": "influence",
+    "toughnesses": "population_resilience",
+    "weaknesses": "heroic_order",
+    "incompatibilities": ["hypnotic_songs"]
+  },
+  {
+    "id": "shadow_market",
+    "name": "Shadow Market",
+    "description": "Black market deals funnel resources into cultist operations.",
+    "type": "influence",
+    "toughnesses": "economic_sanctions",
+    "weaknesses": "social_credit_system",
+    "incompatibilities": []
+  },
+  {
+    "id": "eldritch_beacon",
+    "name": "Eldritch Beacon",
+    "description": "Summons cosmic horrors to specific locations for destruction.",
+    "type": "influence",
+    "toughnesses": "hyper_alliance",
+    "weaknesses": "advanced_psychology",
+    "incompatibilities": ["dimension_rift"]
+  },
+  {
+    "id": "false_memory_implant",
+    "name": "False Memory Implant",
+    "description": "Erases and replaces critical memories of key figures.",
+    "type": "influence",
+    "toughnesses": "mind_shield_training",
+    "weaknesses": "heroic_order",
+    "incompatibilities": ["dream_invasion"]
+  },
+  {
+    "id": "infested_waters",
+    "name": "Infested Waters",
+    "description": "Contaminates water supplies with mind-altering parasites.",
+    "type": "influence",
+    "toughnesses": "bio_defense_labs",
+    "weaknesses": "mass_vaccination",
+    "incompatibilities": []
+  },
+  {
+    "id": "dimensional_camouflage",
+    "name": "Dimensional Camouflage",
+    "description": "Cultist structures and forces become nearly invisible.",
+    "type": "influence",
+    "toughnesses": "high_tech_defense",
+    "weaknesses": "drone_sentinels",
+    "incompatibilities": []
+  },
+  {
+    "id": "apex_predator",
+    "name": "Apex Predator",
+    "description": "Unleashes a supreme entity to dominate the battlefield.",
+    "type": "influence",
+    "toughnesses": "heroic_order",
+    "weaknesses": "eldritch_storm",
+    "incompatibilities": ["mindless_swarms"]
+  },
+  {
+    "id": "corruption_wellspring",
+    "name": "Corruption Wellspring",
+    "description": "Creates nodes that spread corruption exponentially.",
+    "type": "influence",
+    "toughnesses": "economic_sanctions",
+    "weaknesses": "underground_resistance",
+    "incompatibilities": []
+  },
+  {
+    "id": "subliminal_messages",
+    "name": "Subliminal Messages",
+    "description": "Hidden messages in media slowly alter public perception.",
+    "type": "influence",
+    "toughnesses": "media_control",
+    "weaknesses": "information_blackout",
+    "incompatibilities": ["false_currency"]
+  },
+  {
+    "id": "chaos_plague",
+    "name": "Chaos Plague",
+    "description": "Unleashes a mental plague that turns citizens into cultists.",
+    "type": "influence",
+    "toughnesses": "mass_vaccination",
+    "weaknesses": "bio_defense_labs",
+    "incompatibilities": ["spore_bloom"]
+  }
+]

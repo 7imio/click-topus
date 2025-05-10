@@ -20,6 +20,7 @@ const Router: FC = () => {
       <Route path="/reset" element={<ResetScreen />} />
       <Route path="/offsprings" element={<Offsprings />} />
       <Route path="/offsprings/:creatureId" element={<OffspringDetails />} />
+      <Route path="/test" element={<p>Testing route</p>} />
       <Route path="*" element={<p>404</p>} />
     </Routes>
   );
