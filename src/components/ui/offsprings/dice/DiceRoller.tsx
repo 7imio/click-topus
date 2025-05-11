@@ -8,7 +8,6 @@ import {
   updateCreature,
 } from '../../../../store/slices/creatureSlice';
 import { buyCorruptionItem } from '../../../../store/slices/corruptionSlice';
-import { setEssence } from '../../../../store/slices/essenceSlice';
 import { rollEffect } from '../../../../helpers/math-utils';
 
 export interface DiceRollerProps {
@@ -26,17 +25,19 @@ export const DiceRoller: FC<DiceRollerProps> = ({
   const { corruption, currentCost } = useAppSelector(
     (state) => state.corruption
   );
-  const { essence } = useAppSelector((state) => state.essence);
+  const essence = creature.essence;
   const [diceResult, setDiceResult] = useState<number>();
+  const [isRolling, setIsRolling] = useState(false);
   const dispatch = useAppDispatch();
 
-  const canBuy = corruption >= currentCost;
+  const [delta, setDelta] = useState<number>();
 
+  const canBuy = corruption >= currentCost;
   const diceRef = useRef<DiceD20Handle>(null);
 
   const handleRoll = () => {
-    if (!canBuy) return;
-
+    if (!canBuy || isRolling) return;
+    setIsRolling(true);
     diceRef.current?.roll();
     dispatch(
       buyCorruptionItem({ name: `Competence for ${creature.creatureName}` })
@@ -46,10 +47,12 @@ export const DiceRoller: FC<DiceRollerProps> = ({
 
   const handleSetCompetence = (result: number) => {
     setDiceResult(result);
+    setIsRolling(false);
     const { creatureId } = creature;
     const newEssence = rollEffect(essence, result);
+    setDelta(newEssence - creature.essence);
     const updatedCreature = { ...creature, essence: newEssence };
-    updateCreature({ creatureId, creature: updatedCreature });
+    dispatch(updateCreature({ creatureId, creature: updatedCreature }));
     setResult(newEssence);
   };
 
@@ -69,20 +72,23 @@ export const DiceRoller: FC<DiceRollerProps> = ({
         <OrbitControls target={[0, 0, 0]} />
       </Canvas>
       <h2>Buy competence</h2>
-      {}
+      <p>Price : {currentCost} corruption</p>
       <button
         onClick={handleRoll}
         disabled={!canBuy}
-        className={`px-6 py-3 ${canBuy ? 'bg-green-600 hover:bg-green-700' : 'bg-neutral-600'} text-white rounded-xl shadow-lg text-xl`}
+        className={`${canBuy ? 'bg-emerald-700 hover:bg-emerald-600 hover:scale-105 ' : 'bg-neutral-600'} m-4 text-green-100 font-bold py-3 px-6 rounded-2xl text-xl shadow-md transition-all duration-300 animate-glow z-[100]`}
+        // className={`px-6 py-3 ${canBuy ? 'bg-green-600 hover:bg-green-700' : 'bg-neutral-600'} text-white rounded-xl shadow-lg text-xl`}
       >
-        {canBuy ? '🎲 Roll D20' : "You can't buy"}
+        {canBuy ? '🎲 Roll Dice' : "You can't buy"}
       </button>
-
-      {result !== null && (
-        <div className="absolute text-4xl font-bold text-shadow-black text-shadow-xs">
-          Result: {diceResult}
-        </div>
-      )}
+      <div className="text-2xl h-30 font-bold text-green-600 text-shadow-md">
+        {result !== null && !isRolling && (
+          <>
+            <p>Result: {diceResult}</p>
+            <p>Delta : {delta}</p>
+          </>
+        )}
+      </div>
     </div>
   );
 };

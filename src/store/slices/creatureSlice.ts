@@ -40,28 +40,38 @@ const creatureSlice = createSlice({
         payload: {
           essence: number;
           essenceForCreature: number;
+        };
+      }
+    ) => {
+      const { essence } = action.payload;
+      state.currentEssence += essence;
+    },
+    resetCurrentEssence: (state) => {
+      state.currentEssence = 0;
+    },
+    createNewCreature: (
+      state,
+      action: {
+        payload: {
+          essenceForCreature: number;
           skin: SkinColor;
         };
       }
     ) => {
-      const { essence, essenceForCreature, skin } = action.payload;
-      state.currentEssence += essence;
-      if (state.currentEssence >= essenceForCreature) {
-        const newCreature: Creature = {
-          creatureId: crypto.randomUUID(),
-          creatureName: generateRandomName(),
-          essence: essenceForCreature,
-          skin: skin ?? {
-            irisColor: '#6633cc',
-            bodyColor: '#00cc66',
-            suckerColor: '#9900cc',
-          },
-        };
-        state.creatures?.push(newCreature);
+      const { essenceForCreature, skin } = action.payload;
+      const newCreature: Creature = {
+        creatureId: crypto.randomUUID(),
+        creatureName: generateRandomName(),
+        essence: essenceForCreature,
+        skin: skin ?? {
+          irisColor: '#6633cc',
+          bodyColor: '#00cc66',
+          suckerColor: '#9900cc',
+        },
+      };
+      state.creatures?.push(newCreature);
 
-        state.created = state.creatures?.length ?? state.created + 1;
-        state.currentEssence = 0;
-      }
+      state.created = state.creatures?.length ?? state.created + 1;
     },
     resetCreatures: (state) => {
       state.created = 0;
@@ -107,9 +117,11 @@ const creatureSlice = createSlice({
 export const {
   addTentacleEssence,
   resetCreatures,
+  resetCurrentEssence,
   setCreatedCreatures,
   updateTentacleEssenceNeed,
   updateCreature,
+  createNewCreature,
   hydrate,
 } = creatureSlice.actions;
 export default creatureSlice.reducer;

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getExponentialGrowth } from '../../helpers/math-utils';
+import { updateCost } from '../../helpers/math-utils';
 
 export type CorruptionState = {
   totalHarvestedCorruption: number;
@@ -7,6 +7,7 @@ export type CorruptionState = {
   baseCost: number;
   currentCost: number;
   purchasedItems: string[];
+  count: number;
 };
 
 const initialState: CorruptionState = {
@@ -15,6 +16,7 @@ const initialState: CorruptionState = {
   baseCost: 100,
   currentCost: 100,
   purchasedItems: [],
+  count: 0,
 };
 
 const corruptionSlice = createSlice({
@@ -34,13 +36,16 @@ const corruptionSlice = createSlice({
     setCorruption: (state, actions) => {
       state.corruption = actions.payload;
     },
+    setTotalHarvestedCorruption: (state, actions) => {
+      state.totalHarvestedCorruption = actions.payload;
+    },
     buyCorruptionItem: (state, actions: PayloadAction<{ name: string }>) => {
       const { name } = actions.payload;
       if (state.corruption >= state.currentCost) {
         state.purchasedItems.push(name);
+        state.count += 1;
         state.corruption -= state.currentCost;
-        const newCost = getExponentialGrowth(state.purchasedItems.length);
-        state.currentCost = newCost;
+        updateCost(state);
       }
     },
 
@@ -57,5 +62,6 @@ export const {
   buyCorruptionItem,
   emptyCorruption,
   hydrate,
+  setTotalHarvestedCorruption,
 } = corruptionSlice.actions;
 export default corruptionSlice.reducer;

@@ -5,10 +5,22 @@ import { triggerDebug } from '../../../store/slices/debugSlice';
 import { applySkin } from '../../../store/slices/skinSlice';
 import skins from '../../../data/skins/skins.json';
 import VoidBurger from './VoidBurger';
+import {
+  setEssence,
+  setTotalHarvestedEssence,
+} from '../../../store/slices/essenceSlice';
+import { setCorruption } from '../../../store/slices/corruptionSlice';
 
 const BurgerMenu = () => {
   const [open, setOpen] = useState(false);
   const [animOpen, setAnimOpen] = useState(false);
+
+  const { essence, totalHarvestedEssence } = useAppSelector(
+    (state) => state.essence
+  );
+  const { corruption } = useAppSelector((state) => state.corruption);
+
+  const devMode = import.meta.env.VITE_DEVELOPER_MODE.toLowerCase() === 'true';
 
   const dispatch = useAppDispatch();
   const handleDebug = () => dispatch(triggerDebug());
@@ -78,6 +90,29 @@ const BurgerMenu = () => {
           <p className="cursor-pointer" onClick={handleChangeSkin}>
             🐙 Change Skin
           </p>
+          {devMode && (
+            <>
+              <p
+                className="cursor-pointer"
+                onClick={() => {
+                  dispatch(setEssence(essence + 1000000000));
+                  dispatch(
+                    setTotalHarvestedEssence(totalHarvestedEssence + 1000000000)
+                  );
+                }}
+              >
+                🧬 Add essence
+              </p>
+              <p
+                className="cursor-pointer"
+                onClick={() => {
+                  dispatch(setCorruption(corruption + 1000000000));
+                }}
+              >
+                ☣️ Add corruption
+              </p>
+            </>
+          )}
         </div>
       )}
     </div>

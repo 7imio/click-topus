@@ -8,16 +8,18 @@ const Offsprings = () => {
   return creatures && creatures.length > 0 ? (
     <div className="flex flex-wrap gap-4 justify-center p-4">
       {creatures.map((c) => (
-        <Link
-          key={c.creatureId}
-          to={`/offsprings/${c.creatureId}`}
-          className="flex items-center gap-3 px-4 py-2 bg-green-900 hover:bg-green-700 text-green-100 rounded-lg shadow-md transition-all duration-200"
-        >
-          <Eye skin={c.skin} disablePopEffect={true} miniEye={true} />
-          <span className="font-semibold text-sm">
-            {c.creatureName ?? 'Unnamed'}
-          </span>
-        </Link>
+        <>
+          <Link
+            key={c.creatureId}
+            to={`/offsprings/${c.creatureId}`}
+            className="flex self-center justify-center align-middle items-center gap-2 p-4 bg-green-900 hover:bg-green-700 text-green-100 rounded-lg shadow-md transition-all duration-200"
+          >
+            <Eye skin={c.skin} disablePopEffect={true} miniEye={true} />
+            <span className="text-shadow-neutral-900 text-shadow-md">
+              {c.creatureName}
+            </span>
+          </Link>
+        </>
       ))}
     </div>
   ) : (

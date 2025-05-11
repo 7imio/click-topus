@@ -11,10 +11,10 @@ const AutoClickerPrompt: FC = () => {
   const dispatch = useAppDispatch();
 
   const { count, currentCost } = useAppSelector((state) => state.autoClicker);
-  const { totalHarvestedEssence } = useAppSelector((state) => state.essence);
+  const { essence } = useAppSelector((state) => state.essence);
   const [isDisplaying, setIsDisplaying] = useState<boolean>(false);
 
-  const canAfford: boolean = totalHarvestedEssence >= currentCost;
+  const canAfford: boolean = essence >= currentCost;
 
   useEffect(() => {
     if (!canAfford) {
@@ -44,7 +44,7 @@ const AutoClickerPrompt: FC = () => {
   return (
     canAfford && (
       <>
-        <div className="fixed top-5 w-full max-w-xs text-right animate-sucker-pop z-50">
+        <div className="fixed top-5 w-full px-4 text-right animate-sucker-pop z-50">
           <button onClick={handleDisplay}>📜</button>
         </div>
         {isDisplaying && (

@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { useAppSelector } from '../../../store/hooks';
-import useEssenceHelper from '../../../hooks/useEssenceHelper';
 import { Link } from 'react-router-dom';
 
 interface InformationProps {

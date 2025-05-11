@@ -10,11 +10,13 @@ import Informations from '../ui/menu/Informations';
 
 export interface Tentacles {
   id: string;
-  essence: number; // MAX 200
+  essence: number;
 }
 
 const Abyss: FC = () => {
-  const { totalHarvestedEssence } = useAppSelector((state) => state.essence);
+  const { totalHarvestedEssence, essence } = useAppSelector(
+    (state) => state.essence
+  );
   const { currentSkin } = useAppSelector((state) => state.skin);
   const { maxTentacles, creatures } = useAppSelector(
     (state) => state.creatures
@@ -35,8 +37,8 @@ const Abyss: FC = () => {
 
   return (
     <>
-      <h1 className="text-4xl font-bold text-purple-500 z-50 text-shadow">
-        Essence: {totalHarvestedEssence}
+      <h1 className="text-2xl font-bold text-purple-500 z-50 text-shadow">
+        Essence: {essence} / Total Harvested: {totalHarvestedEssence}
       </h1>
 
       {DEBUG && <Informations isPanel={true} />}
