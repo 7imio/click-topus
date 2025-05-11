@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { clearGame } from '../../helpers/save-utils';
-import { useAppDispatch } from '../../store/hooks';
-import { resetAllGameState } from '../../store/actions/reset';
+import { clearGame } from '../../../helpers/save-utils';
+import { useAppDispatch } from '../../../store/hooks';
+import { resetAllGameState } from '../../../store/actions/reset';
 
 const ResetScreen = () => {
   const [cleared, setCleared] = useState(false);

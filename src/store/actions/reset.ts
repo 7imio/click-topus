@@ -12,5 +12,5 @@ export const resetAllGameState = () => (dispatch: AppDispatch) => {
   dispatch(resetTentacles());
   dispatch(resetAutoClickers());
   dispatch(resetCorruption());
-  dispatch(setHydrated(false)); // pour forcer une nouvelle hydratation si besoin
+  dispatch(setHydrated(false));
 };

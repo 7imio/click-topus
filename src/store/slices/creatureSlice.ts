@@ -82,6 +82,22 @@ const creatureSlice = createSlice({
       );
       state.essencePerSegment = adjustedEssencePerSegment;
     },
+    updateCreature: (
+      state,
+      action: PayloadAction<{ creatureId: string; creature: Creature }>
+    ) => {
+      const { creatureId, creature } = action.payload;
+
+      if (!Array.isArray(state.creatures)) return;
+
+      const index = state.creatures.findIndex(
+        (c) => c.creatureId === creatureId
+      );
+
+      if (index !== -1) {
+        state.creatures[index] = { ...state.creatures[index], ...creature };
+      }
+    },
     hydrate: (state, action: PayloadAction<CreatureState>) => {
       return { ...state, ...action.payload };
     },
@@ -93,6 +109,7 @@ export const {
   resetCreatures,
   setCreatedCreatures,
   updateTentacleEssenceNeed,
+  updateCreature,
   hydrate,
 } = creatureSlice.actions;
 export default creatureSlice.reducer;

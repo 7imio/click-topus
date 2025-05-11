@@ -44,11 +44,11 @@ const AutoClickerPrompt: FC = () => {
   return (
     canAfford && (
       <>
-        <div className="fixed top-5 right-5 w-[90vw] max-w-xs text-right animate-sucker-pop">
+        <div className="fixed top-5 w-full max-w-xs text-right animate-sucker-pop z-50">
           <button onClick={handleDisplay}>📜</button>
         </div>
         {isDisplaying && (
-          <div className="fixed top-15 right-5 w-[90vw] max-w-xs bg-black/80 text-white px-4 py-3 rounded-lg shadow-xl border border-green-500 animate-fadeIn z-50">
+          <div className="fixed top-15 w-full max-w-xs bg-black/80 text-white px-4 py-3 rounded-lg shadow-xl border border-green-500 animate-fadeIn z-50">
             <p className="text-xs mb-2">Cost: {currentCost} essence</p>
             <div className="flex flex-col">
               {count === 0 ? (

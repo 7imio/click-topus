@@ -5,8 +5,8 @@ import MiniCreature from '../background/MiniCreature';
 import Eye from '../creatures/Eye';
 import SegmentedTentacle from '../creatures/SegmentedTentacle';
 import AutoClickerPrompt from '../ui/AutoClickerPrompt';
-import InformationPanel from '../ui/InformationPanel';
 import { Creature } from '../../store/slices/creatureSlice';
+import Informations from '../ui/menu/Informations';
 
 export interface Tentacles {
   id: string;
@@ -39,10 +39,9 @@ const Abyss: FC = () => {
         Essence: {totalHarvestedEssence}
       </h1>
 
-      {DEBUG && <InformationPanel />}
+      {DEBUG && <Informations isPanel={true} />}
 
       <AutoClickerPrompt />
-      {creatureList?.map((creature) => <MiniCreature creature={creature} />)}
       <div className="relative w-full h-[600px] aspect-square">
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <Eye skin={currentSkin.skin} handleClick={handleClick} blink={true}>
@@ -66,6 +65,7 @@ const Abyss: FC = () => {
             ))}
           </Eye>
         </div>
+        {creatureList?.map((creature) => <MiniCreature creature={creature} />)}
       </div>
     </>
   );

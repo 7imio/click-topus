@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../store/hooks';
-import Eye from '../creatures/Eye';
+import { useAppSelector } from '../../../store/hooks';
+import Eye from '../../creatures/Eye';
 
 const Offsprings = () => {
   const { creatures } = useAppSelector((state) => state.creatures);

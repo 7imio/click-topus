@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import '../../styles/VoidBurger.css';
+import '../../../styles/VoidBurger.css';
 
 export interface VoidBurgerProps {
   isOpen: boolean;

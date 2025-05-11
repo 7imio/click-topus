@@ -37,6 +37,7 @@ const MapRenderer = () => {
       const dataItem = ev.target.dataItem;
       if (dataItem) {
         // const country = dataItem.dataContext as { id: string; name?: string };
+        //
         // create tooltip
       }
     });

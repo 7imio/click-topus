@@ -13,7 +13,7 @@ import { hydrate as hydrateDebug } from './store/slices/debugSlice';
 import { setHydrated } from './store/slices/hydrationSlice';
 import Router from './components/router/Router';
 import Bubbles from './components/background/Bubbles';
-import BurgerMenu from './components/ui/BurgerMenu';
+import BurgerMenu from './components/ui/menu/BurgerMenu';
 import useAutoClickers from './hooks/useAutoClickers';
 import useSaveGame from './hooks/useSaveGame';
 import useHarvestCorruption from './hooks/useHarvestCorruption';
