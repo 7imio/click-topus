@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import creatureSkills from '../../../data/skills/creatureSkills.json'; // Si c'est pour les rejetons
+import creatureSkills from '../../../../data/skills/creatureSkills.json'; // Si c'est pour les rejetons
 
 const SkillSelector = () => {
   const [selectedSkill, setSelectedSkill] = useState<any>(null);

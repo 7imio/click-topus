@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { updateCost } from '../../helpers/math-utils';
 
 export interface AutoClickerState {
   count: number;
@@ -11,10 +12,6 @@ const initialState: AutoClickerState = {
   click: 1,
   baseCost: 100,
   currentCost: 100,
-};
-
-const updateCost = (state: AutoClickerState) => {
-  state.currentCost += Math.floor(state.baseCost * Math.pow(1.2, state.count));
 };
 
 const autoClickerState = createSlice({

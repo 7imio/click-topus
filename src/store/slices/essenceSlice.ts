@@ -29,6 +29,9 @@ const essenceSlice = createSlice({
     setEssence: (state, actions) => {
       state.essence = actions.payload;
     },
+    setTotalHarvestedEssence: (state, action) => {
+      state.totalHarvestedEssence = action.payload;
+    },
     buyEssenceItem: (
       state,
       actions: PayloadAction<{ name: string; cost: number }>
@@ -36,6 +39,7 @@ const essenceSlice = createSlice({
       const { name, cost } = actions.payload;
       if (state.essence >= cost) {
         state.purchasedItems.push(name);
+        state.essence -= cost;
       }
     },
     hydrate: (state, action: PayloadAction<EssenceState>) => {
@@ -51,5 +55,6 @@ export const {
   buyEssenceItem,
   emptyEssence,
   hydrate,
+  setTotalHarvestedEssence,
 } = essenceSlice.actions;
 export default essenceSlice.reducer;

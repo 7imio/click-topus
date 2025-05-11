@@ -127,6 +127,40 @@
     animation: eye-click .05s ease-in-out;
   }
 
+  .burger-open {
+    animation: open-burger-menu .5s ease-in-out;
+  }
+
+  .burger-close {
+    animation: close-burger-menu .5s ease-in-out;
+
+  }
+
+  @keyframes open-burger-menu {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes close-burger-menu {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+  }
+
   @keyframes eyePop {
     0% {
       transform: scale(1);

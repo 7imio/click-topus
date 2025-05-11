@@ -5,16 +5,18 @@ import MiniCreature from '../background/MiniCreature';
 import Eye from '../creatures/Eye';
 import SegmentedTentacle from '../creatures/SegmentedTentacle';
 import AutoClickerPrompt from '../ui/AutoClickerPrompt';
-import InformationPanel from '../ui/InformationPanel';
 import { Creature } from '../../store/slices/creatureSlice';
+import Informations from '../ui/menu/Informations';
 
 export interface Tentacles {
   id: string;
-  essence: number; // MAX 200
+  essence: number;
 }
 
 const Abyss: FC = () => {
-  const { totalHarvestedEssence } = useAppSelector((state) => state.essence);
+  const { totalHarvestedEssence, essence } = useAppSelector(
+    (state) => state.essence
+  );
   const { currentSkin } = useAppSelector((state) => state.skin);
   const { maxTentacles, creatures } = useAppSelector(
     (state) => state.creatures
@@ -35,14 +37,13 @@ const Abyss: FC = () => {
 
   return (
     <>
-      <h1 className="text-4xl font-bold text-purple-500 z-50 text-shadow">
-        Essence: {totalHarvestedEssence}
+      <h1 className="text-2xl font-bold text-purple-500 z-50 text-shadow">
+        Essence: {essence} / Total Harvested: {totalHarvestedEssence}
       </h1>
 
-      {DEBUG && <InformationPanel />}
+      {DEBUG && <Informations isPanel={true} />}
 
       <AutoClickerPrompt />
-      {creatureList?.map((creature) => <MiniCreature creature={creature} />)}
       <div className="relative w-full h-[600px] aspect-square">
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <Eye skin={currentSkin.skin} handleClick={handleClick} blink={true}>
@@ -66,6 +67,7 @@ const Abyss: FC = () => {
             ))}
           </Eye>
         </div>
+        {creatureList?.map((creature) => <MiniCreature creature={creature} />)}
       </div>
     </>
   );

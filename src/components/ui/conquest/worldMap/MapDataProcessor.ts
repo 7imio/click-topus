@@ -1,7 +1,7 @@
-import countries from '../../data/countries/coutriesData.json';
-import countrySkills from '../../data/skills/countrySkills.json';
-import { CapacityType } from '../../types/Capacity';
-import { Country } from '../../types/Country';
+import countries from '../../../../data/countries/coutriesData.json';
+import countrySkills from '../../../../data/skills/countrySkills.json';
+import { CapacityType } from '../../../../types/Capacity';
+import { Country } from '../../../../types/Country';
 
 export const useCountryData = (): Country[] => {
   return countries.map((c) => ({
