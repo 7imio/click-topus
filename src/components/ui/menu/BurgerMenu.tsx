@@ -20,7 +20,7 @@ const BurgerMenu = () => {
   );
   const { corruption } = useAppSelector((state) => state.corruption);
 
-  const devMode = import.meta.env.VITE_DEVELOPER_MODE.toLowerCase() === 'true';
+  const devMode = import.meta.env.VITE_DEVELOPER_MODE?.toLowerCase() === 'true';
 
   const dispatch = useAppDispatch();
   const handleDebug = () => dispatch(triggerDebug());
