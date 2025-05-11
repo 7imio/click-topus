@@ -17,10 +17,10 @@ import {
 } from '../store/slices/animationSlice';
 import useEssenceHelper from './useEssenceHelper';
 
-const useEssenceIncrement = () => {
+const useEssenceIncrement = (essenceToIncrement?: number) => {
   const dispatch = useAppDispatch();
   // déplace ce useSelector ici pour toujours récupérer la dernière valeur
-  const { essence } = useAppSelector((state) => state.essence);
+
   const { currentEssence } = useAppSelector((state) => state.creatures);
   const { essencePerTentacle, essenceForCreature } = useEssenceHelper();
   const skin = useAppSelector((state) => state.skin.currentSkin.skin);
@@ -29,20 +29,29 @@ const useEssenceIncrement = () => {
     dispatch(incrementTentacleEssence(essencePerTentacle));
 
     // 1. J'incrémente l'essence GLOBALE pour les achats
-    dispatch(incrementEssence());
+    dispatch(incrementEssence(essenceToIncrement ?? 1));
 
     // 2. J'incrémente l'essence dédiée à la créature en cours
-    dispatch(addTentacleEssence({ essence: 1, essenceForCreature }));
+    dispatch(
+      addTentacleEssence({
+        essence: essenceToIncrement ?? 1,
+        essenceForCreature,
+      })
+    );
 
     if (currentEssence + 1 >= essenceForCreature) {
+      const delta = currentEssence - essenceForCreature;
       dispatch(triggerPopEffect());
       dispatch(resetCurrentEssence());
       dispatch(createNewCreature({ essenceForCreature, skin }));
       dispatch(updateTentacleEssenceNeed());
       setTimeout(() => dispatch(clearPopEffect()), 500);
       dispatch(resetTentacles());
+      if (delta > 0) {
+        dispatch(addTentacleEssence({ essence: delta, essenceForCreature }));
+      }
     }
-  }, [essence, dispatch]);
+  }, [currentEssence, dispatch]);
 
   return essenceIncrementation;
 };

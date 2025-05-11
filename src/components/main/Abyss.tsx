@@ -33,7 +33,7 @@ const Abyss: FC = () => {
   const tentacles = useAppSelector((state) => state.tentacles.tentacles);
   const angleStep = 360 / maxTentacles;
 
-  const handleClick = useEssenceIncrement();
+  const handleClick = useEssenceIncrement(1);
 
   return (
     <>

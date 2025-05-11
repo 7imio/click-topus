@@ -16,7 +16,7 @@ const Informations: FC<InformationProps> = ({ isPanel }) => {
 
   const { essence, purchasedItems, totalHarvestedEssence } = essenceState;
   const { currentEssence, created } = creatures;
-  const { count, currentCost, click } = autoClicker;
+  const { speed: count, currentCost, click } = autoClicker;
 
   return (
     <div

@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { updateCost } from '../../helpers/math-utils';
+import { count } from 'console';
 
 export type CorruptionState = {
   totalHarvestedCorruption: number;
@@ -45,7 +46,7 @@ const corruptionSlice = createSlice({
         state.purchasedItems.push(name);
         state.count += 1;
         state.corruption -= state.currentCost;
-        updateCost(state);
+        state.currentCost = updateCost(state.baseCost, state.count);
       }
     },
 
