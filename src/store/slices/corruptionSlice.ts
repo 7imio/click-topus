@@ -45,7 +45,7 @@ const corruptionSlice = createSlice({
         state.purchasedItems.push(name);
         state.count += 1;
         state.corruption -= state.currentCost;
-        updateCost(state);
+        state.currentCost = updateCost(state.baseCost, state.count);
       }
     },
 

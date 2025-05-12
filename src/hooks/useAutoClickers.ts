@@ -3,28 +3,26 @@ import { useAppSelector } from '../store/hooks';
 import useEssenceIncrement from './useEssenceIncrement';
 
 const useAutoClickers = () => {
-  const { count, click } = useAppSelector((state) => state.autoClicker);
+  const { speed, click } = useAppSelector((state) => state.autoClicker);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const incrementEssence = useEssenceIncrement();
+  const incrementEssence = useEssenceIncrement(click);
   useEffect(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
 
-    if (count <= 0) return;
+    if (speed <= 0) return;
 
-    const intervalDuration = 1000 / count;
+    const intervalDuration = 1000 / speed;
     intervalRef.current = setInterval(() => {
-      for (let i = 0; i < click; i++) {
-        incrementEssence();
-      }
+      incrementEssence();
     }, intervalDuration);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [count, click, incrementEssence]);
+  }, [speed, click, incrementEssence]);
 };
 
 export default useAutoClickers;

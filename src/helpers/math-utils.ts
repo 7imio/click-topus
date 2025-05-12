@@ -1,14 +1,11 @@
-import { AutoClickerState } from '../store/slices/autoClickerSlice';
-import { CorruptionState } from '../store/slices/corruptionSlice';
-
 export const multiplier = 1.2;
 
 export const getExponentialGrowth = (exponential: number) => {
   return Math.pow(multiplier, (exponential + 1) * 0.5);
 };
 
-export const updateCost = (state: AutoClickerState | CorruptionState) => {
-  state.currentCost = Math.floor(state.baseCost * Math.pow(1.2, state.count));
+export const updateCost = (baseCost: number, count: number): number => {
+  return Math.floor(baseCost * Math.pow(1.2, count));
 };
 
 export const rollEffect = (

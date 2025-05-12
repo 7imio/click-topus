@@ -16,9 +16,10 @@ const essenceSlice = createSlice({
   name: 'essence',
   initialState,
   reducers: {
-    incrementEssence: (state) => {
-      state.essence += 1;
-      state.totalHarvestedEssence += 1;
+    incrementEssence: (state, actions) => {
+      const essence = actions.payload ?? 1;
+      state.essence += essence;
+      state.totalHarvestedEssence += essence;
     },
     emptyEssence: (state) => {
       state.essence = 0;

@@ -10,7 +10,7 @@ import { buyEssenceItem } from '../../store/slices/essenceSlice';
 const AutoClickerPrompt: FC = () => {
   const dispatch = useAppDispatch();
 
-  const { count, currentCost } = useAppSelector((state) => state.autoClicker);
+  const { speed, currentCost } = useAppSelector((state) => state.autoClicker);
   const { essence } = useAppSelector((state) => state.essence);
   const [isDisplaying, setIsDisplaying] = useState<boolean>(false);
 
@@ -51,7 +51,7 @@ const AutoClickerPrompt: FC = () => {
           <div className="fixed top-15 w-full max-w-xs bg-black/80 text-white px-4 py-3 rounded-lg shadow-xl border border-green-500 animate-fadeIn z-50">
             <p className="text-xs mb-2">Cost: {currentCost} essence</p>
             <div className="flex flex-col">
-              {count === 0 ? (
+              {speed === 0 ? (
                 <button
                   className={`text-sm px-3 py-1 rounded my-1 transition-colors ${canAfford ? 'bg-green-600 hover:bg-green-700' : 'bg-neutral-600 disabled'}`}
                   disabled={!canAfford}

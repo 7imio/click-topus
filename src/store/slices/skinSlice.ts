@@ -25,8 +25,8 @@ const initialState: SkinState = {
       irisColor: '#6633cc',
       bodyColor: '#00cc66',
       suckerColor: '#9900cc',
-      eyeWhiteColor: '#EEEECC',
-      retinaColor: '27272a',
+      eyeWhiteColor: '#EEEEcc',
+      retinaColor: '#27272a',
     },
   },
   unlockedSkins: [],
@@ -45,11 +45,14 @@ const skinSlice = createSlice({
       const unlockedSkin = actions.payload;
       unlockedSkins.push(unlockedSkin);
     },
+    resetSkin: () => {
+      return initialState;
+    },
     hydrate: (state, action: PayloadAction<SkinState>) => {
       return { ...state, ...action.payload };
     },
   },
 });
 
-export const { applySkin, unlockSkin, hydrate } = skinSlice.actions;
+export const { applySkin, unlockSkin, resetSkin, hydrate } = skinSlice.actions;
 export default skinSlice.reducer;

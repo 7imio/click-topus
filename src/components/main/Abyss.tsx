@@ -1,11 +1,11 @@
 import { FC, useEffect, useState } from 'react';
 import useEssenceIncrement from '../../hooks/useEssenceIncrement';
 import { useAppSelector } from '../../store/hooks';
+import { Creature } from '../../store/slices/creatureSlice';
 import MiniCreature from '../background/MiniCreature';
 import Eye from '../creatures/Eye';
 import SegmentedTentacle from '../creatures/SegmentedTentacle';
 import AutoClickerPrompt from '../ui/AutoClickerPrompt';
-import { Creature } from '../../store/slices/creatureSlice';
 import Informations from '../ui/menu/Informations';
 
 export interface Tentacles {
@@ -33,7 +33,7 @@ const Abyss: FC = () => {
   const tentacles = useAppSelector((state) => state.tentacles.tentacles);
   const angleStep = 360 / maxTentacles;
 
-  const handleClick = useEssenceIncrement();
+  const handleClick = useEssenceIncrement(1);
 
   return (
     <>
@@ -49,6 +49,7 @@ const Abyss: FC = () => {
           <Eye skin={currentSkin.skin} handleClick={handleClick} blink={true}>
             {tentacles.map((tentacle, idx) => (
               <div
+                aria-hidden={true}
                 key={tentacle.id}
                 onClick={handleClick}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2"
@@ -67,7 +68,9 @@ const Abyss: FC = () => {
             ))}
           </Eye>
         </div>
-        {creatureList?.map((creature) => <MiniCreature creature={creature} />)}
+        {creatureList?.map((creature) => (
+          <MiniCreature key={creature.creatureId} creature={creature} />
+        ))}
       </div>
     </>
   );
