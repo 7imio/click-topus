@@ -21,7 +21,7 @@ const OctopodeSkillSelector: FC = () => {
     setEssenceResult(result);
   };
 
-  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+  const [_selectedSkill, setSelectedSkill] = useState<string | null>(null);
 
   const handleSkillSelect = (skillId: string) => {
     if (!creature) return;
@@ -50,7 +50,7 @@ const OctopodeSkillSelector: FC = () => {
   if (!creature) return <div className="text-white">Octopode not found!</div>;
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-center justify-center h-full p-4">
+    <div className="flex flex-col items-center justify-center h-full p-2">
       <h1 className="text-white text-2xl mb-4">
         Roll a dice and select a Skill for {creature.creatureName}
       </h1>
