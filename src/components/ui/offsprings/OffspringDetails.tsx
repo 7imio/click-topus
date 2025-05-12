@@ -1,13 +1,16 @@
 import { Link, useParams } from 'react-router-dom';
-import { useAppSelector } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import MiniCreature from '../../background/MiniCreature';
-import { Creature } from '../../../store/slices/creatureSlice';
+import { Creature, updateCreature } from '../../../store/slices/creatureSlice';
 import DiceRoller from './dice/DiceRoller';
 import { useState } from 'react';
+import { generateRandomName } from '../../../helpers/name-utils';
+import { Check, Dice5Icon, Pencil, X } from 'lucide-react';
 
 const OffspringDetails = () => {
   const { creatureId } = useParams<{ creatureId: string }>();
   const [essenceResult, setEssenceResult] = useState<number | null>(null);
+  const dispatch = useAppDispatch();
 
   const handleResult = (result: number | null) => {
     if (!result) return;
@@ -23,12 +26,61 @@ const OffspringDetails = () => {
     return <p className="text-red-500">❌ Creature not found</p>;
   }
 
+  const [isRenaming, setIsRenaming] = useState(false);
+  const [name, setName] = useState<string>();
+
+  const handleValidNewName = () => {
+    setIsRenaming(false);
+    const { creatureId } = creature;
+    const updatedCreature = {
+      ...creature,
+      creatureName: name ?? 'unnamed',
+    };
+    console.log(name);
+    dispatch(updateCreature({ creatureId, creature: updatedCreature }));
+  };
+
+  const handleGenerateNewName = () => {
+    const newName = generateRandomName();
+    setName(newName);
+  };
+
   return (
     <div className="h-screen p-6 text-green-200">
       <div className="w-full flex flex-col justify-center align-middle items-center">
         <h1 className="text-2xl font-bold mb-4">🧬 Octopode Detail</h1>
-        <h2 className="text-xl font-bold mb-4">
-          <strong>Name:</strong> {creature.creatureName ?? 'Unnamed'}
+        <h2 className="text-xl font-bold mb-4 w-full flex flex-row justify-between">
+          <strong>Name:</strong>{' '}
+          {isRenaming ? (
+            <input
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+            ></input>
+          ) : (
+            (creature.creatureName ?? 'Unnamed')
+          )}{' '}
+          {!isRenaming ? (
+            <button
+              onClick={() => {
+                setIsRenaming(true);
+                setName(creature.creatureName);
+              }}
+            >
+              <Pencil />
+            </button>
+          ) : (
+            <>
+              <button onClick={handleValidNewName}>
+                <Check />
+              </button>
+              <button onClick={() => setIsRenaming(false)}>
+                <X />{' '}
+              </button>
+              <button onClick={handleGenerateNewName}>
+                <Dice5Icon />
+              </button>
+            </>
+          )}
         </h2>
         <p>
           <strong>Essence:</strong> {creature.essence}
@@ -58,3 +110,6 @@ const OffspringDetails = () => {
 };
 
 export default OffspringDetails;
+function dispatch(arg0: any) {
+  throw new Error('Function not implemented.');
+}
