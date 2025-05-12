@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { updateCost } from '../../helpers/math-utils';
-import { count } from 'console';
 
 export type CorruptionState = {
   totalHarvestedCorruption: number;

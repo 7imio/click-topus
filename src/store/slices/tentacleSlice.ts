@@ -17,17 +17,23 @@ const tentacleSlice = createSlice({
   name: 'tentacles',
   initialState,
   reducers: {
-    incrementTentacleEssence: (state, action: PayloadAction<number>) => {
-      const essenceToAdd = action.payload;
+    incrementTentacleEssence: (
+      state,
+      action: PayloadAction<{ essenceToAdd: number; count: number }>
+    ) => {
+      const { essenceToAdd, count } = action.payload;
       const tentacles = state.tentacles;
+      console.log('incrementTentacleEssence', { essenceToAdd });
       const targetIndex = tentacles.findIndex((t) => t.essence < essenceToAdd);
 
       if (targetIndex !== -1) {
-        tentacles[targetIndex].essence += 1;
+        tentacles[targetIndex].essence += count;
 
         const last = tentacles[tentacles.length - 1];
         if (last.essence >= essenceToAdd) {
-          tentacles.push({ id: crypto.randomUUID(), essence: 0 });
+          last.essence = essenceToAdd;
+          const delta = last.essence - essenceToAdd;
+          tentacles.push({ id: crypto.randomUUID(), essence: delta });
         }
       }
     },

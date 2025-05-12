@@ -1,10 +1,11 @@
 import { AppDispatch } from '..';
-import { resetEssence } from '../slices/essenceSlice';
-import { resetCreatures } from '../slices/creatureSlice';
-import { resetTentacles } from '../slices/tentacleSlice';
 import { resetAutoClickers } from '../slices/autoClickerSlice';
 import { resetCorruption } from '../slices/corruptionSlice';
+import { resetCreatures } from '../slices/creatureSlice';
+import { resetEssence } from '../slices/essenceSlice';
 import { setHydrated } from '../slices/hydrationSlice';
+import { resetSkin } from '../slices/skinSlice';
+import { resetTentacles } from '../slices/tentacleSlice';
 
 export const resetAllGameState = () => (dispatch: AppDispatch) => {
   dispatch(resetEssence());
@@ -12,5 +13,6 @@ export const resetAllGameState = () => (dispatch: AppDispatch) => {
   dispatch(resetTentacles());
   dispatch(resetAutoClickers());
   dispatch(resetCorruption());
+  dispatch(resetSkin());
   dispatch(setHydrated(false));
 };

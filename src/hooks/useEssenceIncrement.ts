@@ -1,20 +1,20 @@
 import { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { incrementEssence } from '../store/slices/essenceSlice';
 import {
-  incrementTentacleEssence,
-  resetTentacles,
-} from '../store/slices/tentacleSlice';
+  clearPopEffect,
+  triggerPopEffect,
+} from '../store/slices/animationSlice';
 import {
   addTentacleEssence,
   createNewCreature,
   resetCurrentEssence,
   updateTentacleEssenceNeed,
 } from '../store/slices/creatureSlice';
+import { incrementEssence } from '../store/slices/essenceSlice';
 import {
-  clearPopEffect,
-  triggerPopEffect,
-} from '../store/slices/animationSlice';
+  incrementTentacleEssence,
+  resetTentacles,
+} from '../store/slices/tentacleSlice';
 import useEssenceHelper from './useEssenceHelper';
 
 const useEssenceIncrement = (essenceToIncrement?: number) => {
@@ -22,25 +22,33 @@ const useEssenceIncrement = (essenceToIncrement?: number) => {
   // déplace ce useSelector ici pour toujours récupérer la dernière valeur
 
   const { currentEssence } = useAppSelector((state) => state.creatures);
+
   const { essencePerTentacle, essenceForCreature } = useEssenceHelper();
   const skin = useAppSelector((state) => state.skin.currentSkin.skin);
 
   const essenceIncrementation = useCallback(() => {
-    dispatch(incrementTentacleEssence(essencePerTentacle));
+    const count = essenceToIncrement ?? 1;
+    dispatch(
+      incrementTentacleEssence({
+        essenceToAdd: essencePerTentacle,
+        count,
+      })
+    );
 
     // 1. J'incrémente l'essence GLOBALE pour les achats
-    dispatch(incrementEssence(essenceToIncrement ?? 1));
+    dispatch(incrementEssence(count));
 
     // 2. J'incrémente l'essence dédiée à la créature en cours
     dispatch(
       addTentacleEssence({
-        essence: essenceToIncrement ?? 1,
+        essence: count,
         essenceForCreature,
       })
     );
 
     if (currentEssence + 1 >= essenceForCreature) {
       const delta = currentEssence - essenceForCreature;
+      console.log('DELTA =>', { delta });
       dispatch(triggerPopEffect());
       dispatch(resetCurrentEssence());
       dispatch(createNewCreature({ essenceForCreature, skin }));
