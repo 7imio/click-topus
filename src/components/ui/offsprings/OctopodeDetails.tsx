@@ -1,8 +1,7 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import MiniCreature from '../../background/MiniCreature';
 import { updateCreature } from '../../../store/slices/creatureSlice';
-import DiceRoller from './dice/DiceRoller';
 import { useState } from 'react';
 import { generateRandomName } from '../../../helpers/name-utils';
 import { Check, Dice5Icon, Pencil, X } from 'lucide-react';
@@ -10,13 +9,10 @@ import { Creature } from '../../../types/Creature';
 
 const OctopodeDetails = () => {
   const { creatureId } = useParams<{ creatureId: string }>();
-  const [essenceResult, setEssenceResult] = useState<number | null>(null);
-  const dispatch = useAppDispatch();
 
-  const handleResult = (result: number | null) => {
-    if (!result) return;
-    setEssenceResult(result);
-  };
+  const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
 
   const creature: Creature | undefined = useAppSelector((state) =>
     state.creatures.creatures?.find((c) => c.creatureId === creatureId)
@@ -88,18 +84,27 @@ const OctopodeDetails = () => {
           <strong>Essence:</strong> {creature.essence}
         </p>
       </div>
-
-      <DiceRoller
-        setResult={handleResult}
-        result={essenceResult}
-        creature={creature}
-      />
-
-      <div className="text-3xl font-bold">
-        {essenceResult !== null && (
-          <p className="z-100">🎯 New Essence Affectation : {essenceResult}</p>
-        )}
-      </div>
+      <button
+        onClick={() => navigate(`/octopodes/${creature.creatureId}/skills`)}
+        className="mt-4 px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-bold rounded-full"
+      >
+        🎲 {creature.skills && creature.skills.length < 3 && 'Affect skills & '}
+        Roll the dice
+      </button>
+      {creature.skills && creature.skills?.length > 0 && (
+        <div className="relative  overflow-hidden w-80 border-4 border-green-500 rounded-lg bg-black shadow-lg opacity-70">
+          {creature.skills.map((skill) => {
+            return (
+              <div key={skill.name}>
+                <strong className="ml-4">{skill.name}</strong> :{' '}
+                <p className="py-2 pl-4 pr-3 text-center">
+                  {skill.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      )}
       <div className="w-full flex flex-col justify-center">
         <button className="bg-emerald-700 m-4 text-green-100 font-bold py-3 px-6 rounded-2xl text-xl shadow-md transition-all duration-300 animate-glow hover:bg-emerald-600 hover:scale-105 z-[100]">
           <Link to="/game">Return into the void</Link>

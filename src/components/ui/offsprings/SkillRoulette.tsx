@@ -35,7 +35,7 @@ const SkillRoulette: FC<SkillRouletteProps> = ({ onSelect, disabled }) => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative h-32 overflow-hidden w-64 border-4 border-green-500 rounded-lg bg-black shadow-lg">
+      <div className="relative h-32 overflow-hidden w-80 border-4 border-green-500 rounded-lg bg-black shadow-lg">
         <motion.div
           animate={{ y: rolling ? [-50, -100, 0] : 0 }}
           transition={{
@@ -43,7 +43,7 @@ const SkillRoulette: FC<SkillRouletteProps> = ({ onSelect, disabled }) => {
             duration: 0.1,
             ease: 'easeInOut',
           }}
-          className="flex flex-col items-center text-white text-2xl font-bold"
+          className="flex flex-col h-full justify-center align-middle items-center text-white text-2xl font-bold"
         >
           {selectedSkill || '🎲 Roll to Select'}
         </motion.div>
@@ -58,7 +58,11 @@ const SkillRoulette: FC<SkillRouletteProps> = ({ onSelect, disabled }) => {
             : 'bg-green-500 hover:bg-green-600'
         }`}
       >
-        {rolling ? 'Rolling...' : 'Roll the Dice'}
+        {rolling
+          ? 'Rolling...'
+          : disabled
+            ? 'No more skills to affect'
+            : 'Affect skills'}
       </button>
     </div>
   );
