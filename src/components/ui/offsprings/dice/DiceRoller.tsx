@@ -3,12 +3,10 @@ import { Canvas } from '@react-three/fiber';
 import DiceD20, { DiceD20Handle } from './DiceD20';
 import { OrbitControls } from '@react-three/drei';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
-import {
-  Creature,
-  updateCreature,
-} from '../../../../store/slices/creatureSlice';
+import { updateCreature } from '../../../../store/slices/creatureSlice';
 import { buyCorruptionItem } from '../../../../store/slices/corruptionSlice';
 import { rollEffect } from '../../../../helpers/math-utils';
+import { Creature } from '../../../../types/Creature';
 
 export interface DiceRollerProps {
   setResult: (result: number | null) => void;

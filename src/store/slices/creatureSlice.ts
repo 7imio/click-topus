@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getExponentialGrowth } from '../../helpers/math-utils';
-import { SkinColor } from './skinSlice';
 import { generateRandomName } from '../../helpers/name-utils';
+import { Creature } from '../../types/Creature';
+import { SkinColor } from '../../types/Skin';
+import { basicSkin } from './skinSlice';
 
 export interface CreatureState {
   created: number;
@@ -11,13 +13,6 @@ export interface CreatureState {
   segmentsPerTentacle: number;
   essencePerSegment: number;
   segmentsType: number;
-}
-
-export interface Creature {
-  creatureId: string;
-  creatureName: string;
-  essence: number;
-  skin: SkinColor;
 }
 
 const initialState: CreatureState = {
@@ -63,11 +58,8 @@ const creatureSlice = createSlice({
         creatureId: crypto.randomUUID(),
         creatureName: generateRandomName(),
         essence: essenceForCreature,
-        skin: skin ?? {
-          irisColor: '#6633cc',
-          bodyColor: '#00cc66',
-          suckerColor: '#9900cc',
-        },
+        skills: [],
+        skin: skin ?? basicSkin,
       };
       state.creatures?.push(newCreature);
 

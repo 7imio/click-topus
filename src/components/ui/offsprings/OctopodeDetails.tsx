@@ -1,11 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import MiniCreature from '../../background/MiniCreature';
-import { Creature, updateCreature } from '../../../store/slices/creatureSlice';
+import { updateCreature } from '../../../store/slices/creatureSlice';
 import DiceRoller from './dice/DiceRoller';
 import { useState } from 'react';
 import { generateRandomName } from '../../../helpers/name-utils';
 import { Check, Dice5Icon, Pencil, X } from 'lucide-react';
+import { Creature } from '../../../types/Creature';
 
 const OctopodeDetails = () => {
   const { creatureId } = useParams<{ creatureId: string }>();
