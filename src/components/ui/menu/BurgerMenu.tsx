@@ -84,8 +84,8 @@ const BurgerMenu = () => {
           <Link to="/reset" onClick={() => handleBurger()}>
             💀 Reset
           </Link>
-          <Link to="/offsprings" onClick={() => handleBurger()}>
-            🪼 Offsprings
+          <Link to="/octopodes" onClick={() => handleBurger()}>
+            🪼 Octopodes
           </Link>
           <p className="cursor-pointer" onClick={handleChangeSkin}>
             🐙 Change Skin

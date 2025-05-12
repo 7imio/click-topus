@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { generateRandomName } from '../../../helpers/name-utils';
 import { Check, Dice5Icon, Pencil, X } from 'lucide-react';
 
-const OffspringDetails = () => {
+const OctopodeDetails = () => {
   const { creatureId } = useParams<{ creatureId: string }>();
   const [essenceResult, setEssenceResult] = useState<number | null>(null);
   const dispatch = useAppDispatch();
@@ -47,10 +47,13 @@ const OffspringDetails = () => {
 
   return (
     <div className="h-screen p-6 text-green-200">
+      <div className="z-0 absolute -top-60 left-0">
+        <MiniCreature creature={creature} isCentered={true} />
+      </div>
       <div className="w-full flex flex-col justify-center align-middle items-center">
         <h1 className="text-2xl font-bold mb-4">🧬 Octopode Detail</h1>
         <h2 className="text-xl font-bold mb-4 w-full flex flex-row justify-between">
-          <strong>Name:</strong>{' '}
+          <strong>Name:</strong>
           {isRenaming ? (
             <input
               onChange={(e) => setName(e.target.value)}
@@ -58,7 +61,7 @@ const OffspringDetails = () => {
             ></input>
           ) : (
             (creature.creatureName ?? 'Unnamed')
-          )}{' '}
+          )}
           {!isRenaming ? (
             <button
               onClick={() => {
@@ -87,20 +90,18 @@ const OffspringDetails = () => {
         </p>
       </div>
 
-      <MiniCreature creature={creature} isCentered={true} />
-
       <DiceRoller
         setResult={handleResult}
         result={essenceResult}
         creature={creature}
       />
 
-      <div className="text-3xl h-20 font-bold">
+      <div className="text-3xl font-bold">
         {essenceResult !== null && (
-          <p>🎯 New Essence Affectation : {essenceResult}</p>
+          <p className="z-100">🎯 New Essence Affectation : {essenceResult}</p>
         )}
       </div>
-      <div className="w-full flex flex-col justify-center align-middle items-center">
+      <div className="w-full flex flex-col justify-center">
         <button className="bg-emerald-700 m-4 text-green-100 font-bold py-3 px-6 rounded-2xl text-xl shadow-md transition-all duration-300 animate-glow hover:bg-emerald-600 hover:scale-105 z-[100]">
           <Link to="/game">Return into the void</Link>
         </button>
@@ -109,7 +110,4 @@ const OffspringDetails = () => {
   );
 };
 
-export default OffspringDetails;
-function dispatch(arg0: any) {
-  throw new Error('Function not implemented.');
-}
+export default OctopodeDetails;
