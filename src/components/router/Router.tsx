@@ -8,6 +8,7 @@ import Informations from '../ui/menu/Informations';
 import Octopodes from '../ui/offsprings/Octopodes';
 import OctopodeDetails from '../ui/offsprings/OctopodeDetails';
 import ConquestScreen from '../ui/conquest/ConquestScreen';
+import OctopodeSkillSelector from '../ui/offsprings/OctopodeSkillSelector';
 
 const Router: FC = () => {
   return (
@@ -20,7 +21,11 @@ const Router: FC = () => {
       <Route path="/reset" element={<ResetScreen />} />
       <Route path="/octopodes" element={<Octopodes />} />
       <Route path="/octopodes/:creatureId" element={<OctopodeDetails />} />
-      <Route path="/test" element={<p>Testing route</p>} />
+      <Route
+        path="/octopodes/:creatureId/skills"
+        element={<OctopodeSkillSelector />}
+      />
+
       <Route path="*" element={<p>404</p>} />
     </Routes>
   );
