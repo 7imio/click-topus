@@ -23,7 +23,7 @@ const tentacleSlice = createSlice({
     ) => {
       const { essenceToAdd, count } = action.payload;
       const tentacles = state.tentacles;
-      console.log('incrementTentacleEssence', { essenceToAdd });
+
       const targetIndex = tentacles.findIndex((t) => t.essence < essenceToAdd);
 
       if (targetIndex !== -1) {

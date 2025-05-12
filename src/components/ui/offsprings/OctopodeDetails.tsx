@@ -14,7 +14,6 @@ const OctopodeDetails = () => {
 
   const handleResult = (result: number | null) => {
     if (!result) return;
-    console.log(result);
     setEssenceResult(result);
   };
 
@@ -36,7 +35,6 @@ const OctopodeDetails = () => {
       ...creature,
       creatureName: name ?? 'unnamed',
     };
-    console.log(name);
     dispatch(updateCreature({ creatureId, creature: updatedCreature }));
   };
 
