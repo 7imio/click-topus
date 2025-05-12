@@ -21,19 +21,20 @@ const tentacleSlice = createSlice({
       state,
       action: PayloadAction<{ essenceToAdd: number; count: number }>
     ) => {
-      const { essenceToAdd, count } = action.payload;
-      const tentacles = state.tentacles;
+      const { essenceToAdd: maxEssencePerTentacle, count } = action.payload;
+      let remainingEssence = count;
 
-      const targetIndex = tentacles.findIndex((t) => t.essence < essenceToAdd);
+      while (remainingEssence > 0) {
+        const currentTentacle = state.tentacles[state.tentacles.length - 1];
+        const essenceNeeded = maxEssencePerTentacle - currentTentacle.essence;
+        const essenceToApply = Math.min(remainingEssence, essenceNeeded);
 
-      if (targetIndex !== -1) {
-        tentacles[targetIndex].essence += count;
+        currentTentacle.essence += essenceToApply;
+        remainingEssence -= essenceToApply;
 
-        const last = tentacles[tentacles.length - 1];
-        if (last.essence >= essenceToAdd) {
-          last.essence = essenceToAdd;
-          const delta = last.essence - essenceToAdd;
-          tentacles.push({ id: crypto.randomUUID(), essence: delta });
+        if (currentTentacle.essence >= maxEssencePerTentacle) {
+          currentTentacle.essence = maxEssencePerTentacle;
+          state.tentacles.push({ id: crypto.randomUUID(), essence: 0 });
         }
       }
     },
