@@ -4,7 +4,6 @@ import { generateRandomName } from '../../helpers/name-utils';
 import { Creature } from '../../types/Creature';
 import { SkinColor } from '../../types/Skin';
 import { basicSkin } from './skinSlice';
-import { cp } from 'fs';
 
 export interface CreatureState {
   created: number;

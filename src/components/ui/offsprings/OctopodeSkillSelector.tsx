@@ -3,13 +3,9 @@ import skillsData from '../../../data/skills/creatureSkills.json';
 import { FC, useState } from 'react';
 import SkillRoulette from './SkillRoulette'; // On va le créer juste après
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import {
-  resetCreatureSkills,
-  updateCreature,
-} from '../../../store/slices/creatureSlice';
+import { updateCreature } from '../../../store/slices/creatureSlice';
 import { Capacity } from '../../../types/Capacity';
 import DiceRoller from './dice/DiceRoller';
-import { rerollCreatureSkills } from '../../../store/slices/corruptionSlice';
 
 const OctopodeSkillSelector: FC = () => {
   const { creatureId } = useParams<{ creatureId: string }>();

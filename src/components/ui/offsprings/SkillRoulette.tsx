@@ -2,11 +2,7 @@ import { FC, useState } from 'react';
 import skillsData from '../../../data/skills/creatureSkills.json';
 import { motion } from 'framer-motion';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import {
-  addSkillToCreature,
-  rerollCreatureSkills,
-} from '../../../store/slices/corruptionSlice';
-import { resetCreatureSkills } from '../../../store/slices/creatureSlice';
+import { addSkillToCreature } from '../../../store/slices/corruptionSlice';
 
 interface SkillRouletteProps {
   onSelect: (skillId: string) => void;
