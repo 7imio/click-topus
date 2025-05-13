@@ -10,6 +10,26 @@
     }
   },
   {
+    "name": "Coke Chips",
+    "skin": {
+      "irisColor": "#302206",
+      "bodyColor": "#6b4a07",
+      "suckerColor": "#d9bf18",
+      "eyeWhiteColor": "#e3d578",
+      "retinaColor": "#27272a"
+    }
+  },
+  {
+    "name": "Bleach",
+    "skin": {
+      "irisColor": "#999999",
+      "bodyColor": "#e8e8e8",
+      "suckerColor": "#525252",
+      "eyeWhiteColor": "#ffffff",
+      "retinaColor": "#545454"
+    }
+  },
+  {
     "name": "Black Kraken",
     "skin": {
       "irisColor": "#000000",
