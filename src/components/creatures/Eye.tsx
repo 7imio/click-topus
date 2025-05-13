@@ -2,7 +2,7 @@ import { FC, ReactNode, useEffect, useState } from 'react';
 import { triggerBlinkSequence } from '../../helpers/anim-utils';
 import { getGradientFromColor } from '../../helpers/color-utils';
 import { useAppSelector } from '../../store/hooks';
-import { SkinColor } from '../../store/slices/skinSlice';
+import { SkinColor } from '../../types/Skin';
 
 type EyeProps = {
   skin: SkinColor;

@@ -1,33 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-export interface SkinColor {
-  irisColor: string;
-  bodyColor: string;
-  suckerColor: string;
-  eyeWhiteColor: string;
-  retinaColor: string;
-}
-
-export interface Skin {
-  name: string;
-  skin: SkinColor;
-}
+import { Skin } from '../../types/Skin';
 
 export type SkinState = {
   currentSkin: Skin;
   unlockedSkins: Skin[];
 };
 
+export const basicSkin = {
+  irisColor: '#6633cc',
+  bodyColor: '#00cc66',
+  suckerColor: '#9900cc',
+  eyeWhiteColor: '#EEEEcc',
+  retinaColor: '#27272a',
+};
+
 const initialState: SkinState = {
   currentSkin: {
     name: 'Eldritch Horror',
-    skin: {
-      irisColor: '#6633cc',
-      bodyColor: '#00cc66',
-      suckerColor: '#9900cc',
-      eyeWhiteColor: '#EEEEcc',
-      retinaColor: '#27272a',
-    },
+    skin: basicSkin,
   },
   unlockedSkins: [],
 };

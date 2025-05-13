@@ -3,12 +3,10 @@ import { Canvas } from '@react-three/fiber';
 import DiceD20, { DiceD20Handle } from './DiceD20';
 import { OrbitControls } from '@react-three/drei';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
-import {
-  Creature,
-  updateCreature,
-} from '../../../../store/slices/creatureSlice';
+import { updateCreature } from '../../../../store/slices/creatureSlice';
 import { buyCorruptionItem } from '../../../../store/slices/corruptionSlice';
 import { rollEffect } from '../../../../helpers/math-utils';
+import { Creature } from '../../../../types/Creature';
 
 export interface DiceRollerProps {
   setResult: (result: number | null) => void;
@@ -71,8 +69,10 @@ export const DiceRoller: FC<DiceRollerProps> = ({
 
         <OrbitControls target={[0, 0, 0]} />
       </Canvas>
-      <h2>Buy competence</h2>
-      <p>Price : {currentCost} corruption</p>
+      <div className="text-xl text-center z-50 font-bold text-emerald-600 text-shadow-lg">
+        <h2>Buy competence</h2>
+        <p>Price : {currentCost} corruption</p>
+      </div>
       <button
         onClick={handleRoll}
         disabled={!canBuy}
@@ -81,7 +81,7 @@ export const DiceRoller: FC<DiceRollerProps> = ({
       >
         {canBuy ? '🎲 Roll Dice' : "You can't buy"}
       </button>
-      <div className="text-2xl h-30 font-bold text-green-600 text-shadow-md">
+      <div className="text-xl h-15 font-bold text-green-600 text-shadow-md">
         {result !== null && !isRolling && (
           <>
             <p>Result: {diceResult}</p>

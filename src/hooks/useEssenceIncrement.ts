@@ -48,12 +48,13 @@ const useEssenceIncrement = (essenceToIncrement?: number) => {
 
     if (currentEssence + 1 >= essenceForCreature) {
       const delta = currentEssence - essenceForCreature;
-      console.log('DELTA =>', { delta });
+
       dispatch(triggerPopEffect());
       dispatch(resetCurrentEssence());
       dispatch(createNewCreature({ essenceForCreature, skin }));
       dispatch(updateTentacleEssenceNeed());
       setTimeout(() => dispatch(clearPopEffect()), 500);
+
       dispatch(resetTentacles());
       if (delta > 0) {
         dispatch(addTentacleEssence({ essence: delta, essenceForCreature }));

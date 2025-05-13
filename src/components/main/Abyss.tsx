@@ -1,12 +1,12 @@
 import { FC, useEffect, useState } from 'react';
 import useEssenceIncrement from '../../hooks/useEssenceIncrement';
 import { useAppSelector } from '../../store/hooks';
-import { Creature } from '../../store/slices/creatureSlice';
 import MiniCreature from '../background/MiniCreature';
 import Eye from '../creatures/Eye';
 import SegmentedTentacle from '../creatures/SegmentedTentacle';
 import AutoClickerPrompt from '../ui/AutoClickerPrompt';
 import Informations from '../ui/menu/Informations';
+import { Creature } from '../../types/Creature';
 
 export interface Tentacles {
   id: string;

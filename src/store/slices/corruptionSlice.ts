@@ -8,6 +8,8 @@ export type CorruptionState = {
   currentCost: number;
   purchasedItems: string[];
   count: number;
+  skillMultiplicator: number;
+  rerollMultiplicator: number;
 };
 
 const initialState: CorruptionState = {
@@ -17,6 +19,8 @@ const initialState: CorruptionState = {
   currentCost: 100,
   purchasedItems: [],
   count: 0,
+  skillMultiplicator: 10,
+  rerollMultiplicator: 50,
 };
 
 const corruptionSlice = createSlice({
@@ -48,9 +52,35 @@ const corruptionSlice = createSlice({
         state.currentCost = updateCost(state.baseCost, state.count);
       }
     },
-
+    addSkillToCreature: (
+      state,
+      action: PayloadAction<{ creatureId: string; skillId: string }>
+    ) => {
+      const { creatureId, skillId } = action.payload;
+      const price = state.currentCost * state.skillMultiplicator;
+      if (state.corruption > price) {
+        state.corruption -= price;
+        state.count += 1;
+        state.purchasedItems.push(`${skillId}-${creatureId}`);
+        state.currentCost = updateCost(state.baseCost, state.count);
+      }
+    },
     hydrate: (state, action: PayloadAction<CorruptionState>) => {
       return { ...state, ...action.payload };
+    },
+    rerollCreatureSkills: (
+      state,
+      action: PayloadAction<{ creatureId: string }>
+    ) => {
+      const { creatureId } = action.payload;
+      const price = state.currentCost * state.rerollMultiplicator;
+
+      if (state.corruption >= price) {
+        state.corruption -= price;
+        state.purchasedItems.push(`Reroll-${creatureId}`);
+        state.count += 1;
+        state.currentCost = updateCost(state.baseCost, state.count);
+      }
     },
   },
 });
@@ -63,5 +93,7 @@ export const {
   emptyCorruption,
   hydrate,
   setTotalHarvestedCorruption,
+  addSkillToCreature,
+  rerollCreatureSkills,
 } = corruptionSlice.actions;
 export default corruptionSlice.reducer;

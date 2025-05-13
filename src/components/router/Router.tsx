@@ -5,9 +5,10 @@ import StartScreen from '../ui/menu/StartScreen';
 import ResetScreen from '../ui/menu/ResetScreen';
 import About from '../ui/menu/About';
 import Informations from '../ui/menu/Informations';
-import Offsprings from '../ui/offsprings/Offsprings';
-import OffspringDetails from '../ui/offsprings/OffspringDetails';
+import Octopodes from '../ui/offsprings/Octopodes';
+import OctopodeDetails from '../ui/offsprings/OctopodeDetails';
 import ConquestScreen from '../ui/conquest/ConquestScreen';
+import OctopodeSkillSelector from '../ui/offsprings/OctopodeSkillSelector';
 
 const Router: FC = () => {
   return (
@@ -18,9 +19,13 @@ const Router: FC = () => {
       <Route path="/info" element={<Informations />} />
       <Route path="/conquest" element={<ConquestScreen />} />
       <Route path="/reset" element={<ResetScreen />} />
-      <Route path="/offsprings" element={<Offsprings />} />
-      <Route path="/offsprings/:creatureId" element={<OffspringDetails />} />
-      <Route path="/test" element={<p>Testing route</p>} />
+      <Route path="/octopodes" element={<Octopodes />} />
+      <Route path="/octopodes/:creatureId" element={<OctopodeDetails />} />
+      <Route
+        path="/octopodes/:creatureId/skills"
+        element={<OctopodeSkillSelector />}
+      />
+
       <Route path="*" element={<p>404</p>} />
     </Routes>
   );
