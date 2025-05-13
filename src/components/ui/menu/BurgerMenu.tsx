@@ -19,6 +19,7 @@ const BurgerMenu = () => {
     (state) => state.essence
   );
   const { corruption } = useAppSelector((state) => state.corruption);
+  const { creatures } = useAppSelector((state) => state.creatures);
 
   const devMode = import.meta.env.VITE_DEVELOPER_MODE?.toLowerCase() === 'true';
 
@@ -43,10 +44,11 @@ const BurgerMenu = () => {
   };
 
   return (
-    <div className="fixed top-4 left-4 z-50">
+    <div className="fixed top-4 left-4 z-100">
       <button
         onClick={handleBurger}
-        className="bg-green-900 text-white px-3 py-2 rounded shadow-md transition-all duration-300 hover:bg-emerald-600 hover:scale-105 flex flex-row align-middle justify-center c"
+        className="backdrop-blur-sm text-white px-3 py-2 rounded shadow-md transition-all duration-300 hover:bg-emerald-600 hover:scale-105 flex flex-row align-middle justify-center c"
+        style={{ backgroundColor: 'rgba(200,200,200,.1)' }}
       >
         <VoidBurger isOpen={open} />
       </button>
@@ -75,23 +77,33 @@ const BurgerMenu = () => {
               Panel
             </p>
           </div>
-          <Link to="/conquest" onClick={() => handleBurger()}>
-            🌍 Conquest
-          </Link>
+          <p className="cursor-pointer" onClick={handleChangeSkin}>
+            🐙 Change Skin
+          </p>
+          {creatures && creatures.length > 0 && (
+            <>
+              <hr className="my-2 border-green-500" />
+              <Link to="/octopodes" onClick={() => handleBurger()}>
+                🪼 Octopodes
+              </Link>
+              <Link to="/conquest" onClick={() => handleBurger()}>
+                🌍 Conquest
+              </Link>
+            </>
+          )}
+          <hr className="my-2 border-green-500" />
           <Link to="/about" onClick={() => handleBurger()}>
             ❓ About
+          </Link>
+          <Link to="/thanks" onClick={() => handleBurger()}>
+            🙏 Thanks
           </Link>
           <Link to="/reset" onClick={() => handleBurger()}>
             💀 Reset
           </Link>
-          <Link to="/octopodes" onClick={() => handleBurger()}>
-            🪼 Octopodes
-          </Link>
-          <p className="cursor-pointer" onClick={handleChangeSkin}>
-            🐙 Change Skin
-          </p>
           {devMode && (
             <>
+              <hr className="my-2 border-green-500" />
               <p
                 className="cursor-pointer"
                 onClick={() => {
