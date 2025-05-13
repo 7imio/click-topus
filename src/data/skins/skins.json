@@ -30,6 +30,16 @@
     }
   },
   {
+    "name": "dinosaur",
+    "skin": {
+      "irisColor": "#3bad13",
+      "bodyColor": "#368a3a",
+      "suckerColor": "#044016",
+      "eyeWhiteColor": "#ffffff",
+      "retinaColor": "#154006"
+    }
+  },
+  {
     "name": "Black Kraken",
     "skin": {
       "irisColor": "#000000",
