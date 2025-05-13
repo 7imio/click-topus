@@ -54,6 +54,8 @@ const OctopodeDetails = () => {
     dispatch(resetCreatureSkills({ creatureId }));
   };
 
+  const canRerollSkills = corruption >= currentCost * rerollMultiplicator;
+
   return (
     <div className="h-screen p-6 text-green-200">
       <div className="z-0 absolute -top-60 left-0">
@@ -123,8 +125,13 @@ const OctopodeDetails = () => {
             })}
           </div>
           <button
-            className="mt-4 px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-bold rounded-full"
+            className={`mt-4 px-6 py-2 ${
+              !canRerollSkills
+                ? 'bg-gray-600 cursor-not-allowed'
+                : 'bg-green-500 hover:bg-green-600'
+            } text-white font-bold rounded-full`}
             onClick={handleRerollSkills}
+            disabled={!canRerollSkills}
           >
             Reroll Skills - cost {currentCost * rerollMultiplicator} Corruption
           </button>
