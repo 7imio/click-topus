@@ -3,9 +3,13 @@ import skillsData from '../../../data/skills/creatureSkills.json';
 import { FC, useState } from 'react';
 import SkillRoulette from './SkillRoulette'; // On va le créer juste après
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { updateCreature } from '../../../store/slices/creatureSlice';
+import {
+  resetCreatureSkills,
+  updateCreature,
+} from '../../../store/slices/creatureSlice';
 import { Capacity } from '../../../types/Capacity';
 import DiceRoller from './dice/DiceRoller';
+import { rerollCreatureSkills } from '../../../store/slices/corruptionSlice';
 
 const OctopodeSkillSelector: FC = () => {
   const { creatureId } = useParams<{ creatureId: string }>();
@@ -42,9 +46,6 @@ const OctopodeSkillSelector: FC = () => {
     );
 
     setSelectedSkill(skillId);
-
-    // Tu peux mettre une petite pause avant de revenir à l'écran principal
-    //setTimeout(() => navigate('/'), 1500);
   };
 
   if (!creature) return <div className="text-white">Octopode not found!</div>;
@@ -62,6 +63,7 @@ const OctopodeSkillSelector: FC = () => {
 
       <SkillRoulette
         onSelect={handleSkillSelect}
+        creatureId={creatureId ?? ''}
         disabled={!creature.skills || creature.skills?.length >= 3}
       />
 

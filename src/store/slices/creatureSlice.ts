@@ -4,6 +4,7 @@ import { generateRandomName } from '../../helpers/name-utils';
 import { Creature } from '../../types/Creature';
 import { SkinColor } from '../../types/Skin';
 import { basicSkin } from './skinSlice';
+import { cp } from 'fs';
 
 export interface CreatureState {
   created: number;
@@ -100,6 +101,18 @@ const creatureSlice = createSlice({
         state.creatures[index] = { ...state.creatures[index], ...creature };
       }
     },
+    resetCreatureSkills: (
+      state,
+      action: PayloadAction<{ creatureId: string }>
+    ) => {
+      const { creatureId } = action.payload;
+      const creature = state.creatures?.find(
+        (c) => c.creatureId === creatureId
+      );
+      if (creature) {
+        creature.skills = [];
+      }
+    },
     hydrate: (state, action: PayloadAction<CreatureState>) => {
       return { ...state, ...action.payload };
     },
@@ -114,6 +127,7 @@ export const {
   updateTentacleEssenceNeed,
   updateCreature,
   createNewCreature,
+  resetCreatureSkills,
   hydrate,
 } = creatureSlice.actions;
 export default creatureSlice.reducer;

@@ -1,11 +1,15 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import MiniCreature from '../../background/MiniCreature';
-import { updateCreature } from '../../../store/slices/creatureSlice';
+import {
+  resetCreatureSkills,
+  updateCreature,
+} from '../../../store/slices/creatureSlice';
 import { useState } from 'react';
 import { generateRandomName } from '../../../helpers/name-utils';
 import { Check, Dice5Icon, Pencil, X } from 'lucide-react';
 import { Creature } from '../../../types/Creature';
+import { rerollCreatureSkills } from '../../../store/slices/corruptionSlice';
 
 const OctopodeDetails = () => {
   const { creatureId } = useParams<{ creatureId: string }>();
@@ -21,6 +25,10 @@ const OctopodeDetails = () => {
   if (!creature) {
     return <p className="text-red-500">❌ Creature not found</p>;
   }
+
+  const { corruption, rerollMultiplicator, currentCost } = useAppSelector(
+    (state) => state.corruption
+  );
 
   const [isRenaming, setIsRenaming] = useState(false);
   const [name, setName] = useState<string>();
@@ -38,6 +46,12 @@ const OctopodeDetails = () => {
   const handleGenerateNewName = () => {
     const newName = generateRandomName();
     setName(newName);
+  };
+
+  const handleRerollSkills = () => {
+    if (!creatureId) return;
+    dispatch(rerollCreatureSkills({ creatureId }));
+    dispatch(resetCreatureSkills({ creatureId }));
   };
 
   return (
@@ -81,9 +95,12 @@ const OctopodeDetails = () => {
           )}
         </h2>
         <p>
-          <strong>Essence:</strong> {creature.essence}
+          <strong>Creature essence :</strong> {creature.essence}
         </p>
       </div>
+      <p className="text-xl font-bold mb-4 w-full flex flex-row justify-between">
+        Current Corruption : {corruption}
+      </p>
       <button
         onClick={() => navigate(`/octopodes/${creature.creatureId}/skills`)}
         className="mt-4 px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-bold rounded-full"
@@ -92,18 +109,26 @@ const OctopodeDetails = () => {
         Roll the dice
       </button>
       {creature.skills && creature.skills?.length > 0 && (
-        <div className="relative  overflow-hidden w-80 border-4 border-green-500 rounded-lg bg-black shadow-lg opacity-70">
-          {creature.skills.map((skill) => {
-            return (
-              <div key={skill.name}>
-                <strong className="ml-4">{skill.name}</strong> :{' '}
-                <p className="py-2 pl-4 pr-3 text-center">
-                  {skill.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
+        <>
+          <div className="relative  overflow-hidden w-80 border-4 border-green-500 rounded-lg bg-black shadow-lg opacity-70">
+            {creature.skills.map((skill) => {
+              return (
+                <div key={skill.name}>
+                  <strong className="ml-4">{skill.name}</strong> :{' '}
+                  <p className="py-2 pl-4 pr-3 text-center">
+                    {skill.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+          <button
+            className="mt-4 px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-bold rounded-full"
+            onClick={handleRerollSkills}
+          >
+            Reroll Skills - cost {currentCost * rerollMultiplicator} Corruption
+          </button>
+        </>
       )}
       <div className="w-full flex flex-col justify-center">
         <button className="bg-emerald-700 m-4 text-green-100 font-bold py-3 px-6 rounded-2xl text-xl shadow-md transition-all duration-300 animate-glow hover:bg-emerald-600 hover:scale-105 z-[100]">
