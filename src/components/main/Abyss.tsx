@@ -37,7 +37,7 @@ const Abyss: FC = () => {
 
   return (
     <>
-      <h1 className="text-2xl font-bold text-purple-500 z-50 text-shadow">
+      <h1 className="pointer-events-none text-2xl font-bold text-purple-500 z-50 text-shadow">
         Essence: {essence} / Total Harvested: {totalHarvestedEssence}
       </h1>
 
