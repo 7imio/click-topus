@@ -32,7 +32,7 @@ const generateNewCreature = (essence: number, skin: Skin): Creature => {
     essence: essence,
     skills: [],
     skin: skin ?? basicSkin,
-    birthDate: new Date(),
+    birthDate: Date.now(),
     level: 1,
     victories: 0,
     isDead: false,
@@ -124,6 +124,9 @@ const creatureSlice = createSlice({
       );
       if (creature) {
         creature.skills = [];
+        creature.skillStrengths = [];
+        creature.skillWeaknesses = [];
+        creature.canConquest = false;
       }
     },
     hydrate: (state, action: PayloadAction<CreatureState>) => {
