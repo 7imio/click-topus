@@ -12,7 +12,7 @@ const Globe = () => {
       <ambientLight intensity={0.5} />
       <directionalLight position={[2, 2, 5]} />
       <mesh>
-        <sphereGeometry args={[2.02, 64, 64]} />{' '}
+        <sphereGeometry args={[2.05, 64, 64]} />
         <meshBasicMaterial color={'#24684d'} side={THREE.BackSide} />
       </mesh>
       <mesh>
@@ -23,7 +23,15 @@ const Globe = () => {
           map-repeat={[1, 1]}
         />
       </mesh>
-      <Stars radius={500} depth={50} count={5000} factor={4} />
+      <Stars
+        radius={100}
+        depth={50}
+        count={5000}
+        factor={15}
+        saturation={15}
+        speed={1}
+        fade
+      />
       <OrbitControls enablePan={true} enableZoom={true} />
     </Canvas>
   );
