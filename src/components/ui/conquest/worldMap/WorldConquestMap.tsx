@@ -1,11 +1,9 @@
-import MapRenderer from './MapRenderer';
-import MapTooltip from './MapTooltip';
+import Globe from './Globe';
 
 const WorldConquestMap = () => {
   return (
-    <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
-      <MapRenderer />
-      <MapTooltip />
+    <div className="flex flex-col items-center justify-center text-white w-full h-[100vh]">
+      <Globe />
     </div>
   );
 };
