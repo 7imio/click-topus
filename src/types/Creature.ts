@@ -14,7 +14,7 @@ export interface Creature {
   isInConquest?: boolean;
   victories?: number; // Nombre de victoires (= combats menés avec succès)
   lastConquestTarget?: string; // Code ISO du pays en cours de conquête
-  birthDate?: Date;
-  deathDate?: Date;
+  birthDate: number;
+  deathDate?: number;
   level?: number; // Niveau de la créature
 }

@@ -1,56 +1,105 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import skillsData from '../../../data/skills/creatureSkills.json';
+import rawSkillsData from '../../../data/skills/creatureSkills.json';
 import { FC, useState } from 'react';
-import SkillRoulette from './SkillRoulette'; // On va le créer juste après
+import SkillRoulette from './SkillRoulette';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { updateCreature } from '../../../store/slices/creatureSlice';
-import { Capacity } from '../../../types/Capacity';
+import { Capacity, CapacityType } from '../../../types/Capacity';
 import DiceRoller from './dice/DiceRoller';
+
+// 🧩 Parsing propre du JSON brut
+const skillsData: Capacity[] = rawSkillsData.map((data: any) => ({
+  id: data.id,
+  name: data.name,
+  description: data.description,
+  type: CapacityType.INFLUENCE,
+  toughnesses: data.toughnesses,
+  weaknesses: data.weaknesses,
+  incompatibilities: data.incompatibilities || [],
+}));
 
 const OctopodeSkillSelector: FC = () => {
   const { creatureId } = useParams<{ creatureId: string }>();
-
   const dispatch = useAppDispatch();
 
   const creature = useAppSelector((state) =>
     state.creatures.creatures?.find((c) => c.creatureId === creatureId)
   );
+
   const [essenceResult, setEssenceResult] = useState<number | null>(null);
+  const [_selectedSkill, setSelectedSkill] = useState<string | null>(null);
+
   const handleResult = (result: number | null) => {
     if (!result) return;
     setEssenceResult(result);
   };
 
-  const [_selectedSkill, setSelectedSkill] = useState<string | null>(null);
-
   const handleSkillSelect = (skillId: string) => {
-    if (!creature) return;
-    if (!creature.skills || creature.skills?.length >= 3) return;
+    if (!creature || (creature.skills?.length ?? 0) >= 3) return;
 
-    const skill = skillsData.find((s) => s.id === skillId) as Capacity;
+    const existingSkills = creature.skills || [];
+    const existingStrengths = creature.skillStrengths || [];
+    const existingWeaknesses = creature.skillWeaknesses || [];
 
-    if (!skill) return;
+    const isSkillCompatible = (skill: Capacity): boolean => {
+      const hasIncompatibility = existingSkills.some((s) =>
+        skill.incompatibilities?.includes(s.id)
+      );
+      const conflictsWithStrength = existingStrengths.includes(
+        skill.weaknesses
+      );
+      const conflictsWithWeakness = existingWeaknesses.includes(
+        skill.toughnesses
+      );
+      return (
+        !hasIncompatibility && !conflictsWithStrength && !conflictsWithWeakness
+      );
+    };
+
+    const availableSkills = skillsData.filter(isSkillCompatible);
+    if (!availableSkills.length) return; // Aucun skill compatible
+
+    // 🔁 Cherche une compétence compatible, sinon boucle sur une autre au hasard
+    let skill = skillsData.find((s) => s.id === skillId) as Capacity;
+    while (!isSkillCompatible(skill)) {
+      const randomIndex = Math.floor(Math.random() * availableSkills.length);
+      skill = availableSkills[randomIndex];
+    }
+
+    const updatedSkills = [...existingSkills, skill];
+    const updatedStrengths = Array.from(
+      new Set([...existingStrengths, skill.toughnesses].filter(Boolean))
+    );
+    const updatedWeaknesses = Array.from(
+      new Set([...existingWeaknesses, skill.weaknesses].filter(Boolean))
+    );
 
     dispatch(
       updateCreature({
         creatureId: creatureId!,
         creature: {
           ...creature,
-          skills: [...(creature.skills || []), skill], // Tu pourras charger le détail de la skill via l'ID plus tard
+          skills: updatedSkills,
+          skillStrengths: updatedStrengths,
+          skillWeaknesses: updatedWeaknesses,
+          canConquest: updatedSkills.length > 0,
         },
       })
     );
 
-    setSelectedSkill(skillId);
+    setSelectedSkill(skill.id);
   };
 
   if (!creature) return <div className="text-white">Octopode not found!</div>;
+
   const navigate = useNavigate();
+
   return (
     <div className="flex flex-col items-center justify-center h-full p-2">
       <h1 className="text-white text-2xl mb-4">
         Roll a dice and select a Skill for {creature.creatureName}
       </h1>
+
       <DiceRoller
         setResult={handleResult}
         result={essenceResult}
@@ -60,14 +109,17 @@ const OctopodeSkillSelector: FC = () => {
       <SkillRoulette
         onSelect={handleSkillSelect}
         creatureId={creatureId ?? ''}
-        disabled={!creature.skills || creature.skills?.length >= 3}
+        disabled={(creature.skills?.length ?? 0) >= 3}
       />
 
       <div className="text-3xl font-bold">
         {essenceResult !== null && (
-          <p className="z-100">🎯 New Essence Affectation : {essenceResult}</p>
+          <p className="z-100">🎯 New Essence Affectation: {essenceResult}</p>
         )}
       </div>
+
+      <button onClick={() => console.log(creature)}>NIK</button>
+
       <button
         onClick={() => navigate(`/octopodes/${creatureId}`)}
         className="mt-4 px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-bold rounded-full"
