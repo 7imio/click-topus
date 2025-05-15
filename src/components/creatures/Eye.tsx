@@ -2,10 +2,10 @@ import { FC, ReactNode, useEffect, useState } from 'react';
 import { triggerBlinkSequence } from '../../helpers/anim-utils';
 import { getGradientFromColor } from '../../helpers/color-utils';
 import { useAppSelector } from '../../store/hooks';
-import { SkinColor } from '../../types/Skin';
+import { Skin } from '../../types/Skin';
 
 type EyeProps = {
-  skin: SkinColor;
+  skin: Skin;
   handleClick?: () => void;
   children?: ReactNode;
   disablePopEffect?: boolean;
@@ -24,7 +24,7 @@ export const Eye: FC<EyeProps> = ({
   const [blinking, setBlinking] = useState(false);
   const { popEffect } = useAppSelector((state) => state.animation);
   const [click, setClick] = useState(false);
-  const { irisColor, bodyColor, eyeWhiteColor, retinaColor } = skin;
+  const { irisColor, bodyColor, eyeWhiteColor, retinaColor } = skin.skin;
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;

@@ -7,17 +7,20 @@ export type SkinState = {
 };
 
 export const basicSkin = {
-  irisColor: '#6633cc',
-  bodyColor: '#00cc66',
-  suckerColor: '#9900cc',
-  eyeWhiteColor: '#EEEEcc',
-  retinaColor: '#27272a',
+  name: 'Eldritch Horror',
+  skin: {
+    irisColor: '#6633cc',
+    bodyColor: '#00cc66',
+    suckerColor: '#9900cc',
+    eyeWhiteColor: '#EEEEcc',
+    retinaColor: '#27272a',
+  },
 };
 
 const initialState: SkinState = {
   currentSkin: {
     name: 'Eldritch Horror',
-    skin: basicSkin,
+    skin: basicSkin.skin,
   },
   unlockedSkins: [],
 };
