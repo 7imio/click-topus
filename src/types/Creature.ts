@@ -1,14 +1,20 @@
-import { SkinColor } from './Skin';
+import { Skin } from './Skin';
 import { Capacity } from './Capacity';
 
 export interface Creature {
   creatureId: string;
   creatureName: string;
-  essence: number;
-  skin: SkinColor;
+  essence: number; // Essence actuelle
+  skin: Skin;
   skills?: Capacity[];
+  skillStrengths?: string[];
+  skillWeaknesses?: string[];
   isDead?: boolean;
-  canConquest?: boolean; // peut attaquer
-  isInConquest?: boolean; // en cours d'attaque
-  victories?: number;
+  canConquest?: boolean;
+  isInConquest?: boolean;
+  victories?: number; // Nombre de victoires (= combats menés avec succès)
+  lastConquestTarget?: string; // Code ISO du pays en cours de conquête
+  birthDate?: Date;
+  deathDate?: Date;
+  level?: number; // Niveau de la créature
 }
