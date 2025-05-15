@@ -21,6 +21,7 @@ const BurgerMenu = () => {
   );
   const { corruption } = useAppSelector((state) => state.corruption);
   const { creatures } = useAppSelector((state) => state.creatures);
+  const { fervor } = useAppSelector((state) => state.fervor);
 
   const devMode = import.meta.env.VITE_DEVELOPER_MODE?.toLowerCase() === 'true';
 
@@ -87,10 +88,12 @@ const BurgerMenu = () => {
               <Link to="/octopodes" onClick={() => handleBurger()}>
                 🪼 Octopodes
               </Link>
-              <Link to="/conquest" onClick={() => handleBurger()}>
-                🌍 Conquest
-              </Link>
             </>
+          )}
+          {fervor > 0 && (
+            <Link to="/conquest" onClick={() => handleBurger()}>
+              🌍 Conquest
+            </Link>
           )}
           <hr className="my-2 border-green-500" />
           <Link to="/about" onClick={() => handleBurger()}>

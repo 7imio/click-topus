@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { updateCreature } from '../../../store/slices/creatureSlice';
 import { Capacity, CapacityType } from '../../../types/Capacity';
 import DiceRoller from './dice/DiceRoller';
+import { incrementFervorCount } from '../../../store/slices/fervorSlice';
 
 // 🧩 Parsing propre du JSON brut
 const skillsData: Capacity[] = rawSkillsData.map((data: any) => ({
@@ -86,7 +87,7 @@ const OctopodeSkillSelector: FC = () => {
         },
       })
     );
-
+    dispatch(incrementFervorCount());
     setSelectedSkill(skill.id);
   };
 

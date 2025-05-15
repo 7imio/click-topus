@@ -11,17 +11,19 @@ import animationReducer, { AnimationState } from './slices/animationSlice';
 import debugReducer, { DebugState } from './slices/debugSlice';
 import corruptionReducer, { CorruptionState } from './slices/corruptionSlice';
 import hydrationReducer, { HydrationState } from './slices/hydrationSlice';
+import fervorReducer, { FervorState } from './slices/fervorSlice';
 
 export interface GlobalState {
   toast: ToastState;
   essence: EssenceState;
+  corruption: CorruptionState;
+  fervor: FervorState;
   skin: SkinState;
   tentacles: TentacleState;
   creatures: CreatureState;
   autoClicker: AutoClickerState;
   animation: AnimationState;
   debug: DebugState;
-  corruption: CorruptionState;
   hydration: HydrationState;
 }
 
@@ -37,6 +39,7 @@ export const store = configureStore<GlobalState>({
     debug: debugReducer,
     corruption: corruptionReducer,
     hydration: hydrationReducer,
+    fervor: fervorReducer,
   },
 });
 
