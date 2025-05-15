@@ -6,3 +6,13 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+declare module '*.geojson' {
+  const value: import('geojson').FeatureCollection;
+  export default value;
+}
+
+declare module '*.json' {
+  const value: any;
+  export default value;
+}
