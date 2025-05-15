@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useAppSelector } from '../store/hooks';
 import useEssenceIncrement from './useEssenceIncrement';
 
-const useAutoClickers = () => {
+const useHarvestEssence = () => {
   const { speed, click } = useAppSelector((state) => state.autoClicker);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -25,4 +25,4 @@ const useAutoClickers = () => {
   }, [speed, click, incrementEssence]);
 };
 
-export default useAutoClickers;
+export default useHarvestEssence;
