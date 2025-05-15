@@ -24,7 +24,7 @@ const useEssenceIncrement = (essenceToIncrement?: number) => {
   const { currentEssence } = useAppSelector((state) => state.creatures);
 
   const { essencePerTentacle, essenceForCreature } = useEssenceHelper();
-  const skin = useAppSelector((state) => state.skin.currentSkin.skin);
+  const skin = useAppSelector((state) => state.skin.currentSkin);
 
   const essenceIncrementation = useCallback(() => {
     const count = essenceToIncrement ?? 1;

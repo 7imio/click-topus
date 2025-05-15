@@ -61,8 +61,8 @@ export const DiceRoller: FC<DiceRollerProps> = ({
         <directionalLight position={[5, 20, 5]} intensity={3} />
         <DiceD20
           ref={diceRef}
-          color={skin.bodyColor}
-          textColor={skin.eyeWhiteColor}
+          color={skin.skin.bodyColor}
+          textColor={skin.skin.eyeWhiteColor}
           onResult={(result) => handleSetCompetence(result)}
           resultDelay={1000} // ⏱️ Délai en ms avant l'affichage du résultat
         />

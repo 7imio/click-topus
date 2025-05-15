@@ -48,7 +48,7 @@ const BurgerMenu = () => {
   const throwError = useThrowError();
 
   return (
-    <div className="fixed top-4 left-4 z-100">
+    <div className="fixed top-4 left-4 z-200">
       <button
         onClick={handleBurger}
         className="backdrop-blur-sm text-white px-3 py-2 rounded shadow-md transition-all duration-300 hover:bg-emerald-600 hover:scale-105 flex flex-row align-middle justify-center c"
