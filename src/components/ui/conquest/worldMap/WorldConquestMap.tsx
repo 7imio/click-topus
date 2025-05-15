@@ -2,8 +2,11 @@ import Globe from './Globe';
 
 const WorldConquestMap = () => {
   return (
-    <div className="flex flex-col items-center justify-center text-white w-full h-[100vh]">
-      <Globe />
+    <div className="z-100 flex flex-col items-center justify-center w-full h-[300px] sm:h-[500px] md:h-[600px] border-2 border-green-500 rounded-lg relative">
+      <div className="absolute inset-0 bg-black opacity-75 z-0 rounded-lg" />
+      <div className="relative z-10 w-full h-full">
+        <Globe />
+      </div>
     </div>
   );
 };
