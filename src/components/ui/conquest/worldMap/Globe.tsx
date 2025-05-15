@@ -45,8 +45,8 @@ const GlobeMesh = () => {
 
 const Globe = () => {
   return (
-    <Canvas camera={{ position: [0, 0, 7], fov: 50 }}>
-      <ambientLight intensity={0.8} />
+    <Canvas camera={{ position: [0, 0, 6], fov: 50 }}>
+      <ambientLight intensity={1.5} />
       <directionalLight position={[2, 2, 5]} />
 
       <GlobeMesh />
@@ -55,8 +55,8 @@ const Globe = () => {
         radius={100}
         depth={50}
         count={5000}
-        factor={15}
-        saturation={15}
+        factor={5}
+        saturation={4}
         speed={1}
         fade
       />

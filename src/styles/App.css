@@ -133,7 +133,10 @@
 
   .burger-close {
     animation: close-burger-menu .5s ease-in-out;
+  }
 
+  .shadow-glow {
+    box-shadow: 0 0 60px rgba(138, 43, 226, 0.5);
   }
 
   @keyframes open-burger-menu {
