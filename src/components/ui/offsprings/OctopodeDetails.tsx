@@ -54,7 +54,7 @@ const OctopodeDetails = () => {
 
   const handleFarewell = () => {
     // On considère qu’on récupère la moitié de son essence en corruption
-    const corruptionGain = Math.floor(creature.essence / 2);
+    // const corruptionGain = Math.floor(creature.essence / 2);
     //dispatch(gainCorruption(corruptionGain));
     // dispatch(removeCreature({ creatureId: creature.creatureId }));
     navigate('/octopodes');
