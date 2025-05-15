@@ -1,28 +1,56 @@
-// Globe.tsx
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
 import { useDynamicWorldTexture } from './texture/WorldMapTexture';
 import * as THREE from 'three';
+import { useRef } from 'react';
 
-const Globe = () => {
+// 👉 Ce composant sera MONTÉ dans le contexte du Canvas, donc safe pour les hooks R3F
+const GlobeMesh = () => {
+  const globeRef = useRef<THREE.Mesh>(null);
+
   const texture = useDynamicWorldTexture();
+  useFrame(() => {
+    if (globeRef.current && texture) {
+      globeRef.current.rotation.y += 0.0005;
+    }
+  });
 
   return (
-    <Canvas camera={{ position: [0, 0, 7], fov: 50 }}>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[2, 2, 5]} />
+    <>
+      {/* Atmosphere */}
       <mesh>
-        <sphereGeometry args={[2.05, 64, 64]} />
-        <meshBasicMaterial color={'#24684d'} side={THREE.BackSide} />
-      </mesh>
-      <mesh>
-        <sphereGeometry args={[2, 64, 64]} />
+        <sphereGeometry args={[2.1, 64, 64]} />
         <meshStandardMaterial
-          map={texture}
-          map-offset={[0, 0]}
-          map-repeat={[1, 1]}
+          color={'#24684d'}
+          side={THREE.BackSide}
+          transparent={true}
+          opacity={1} // Rend l’atmosphère plus légère
+          depthWrite={false} // Ne masque pas la planète
+          blending={THREE.AdditiveBlending} // Effet lumineux subtil
         />
       </mesh>
+      {/* Globe */}
+      {texture && (
+        <mesh ref={globeRef}>
+          <sphereGeometry args={[2, 64, 64]} />
+          <meshStandardMaterial
+            map={texture || undefined}
+            color={!texture ? '#444' : undefined}
+          />
+        </mesh>
+      )}
+    </>
+  );
+};
+
+const Globe = () => {
+  return (
+    <Canvas camera={{ position: [0, 0, 7], fov: 50 }}>
+      <ambientLight intensity={0.8} />
+      <directionalLight position={[2, 2, 5]} />
+
+      <GlobeMesh />
+
       <Stars
         radius={100}
         depth={50}
@@ -32,7 +60,8 @@ const Globe = () => {
         speed={1}
         fade
       />
-      <OrbitControls enablePan={true} enableZoom={true} />
+
+      <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
     </Canvas>
   );
 };
