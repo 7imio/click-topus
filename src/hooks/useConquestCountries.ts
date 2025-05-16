@@ -1,14 +1,19 @@
 import { useAppSelector } from '../store/hooks';
 
 const useConquestCountries = () => {
-  const { countries } = useAppSelector((state) => state.countries);
+  const { countries, victories } = useAppSelector((state) => state.countries);
+
+  const unlockedDefenseLevel = victories + 1;
+
   return countries
-    .filter((c) => !c.isConquered && (c.indoctrinationLevel ?? 0) > 0)
+    .filter(
+      (c) => !c.isConquered && c.defensePotential <= unlockedDefenseLevel // ✅ Filtre par défense débloquée
+    )
     .map((c) => ({
       ...c,
       indoctrinationLevelPercentage: Math.min(
         100,
-        (c.indoctrinationLevel! / c.population) * 100
+        ((c.indoctrinationLevel ?? 0) / c.population) * 100
       ),
     }));
 };

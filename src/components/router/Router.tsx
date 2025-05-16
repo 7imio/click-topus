@@ -28,14 +28,14 @@ const Router: FC = () => {
         element={<OctopodeSkillSelector />}
       />
 
-      <Route 
-        path="/test" 
+      <Route
+        path="/test"
         element={
-          <RedirectToError 
-            errorStatus={403} 
-            errorMessage='La route test retourne une erreur avec un message.'  
+          <RedirectToError
+            errorStatus={403}
+            errorMessage="La route test retourne une erreur avec un message."
           />
-        } 
+        }
       />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
