@@ -56,8 +56,8 @@ function App() {
         <div className="text-white p-4">Loading...</div>
       ) : (
         <>
-          <Router />
           <Bubbles />
+          <Router />
         </>
       )}
     </div>

@@ -11,6 +11,7 @@ import ConquestScreen from '../ui/conquest/ConquestScreen';
 import OctopodeSkillSelector from '../ui/offsprings/OctopodeSkillSelector';
 import ErrorPage from '../ui/error/ErrorPage';
 import RedirectToError from '../error/RedirectToError';
+import CountryAttack from '../ui/conquest/attack/CountryAttack';
 
 const Router: FC = () => {
   return (
@@ -20,6 +21,8 @@ const Router: FC = () => {
       <Route path="/about" element={<About />} />
       <Route path="/info" element={<Informations />} />
       <Route path="/conquest" element={<ConquestScreen />} />
+      <Route path="/conquest/:ISO_A2" element={<CountryAttack />} />
+
       <Route path="/reset" element={<ResetScreen />} />
       <Route path="/octopodes" element={<Octopodes />} />
       <Route path="/octopodes/:creatureId" element={<OctopodeDetails />} />
