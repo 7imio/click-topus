@@ -1,13 +1,13 @@
 // src/data/countries.ts
-import countriesData from '../data/countries/coutriesData.json';
+import { Country } from '../types/Country';
 
-export const getCountriesWithColors = () => {
-  return countriesData.map((country: any) => {
+export const getCountriesWithColors = (countries: Country[]) => {
+  return countries.map((country: any) => {
     const { defensePotential } = country;
 
     const red = Math.min(255, defensePotential * 2);
     const green = 255 - red;
-    const color = `rgb(${red}, ${green}, 100)`;
+    const color = `rgb(${red}, ${green}, 50)`;
 
     return {
       ...country,

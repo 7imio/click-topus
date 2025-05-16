@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../../store/hooks';
 import { useEffect, useState } from 'react';
-import Pagination from './Pagination';
+import Pagination from '../../generics/Pagination';
 import { Creature } from '../../../types/Creature';
 import OctopodeLine from './OctopodeLine';
 

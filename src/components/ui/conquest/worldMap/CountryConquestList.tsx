@@ -1,27 +1,46 @@
+import { FC, useState } from 'react';
 import useConquestCountries from '../../../../hooks/useConquestCountries';
-import ProgressBar from '../../ProgressBar';
+import { Country } from '../../../../types/Country';
+import Pagination from '../../../generics/Pagination';
+import CountryDetailsModal from './CountryDetailModal';
+import Modal from '../../../generics/Modal';
+import CountryLine from './CountryLine';
 
-const CountryConquestList = () => {
+const CountryConquestList: FC = () => {
   const countries = useConquestCountries();
+  const itemsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
 
-  if (!countries.length)
-    return (
-      <p className="text-green-400 text-center">
-        No current conquests underway.
-      </p>
-    );
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentItems = countries.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <div className="space-y-2">
-      {countries.map((country) => (
-        <div
-          key={country.ISO_A3}
-          className="flex justify-between items-center bg-green-900/80 p-2 rounded-lg"
-        >
-          <span>{country.name}</span>
-          <ProgressBar value={country.indoctrinationLevelPercentage} />
-        </div>
-      ))}
+    <div className="flex flex-col gap-2 p-2 w-full">
+      <div className="flex flex-col">
+        {currentItems.map((country) => (
+          <CountryLine
+            key={country.ISO_A2}
+            country={country}
+            onClick={setSelectedCountry}
+          />
+        ))}
+      </div>
+
+      {countries.length > itemsPerPage && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(countries.length / itemsPerPage)}
+          onPageChange={setCurrentPage}
+        />
+      )}
+
+      <Modal
+        isOpen={!!selectedCountry}
+        onClose={() => setSelectedCountry(null)}
+      >
+        {selectedCountry && <CountryDetailsModal country={selectedCountry} />}
+      </Modal>
     </div>
   );
 };

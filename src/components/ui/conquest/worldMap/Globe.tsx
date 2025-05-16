@@ -4,7 +4,6 @@ import { useDynamicWorldTexture } from './texture/WorldMapTexture';
 import * as THREE from 'three';
 import { useRef } from 'react';
 
-// 👉 Ce composant sera MONTÉ dans le contexte du Canvas, donc safe pour les hooks R3F
 const GlobeMesh = () => {
   const globeRef = useRef<THREE.Mesh>(null);
 
@@ -24,9 +23,9 @@ const GlobeMesh = () => {
           color={'#24684d'}
           side={THREE.BackSide}
           transparent={true}
-          opacity={1} // Rend l’atmosphère plus légère
-          depthWrite={false} // Ne masque pas la planète
-          blending={THREE.AdditiveBlending} // Effet lumineux subtil
+          opacity={1}
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
         />
       </mesh>
       {/* Globe */}
@@ -35,7 +34,7 @@ const GlobeMesh = () => {
           <sphereGeometry args={[2, 64, 64]} />
           <meshStandardMaterial
             map={texture || undefined}
-            color={!texture ? '#444' : undefined}
+            color={!texture ? '#555' : undefined}
           />
         </mesh>
       )}
