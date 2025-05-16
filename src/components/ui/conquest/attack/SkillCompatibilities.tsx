@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { Country } from '../../../../types/Country';
 import { Creature } from '../../../../types/Creature';
+import rawCountrySkills from '../../../../data/skills/countrySkills.json';
+import { Capacity } from '../../../../types/Capacity';
 
 interface SkillCompatibilitiesProps {
   country: Country;
@@ -27,8 +29,6 @@ const SkillCompatibilities: FC<SkillCompatibilitiesProps> = ({
       country.capacities.some((cap) => cap.toughnesses === weak)
     );
 
-  console.log(country);
-
   const multiplier = hasAdvantage
     ? 'x0.5 (Advantage)'
     : hasDisadvantage
@@ -40,6 +40,20 @@ const SkillCompatibilities: FC<SkillCompatibilitiesProps> = ({
       ? 'text-red-400'
       : 'text-yellow-300';
 
+  const creatureStrenghts = octopode.skillStrengths?.map((strength) => {
+    const skill = (rawCountrySkills as Capacity[]).find(
+      (skill) => skill.id === strength
+    );
+    return skill ? skill.name : strength;
+  });
+
+  const creatureWeaknesses = octopode.skillWeaknesses?.map((weakness) => {
+    const skill = (rawCountrySkills as Capacity[]).find(
+      (skill) => skill.id === weakness
+    );
+    return skill ? skill.name : weakness;
+  });
+
   return (
     <div className="flex flex-col justify-between h-full p-4 bg-green-900/80 border-2 border-green-700 rounded-lg shadow-lg transition-all duration-300">
       <div>
@@ -50,12 +64,12 @@ const SkillCompatibilities: FC<SkillCompatibilitiesProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-green-300 text-center mb-4">
           <div>
             <p className="font-bold text-green-100">🧬 Strengths</p>
-            <p>{octopode.skillStrengths?.join(', ') || 'None'}</p>
+            <p>{creatureStrenghts?.join(', ') || 'None'}</p>
           </div>
 
           <div>
             <p className="font-bold text-green-100">💀 Weaknesses</p>
-            <p>{octopode.skillWeaknesses?.join(', ') || 'None'}</p>
+            <p>{creatureWeaknesses?.join(', ') || 'None'}</p>
           </div>
 
           <div>
