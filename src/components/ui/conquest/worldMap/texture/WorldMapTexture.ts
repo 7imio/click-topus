@@ -9,6 +9,7 @@ import {
   GeoJsonProperties,
   Geometry,
 } from 'geojson';
+import { useAppSelector } from '../../../../../store/hooks';
 
 const canvasSize = 2048;
 const canvasWidth = canvasSize * 1.6;
@@ -18,6 +19,10 @@ const geoData = worldMap as FeatureCollection<Geometry>;
 export const useDynamicWorldTexture = () => {
   const [texture, setTexture] = useState<THREE.Texture | null>(null);
 
+  const { countries: countriesData } = useAppSelector(
+    (state) => state.countries
+  );
+
   useEffect(() => {
     const generateTexture = async () => {
       const canvas = document.createElement('canvas');
@@ -26,7 +31,7 @@ export const useDynamicWorldTexture = () => {
       const ctx = canvas.getContext('2d')!;
 
       fillWaterColor(ctx, '#55774F', '#111D29');
-      const countries = getCountriesWithColors();
+      const countries = getCountriesWithColors(countriesData);
 
       const projection = d3.geoNaturalEarth1().fitExtent(
         [
