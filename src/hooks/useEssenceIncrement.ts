@@ -19,7 +19,6 @@ import useEssenceHelper from './useEssenceHelper';
 
 const useEssenceIncrement = (essenceToIncrement?: number) => {
   const dispatch = useAppDispatch();
-  // déplace ce useSelector ici pour toujours récupérer la dernière valeur
 
   const { currentEssence } = useAppSelector((state) => state.creatures);
 
@@ -35,10 +34,10 @@ const useEssenceIncrement = (essenceToIncrement?: number) => {
       })
     );
 
-    // 1. J'incrémente l'essence GLOBALE pour les achats
+    // 1. GLOBAL essence incrementation
     dispatch(incrementEssence(count));
 
-    // 2. J'incrémente l'essence dédiée à la créature en cours
+    // 2. CREATURE essence incrementation
     dispatch(
       addTentacleEssence({
         essence: count,

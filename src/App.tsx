@@ -20,6 +20,7 @@ import useHarvestCorruption from './hooks/useHarvestCorruption';
 import ToastListener from './hooks/toast/ToastListener';
 import useHarvestFervor from './hooks/useHarvestFervor';
 import useSaveGame from './hooks/useSaveGame';
+import { useInitializeCountries } from './hooks/useInitializeCountries';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -30,6 +31,7 @@ function App() {
   useHarvestEssence();
   useHarvestCorruption();
   useHarvestFervor();
+  useInitializeCountries();
 
   useEffect(() => {
     const game = loadGame();
