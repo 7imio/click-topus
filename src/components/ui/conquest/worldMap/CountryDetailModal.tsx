@@ -12,11 +12,11 @@ const CountryDetailsModal: FC<CountryDetailsModalProps> = ({ country }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="text-green-100">
+    <div className="text-green-100 w-1/2">
       <h2 className="text-2xl font-bold mb-4">{country.name}</h2>
       <p>Defense Level: {country.defensePotential}</p>
       <p>Population: {country.population.toLocaleString()}</p>
-      <p>Capacities: {country.capacities.map((cap) => cap.name).join(', ')}</p>
+      <p>Capacities: {country.capacities.map((cap) => cap).join(', ')}</p>
 
       <div className="my-4">
         <ProgressBar

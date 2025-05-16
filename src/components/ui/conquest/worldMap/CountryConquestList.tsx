@@ -1,16 +1,12 @@
 import { FC, useState } from 'react';
 import useConquestCountries from '../../../../hooks/useConquestCountries';
-import { Country } from '../../../../types/Country';
 import Pagination from '../../../generics/Pagination';
-import CountryDetailsModal from './CountryDetailModal';
-import Modal from '../../../generics/Modal';
 import CountryLine from './CountryLine';
 
 const CountryConquestList: FC = () => {
   const countries = useConquestCountries();
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentItems = countries.slice(startIndex, startIndex + itemsPerPage);
@@ -20,9 +16,8 @@ const CountryConquestList: FC = () => {
       <div className="flex flex-col">
         {currentItems.map((country) => (
           <CountryLine
-            key={country.ISO_A2}
+            key={`line-country-${country.ISO_A2}`}
             country={country}
-            onClick={setSelectedCountry}
           />
         ))}
       </div>
@@ -34,13 +29,6 @@ const CountryConquestList: FC = () => {
           onPageChange={setCurrentPage}
         />
       )}
-
-      <Modal
-        isOpen={!!selectedCountry}
-        onClose={() => setSelectedCountry(null)}
-      >
-        {selectedCountry && <CountryDetailsModal country={selectedCountry} />}
-      </Modal>
     </div>
   );
 };

@@ -11,6 +11,13 @@ import {
 } from '../../../store/slices/essenceSlice';
 import { setCorruption } from '../../../store/slices/corruptionSlice';
 import TestToast from '../toast/TestToast';
+import { setFervor } from '../../../store/slices/fervorSlice';
+import { Creature } from '../../../types/Creature';
+import {
+  addCreature,
+  generateNewCreature,
+} from '../../../store/slices/creatureSlice';
+import { generateCompatibleSkills } from '../../../helpers/skill-utils';
 
 const BurgerMenu = () => {
   const [open, setOpen] = useState(false);
@@ -43,6 +50,13 @@ const BurgerMenu = () => {
     const currentIndex = skins.findIndex((s) => s.name === currentSkin.name);
     const nextIndex = (currentIndex + 1) % skins.length;
     dispatch(applySkin({ skin: skins[nextIndex] }));
+  };
+
+  const handleAddOctopod = () => {
+    const randomSkin = skins[Math.floor(Math.random() * skins.length)];
+    const newOctopod: Creature = generateNewCreature(100000000000, randomSkin);
+    generateCompatibleSkills(newOctopod);
+    dispatch(addCreature(newOctopod));
   };
 
   return (
@@ -86,7 +100,7 @@ const BurgerMenu = () => {
             <>
               <hr className="my-2 border-green-500" />
               <Link to="/octopodes" onClick={() => handleBurger()}>
-                🪼 Octopodes
+                🪼 Octopods
               </Link>
             </>
           )}
@@ -135,6 +149,17 @@ const BurgerMenu = () => {
                 }}
               >
                 <TestToast />
+              </p>
+              <p
+                className="cursor-pointer"
+                onClick={() => {
+                  dispatch(setFervor(fervor + 1000000000));
+                }}
+              >
+                🔥 Add fervor
+              </p>
+              <p className="cursor-pointer" onClick={handleAddOctopod}>
+                🪼 Add Octopod
               </p>
             </>
           )}

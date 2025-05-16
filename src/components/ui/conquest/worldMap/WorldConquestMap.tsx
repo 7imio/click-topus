@@ -7,12 +7,7 @@ const WorldConquestMap: FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="flex flex-col h-screen w-full items-center bg-gradient-to-b from-green-900 to-gray-900">
-      {/* Titre */}
-      <h1 className="text-3xl text-white font-bold mt-2 mb-2">
-        🌍 World Conquest
-      </h1>
-
+    <div className="flex flex-col h-screen w-full items-center">
       <div className="z-100 flex flex-col items-center justify-center w-[100vw] h-[300px] sm:h-[500px] md:h-[600px] border-2 border-green-500 rounded-lg relative">
         <div className="absolute inset-0 bg-black opacity-75 z-0 rounded-lg" />
         <div className="relative z-10 w-full h-full">

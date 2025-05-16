@@ -119,8 +119,6 @@ const OctopodeSkillSelector: FC = () => {
         )}
       </div>
 
-      <button onClick={() => console.log(creature)}>NIK</button>
-
       <button
         onClick={() => navigate(`/octopodes/${creatureId}`)}
         className="mt-4 px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-bold rounded-full"
