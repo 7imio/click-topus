@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { initializeCountries } from '../store/slices/countrySlice';
-import rawCountryData from '../../../data/countries.json'; // Ton fichier JSON brut
+import rawCountryData from '../data/countries/coutriesData.json'; // Ton fichier JSON brut
 
 export const useInitializeCountries = () => {
   const dispatch = useAppDispatch();
@@ -11,7 +11,6 @@ export const useInitializeCountries = () => {
 
   useEffect(() => {
     if (!isInitialized) {
-      // Si tu veux parser ou faire des vérifications avant, c'est ici
       const parsedCountries = rawCountryData.map((country: any) => ({
         ...country,
         indoctrinationLevel: 0,
