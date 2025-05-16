@@ -17,7 +17,7 @@ const Pagination: FC<PaginationProps> = ({
   const goToNext = () => onPageChange(currentPage + 1);
 
   return (
-    <div className="flex justify-center items-center space-x-2 mt-4">
+    <div className="flex justify-center items-center space-x-2 mt-2">
       {/* First Page */}
       <button
         className="px-3 py-1 bg-gray-700 text-white rounded hover:bg-gray-600 disabled:opacity-50"

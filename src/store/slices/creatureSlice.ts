@@ -25,7 +25,7 @@ const initialState: CreatureState = {
   segmentsType: 2,
 };
 
-const generateNewCreature = (essence: number, skin: Skin): Creature => {
+export const generateNewCreature = (essence: number, skin: Skin): Creature => {
   return {
     creatureId: crypto.randomUUID(),
     creatureName: generateRandomName(),
@@ -114,6 +114,11 @@ const creatureSlice = createSlice({
         state.creatures[index] = { ...state.creatures[index], ...creature };
       }
     },
+    addCreature: (state, action: PayloadAction<Creature>) => {
+      if (!Array.isArray(state.creatures)) return;
+      state.creatures.push(action.payload);
+      state.created = state.creatures.length;
+    },
     resetCreatureSkills: (
       state,
       action: PayloadAction<{ creatureId: string }>
@@ -145,5 +150,6 @@ export const {
   createNewCreature,
   resetCreatureSkills,
   hydrate,
+  addCreature,
 } = creatureSlice.actions;
 export default creatureSlice.reducer;

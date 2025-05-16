@@ -12,6 +12,13 @@ import {
 import { setCorruption } from '../../../store/slices/corruptionSlice';
 import TestToast from '../toast/TestToast';
 import useThrowError from '../../../hooks/error/useThrowError';
+import { setFervor } from '../../../store/slices/fervorSlice';
+import { Creature } from '../../../types/Creature';
+import {
+  addCreature,
+  generateNewCreature,
+} from '../../../store/slices/creatureSlice';
+import { generateCompatibleSkills } from '../../../helpers/skill-utils';
 
 const BurgerMenu = () => {
   const [open, setOpen] = useState(false);
@@ -47,6 +54,12 @@ const BurgerMenu = () => {
   };
 
   const throwError = useThrowError();
+  const handleAddOctopod = () => {
+    const randomSkin = skins[Math.floor(Math.random() * skins.length)];
+    const newOctopod: Creature = generateNewCreature(100000000000, randomSkin);
+    generateCompatibleSkills(newOctopod);
+    dispatch(addCreature(newOctopod));
+  };
 
   return (
     <div className="fixed top-4 left-4 z-200">
@@ -89,7 +102,7 @@ const BurgerMenu = () => {
             <>
               <hr className="my-2 border-green-500" />
               <Link to="/octopodes" onClick={() => handleBurger()}>
-                🪼 Octopodes
+                🪼 Octopods
               </Link>
             </>
           )}
@@ -131,9 +144,7 @@ const BurgerMenu = () => {
                 ☣️ Add corruption
               </p>
               <hr className="my-2 border-green-500" />
-              <p
-                className="cursor-pointer"
-              >
+              <p className="cursor-pointer">
                 <TestToast />
               </p>
               <p
@@ -141,11 +152,22 @@ const BurgerMenu = () => {
                 onClick={() => {
                   throwError({
                     errorStatus: 403,
-                    errorMessage: "Accès interdit à cette section 😡",
+                    errorMessage: 'Accès interdit à cette section 😡',
                   });
                 }}
               >
                 💥 Error test
+              </p>
+              <p
+                className="cursor-pointer"
+                onClick={() => {
+                  dispatch(setFervor(fervor + 1000000000));
+                }}
+              >
+                🔥 Add fervor
+              </p>
+              <p className="cursor-pointer" onClick={handleAddOctopod}>
+                🪼 Add Octopod
               </p>
             </>
           )}

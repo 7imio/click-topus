@@ -11,8 +11,8 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-200 bg-black/30 flex items-center justify-center">
-      <div className="bg-green-900/90 p-6 rounded-2xl shadow-lg w-full max-w-4xl relative">
+    <div className="fixed inset-0 z-200 bg-black/50 flex items-center justify-center transition-all duration-300">
+      <div className="bg-emerald-600/30 backdrop-blur-xs p-5 rounded-2xl shadow-lg w-full max-w-6xl relative">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-white text-2xl hover:text-red-500 duration-150"
