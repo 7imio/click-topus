@@ -56,6 +56,6 @@ npm run dev
 
 ---
 
-## ✨ Par Bébou & ChatGPT
+## ✨ Par Seteemio
 
 Code avec ❤️, ventouses, et corruption interdimensionnelle.

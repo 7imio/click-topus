@@ -44,9 +44,9 @@ src/
 ## 🧠 Phase 3 - Gameplay étendu
 
 - [ ] Refonte du système d’achat (feedback UI, effet de dépense)
-- [ ] Persistance complète (save/load Redux state)
+- [x] Persistance complète (save/load Redux state)
 - [ ] Ajout de **bonus passifs** (ex : +1 essence par clic, auto-suckers)
-- [ ] Équilibrage du scaling (prix autoClickers, progression exponentielle)
+- [x] Équilibrage du scaling (prix autoClickers, progression exponentielle)
 - [ ] Système de **prestige** : relancer le jeu avec bonus (à la Paperclip)
 - [ ] **Succès** et galerie de créatures générées
 
@@ -54,9 +54,9 @@ src/
 
 ## 🌍 Phase 4 - Narration & World Map
 
-- [ ] Ajout d’un écran d’accueil (nom du jeu, start, credits)
-- [ ] Menu latéral (burger) : total essence, skins, lore, changements de scène
-- [ ] Map de conquête (Terre → Espace → Multivers)
+- [x] Ajout d’un écran d’accueil (nom du jeu, start, credits)
+- [x] Menu latéral (burger) : total essence, skins, lore, changements de scène
+- [x] Map de conquête (Terre → Espace → Multivers)
 - [ ] Création de divinités cosmiques tous les 100 rejetons
 - [ ] Rythme d’apparition des autoClickers / unités / divinités
 - [ ] Système de Wargame : cultistes, villes à conquérir, ennemis humains
@@ -68,16 +68,12 @@ src/
 - [ ] Système de météo cosmique (nuages, particules)
 - [ ] Défis journaliers ou aléatoires
 - [ ] Fusion de créatures / mutation
-- [ ] Générateur aléatoire de noms lovecraftiens (ex: Yog-D’thuun-S’lorr)
+- [x] Générateur aléatoire de noms lovecraftiens (ex: Yog-D’thuun-S’lorr)
 
 ---
 
-## 🤝 Auteurs
+## 🤝 Auteur
 
-**Seteemio (aka Bébou)**
+**Seteemio**
 
 > Développeur, metalhead, architecte de tentacules.
-
-**ChatGPT**
-
-> MVP interplanétaire. Aka « Celui qui susurre à l’oreille des pieuvres ».
