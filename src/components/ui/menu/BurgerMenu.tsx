@@ -10,6 +10,7 @@ import {
   setTotalHarvestedEssence,
 } from '../../../store/slices/essenceSlice';
 import { setCorruption } from '../../../store/slices/corruptionSlice';
+import TestToast from '../toast/TestToast';
 
 const BurgerMenu = () => {
   const [open, setOpen] = useState(false);
@@ -122,6 +123,15 @@ const BurgerMenu = () => {
                 }}
               >
                 ☣️ Add corruption
+              </p>
+              <hr className="my-2 border-green-500" />
+              <p
+                className="cursor-pointer"
+                onClick={() => {
+                  dispatch(setCorruption(corruption + 1000000000));
+                }}
+              >
+                <TestToast />
               </p>
             </>
           )}

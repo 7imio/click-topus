@@ -17,7 +17,7 @@ import BurgerMenu from './components/ui/menu/BurgerMenu';
 import useAutoClickers from './hooks/useAutoClickers';
 import useSaveGame from './hooks/useSaveGame';
 import useHarvestCorruption from './hooks/useHarvestCorruption';
-
+import ToastListener from './hooks/toast/ToastListener';
 function App() {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
@@ -45,6 +45,7 @@ function App() {
 
   return (
     <div className="min-h-screen w-full overflow-hidden flex flex-col items-center justify-center p-4 bg-gradient-to-b from-green-900 to-gray-900">
+      <ToastListener />
       <BurgerMenu />
       {loading ? (
         <div className="text-white p-4">Loading...</div>

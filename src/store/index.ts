@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import toastReducer, { ToastState } from './slices/toast/toastSlice';
 import essenceReducer, { EssenceState } from './slices/essenceSlice';
 import skinReducer, { SkinState } from './slices/skinSlice';
 import tentacleReducer, { TentacleState } from './slices/tentacleSlice';
@@ -12,6 +13,7 @@ import corruptionReducer, { CorruptionState } from './slices/corruptionSlice';
 import hydrationReducer, { HydrationState } from './slices/hydrationSlice';
 
 export interface GlobalState {
+  toast: ToastState;
   essence: EssenceState;
   skin: SkinState;
   tentacles: TentacleState;
@@ -25,6 +27,7 @@ export interface GlobalState {
 
 export const store = configureStore<GlobalState>({
   reducer: {
+    toast: toastReducer,
     essence: essenceReducer,
     skin: skinReducer,
     tentacles: tentacleReducer,
