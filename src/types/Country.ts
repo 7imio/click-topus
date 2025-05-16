@@ -6,5 +6,7 @@ export interface Country {
   ISO_A3?: string;
   population: number;
   defensePotential: number;
-  capacities: Capacity[]; // Capacités des pays
+  capacities: Capacity[];
+  indoctrinationLevel?: number;
+  isConquered?: boolean;
 }
