@@ -12,6 +12,7 @@ const Informations: FC<InformationProps> = ({ isPanel }) => {
     autoClicker,
     corruption,
     skin,
+    fervor,
   } = useAppSelector((state) => state);
 
   const { essence, purchasedItems, totalHarvestedEssence } = essenceState;
@@ -56,7 +57,10 @@ const Informations: FC<InformationProps> = ({ isPanel }) => {
         </li>
         <li>💰 Next Upgrade Cost: {currentCost}</li>
         <hr className="my-2 border-green-500" />
-        {corruption && <li>☣️ Corruption: {corruption.corruption}</li>}
+        {corruption && corruption.corruption > 0 && (
+          <li>☣️ Corruption: {corruption.corruption}</li>
+        )}
+        {fervor && fervor.fervor > 0 && <li>🔥 Fervor: {fervor.fervor}</li>}
       </ul>
 
       {!isPanel && (

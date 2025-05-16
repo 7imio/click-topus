@@ -10,6 +10,8 @@ const useSaveGame = (enabled: boolean, throttleDelay = 5000) => {
   const autoClicker = useAppSelector((s) => s.autoClicker);
   const animation = useAppSelector((s) => s.animation);
   const corruption = useAppSelector((s) => s.corruption);
+  const countries = useAppSelector((s) => s.countries);
+  const fervor = useAppSelector((s) => s.fervor);
 
   const lastSaveRef = useRef<number>(0);
 
@@ -26,10 +28,22 @@ const useSaveGame = (enabled: boolean, throttleDelay = 5000) => {
         autoClicker,
         animation,
         corruption,
+        countries,
+        fervor,
       };
 
       saveGame(state);
     }
-  }, [essence, skin, tentacles, creatures, autoClicker, animation, corruption]);
+  }, [
+    essence,
+    skin,
+    tentacles,
+    creatures,
+    autoClicker,
+    animation,
+    corruption,
+    countries,
+    fervor,
+  ]);
 };
 export default useSaveGame;

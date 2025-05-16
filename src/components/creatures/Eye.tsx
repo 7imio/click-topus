@@ -2,10 +2,10 @@ import { FC, ReactNode, useEffect, useState } from 'react';
 import { triggerBlinkSequence } from '../../helpers/anim-utils';
 import { getGradientFromColor } from '../../helpers/color-utils';
 import { useAppSelector } from '../../store/hooks';
-import { SkinColor } from '../../types/Skin';
+import { Skin } from '../../types/Skin';
 
 type EyeProps = {
-  skin: SkinColor;
+  skin: Skin;
   handleClick?: () => void;
   children?: ReactNode;
   disablePopEffect?: boolean;
@@ -24,7 +24,7 @@ export const Eye: FC<EyeProps> = ({
   const [blinking, setBlinking] = useState(false);
   const { popEffect } = useAppSelector((state) => state.animation);
   const [click, setClick] = useState(false);
-  const { irisColor, bodyColor, eyeWhiteColor, retinaColor } = skin;
+  const { irisColor, bodyColor, eyeWhiteColor, retinaColor } = skin.skin;
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -48,7 +48,7 @@ export const Eye: FC<EyeProps> = ({
     <div
       className={`${
         miniEye
-          ? `relative z-10 w-[40px] h-[40px] min-w-[20px] min-h-[20px] max-w-[40px] max-h-[40px]`
+          ? `relative z-10 w-[30px] h-[30px] min-w-[15px] min-h-[15px] max-w-[30px] max-h-[30px]`
           : `relative z-10 w-[20vw] h-[20vw] max-w-[80px] max-h-[80px] min-w-[40px] min-h-[40px]`
       }`}
       onClick={() => setClick(true)}
@@ -76,7 +76,7 @@ export const Eye: FC<EyeProps> = ({
 
         {/* Iris + pupille */}
         <div
-          className={`${miniEye ? 'w-5 h-5' : 'w-10 h-10'} rounded-full flex items-center justify-center`}
+          className={`${miniEye ? 'w-4 h-4' : 'w-10 h-10'} rounded-full flex items-center justify-center`}
           style={{ background: getGradientFromColor(irisColor) }}
         >
           <div

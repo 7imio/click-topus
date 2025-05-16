@@ -10,6 +10,13 @@ import {
   setTotalHarvestedEssence,
 } from '../../../store/slices/essenceSlice';
 import { setCorruption } from '../../../store/slices/corruptionSlice';
+import { setFervor } from '../../../store/slices/fervorSlice';
+import { Creature } from '../../../types/Creature';
+import {
+  addCreature,
+  generateNewCreature,
+} from '../../../store/slices/creatureSlice';
+import { generateCompatibleSkills } from '../../../helpers/skill-utils';
 
 const BurgerMenu = () => {
   const [open, setOpen] = useState(false);
@@ -20,6 +27,7 @@ const BurgerMenu = () => {
   );
   const { corruption } = useAppSelector((state) => state.corruption);
   const { creatures } = useAppSelector((state) => state.creatures);
+  const { fervor } = useAppSelector((state) => state.fervor);
 
   const devMode = import.meta.env.VITE_DEVELOPER_MODE?.toLowerCase() === 'true';
 
@@ -43,8 +51,15 @@ const BurgerMenu = () => {
     dispatch(applySkin({ skin: skins[nextIndex] }));
   };
 
+  const handleAddOctopod = () => {
+    const randomSkin = skins[Math.floor(Math.random() * skins.length)];
+    const newOctopod: Creature = generateNewCreature(100000000000, randomSkin);
+    generateCompatibleSkills(newOctopod);
+    dispatch(addCreature(newOctopod));
+  };
+
   return (
-    <div className="fixed top-4 left-4 z-100">
+    <div className="fixed top-4 left-4 z-200">
       <button
         onClick={handleBurger}
         className="backdrop-blur-sm text-white px-3 py-2 rounded shadow-md transition-all duration-300 hover:bg-emerald-600 hover:scale-105 flex flex-row align-middle justify-center c"
@@ -84,12 +99,14 @@ const BurgerMenu = () => {
             <>
               <hr className="my-2 border-green-500" />
               <Link to="/octopodes" onClick={() => handleBurger()}>
-                🪼 Octopodes
-              </Link>
-              <Link to="/conquest" onClick={() => handleBurger()}>
-                🌍 Conquest
+                🪼 Octopods
               </Link>
             </>
+          )}
+          {fervor > 0 && (
+            <Link to="/conquest" onClick={() => handleBurger()}>
+              🌍 Conquest
+            </Link>
           )}
           <hr className="my-2 border-green-500" />
           <Link to="/about" onClick={() => handleBurger()}>
@@ -122,6 +139,17 @@ const BurgerMenu = () => {
                 }}
               >
                 ☣️ Add corruption
+              </p>
+              <p
+                className="cursor-pointer"
+                onClick={() => {
+                  dispatch(setFervor(fervor + 1000000000));
+                }}
+              >
+                🔥 Add fervor
+              </p>
+              <p className="cursor-pointer" onClick={handleAddOctopod}>
+                🪼 Add Octopod
               </p>
             </>
           )}

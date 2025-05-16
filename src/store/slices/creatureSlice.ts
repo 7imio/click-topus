@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getExponentialGrowth } from '../../helpers/math-utils';
 import { generateRandomName } from '../../helpers/name-utils';
 import { Creature } from '../../types/Creature';
-import { SkinColor } from '../../types/Skin';
+import { Skin } from '../../types/Skin';
 import { basicSkin } from './skinSlice';
 
 export interface CreatureState {
@@ -23,6 +23,26 @@ const initialState: CreatureState = {
   segmentsPerTentacle: 10,
   essencePerSegment: 10,
   segmentsType: 2,
+};
+
+export const generateNewCreature = (essence: number, skin: Skin): Creature => {
+  return {
+    creatureId: crypto.randomUUID(),
+    creatureName: generateRandomName(),
+    essence: essence,
+    skills: [],
+    skin: skin ?? basicSkin,
+    birthDate: Date.now(),
+    level: 1,
+    victories: 0,
+    isDead: false,
+    canConquest: false,
+    isInConquest: false,
+    lastConquestTarget: '',
+    deathDate: undefined,
+    skillStrengths: [],
+    skillWeaknesses: [],
+  };
 };
 
 const creatureSlice = createSlice({
@@ -49,18 +69,12 @@ const creatureSlice = createSlice({
       action: {
         payload: {
           essenceForCreature: number;
-          skin: SkinColor;
+          skin: Skin;
         };
       }
     ) => {
       const { essenceForCreature, skin } = action.payload;
-      const newCreature: Creature = {
-        creatureId: crypto.randomUUID(),
-        creatureName: generateRandomName(),
-        essence: essenceForCreature,
-        skills: [],
-        skin: skin ?? basicSkin,
-      };
+      const newCreature = generateNewCreature(essenceForCreature, skin);
       state.creatures?.push(newCreature);
 
       state.created = state.creatures?.length ?? state.created + 1;
@@ -100,6 +114,11 @@ const creatureSlice = createSlice({
         state.creatures[index] = { ...state.creatures[index], ...creature };
       }
     },
+    addCreature: (state, action: PayloadAction<Creature>) => {
+      if (!Array.isArray(state.creatures)) return;
+      state.creatures.push(action.payload);
+      state.created = state.creatures.length;
+    },
     resetCreatureSkills: (
       state,
       action: PayloadAction<{ creatureId: string }>
@@ -110,6 +129,9 @@ const creatureSlice = createSlice({
       );
       if (creature) {
         creature.skills = [];
+        creature.skillStrengths = [];
+        creature.skillWeaknesses = [];
+        creature.canConquest = false;
       }
     },
     hydrate: (state, action: PayloadAction<CreatureState>) => {
@@ -128,5 +150,6 @@ export const {
   createNewCreature,
   resetCreatureSkills,
   hydrate,
+  addCreature,
 } = creatureSlice.actions;
 export default creatureSlice.reducer;

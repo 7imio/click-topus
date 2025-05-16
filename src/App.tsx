@@ -10,13 +10,16 @@ import { hydrate as hydrateAnimation } from './store/slices/animationSlice';
 import { hydrate as hydrateCorruption } from './store/slices/corruptionSlice';
 import { hydrate as hydrateSkin } from './store/slices/skinSlice';
 import { hydrate as hydrateDebug } from './store/slices/debugSlice';
+import { hydrate as hydrateFervor } from './store/slices/fervorSlice';
 import { setHydrated } from './store/slices/hydrationSlice';
 import Router from './components/router/Router';
 import Bubbles from './components/background/Bubbles';
 import BurgerMenu from './components/ui/menu/BurgerMenu';
-import useAutoClickers from './hooks/useAutoClickers';
-import useSaveGame from './hooks/useSaveGame';
+import useHarvestEssence from './hooks/useHarvestEssence';
 import useHarvestCorruption from './hooks/useHarvestCorruption';
+import useHarvestFervor from './hooks/useHarvestFervor';
+import useSaveGame from './hooks/useSaveGame';
+import { useInitializeCountries } from './hooks/useInitializeCountries';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -24,8 +27,10 @@ function App() {
   const { hydrated } = useAppSelector((s) => s.hydration);
 
   useSaveGame(hydrated);
-  useAutoClickers();
+  useHarvestEssence();
   useHarvestCorruption();
+  useHarvestFervor();
+  useInitializeCountries();
 
   useEffect(() => {
     const game = loadGame();
@@ -38,6 +43,7 @@ function App() {
       if (game.corruption) dispatch(hydrateCorruption(game.corruption));
       if (game.skin) dispatch(hydrateSkin(game.skin));
       if (game.debug) dispatch(hydrateDebug(game.debug));
+      if (game.fervor) dispatch(hydrateFervor(game.fervor));
     }
     dispatch(setHydrated(true));
     setLoading(false);
@@ -50,8 +56,8 @@ function App() {
         <div className="text-white p-4">Loading...</div>
       ) : (
         <>
-          <Router />
           <Bubbles />
+          <Router />
         </>
       )}
     </div>
