@@ -9,9 +9,10 @@ const TestToast: FC = () => {
             // type string only
             message: 'je suis spécial !',
 
-            // 'info' | 'success' | 'warning' | 'error' | 'default'
+            // type: type de toast ('info', 'success', 'warning', 'error', 'default')
             type: 'success',
 
+            // position: position du toast
             // 'top-left', 'top-right', 'top-center', 
             // 'bottom-left', 'bottom-right', 'bottom-center', 
             position: 'top-center',
@@ -23,11 +24,9 @@ const TestToast: FC = () => {
             // pauseOnHover: pause le timer au survol de la souris
             // draggable: active le déplacement du toast à la souris
             // draggablePercent: % de déplacement requis pour drag le toast (ex: 80)
-            // position: position du toast ('top-right', 'top-center', etc.)
-            // type: type de toast ('info', 'success', 'warning', 'error', 'default')
             // newestOnTop: affiche les nouveaux toasts au-dessus
             // theme: thème du toast ('light', 'dark', 'colored')
-            // className: classe CSS personnalisée pour le toast
+            // className: classe CSS personnalisée pour le toast (! avec les classes tailwind si la propriété n'est pas prise en compte)
             // bodyClassName: classe CSS personnalisée pour le contenu du toast
             // progressClassName: classe CSS personnalisée pour la barre de progression
             // closeButton: composant React personnalisé pour le bouton de fermeture
