@@ -12,6 +12,7 @@ import debugReducer, { DebugState } from './slices/debugSlice';
 import corruptionReducer, { CorruptionState } from './slices/corruptionSlice';
 import hydrationReducer, { HydrationState } from './slices/hydrationSlice';
 import fervorReducer, { FervorState } from './slices/fervorSlice';
+import countriesReducer, { CountryState } from './slices/countrySlice';
 
 export interface GlobalState {
   toast: ToastState;
@@ -25,6 +26,7 @@ export interface GlobalState {
   animation: AnimationState;
   debug: DebugState;
   hydration: HydrationState;
+  countries: CountryState;
 }
 
 export const store = configureStore<GlobalState>({
@@ -40,6 +42,7 @@ export const store = configureStore<GlobalState>({
     corruption: corruptionReducer,
     hydration: hydrationReducer,
     fervor: fervorReducer,
+    countries: countriesReducer,
   },
 });
 

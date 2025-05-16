@@ -1,6 +1,6 @@
 export enum CapacityType {
-  DEFENSE = 'defense', // Défense militaire ou résistance mentale
-  INFLUENCE = 'influence', // Propagation d'idéologies, contrôle mental, etc.
+  DEFENSE = 'defense', // Défense militaire ou résistance mentale (PAYS)
+  INFLUENCE = 'influence', // Propagation d'idéologies, contrôle mental, etc. (OCTOPODS)
 }
 
 export interface Capacity {
