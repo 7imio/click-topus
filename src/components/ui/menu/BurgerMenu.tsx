@@ -23,6 +23,8 @@ const BurgerMenu = () => {
   const [open, setOpen] = useState(false);
   const [animOpen, setAnimOpen] = useState(false);
 
+  const state = useAppSelector((state) => state);
+
   const { essence, totalHarvestedEssence } = useAppSelector(
     (state) => state.essence
   );
@@ -57,6 +59,10 @@ const BurgerMenu = () => {
     const newOctopod: Creature = generateNewCreature(100000000000, randomSkin);
     generateCompatibleSkills(newOctopod);
     dispatch(addCreature(newOctopod));
+  };
+
+  const handleLogState = () => {
+    console.log(state);
   };
 
   return (
@@ -141,15 +147,7 @@ const BurgerMenu = () => {
               >
                 ☣️ Add corruption
               </p>
-              <hr className="my-2 border-green-500" />
-              <p
-                className="cursor-pointer"
-                onClick={() => {
-                  dispatch(setCorruption(corruption + 1000000000));
-                }}
-              >
-                <TestToast />
-              </p>
+
               <p
                 className="cursor-pointer"
                 onClick={() => {
@@ -160,6 +158,17 @@ const BurgerMenu = () => {
               </p>
               <p className="cursor-pointer" onClick={handleAddOctopod}>
                 🪼 Add Octopod
+              </p>
+              <p className="cursor-pointer">
+                <TestToast />
+              </p>
+              <p
+                className="cursor-pointer"
+                onClick={() => {
+                  handleLogState();
+                }}
+              >
+                🧪 Log Redux State
               </p>
             </>
           )}

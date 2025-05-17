@@ -4,7 +4,7 @@
     "name": "Hypnotic Songs",
     "description": "Mesmerizing chants weaken cultural defenses and bend minds.",
     "type": "influence",
-    "toughnesses": "cultural_resilience",
+    "toughnesses": "population_resilience",
     "weaknesses": "high_tech_defense",
     "incompatibilities": ["mindless_swarms", "apocalyptic_revelation"]
   },
@@ -22,8 +22,8 @@
     "name": "False Prophecy",
     "description": "Spreads lies of salvation through divine tentacular messiahs.",
     "type": "influence",
-    "toughnesses": "religious_fanaticism",
-    "weaknesses": "cultural_resilience",
+    "toughnesses": "religious_control",
+    "weaknesses": "population_resilience",
     "incompatibilities": ["apocalyptic_revelation"]
   },
   {
@@ -41,7 +41,7 @@
     "description": "Injects viral data worms into critical infrastructures.",
     "type": "influence",
     "toughnesses": "high_tech_defense",
-    "weaknesses": "religious_fanaticism",
+    "weaknesses": "religious_control",
     "incompatibilities": ["false_currency"]
   },
   {
@@ -49,7 +49,7 @@
     "name": "Apocalyptic Revelation",
     "description": "Reveals inevitable doom, collapsing faith-based defenses.",
     "type": "influence",
-    "toughnesses": "religious_fanaticism",
+    "toughnesses": "religious_control",
     "weaknesses": "high_tech_defense",
     "incompatibilities": ["false_prophecy"]
   },
@@ -85,7 +85,7 @@
     "name": "Cultural Corruption",
     "description": "Dissolves cultural values, paving the way for cultist rule.",
     "type": "influence",
-    "toughnesses": "cultural_resilience",
+    "toughnesses": "population_resilience",
     "weaknesses": "propaganda_masters",
     "incompatibilities": []
   },

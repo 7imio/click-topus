@@ -97,7 +97,7 @@
     "type": "defense",
     "toughnesses": "psychic_domination",
     "weaknesses": "apocalyptic_revelation",
-    "incompatibilities": ["religious_fanaticism"]
+    "incompatibilities": ["religious_control"]
   },
   {
     "id": "economic_sanctions",

@@ -6,6 +6,8 @@ import OctopodeLine from '../../offsprings/OctopodeLine';
 import ProgressBar from '../../ProgressBar';
 import SkillCompatibilities from './SkillCompatibilities';
 import Pagination from '../../../generics/Pagination';
+import { buyFervorItem } from '../../../../store/slices/fervorSlice';
+import { useSendOctopodeToConquest } from '../../../../hooks/useSendOctopodeToConquest';
 
 const ITEMS_PER_PAGE = 5;
 
@@ -13,13 +15,18 @@ const CountryAttack = () => {
   const { ISO_A2 } = useParams<{ ISO_A2: string }>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const sendOctopodeToConquest = useSendOctopodeToConquest();
+
+  const { fervor, currentCost } = useAppSelector((state) => state.fervor);
 
   const country = useAppSelector((state) =>
     state.countries.countries.find((c) => c.ISO_A2 === ISO_A2)
   );
 
   const availableOctopodes = useAppSelector((state) =>
-    (state.creatures.creatures ?? []).filter((c) => c.canConquest && !c.isDead)
+    (state.creatures.creatures ?? []).filter(
+      (c) => c.canConquest && !c.isDead && !c.isInConquest
+    )
   );
 
   const [selectedOctopode, setSelectedOctopode] = useState<Creature | null>(
@@ -40,21 +47,27 @@ const CountryAttack = () => {
 
   const handleLaunchAttack = () => {
     if (!selectedOctopode) return;
-    console.log('Attack launched with:', selectedOctopode.creatureName);
-    navigate('/conquest');
+    if (selectedOctopode.isInConquest) return;
+    if (fervor < currentCost) return;
+
+    dispatch(
+      buyFervorItem({ name: `Attack ${country.name}`, cost: currentCost })
+    );
+    sendOctopodeToConquest(selectedOctopode, country);
   };
 
   return (
     <div className="flex flex-col items-center p-1 text-green-200">
       <h1 className="text-2xl font-bold mb-2">⚔️ Attack {country.name}</h1>
-
-      <p>Defense Level: {country.defensePotential}</p>
-      <p>Population: {country.population.toLocaleString()}</p>
-      <p>
-        Capacities:{' '}
-        {country.capacities.map((cap) => cap.name).join(', ') || 'None'}
-      </p>
-
+      <h2 className="text-xl font-bold mb-1">🔥 Fervor : {fervor}</h2>
+      <div className="flex flex-row items-center mb-2 gap-2 ">
+        <p>Defense Level: {country.defensePotential}</p>
+        <p>Population: {country.population.toLocaleString()}</p>
+        <p>
+          Capacities:{' '}
+          {country.capacities.map((cap) => cap.name).join(', ') || 'None'}
+        </p>
+      </div>
       <div className="w-full my-4">
         <ProgressBar
           population={country.population}

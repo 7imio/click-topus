@@ -3,6 +3,7 @@ import { Country } from '../../../../types/Country';
 import { Creature } from '../../../../types/Creature';
 import rawCountrySkills from '../../../../data/skills/countrySkills.json';
 import { Capacity } from '../../../../types/Capacity';
+import { useAppSelector } from '../../../../store/hooks';
 
 interface SkillCompatibilitiesProps {
   country: Country;
@@ -17,6 +18,9 @@ const SkillCompatibilities: FC<SkillCompatibilitiesProps> = ({
   onLaunchAttack,
   onBack,
 }) => {
+  const { fervor, currentCost } = useAppSelector((state) => state.fervor);
+  const canAttack = fervor >= currentCost || !octopode.isInConquest;
+
   const hasAdvantage =
     Array.isArray(octopode.skillStrengths) &&
     octopode.skillStrengths.some((str) =>
@@ -93,9 +97,13 @@ const SkillCompatibilities: FC<SkillCompatibilitiesProps> = ({
       <div className="mt-6 flex flex-col gap-4">
         <button
           onClick={onLaunchAttack}
-          className="px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-bold rounded-full"
+          disabled={!canAttack || country.isConquered}
+          className={`px-6 py-2 ${canAttack || !country.isConquered ? 'bg-green-600 hover:bg-green-700' : 'bg-neutral-700'} text-white font-bold rounded-full`}
         >
-          🚀 Launch Attack
+          {country.isConquered
+            ? 'Country is conquered ! '
+            : `🚀 Launch Attack :
+          ${canAttack ? `${currentCost} fervor` : "you can't attack"}}`}
         </button>
 
         <button

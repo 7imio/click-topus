@@ -21,6 +21,7 @@ import ToastListener from './hooks/toast/ToastListener';
 import useHarvestFervor from './hooks/useHarvestFervor';
 import useSaveGame from './hooks/useSaveGame';
 import { useInitializeCountries } from './hooks/useInitializeCountries';
+import useManageAttack from './hooks/useManageAttack';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -28,10 +29,11 @@ function App() {
   const { hydrated } = useAppSelector((s) => s.hydration);
 
   useSaveGame(hydrated);
+  useInitializeCountries();
   useHarvestEssence();
   useHarvestCorruption();
   useHarvestFervor();
-  useInitializeCountries();
+  useManageAttack();
 
   useEffect(() => {
     const game = loadGame();

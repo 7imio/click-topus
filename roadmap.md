@@ -2,73 +2,87 @@
 
 ## 🧱 Structure technique
 
-```
+```plaintext
 src/
-├── components/          # Eye, Tentacle, MiniCreature, etc.
-├── hooks/               # Hooks personnalisés (useEssenceIncrement, useAutoClickers…)
-├── store/               # Redux Toolkit (slices modulaires)
-├── Helpers/             # Fonctions utilitaires (color shift, save, debug)
-├── constants/           # Constantes : segment count, essence, skins…
-├── data/                # Skins (skins.json), upgrades futurs
+├── components/         # Eye, Tentacle, MiniCreature, WorldMap, CountryDetails, etc.
+├── hooks/              # useEssenceIncrement, useAutoClickers, useConquestCountries, etc.
+├── store/              # Redux Toolkit slices (modulaires)
+├── helpers/            # Fonctions utilitaires : calculs, color, save, debug...
+├── constants/          # Constantes : segments, essence, skins, ressources...
+├── data/                # JSON : skins, pays, capacités, rituels...
 └── styles/              # CSS / Tailwind utils
 ```
 
 ---
 
-## ✅ Phase 1 - Core loop (Terminé)
+## ✅ Phase 1 - Core Loop (Terminé)
 
 - [x] Click manuel sur l'œil
-- [x] Tentacules segmentées par clics
-- [x] Ventouses liées aux segments
-- [x] Apparition d’une créature cosmique après 1600 essence
-- [x] Mini créatures animées dans le fond
-- [x] Skins assignés à chaque créature
-- [x] Hook custom pour `useEssenceIncrement`
-- [x] Autoclickers débloqués à coût croissant
-- [x] Animations CSS (floaty, dance, wiggle, eye-pop)
-- [x] Debug panel toggle (DEBUG mode)
+- [x] Tentacules segmentées et animées
+- [x] Ventouses automatiques par segments
+- [x] Créatures cosmiques générées après 1600 essence
+- [x] Skins déblocables et stockés en JSON
+- [x] Autoclickers avec scaling exponentiel
+- [x] Animations CSS (wiggle, floaty, eye-pop, etc.)
+- [x] Mode debug avec affichage des slices Redux
+- [x] Architecture Redux propre et modulaire
 
 ---
 
-## 🔄 Phase 2 - Architecture & Scalabilité
+## 🔄 Phase 2 - Architecture & Scalabilité (Terminé)
 
 - [x] Passage complet à Redux Toolkit
-- [x] `essenceSlice`, `creatureSlice`, `tentacleSlice`, `autoClickerSlice`
-- [x] Gestion de l’animation via `animationSlice`
-- [x] Gestion des créatures générées et reset des tentacules
-- [x] Externalisation des skins (`skins.json`)
-- [x] Optimisations : memoisation, rendu contrôlé
+- [x] State persistant en localStorage
+- [x] Slices Redux : essence, créatures, corruption, fervor, autoClickers, animation...
+- [x] Externalisation des skins et données de capacités
+- [x] Optimisations des rendus et calculs (memoization)
 
 ---
 
-## 🧠 Phase 3 - Gameplay étendu
+## 🧠 Phase 3 - Gameplay Étendu (En cours)
 
-- [ ] Refonte du système d’achat (feedback UI, effet de dépense)
-- [x] Persistance complète (save/load Redux state)
-- [ ] Ajout de **bonus passifs** (ex : +1 essence par clic, auto-suckers)
-- [x] Équilibrage du scaling (prix autoClickers, progression exponentielle)
-- [ ] Système de **prestige** : relancer le jeu avec bonus (à la Paperclip)
-- [ ] **Succès** et galerie de créatures générées
-
----
-
-## 🌍 Phase 4 - Narration & World Map
-
-- [x] Ajout d’un écran d’accueil (nom du jeu, start, credits)
-- [x] Menu latéral (burger) : total essence, skins, lore, changements de scène
-- [x] Map de conquête (Terre → Espace → Multivers)
-- [ ] Création de divinités cosmiques tous les 100 rejetons
-- [ ] Rythme d’apparition des autoClickers / unités / divinités
-- [ ] Système de Wargame : cultistes, villes à conquérir, ennemis humains
+- [x] Système de Prestige (type Universal Paperclips)
+- [x] Persistance complète du state Redux
+- [x] Refonte du système d’achat avec feedback visuel
+- [x] Galerie de créatures générées
+- [ ] Fusion et mutation des créatures
+- [ ] Bonus passifs : +1 essence par clic, auto-suckers
+- [ ] Skills des créatures façon "casino"
 
 ---
 
-## 🔮 Inspirations futures
+## 🌍 Phase 4 - Conquête du Monde (Prioritaire)
 
-- [ ] Système de météo cosmique (nuages, particules)
-- [ ] Défis journaliers ou aléatoires
-- [ ] Fusion de créatures / mutation
-- [x] Générateur aléatoire de noms lovecraftiens (ex: Yog-D’thuun-S’lorr)
+### ✅ Fonctionnalités de base :
+
+- [x] Système de conquête des pays basé sur essence et population
+- [x] Indoctrination progressive des pays (IndoctrinationLevel)
+- [x] Gestion des compatibilités skills / pays (forces & faiblesses)
+
+### 🛠️ En cours :
+
+- [ ] Calcul des coûts modulé par compatibilités
+- [ ] Ajout du Mode "Rush" (consommation de ferveur, accélération de conquête)
+- [ ] Calcul dynamique des durées de conquête (réduction si plusieurs octopodes)
+- [ ] UI complète pour la sélection des pays et détails des attaques
+- [ ] Intégration de l’écran d’attaque avec feedback visuel et compatibilités
+- [ ] Mécanique de mort et Farewell (gain de corruption ou ferveur)
+
+### 🔮 À venir :
+
+- [ ] Système de Wargame : Cultistes, villes à conquérir, ennemis humains
+- [ ] Divinités cosmiques créées tous les 100 rejetons
+- [ ] Passage à la conquête de l’espace après la Terre
+- [ ] Système de mémoire des octopodes vaincus (in memoriam)
+- [ ] Système de nommage des batailles
+- [ ] Lore et rituels débloquables (avec coût en essence, corruption ou ferveur)
+
+---
+
+## 🚀 Phase 5 - Extension Cosmique
+
+- [ ] Système de météo cosmique (particules, tempêtes de corruption)
+- [ ] Affrontements cosmiques (Devourer of Worlds : Zhorr’Khalith)
 
 ---
 
@@ -76,4 +90,4 @@ src/
 
 **Seteemio**
 
-> Développeur, metalhead, architecte de tentacules.
+> Développeur, metalhead, architecte de tentacules et conquérant de mondes perdus 🌌
