@@ -54,6 +54,7 @@ const CountryAttack = () => {
       buyFervorItem({ name: `Attack ${country.name}`, cost: currentCost })
     );
     sendOctopodeToConquest(selectedOctopode, country);
+    setSelectedOctopode(null);
   };
 
   return (

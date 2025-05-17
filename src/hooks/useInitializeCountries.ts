@@ -29,10 +29,12 @@ export const useInitializeCountries = () => {
           (capacity) => capacity.weaknesses
         );
 
+        const isConquered = country.population === 0;
+
         return {
           ...country,
           indoctrinationLevel: 0,
-          isConquered: false,
+          isConquered,
           capacities: parsedCapacities,
           toughnesses: toughnesses.flat(),
           weaknesses: weaknesses.flat(),

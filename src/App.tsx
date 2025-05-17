@@ -6,11 +6,11 @@ import { hydrate as hydrateEssence } from './store/slices/essenceSlice';
 import { hydrate as hydrateCreatures } from './store/slices/creatureSlice';
 import { hydrate as hydrateTentacles } from './store/slices/tentacleSlice';
 import { hydrate as hydrateAutoClickers } from './store/slices/autoClickerSlice';
-import { hydrate as hydrateAnimation } from './store/slices/animationSlice';
 import { hydrate as hydrateCorruption } from './store/slices/corruptionSlice';
 import { hydrate as hydrateSkin } from './store/slices/skinSlice';
 import { hydrate as hydrateDebug } from './store/slices/debugSlice';
 import { hydrate as hydrateFervor } from './store/slices/fervorSlice';
+import { hydrate as hydrateCountries } from './store/slices/countrySlice';
 import { setHydrated } from './store/slices/hydrationSlice';
 import Router from './components/router/Router';
 import Bubbles from './components/background/Bubbles';
@@ -22,6 +22,7 @@ import useHarvestFervor from './hooks/useHarvestFervor';
 import useSaveGame from './hooks/useSaveGame';
 import { useInitializeCountries } from './hooks/useInitializeCountries';
 import useManageAttack from './hooks/useManageAttack';
+import { hydrate as hydrateAttacks } from './store/slices/attackSlice';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -39,14 +40,16 @@ function App() {
     const game = loadGame();
     if (game) {
       if (game.essence) dispatch(hydrateEssence(game.essence));
-      if (game.creatures) dispatch(hydrateCreatures(game.creatures));
-      if (game.tentacles) dispatch(hydrateTentacles(game.tentacles));
-      if (game.autoClicker) dispatch(hydrateAutoClickers(game.autoClicker));
-      if (game.animation) dispatch(hydrateAnimation(game.animation));
       if (game.corruption) dispatch(hydrateCorruption(game.corruption));
-      if (game.skin) dispatch(hydrateSkin(game.skin));
-      if (game.debug) dispatch(hydrateDebug(game.debug));
       if (game.fervor) dispatch(hydrateFervor(game.fervor));
+      if (game.skin) dispatch(hydrateSkin(game.skin));
+      if (game.tentacles) dispatch(hydrateTentacles(game.tentacles));
+      if (game.creatures) dispatch(hydrateCreatures(game.creatures));
+      if (game.autoClicker) dispatch(hydrateAutoClickers(game.autoClicker));
+      if (game.countries) dispatch(hydrateCountries(game.countries));
+      if (game.attacks) dispatch(hydrateAttacks(game.attacks));
+      if (game.debug) dispatch(hydrateDebug(game.debug));
+      // hydrate countries
     }
     dispatch(setHydrated(true));
     setLoading(false);

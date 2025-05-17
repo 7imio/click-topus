@@ -4,15 +4,17 @@ import { saveGame } from '../helpers/save-utils';
 
 const useSaveGame = (enabled: boolean, throttleDelay = 5000) => {
   const essence = useAppSelector((s) => s.essence);
+  const corruption = useAppSelector((s) => s.corruption);
+  const fervor = useAppSelector((s) => s.fervor);
   const skin = useAppSelector((s) => s.skin);
   const tentacles = useAppSelector((s) => s.tentacles);
   const creatures = useAppSelector((s) => s.creatures);
   const autoClicker = useAppSelector((s) => s.autoClicker);
-  const animation = useAppSelector((s) => s.animation);
-  const corruption = useAppSelector((s) => s.corruption);
   const countries = useAppSelector((s) => s.countries);
-  const fervor = useAppSelector((s) => s.fervor);
   const attacks = useAppSelector((s) => s.attacks);
+  // toast
+  // debug
+  // animations
 
   const lastSaveRef = useRef<number>(0);
 
@@ -27,7 +29,6 @@ const useSaveGame = (enabled: boolean, throttleDelay = 5000) => {
         tentacles,
         creatures,
         autoClicker,
-        animation,
         corruption,
         countries,
         fervor,
@@ -42,7 +43,6 @@ const useSaveGame = (enabled: boolean, throttleDelay = 5000) => {
     tentacles,
     creatures,
     autoClicker,
-    animation,
     corruption,
     countries,
     fervor,

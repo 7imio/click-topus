@@ -49,7 +49,12 @@ export const DiceRoller: FC<DiceRollerProps> = ({
     const { creatureId } = creature;
     const newEssence = rollEffect(essence, result);
     setDelta(newEssence - creature.essence);
-    const updatedCreature = { ...creature, essence: newEssence };
+    const updatedCreature = {
+      ...creature,
+      essence: newEssence,
+      maxEssence:
+        newEssence > creature.maxEssence ? newEssence : creature.maxEssence,
+    };
     dispatch(updateCreature({ creatureId, creature: updatedCreature }));
     setResult(newEssence);
   };
