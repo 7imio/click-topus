@@ -35,10 +35,15 @@ const useManageAttack = () => {
           const octo = creatures?.find((c) => c.creatureId === octopodeId);
           if (!octo || octo.essence <= 0) return;
 
-          const multiplier = calculateConquestMultiplier(octo, country);
+          const multiplier = Math.floor(
+            calculateConquestMultiplier(octo, country)
+          );
           const maxIndoctrination = octo.baseEssence * multiplier;
-          const indoctrinationPerTick = maxIndoctrination / ticks;
-          const essencePerTick = octo.baseEssence / ticks;
+          const indoctrinationPerTick = Math.floor(maxIndoctrination / ticks);
+
+          const essencePerTick = Math.floor(
+            octo.essence / ((ATTACK_DURATION * 1000) / TICK_INTERVAL)
+          );
 
           const newIndoctrination =
             (country.indoctrinationLevel || 0) + indoctrinationPerTick;
@@ -65,11 +70,13 @@ const useManageAttack = () => {
             return;
           }
 
-          // 🎉 Conquête terminée avant la mort de l'octopode
+          // 🎉 Conquête terminée avant mort de l'octopode
           if (countryWillBeConquered) {
-            const essenceNeededForConquest = country.population / multiplier;
+            const essenceNeededForConquest = Math.floor(
+              country.population / multiplier
+            );
             const finalEssence = Math.max(
-              octo.essence - essenceNeededForConquest,
+              octo.baseEssence - essenceNeededForConquest,
               0
             );
 
@@ -88,6 +95,9 @@ const useManageAttack = () => {
             );
 
             dispatch(markCountryAsConquered(country.ISO_A2));
+
+            // 🛑 On sort de la boucle pour cet octopode ET on termine l'attaque pour éviter les double-victoires
+            dispatch(endAttack(attack.id));
             return;
           }
 
