@@ -46,6 +46,9 @@ export const calculateConquestMultiplier = (
   octopode: Creature,
   country: Country
 ) => {
+  const baseMultiplier = 1;
+  const defenseMultiplier = country.defensePotential / 100 + baseMultiplier;
+
   const hasAdvantage = octopode.skillStrengths?.some((str) =>
     country.weaknesses?.includes(str)
   );
@@ -53,9 +56,12 @@ export const calculateConquestMultiplier = (
     country.toughnesses?.includes(weak)
   );
 
-  if (hasAdvantage) return 0.5;
-  if (hasDisadvantage) return 2;
-  return 1;
+  const compatibilityMultiplier = hasAdvantage
+    ? 0.5
+    : hasDisadvantage
+      ? 2
+      : baseMultiplier;
+  return compatibilityMultiplier * defenseMultiplier;
 };
 
 export const calculateBattleOutcome = (
