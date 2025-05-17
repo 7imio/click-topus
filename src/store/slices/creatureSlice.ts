@@ -30,6 +30,8 @@ export const generateNewCreature = (essence: number, skin: Skin): Creature => {
     creatureId: crypto.randomUUID(),
     creatureName: generateRandomName(),
     essence: essence,
+    baseEssence: essence,
+    maxEssence: essence,
     skills: [],
     skin: skin ?? basicSkin,
     birthDate: Date.now(),

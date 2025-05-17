@@ -60,27 +60,29 @@ export const calculateConquestMultiplier = (
 
 export const calculateBattleOutcome = (
   octopode: Creature,
-  country: Country,
-  durationSeconds: number
+  country: Country
 ) => {
   const multiplier = calculateConquestMultiplier(octopode, country);
+  const population = country.population;
 
-  // Calcul de l’essence consommée (tu peux pondérer ça selon la force de l’octopode)
-  const essencePerSecond = octopode.essence / durationSeconds;
-  const totalEssenceSpent = essencePerSecond * durationSeconds;
+  const indoctrinationNeeded = population - (country.indoctrinationLevel || 0);
 
-  // Calcul de l'endoctrination sur la durée
-  const indoctrinationPerSecond =
-    (octopode.essence * multiplier) / durationSeconds;
-  const totalIndoctrination = indoctrinationPerSecond * durationSeconds;
+  // Essence nécessaire pour indoctriner la totalité du pays
+  const essenceRequired = indoctrinationNeeded / multiplier;
+
+  // L'octopode dépensera tout ce qu'il peut, mais pas plus que nécessaire
+  const totalEssenceSpent = Math.min(
+    octopode.essence,
+    Math.floor(essenceRequired)
+  );
+  const totalIndoctrination = Math.floor(totalEssenceSpent * multiplier);
 
   const willConquer =
-    (country.indoctrinationLevel || 0) + totalIndoctrination >=
-    country.population;
+    (country.indoctrinationLevel || 0) + totalIndoctrination >= population;
 
   return {
-    totalEssenceSpent: Math.floor(totalEssenceSpent),
-    totalIndoctrination: Math.floor(totalIndoctrination),
+    totalEssenceSpent,
+    totalIndoctrination,
     victory: willConquer,
   };
 };

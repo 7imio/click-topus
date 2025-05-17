@@ -58,13 +58,21 @@ const BurgerMenu = () => {
   const throwError = useThrowError();
   const handleAddOctopod = () => {
     const randomSkin = skins[Math.floor(Math.random() * skins.length)];
-    const newOctopod: Creature = generateNewCreature(100000000000, randomSkin);
+    const newOctopod: Creature = generateNewCreature(100000000, randomSkin);
     generateCompatibleSkills(newOctopod);
     dispatch(addCreature(newOctopod));
   };
 
   const handleLogState = () => {
-    console.log(state);
+    const content = `[${new Date().toISOString()}] ${JSON.stringify(state, null, 2)}\n`;
+    const blob = new Blob([content], { type: 'text/plain' });
+    const link = document.createElement('a');
+
+    link.href = URL.createObjectURL(blob);
+    link.download = `redux-state-${new Date().toISOString().replace(/[:.]/g, '-')}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (

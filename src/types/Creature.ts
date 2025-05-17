@@ -5,6 +5,8 @@ export interface Creature {
   creatureId: string;
   creatureName: string;
   essence: number; // Essence actuelle
+  baseEssence: number; // montant d'essence de base a la création de l'octopode.
+  maxEssence: number; // Essence maximale enregistrée
   skin: Skin;
   skills?: Capacity[];
   skillStrengths?: string[];
