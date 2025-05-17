@@ -32,6 +32,15 @@ const Router: FC = () => {
       />
 
       <Route
+        path="/memoriam"
+        element={
+          <div className="text-white">
+            En mémoire de tous les octopodes perdus dans l'oubli...
+          </div>
+        }
+      />
+
+      <Route
         path="/test"
         element={
           <RedirectToError

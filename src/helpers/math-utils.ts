@@ -1,3 +1,6 @@
+import { Country } from '../types/Country';
+import { Creature } from '../types/Creature';
+
 export const multiplier = 1.2;
 
 export const getExponentialGrowth = (exponential: number) => {
@@ -37,4 +40,70 @@ export const rollEffect = (
 
   // Sécurisation pour éviter des résultats aberrants (négatifs ou trop petits)
   return Math.max(0, result);
+};
+
+export const calculateConquestMultiplier = (
+  octopode: Creature,
+  country: Country
+) => {
+  const hasAdvantage = octopode.skillStrengths?.some((str) =>
+    country.weaknesses?.includes(str)
+  );
+  const hasDisadvantage = octopode.skillWeaknesses?.some((weak) =>
+    country.toughnesses?.includes(weak)
+  );
+
+  if (hasAdvantage) return 0.5;
+  if (hasDisadvantage) return 2;
+  return 1;
+};
+
+export const calculateBattleOutcome = (
+  octopode: Creature,
+  country: Country,
+  durationSeconds: number
+) => {
+  const multiplier = calculateConquestMultiplier(octopode, country);
+
+  // Calcul de l’essence consommée (tu peux pondérer ça selon la force de l’octopode)
+  const essencePerSecond = octopode.essence / durationSeconds;
+  const totalEssenceSpent = essencePerSecond * durationSeconds;
+
+  // Calcul de l'endoctrination sur la durée
+  const indoctrinationPerSecond =
+    (octopode.essence * multiplier) / durationSeconds;
+  const totalIndoctrination = indoctrinationPerSecond * durationSeconds;
+
+  const willConquer =
+    (country.indoctrinationLevel || 0) + totalIndoctrination >=
+    country.population;
+
+  return {
+    totalEssenceSpent: Math.floor(totalEssenceSpent),
+    totalIndoctrination: Math.floor(totalIndoctrination),
+    victory: willConquer,
+  };
+};
+
+export const calculateDynamicAttackTime = (
+  octopodes: Creature[],
+  country: Country
+): number => {
+  const totalEssence = octopodes.reduce((acc, octo) => acc + octo.essence, 0);
+  const population = country.population;
+
+  // Cas particulier : pas de population => conquête immédiate
+  if (population === 0) return 1;
+
+  const ratio = totalEssence / population;
+
+  // Si ratio >= 1 => on peut réduire le temps d'attaque
+  if (ratio >= 1) {
+    const cappedRatio = Math.min(ratio, 30); // Évite les valeurs extrêmes
+    const reducedTime = Math.ceil(30 / cappedRatio); // Inversement proportionnel
+    return Math.max(1, reducedTime);
+  }
+
+  // Si l'octopode est trop faible, temps max
+  return 30;
 };

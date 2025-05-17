@@ -21,6 +21,9 @@ const CountryLine: FC<CountryLineProps> = ({ country }) => {
           <span className="ml-1">
             Population: {country.population.toLocaleString()}
           </span>
+          <span className="ml-1">
+            Indoctrination level : {country.indoctrinationLevel || 'None'}
+          </span>
         </div>
       </div>
       <div className="w-1/3">

@@ -13,6 +13,7 @@ import corruptionReducer, { CorruptionState } from './slices/corruptionSlice';
 import hydrationReducer, { HydrationState } from './slices/hydrationSlice';
 import fervorReducer, { FervorState } from './slices/fervorSlice';
 import countriesReducer, { CountryState } from './slices/countrySlice';
+import attacksReducer, { AttacksState } from './slices/attackSlice';
 
 export interface GlobalState {
   toast: ToastState;
@@ -27,6 +28,7 @@ export interface GlobalState {
   debug: DebugState;
   hydration: HydrationState;
   countries: CountryState;
+  attacks: AttacksState;
 }
 
 export const store = configureStore<GlobalState>({
@@ -43,6 +45,7 @@ export const store = configureStore<GlobalState>({
     hydration: hydrationReducer,
     fervor: fervorReducer,
     countries: countriesReducer,
+    attacks: attacksReducer,
   },
 });
 

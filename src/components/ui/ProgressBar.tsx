@@ -17,16 +17,13 @@ const ProgressBar: FC<ProgressBarProps> = ({
       setColor('bg-green-500');
       setValue(100);
       return;
-    } else {
-      setValue((indoctrinationLevel ?? 0 / population) * 100);
-      const newColor =
-        value > 50
-          ? 'bg-green-500'
-          : value > 20
-            ? 'bg-yellow-500'
-            : 'bg-red-500';
-      setColor(newColor);
     }
+    const percentage =
+      population > 0 ? ((indoctrinationLevel ?? 0) / population) * 100 : 0;
+    setValue(percentage);
+    const newColor =
+      value > 50 ? 'bg-green-500' : value > 20 ? 'bg-yellow-500' : 'bg-red-500';
+    setColor(newColor);
   }, [population, indoctrinationLevel]);
 
   return (

@@ -1,43 +1,44 @@
 # 🐙 Eldritch Clicker - An Abyssal Idle Game
 
-> Plonge dans les profondeurs pour cliquer au nom d’anciens dieux cosmiques. Fais croître ta créature tentaculaire, déclenche l’extinction de l’humanité, et mène l’invasion du multivers.
+> Plonge dans les abysses et prépare l'extinction de l'humanité... Un clic après l'autre.
 
 ---
 
 ## 👁️ Description
 
-**Eldritch Clicker** est un idle game narratif et cosmique. Chaque clic sur l’œil d’une entité ancestrale nourrit sa croissance. Une fois complète, elle donne naissance à un rejeton, avançant ton culte dans la conquête intergalactique.
+**Eldritch Clicker** est un idle game narratif et cosmique où tu incarnes le héraut d'antiques entités tentaculaires. Chaque clic nourrit la croissance de créatures obscures. Élevez-les, endoctrinez les nations, et invoquez des divinités si anciennes qu’elles consomment la réalité elle-même.
 
 ---
 
 ## 🎮 Fonctionnalités principales
 
-- ✅ Clic sur l’œil principal
-- ✅ Tentacules segmentées dynamiques (jusqu'à 8 tentacules x 10 segments x 10 essence)
-- ✅ Ventouses ajoutées automatiquement
-- ✅ Skins de tentacules déblocables
-- ✅ Paupière animée et clignements aléatoires
-- ✅ Mini créatures générées en fond une fois la créature principale complétée
-- ✅ Autoclickers achetables (1 clic/s chacun, coût exponentiel)
-- ✅ Animations visuelles (wiggle, floaty, eye-pop)
-- ✅ Mode debug intégré (toggle & affichage des états Redux)
-- ✅ Stockage des skins via JSON externe
-- ✅ Architecture Redux complète et modulaire
+- ✅ Clic sur l’œil principal pour générer de l’essence
+- ✅ Tentacules dynamiques segmentées (jusqu'à 8 tentacules x 10 segments x 10 essence)
+- ✅ Skins et couleurs de tentacules personnalisables via JSON externe
+- ✅ Autoclickers : recrute des cultistes pour automatiser la récolte
+- ✅ Système de prestige : recommence avec des bonus interdimensionnels
+- ✅ Gestion complète de créatures et de leurs compétences
+- ✅ Conquête du monde : endoctrine les nations avec tes rejetons
+- ✅ Compatibilités de forces et faiblesses entre octopodes et pays
+- ✅ Mode Rush : accélère l'endoctrinement au prix de ta ferveur
+- ✅ Mécaniques de Mort et Farewell : sacrifie tes créatures pour des ressources
+- ✅ Lore évolutif et divinités cosmiques à invoquer (Zhorr’Khalith, Dévoreur des Mondes)
+- ✅ Architecture Redux modulaire et state persistant
+- ✅ Interface full responsive avec animations CSS customisées (wiggle, floaty, eye-pop…)
 
 ---
 
 ## 🧠 Tech Stack
 
 - ⚛️ **React** + **TypeScript**
-- 💅 **TailwindCSS**
-- ⚙️ **Redux Toolkit** pour la gestion d'état
-- 💾 `localStorage` (persistance prévue)
-- 🧪 Debugging friendly (avec slice dédiée)
-- 🎨 Modularité des composants (Skin, Eye, Tentacles, Bubbles…)
+- 💅 **TailwindCSS** pour le style
+- 📦 **Redux Toolkit** pour la gestion d’état
+- 💾 **localStorage** pour la sauvegarde automatique
+- 🎨 Skins et données en JSON externes pour une modularité totale
 
 ---
 
-## 🚀 Lancer le projet
+## 🚀 Lancer le Projet
 
 ```bash
 npm install
@@ -50,12 +51,22 @@ npm run dev
 
 - Universal Paperclips
 - Cookie Clicker
-- H.P. Lovecraft & Subnautica
-- Cthulhu mythos
-- Les abysses de ton âme
+- H.P. Lovecraft & le Mythe de Cthulhu
+- Subnautica & l’appel des abysses
+- Plague Inc. pour le gameplay de conquête
 
 ---
 
-## ✨ Par Seteemio
+## 📚 Lore (Extrait)
 
-Code avec ❤️, ventouses, et corruption interdimensionnelle.
+> _Dans les profondeurs insondables, là où la lumière ne pénètre plus, des graines cosmiques tombèrent du néant. De ces graines naquirent les Yeux du Néant, les premiers rejetons de Zhorr’Khalith, la Fin des Mondes. Chaque clic rapproche leur retour, chaque conquête est une offrande. Prépare-toi, car lorsque l'Abyss récoltera son dû, il n’y aura plus de retour…_
+
+---
+
+## ✨ Développé par **Seteemio**
+
+> Code avec ❤️, ventouses et une pincée de corruption interdimensionnelle.  
+> Twitch : [Seteemio](https://www.twitch.tv/seteemio)  
+> Association soutenue : [Dites Je Suis Là](https://www.ditesjesuisla.fr/)
+
+**N’oublie pas : l’Œil Voit Tout… et il Attend.** 👁️

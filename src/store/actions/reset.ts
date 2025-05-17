@@ -1,4 +1,5 @@
 import { AppDispatch } from '..';
+import { resetAttacks } from '../slices/attackSlice';
 import { resetAutoClickers } from '../slices/autoClickerSlice';
 import { resetCorruption } from '../slices/corruptionSlice';
 import { resetCountries } from '../slices/countrySlice';
@@ -18,5 +19,6 @@ export const resetAllGameState = () => (dispatch: AppDispatch) => {
   dispatch(resetSkin());
   dispatch(resetFervor());
   dispatch(resetCountries());
+  dispatch(resetAttacks());
   dispatch(setHydrated(false));
 };

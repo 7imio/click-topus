@@ -12,6 +12,7 @@ const useSaveGame = (enabled: boolean, throttleDelay = 5000) => {
   const corruption = useAppSelector((s) => s.corruption);
   const countries = useAppSelector((s) => s.countries);
   const fervor = useAppSelector((s) => s.fervor);
+  const attacks = useAppSelector((s) => s.attacks);
 
   const lastSaveRef = useRef<number>(0);
 
@@ -30,6 +31,7 @@ const useSaveGame = (enabled: boolean, throttleDelay = 5000) => {
         corruption,
         countries,
         fervor,
+        attacks,
       };
 
       saveGame(state);
@@ -44,6 +46,7 @@ const useSaveGame = (enabled: boolean, throttleDelay = 5000) => {
     corruption,
     countries,
     fervor,
+    attacks,
   ]);
 };
 export default useSaveGame;

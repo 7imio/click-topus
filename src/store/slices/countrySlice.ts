@@ -26,15 +26,13 @@ const countrySlice = createSlice({
       action: PayloadAction<{
         iso: string;
         essenceSpent: number;
-        multiplier?: number;
       }>
     ) => {
       const country = state.countries.find(
         (c) => c.ISO_A2 === action.payload.iso
       );
       if (country && !country.isConquered) {
-        const effectiveEssence =
-          action.payload.essenceSpent * (action.payload.multiplier || 1);
+        const effectiveEssence = action.payload.essenceSpent;
         if (country.indoctrinationLevel === undefined) {
           country.indoctrinationLevel = 0;
         }
