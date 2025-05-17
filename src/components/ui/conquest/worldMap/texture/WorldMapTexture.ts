@@ -96,7 +96,30 @@ const fillCountryColor = (
 
   if (!countryData) return;
 
-  ctx.fillStyle = countryData.color || '#444';
+  const baseColor = countryData.color || '#444';
+  const indoctrinationProgress = Math.min(
+    (countryData.indoctrinationLevel || 0) / countryData.population,
+    1
+  );
+
+  // Convert RGB string to [r, g, b]
+  const extractRgb = (colorStr: string): [number, number, number] => {
+    const match = colorStr.match(/\d+/g);
+    if (!match) return [68, 68, 68]; // fallback
+    return [parseInt(match[0]), parseInt(match[1]), parseInt(match[2])];
+  };
+
+  const [r1, g1, b1] = extractRgb(baseColor);
+  const [r2, g2, b2] = [113, 37, 219]; // Violet cible (#7125db)
+
+  // Interpolation linéaire vers violet
+  const r = Math.floor(r1 + (r2 - r1) * indoctrinationProgress);
+  const g = Math.floor(g1 + (g2 - g1) * indoctrinationProgress);
+  const b = Math.floor(b1 + (b2 - b1) * indoctrinationProgress);
+
+  const finalColor = `rgb(${r}, ${g}, ${b})`;
+
+  ctx.fillStyle = finalColor;
   ctx.beginPath();
   path(feature);
   ctx.fill();
