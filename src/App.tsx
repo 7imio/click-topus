@@ -23,6 +23,7 @@ import useSaveGame from './hooks/useSaveGame';
 import { useInitializeCountries } from './hooks/useInitializeCountries';
 import useManageAttack from './hooks/useManageAttack';
 import { hydrate as hydrateAttacks } from './store/slices/attackSlice';
+import useDecayIndoctrination from './hooks/useDecayIndoctrination';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -35,6 +36,7 @@ function App() {
   useHarvestCorruption();
   useHarvestFervor();
   useManageAttack();
+  useDecayIndoctrination();
 
   useEffect(() => {
     const game = loadGame();
