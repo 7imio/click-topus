@@ -8,7 +8,7 @@ import {
 import { updateCreature } from '../store/slices/creatureSlice';
 import { calculateConquestMultiplier } from '../helpers/math-utils';
 
-const TICK_INTERVAL = 100; // 100ms for smooth visual feedback
+const TICK_INTERVAL = 100; // 100ms ticks
 const ATTACK_DURATION = 30; // seconds
 
 const useManageAttack = () => {
@@ -35,15 +35,10 @@ const useManageAttack = () => {
           const octo = creatures?.find((c) => c.creatureId === octopodeId);
           if (!octo || octo.essence <= 0) return;
 
-          const multiplier = Math.floor(
-            calculateConquestMultiplier(octo, country)
-          );
+          const multiplier = calculateConquestMultiplier(octo, country);
           const maxIndoctrination = octo.baseEssence * multiplier;
-          const indoctrinationPerTick = Math.floor(maxIndoctrination / ticks);
-
-          const essencePerTick = Math.floor(
-            octo.essence / ((ATTACK_DURATION * 1000) / TICK_INTERVAL)
-          );
+          const indoctrinationPerTick = maxIndoctrination / ticks;
+          const essencePerTick = octo.baseEssence / ticks;
 
           const newIndoctrination =
             (country.indoctrinationLevel || 0) + indoctrinationPerTick;
@@ -53,7 +48,6 @@ const useManageAttack = () => {
             newIndoctrination >= country.population;
           const octopodeWillDie = newEssence <= 0;
 
-          // 💀 Octopode meurt avant conquête
           if (octopodeWillDie && !countryWillBeConquered) {
             dispatch(
               updateCreature({
@@ -70,13 +64,14 @@ const useManageAttack = () => {
             return;
           }
 
-          // 🎉 Conquête terminée avant mort de l'octopode
           if (countryWillBeConquered) {
+            const remainingPopulation =
+              country.population - (country.indoctrinationLevel || 0);
             const essenceNeededForConquest = Math.floor(
-              country.population / multiplier
+              remainingPopulation / multiplier
             );
             const finalEssence = Math.max(
-              octo.baseEssence - essenceNeededForConquest,
+              octo.essence - essenceNeededForConquest,
               0
             );
 
@@ -85,7 +80,7 @@ const useManageAttack = () => {
                 creatureId: octo.creatureId,
                 creature: {
                   ...octo,
-                  essence: finalEssence,
+                  essence: Math.floor(finalEssence),
                   isInConquest: false,
                   isDead: finalEssence <= 0,
                   canConquest: finalEssence > 0,
@@ -95,24 +90,24 @@ const useManageAttack = () => {
             );
 
             dispatch(markCountryAsConquered(country.ISO_A2));
-
-            // 🛑 On sort de la boucle pour cet octopode ET on termine l'attaque pour éviter les double-victoires
             dispatch(endAttack(attack.id));
             return;
           }
 
-          // 🛡️ Combat en cours
           dispatch(
             incrementIndoctrination({
               iso: country.ISO_A2,
-              essenceSpent: indoctrinationPerTick,
+              essenceSpent: Math.floor(indoctrinationPerTick),
             })
           );
 
           dispatch(
             updateCreature({
               creatureId: octo.creatureId,
-              creature: { ...octo, essence: newEssence },
+              creature: {
+                ...octo,
+                essence: Math.floor(newEssence),
+              },
             })
           );
 
@@ -132,7 +127,6 @@ const useManageAttack = () => {
           }
         });
 
-        // ✅ Fin de l'attaque si le temps est écoulé
         if (attack.elapsedTime >= ATTACK_DURATION) {
           attack.octopodesId.forEach((octopodeId) => {
             const octopode = creatures?.find(
@@ -148,6 +142,7 @@ const useManageAttack = () => {
                   isInConquest: false,
                   isDead: octopode.essence <= 0,
                   canConquest: octopode.essence > 0,
+                  essence: Math.floor(octopode.essence), // Force integer for Redux state
                 },
               })
             );
