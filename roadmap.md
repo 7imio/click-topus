@@ -61,21 +61,24 @@ src/
 
 ### 🛠️ En cours :
 
-- [ ] Calcul des coûts modulé par compatibilités
+- [x] Calcul des coûts modulé par compatibilités
 - [ ] Ajout du Mode "Rush" (consommation de ferveur, accélération de conquête)
-- [ ] Calcul dynamique des durées de conquête (réduction si plusieurs octopodes)
-- [ ] UI complète pour la sélection des pays et détails des attaques
-- [ ] Intégration de l’écran d’attaque avec feedback visuel et compatibilités
-- [ ] Mécanique de mort et Farewell (gain de corruption ou ferveur)
+- [x] Calcul dynamique des durées de conquête (réduction si plusieurs octopodes)
+- [x] UI complète pour la sélection des pays et détails des attaques
+- [x] Intégration de l’écran d’attaque avec feedback visuel et compatibilités
+- [x] Mécanique de mort et Farewell (gain de corruption ou ferveur)
+- [ ] Mécanique de level up des octopodes en cas de victoire
 
 ### 🔮 À venir :
 
-- [ ] Système de Wargame : Cultistes, villes à conquérir, ennemis humains
 - [ ] Divinités cosmiques créées tous les 100 rejetons
 - [ ] Passage à la conquête de l’espace après la Terre
 - [ ] Système de mémoire des octopodes vaincus (in memoriam)
 - [ ] Système de nommage des batailles
 - [ ] Lore et rituels débloquables (avec coût en essence, corruption ou ferveur)
+- [ ] Version Low-config en cas d'utilisation sur un pc peu puissant
+- [ ] Optimisation des time interval pour les ticks de prise de ressources
+- [ ] Formattage des ressources (m, M etc...)
 
 ---
 
