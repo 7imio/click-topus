@@ -11,6 +11,7 @@ import {
 } from '../../../store/slices/essenceSlice';
 import { setCorruption } from '../../../store/slices/corruptionSlice';
 import TestToast from '../toast/TestToast';
+import useThrowError from '../../../hooks/error/useThrowError';
 
 const BurgerMenu = () => {
   const [open, setOpen] = useState(false);
@@ -43,6 +44,8 @@ const BurgerMenu = () => {
     const nextIndex = (currentIndex + 1) % skins.length;
     dispatch(applySkin({ skin: skins[nextIndex] }));
   };
+
+  const throwError = useThrowError();
 
   return (
     <div className="fixed top-4 left-4 z-100">
@@ -127,11 +130,19 @@ const BurgerMenu = () => {
               <hr className="my-2 border-green-500" />
               <p
                 className="cursor-pointer"
-                onClick={() => {
-                  dispatch(setCorruption(corruption + 1000000000));
-                }}
               >
                 <TestToast />
+              </p>
+              <p
+                className="cursor-pointer"
+                onClick={() => {
+                  throwError({
+                    errorStatus: 403,
+                    errorMessage: "Accès interdit à cette section 😡",
+                  });
+                }}
+              >
+                💥 Error test
               </p>
             </>
           )}
