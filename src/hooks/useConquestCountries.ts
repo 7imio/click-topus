@@ -1,11 +1,17 @@
+import { useEffect, useState } from 'react';
 import { useAppSelector } from '../store/hooks';
 
 const useConquestCountries = () => {
   const { countries, victories } = useAppSelector((state) => state.countries);
 
-  const devMode = import.meta.env.VITE_DEVELOPER_MODE?.toLowerCase() === 'true';
+  // const devMode = import.meta.env.VITE_DEVELOPER_MODE?.toLowerCase() === 'true';
 
-  const unlockedDefenseLevel = devMode ? 100 : victories + 1;
+  const [unlockedDefenseLevel, setUnlockedDefenseLevel] = useState<number>(1);
+
+  useEffect(() => {
+    // const newLevel = devMode ? 100 : victories + 1;
+    setUnlockedDefenseLevel(victories + 1);
+  }, [victories]);
 
   return countries
     .filter(

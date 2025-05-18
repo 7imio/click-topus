@@ -3,7 +3,7 @@ import { Creature } from '../types/Creature';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
   startAttack,
-  updateAttackAddOctopode,
+  addOctopodeToAttack,
   updateAttackTimeManual,
 } from '../store/slices/attackSlice';
 import { updateCreature } from '../store/slices/creatureSlice';
@@ -24,7 +24,7 @@ export const useSendOctopodeToConquest = () => {
 
     if (existingAttack) {
       dispatch(
-        updateAttackAddOctopode({
+        addOctopodeToAttack({
           id: existingAttack.id,
           octopodeId: octopode.creatureId,
         })

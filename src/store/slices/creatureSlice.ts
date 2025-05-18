@@ -25,6 +25,14 @@ const initialState: CreatureState = {
   segmentsType: 2,
 };
 
+const findCreatureByItsIdInState = (
+  state: CreatureState,
+  creatureId: string
+) => {
+  if (!state.creatures || state.creatures.length <= 0) return;
+  return state.creatures?.find((c) => c.creatureId === creatureId);
+};
+
 export const generateNewCreature = (essence: number, skin: Skin): Creature => {
   return {
     creatureId: crypto.randomUUID(),
@@ -126,16 +134,67 @@ const creatureSlice = createSlice({
       action: PayloadAction<{ creatureId: string }>
     ) => {
       const { creatureId } = action.payload;
-      const creature = state.creatures?.find(
+      const creature = findCreatureByItsIdInState(state, creatureId);
+      if (!creature) return;
+      creature.skills = [];
+      creature.skillStrengths = [];
+      creature.skillWeaknesses = [];
+      creature.canConquest = false;
+    },
+    incrementVictories: (
+      state,
+      action: PayloadAction<{ creatureId: string }>
+    ) => {
+      const { creatureId } = action.payload;
+      const creature = findCreatureByItsIdInState(state, creatureId);
+      if (!creature) return;
+      if (!creature.victories) creature.victories = 0;
+      creature.victories += 1;
+    },
+    markAsDead: (state, action: PayloadAction<{ creatureId: string }>) => {
+      const { creatureId } = action.payload;
+      const creature = findCreatureByItsIdInState(state, creatureId);
+      if (!creature) return;
+      creature.isDead = true;
+      creature.isInConquest = false;
+      creature.canConquest = false;
+      creature.deathDate = Date.now();
+    },
+    updateConquestState: (
+      state,
+      action: PayloadAction<{ creatureId: string; inConquest: boolean }>
+    ) => {
+      const { inConquest, creatureId } = action.payload;
+      const creature = findCreatureByItsIdInState(state, creatureId);
+      if (!creature) return;
+      creature.isInConquest = inConquest;
+      creature.canConquest = !creature.isDead && creature.essence > 0;
+    },
+    updateEssence: (
+      state,
+      action: PayloadAction<{ creatureId: string; newEssence: number }>
+    ) => {
+      const { creatureId, newEssence } = action.payload;
+      const creature = findCreatureByItsIdInState(state, creatureId);
+      if (!creature) return;
+      creature.essence = Math.max(0, Math.floor(newEssence));
+      creature.isDead = creature.essence <= 0;
+      creature.canConquest = creature.essence <= 0 && !creature.isDead;
+    },
+
+    farewellCreature: (
+      state,
+      action: PayloadAction<{ creatureId: string }>
+    ) => {
+      const { creatureId } = action.payload;
+      const creatureIndex = state.creatures?.findIndex(
         (c) => c.creatureId === creatureId
       );
-      if (creature) {
-        creature.skills = [];
-        creature.skillStrengths = [];
-        creature.skillWeaknesses = [];
-        creature.canConquest = false;
+      if (creatureIndex !== undefined && creatureIndex !== -1) {
+        state.creatures?.splice(creatureIndex, 1);
       }
     },
+
     hydrate: (state, action: PayloadAction<CreatureState>) => {
       return { ...state, ...action.payload };
     },
@@ -151,6 +210,11 @@ export const {
   updateCreature,
   createNewCreature,
   resetCreatureSkills,
+  incrementVictories,
+  markAsDead,
+  farewellCreature,
+  updateConquestState,
+  updateEssence,
   hydrate,
   addCreature,
 } = creatureSlice.actions;

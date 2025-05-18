@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { incrementIndoctrination } from '../store/slices/countrySlice';
+import { decayIndoctrination } from '../store/slices/countrySlice';
 
 const TICK_INTERVAL = 1000; // 1 seconde
 
@@ -11,29 +11,10 @@ const useDecayIndoctrination = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      countries.forEach((country) => {
-        const isUnderAttack = ongoingAttack.some(
-          (a) => a.countryId === country.ISO_A2 && a.isActive
-        );
-
-        if (
-          !isUnderAttack &&
-          country.indoctrinationLevel &&
-          country.indoctrinationLevel > 0
-        ) {
-          const decayAmount = country.defensePotential;
-          // const newLevel = Math.max(
-          //   country.indoctrinationLevel - decayAmount,
-          //   0
-          // );
-
-          dispatch(
-            incrementIndoctrination({
-              iso: country.ISO_A2,
-              essenceSpent: -decayAmount, // Valeur négative pour diminuer l'indoctrination
-            })
-          );
-        }
+      countries.forEach((c) => {
+        const isOnAttack = ongoingAttack.some((ack) => ack.countryId === c.ISO_A2);
+        if (isOnAttack) return;
+        dispatch(decayIndoctrination(c.ISO_A2));
       });
     }, TICK_INTERVAL);
 

@@ -21,6 +21,7 @@ const countrySlice = createSlice({
       state.countries = action.payload;
       state.isInitialized = true;
     },
+
     incrementIndoctrination: (
       state,
       action: PayloadAction<{
@@ -28,35 +29,42 @@ const countrySlice = createSlice({
         essenceSpent: number;
       }>
     ) => {
-      const country = state.countries.find(
-        (c) => c.ISO_A2 === action.payload.iso
-      );
-      if (country && !country.isConquered) {
-        const effectiveEssence = action.payload.essenceSpent;
-        if (country.indoctrinationLevel === undefined) {
-          country.indoctrinationLevel = 0;
-        }
-        country.indoctrinationLevel += effectiveEssence;
+      const { iso, essenceSpent } = action.payload;
+      const country = state.countries.find((c) => c.ISO_A2 === iso);
+      if (!country || country.isConquered) return;
 
-        if (country.indoctrinationLevel >= country.population) {
-          country.isConquered = true;
-          country.indoctrinationLevel = country.population;
-        }
+      country.indoctrinationLevel = (country.indoctrinationLevel ?? 0) + essenceSpent;
+      if (country.indoctrinationLevel >= country.population) {
+        // Set as conquered
+        countrySlice.caseReducers.markCountryAsConquered(state, {
+          type: 'countries/markCountryAsConquered',
+          payload: country.ISO_A2,
+        });
       }
     },
+
     markCountryAsConquered: (state, action: PayloadAction<string>) => {
       const country = state.countries.find((c) => c.ISO_A2 === action.payload);
-      if (country && !country.isConquered) {
-        country.isConquered = true;
-        country.indoctrinationLevel = country.population;
-        state.victories += 1;
-      }
+      if (!country || country.isConquered) return;
+      country.isConquered = true;
+      country.indoctrinationLevel = country.population;
+      state.victories += 1;
     },
+
+    decayIndoctrination: (state, action: PayloadAction<string>) => {
+      const country = state.countries.find((c) => c.ISO_A2 === action.payload);
+      if (!country) return;
+      if (country.isConquered) return;
+      if (country.indoctrinationLevel === undefined) return;
+      country.indoctrinationLevel = Math.max(country.indoctrinationLevel - country.defensePotential, 0);
+    },
+
     resetCountries: (state) => {
       state.countries = initialState.countries;
       state.isInitialized = false;
       state.victories = 0;
     },
+
     hydrate: (_state, action: PayloadAction<CountryState>) => {
       return action.payload;
     },
@@ -67,6 +75,7 @@ export const {
   initializeCountries,
   incrementIndoctrination,
   markCountryAsConquered,
+  decayIndoctrination,
   hydrate,
   resetCountries,
 } = countrySlice.actions;
