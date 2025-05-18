@@ -44,6 +44,10 @@ const fervorSlice = createSlice({
     incrementFervorCount: (state) => {
       state.count += 1;
     },
+    addFervor: (state, action: PayloadAction<number>) => {
+      state.fervor += action.payload;
+      state.totalHarvestedFervor += action.payload;
+    },
     buyFervorItem: (state, actions) => {
       const { name } = actions.payload;
       if (state.fervor >= state.currentCost) {
@@ -63,6 +67,7 @@ export const {
   incrementFervor,
   resetFervor,
   setFervor,
+  addFervor,
   buyFervorItem,
   emptyFervor,
   hydrate,

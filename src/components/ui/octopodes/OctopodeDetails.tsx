@@ -1,10 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import MiniCreature from '../../background/MiniCreature';
-import {
-  resetCreatureSkills,
-  updateCreature,
-} from '../../../store/slices/creatureSlice';
+import { resetCreatureSkills, updateCreature } from '../../../store/slices/creatureSlice';
 import { useState } from 'react';
 import { generateRandomName } from '../../../helpers/name-utils';
 import { Check, Dice5Icon, Pencil, X } from 'lucide-react';
@@ -21,14 +18,10 @@ const OctopodeDetails = () => {
   );
 
   if (!creature) {
-    return (
-      <p className="text-red-500 text-center mt-10">❌ Creature not found</p>
-    );
+    return <p className="text-red-500 text-center mt-10">❌ Creature not found</p>;
   }
 
-  const { corruption, rerollMultiplicator, currentCost } = useAppSelector(
-    (state) => state.corruption
-  );
+  const { corruption, rerollMultiplicator, currentCost } = useAppSelector((state) => state.corruption);
 
   const [isRenaming, setIsRenaming] = useState(false);
   const [name, setName] = useState<string>(creature.creatureName);
@@ -52,14 +45,6 @@ const OctopodeDetails = () => {
     dispatch(resetCreatureSkills({ creatureId }));
   };
 
-  const handleFarewell = () => {
-    // On considère qu’on récupère la moitié de son essence en corruption
-    // const corruptionGain = Math.floor(creature.essence / 2);
-    //dispatch(gainCorruption(corruptionGain));
-    // dispatch(removeCreature({ creatureId: creature.creatureId }));
-    navigate('/octopodes');
-  };
-
   const canRerollSkills = corruption >= currentCost * rerollMultiplicator;
 
   return (
@@ -74,11 +59,7 @@ const OctopodeDetails = () => {
       <div className="flex items-center gap-4 mb-4 w-full max-w-lg justify-between">
         <strong>Name:</strong>
         {isRenaming ? (
-          <input
-            className="text-black p-1 rounded"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
-          />
+          <input className="text-black p-1 rounded" onChange={(e) => setName(e.target.value)} value={name} />
         ) : (
           <span>{creature.creatureName || 'Unnamed'}</span>
         )}
@@ -115,59 +96,49 @@ const OctopodeDetails = () => {
             <strong>Last Target:</strong> {creature.lastConquestTarget}
           </p>
         )}
-        {creature.isDead && (
-          <p className="text-red-400 font-bold">☠️ This Octopode is dead.</p>
-        )}
+
         <p className="text-xl font-bold">Current Corruption: {corruption}</p>
       </div>
-
-      {/* Bouton Reroll / Affect Skills */}
-      <button
-        onClick={() => navigate(`/octopodes/${creature.creatureId}/skills`)}
-        className="mt-4 px-6 py-2 bg-green-500 z-100 hover:bg-green-600 text-white font-bold rounded-full"
-      >
-        🎲{' '}
-        {creature.skills && creature.skills?.length < 3
-          ? 'Affect Skills & '
-          : ''}
-        Roll the Dice
-      </button>
-
-      {/* Affichage des compétences */}
-      {creature.skills && creature.skills.length > 0 && (
+      {!creature.isDead ? (
         <>
-          <div className="relative w-80 z-100 border-4 border-green-500 rounded-lg bg-black/70 shadow-lg p-4 my-6">
-            {creature.skills.map((skill) => (
-              <div key={skill.name} className="mb-2">
-                <strong>{skill.name}</strong>
-                <p className="text-center text-sm text-green-300">
-                  {skill.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
+          {/* Bouton Reroll / Affect Skills */}
           <button
-            className={`mt-4 px-6 py-2 z-100 ${
-              !canRerollSkills
-                ? 'bg-gray-600 cursor-not-allowed'
-                : 'bg-green-500 hover:bg-green-600'
-            } text-white font-bold rounded-full`}
-            onClick={handleRerollSkills}
-            disabled={!canRerollSkills}
+            onClick={() => navigate(`/octopodes/${creature.creatureId}/skills`)}
+            className="mt-4 px-6 py-2 bg-green-500 z-100 hover:bg-green-600 text-white font-bold rounded-full"
           >
-            Reroll Skills – Cost {currentCost * rerollMultiplicator} Corruption
+            🎲 {creature.skills && creature.skills?.length < 3 ? 'Affect Skills & ' : ''}
+            Roll the Dice
           </button>
+
+          {/* Affichage des compétences */}
+          {creature.skills && creature.skills.length > 0 && (
+            <>
+              <div className="relative w-80 z-100 border-4 border-green-500 rounded-lg bg-black/70 shadow-lg p-4 my-6">
+                {creature.skills.map((skill) => (
+                  <div key={skill.name} className="mb-2">
+                    <strong>{skill.name}</strong>
+                    <p className="text-center text-sm text-green-300">{skill.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                className={`mt-4 px-6 py-2 z-100 ${
+                  !canRerollSkills ? 'bg-gray-600 cursor-not-allowed' : 'bg-green-500 hover:bg-green-600'
+                } text-white font-bold rounded-full`}
+                onClick={handleRerollSkills}
+                disabled={!canRerollSkills}
+              >
+                Reroll Skills – Cost {currentCost * rerollMultiplicator} Corruption
+              </button>
+            </>
+          )}
+        </>
+      ) : (
+        <>
+          <p className="text-red-400 font-bold z-200">☠️ This Octopode is dead.</p>
         </>
       )}
-
-      {/* Bouton Farewell */}
-      <button
-        className="mt-8 px-6 py-2 z-100 bg-red-700 hover:bg-red-600 text-white font-bold rounded-full flex items-center gap-2"
-        onClick={handleFarewell}
-      >
-        🕯️ Farewell (Gain {Math.floor(creature.essence / 2)} Corruption)
-      </button>
 
       {/* Retour au jeu */}
       <Link
