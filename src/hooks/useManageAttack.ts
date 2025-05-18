@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { endAttack, updateAttackTime } from '../store/slices/attackSlice';
 import { incrementIndoctrination } from '../store/slices/countrySlice';
 import {
+  endOctopodeAttack,
   incrementVictories,
   markAsDead,
   updateConquestState,
@@ -30,7 +31,6 @@ const useManageAttack = () => {
         if (!country) return;
 
         const ticks = (ATTACK_DURATION * 1000) / TICK_INTERVAL;
-
         let totalIndoctrinationThisTick = 0;
         let allOctopodesDead = true;
 
@@ -38,19 +38,24 @@ const useManageAttack = () => {
           const octo = creatures?.find((c) => c.creatureId === octopodeId);
           if (!octo || octo.essence <= 0) return;
 
-          allOctopodesDead = false; // At least one still alive
+          allOctopodesDead = false;
 
           const multiplier = calculateConquestMultiplier(octo, country);
-          const indoctrinationPerTick = Math.floor((octo.baseEssence * multiplier) / ticks);
-          const essencePerTick = Math.floor(octo.baseEssence / ticks);
 
+          // 👇 Calcul basé sur l'essence dépensée et non sur baseEssence
+          const totalExpectedIndoctrination = Math.floor(octo.maxEssence * multiplier);
+          const indoctrinationPerEssence = totalExpectedIndoctrination / octo.maxEssence;
+
+          const essencePerTick = Math.floor(octo.maxEssence / ticks);
           const newEssence = Math.max(octo.essence - essencePerTick, 0);
+          const actualEssenceSpentThisTick = octo.essence - newEssence;
 
-          totalIndoctrinationThisTick += indoctrinationPerTick;
+          const indoctrinationThisTick = Math.floor(actualEssenceSpentThisTick * indoctrinationPerEssence);
+
+          totalIndoctrinationThisTick += indoctrinationThisTick;
 
           dispatch(updateEssence({ creatureId: octo.creatureId, newEssence }));
 
-          // Check for instant death
           if (newEssence <= 0) {
             dispatch(markAsDead({ creatureId: octo.creatureId }));
           } else {
@@ -58,7 +63,6 @@ const useManageAttack = () => {
           }
         });
 
-        // Apply indoctrination for this tick globally
         if (totalIndoctrinationThisTick > 0) {
           dispatch(
             incrementIndoctrination({
@@ -71,31 +75,28 @@ const useManageAttack = () => {
         const isConquered = (country.indoctrinationLevel || 0) >= country.population;
 
         if (isConquered) {
-          attack.octopodesId.forEach((octoId) => {
-            dispatch(incrementVictories({ creatureId: octoId }));
-            dispatch(updateConquestState({ creatureId: octoId, inConquest: false }));
-          });
-
-          dispatch(endAttack(attack.id));
-          return; // Fin immédiate
-        }
-
-        // Si tous les octopodes sont morts, on arrête l'attaque
-        if (allOctopodesDead) {
           attack.octopodesId.forEach((octopodeId) => {
+            dispatch(incrementVictories({ creatureId: octopodeId }));
             dispatch(updateConquestState({ creatureId: octopodeId, inConquest: false }));
+            dispatch(endOctopodeAttack({ creatureId: octopodeId }));
           });
-
           dispatch(endAttack(attack.id));
           return;
         }
 
-        // Fin de l'attaque après la durée max atteinte
-        if (attack.elapsedTime >= ATTACK_DURATION) {
+        if (allOctopodesDead) {
           attack.octopodesId.forEach((octopodeId) => {
             dispatch(updateConquestState({ creatureId: octopodeId, inConquest: false }));
           });
+          dispatch(endAttack(attack.id));
+          return;
+        }
 
+        if (attack.elapsedTime >= ATTACK_DURATION) {
+          attack.octopodesId.forEach((octopodeId) => {
+            dispatch(updateConquestState({ creatureId: octopodeId, inConquest: false }));
+            dispatch(endOctopodeAttack({ creatureId: octopodeId }));
+          });
           dispatch(endAttack(attack.id));
         }
       });

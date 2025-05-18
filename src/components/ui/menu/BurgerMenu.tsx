@@ -5,19 +5,13 @@ import { triggerDebug } from '../../../store/slices/debugSlice';
 import { applySkin } from '../../../store/slices/skinSlice';
 import skins from '../../../data/skins/skins.json';
 import VoidBurger from './VoidBurger';
-import {
-  setEssence,
-  setTotalHarvestedEssence,
-} from '../../../store/slices/essenceSlice';
+import { setEssence, setTotalHarvestedEssence } from '../../../store/slices/essenceSlice';
 import { setCorruption } from '../../../store/slices/corruptionSlice';
 import TestToast from '../toast/TestToast';
 import useThrowError from '../../../hooks/error/useThrowError';
 import { setFervor } from '../../../store/slices/fervorSlice';
 import { Creature } from '../../../types/Creature';
-import {
-  addCreature,
-  generateNewCreature,
-} from '../../../store/slices/creatureSlice';
+import { addCreature, generateNewCreature } from '../../../store/slices/creatureSlice';
 import { generateCompatibleSkills } from '../../../helpers/skill-utils';
 
 const BurgerMenu = () => {
@@ -26,9 +20,7 @@ const BurgerMenu = () => {
 
   const state = useAppSelector((state) => state);
 
-  const { essence, totalHarvestedEssence } = useAppSelector(
-    (state) => state.essence
-  );
+  const { essence, totalHarvestedEssence } = useAppSelector((state) => state.essence);
   const { corruption } = useAppSelector((state) => state.corruption);
   const { creatures } = useAppSelector((state) => state.creatures);
   const { fervor } = useAppSelector((state) => state.fervor);
@@ -138,26 +130,6 @@ const BurgerMenu = () => {
           {devMode && (
             <>
               <hr className="my-2 border-green-500" />
-              <p
-                className="cursor-pointer"
-                onClick={() => {
-                  dispatch(setEssence(essence + 1000000000));
-                  dispatch(
-                    setTotalHarvestedEssence(totalHarvestedEssence + 1000000000)
-                  );
-                }}
-              >
-                🧬 Add essence
-              </p>
-              <p
-                className="cursor-pointer"
-                onClick={() => {
-                  dispatch(setCorruption(corruption + 1000000000));
-                }}
-              >
-                ☣️ Add corruption
-              </p>
-              <hr className="my-2 border-green-500" />
               <p className="cursor-pointer">
                 <TestToast />
               </p>
@@ -172,7 +144,23 @@ const BurgerMenu = () => {
               >
                 💥 Error test
               </p>
-
+              <p
+                className="cursor-pointer"
+                onClick={() => {
+                  dispatch(setEssence(essence + 1000000000));
+                  dispatch(setTotalHarvestedEssence(totalHarvestedEssence + 1000000000));
+                }}
+              >
+                🧬 Add essence
+              </p>
+              <p
+                className="cursor-pointer"
+                onClick={() => {
+                  dispatch(setCorruption(corruption + 1000000000));
+                }}
+              >
+                ☣️ Add corruption
+              </p>
               <p
                 className="cursor-pointer"
                 onClick={() => {

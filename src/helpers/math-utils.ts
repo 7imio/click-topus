@@ -28,46 +28,30 @@ export const rollEffect = (
   }
 
   // Calcul de l'intensité de l'effet (plus le jet est extrême, plus l'effet est fort)
-  const distanceFromNeutral =
-    d20 < neutralMin ? neutralMin - d20 : d20 - neutralMax;
+  const distanceFromNeutral = d20 < neutralMin ? neutralMin - d20 : d20 - neutralMax;
   const maxDistance = d20 < neutralMin ? neutralMin - 1 : 20 - neutralMax;
   const intensity = distanceFromNeutral / maxDistance;
 
   // Appliquer un pourcentage d'augmentation ou de réduction sur la base
-  const effectMultiplier =
-    1 + (d20 < neutralMin ? -1 : 1) * intensity * (scale / 100);
+  const effectMultiplier = 1 + (d20 < neutralMin ? -1 : 1) * intensity * (scale / 100);
   const result = Math.floor(base * effectMultiplier);
 
   // Sécurisation pour éviter des résultats aberrants (négatifs ou trop petits)
   return Math.max(0, result);
 };
 
-export const calculateConquestMultiplier = (
-  octopode: Creature,
-  country: Country
-) => {
+export const calculateConquestMultiplier = (octopode: Creature, country: Country) => {
   const baseMultiplier = 1;
-  const defenseMultiplier = country.defensePotential / 100 + baseMultiplier;
+  const defenseMultiplier = 1 + country.defensePotential / 100 + baseMultiplier;
 
-  const hasAdvantage = octopode.skillStrengths?.some((str) =>
-    country.weaknesses?.includes(str)
-  );
-  const hasDisadvantage = octopode.skillWeaknesses?.some((weak) =>
-    country.toughnesses?.includes(weak)
-  );
+  const hasAdvantage = octopode.skillStrengths?.some((str) => country.weaknesses?.includes(str));
+  const hasDisadvantage = octopode.skillWeaknesses?.some((weak) => country.toughnesses?.includes(weak));
 
-  const compatibilityMultiplier = hasAdvantage
-    ? 0.5
-    : hasDisadvantage
-      ? 2
-      : baseMultiplier;
+  const compatibilityMultiplier = hasAdvantage ? 0.5 : hasDisadvantage ? 2 : baseMultiplier;
   return compatibilityMultiplier * defenseMultiplier;
 };
 
-export const calculateBattleOutcome = (
-  octopode: Creature,
-  country: Country
-) => {
+export const calculateBattleOutcome = (octopode: Creature, country: Country) => {
   const multiplier = calculateConquestMultiplier(octopode, country);
   const population = country.population;
 
@@ -77,14 +61,10 @@ export const calculateBattleOutcome = (
   const essenceRequired = indoctrinationNeeded / multiplier;
 
   // L'octopode dépensera tout ce qu'il peut, mais pas plus que nécessaire
-  const totalEssenceSpent = Math.min(
-    octopode.essence,
-    Math.floor(essenceRequired)
-  );
+  const totalEssenceSpent = Math.min(octopode.essence, Math.floor(essenceRequired));
   const totalIndoctrination = Math.floor(totalEssenceSpent * multiplier);
 
-  const willConquer =
-    (country.indoctrinationLevel || 0) + totalIndoctrination >= population;
+  const willConquer = (country.indoctrinationLevel || 0) + totalIndoctrination >= population;
 
   return {
     totalEssenceSpent,
@@ -93,10 +73,7 @@ export const calculateBattleOutcome = (
   };
 };
 
-export const calculateDynamicAttackTime = (
-  octopodes: Creature[],
-  country: Country
-): number => {
+export const calculateDynamicAttackTime = (octopodes: Creature[], country: Country): number => {
   const totalEssence = octopodes.reduce((acc, octo) => acc + octo.essence, 0);
   const population = country.population;
 

@@ -18,7 +18,7 @@ const initialState: FervorState = {
   currentCost: 100,
   purchasedItems: [],
   count: 0,
-  fervorMultiplicator: 12,
+  fervorMultiplicator: 1.2,
 };
 
 const fervorSlice = createSlice({
