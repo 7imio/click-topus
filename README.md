@@ -69,4 +69,10 @@ npm run dev
 > Twitch : [Seteemio](https://www.twitch.tv/seteemio)  
 > Association soutenue : [Dites Je Suis Là](https://www.ditesjesuisla.fr/)
 
+## ✨ Aidé par **[Infinityz666](https://github.com/infinityz666)** & **[H0ldHaven](https://github.com/h0ldHaven)**
+
+[Chaine Twitch de Infinityz666](https://www.twitch.tv/infinityz666)
+
+[Chaine Twitch de H0ldHaven](https://www.twitch.tv/h0ldhaven)
+
 **N’oublie pas : l’Œil Voit Tout… et il Attend.** 👁️
