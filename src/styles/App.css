@@ -7,7 +7,7 @@
     margin: 0;
     touch-action: none;
   }
-
+  
   .text-shadow {
     text-shadow: 0px 0px 3px #222222BB;
   }
@@ -133,7 +133,10 @@
 
   .burger-close {
     animation: close-burger-menu .5s ease-in-out;
+  }
 
+  .shadow-glow {
+    box-shadow: 0 0 60px rgba(138, 43, 226, 0.5);
   }
 
   @keyframes open-burger-menu {

@@ -37,7 +37,7 @@ const Abyss: FC = () => {
 
   return (
     <>
-      <h1 className="text-2xl font-bold text-purple-500 z-50 text-shadow">
+      <h1 className="pointer-events-none text-2xl font-bold text-purple-500 z-50 text-shadow">
         Essence: {essence} / Total Harvested: {totalHarvestedEssence}
       </h1>
 
@@ -46,7 +46,7 @@ const Abyss: FC = () => {
       <AutoClickerPrompt />
       <div className="relative w-full h-[600px] aspect-square">
         <div className="absolute inset-0 flex items-center justify-center z-10">
-          <Eye skin={currentSkin.skin} handleClick={handleClick} blink={true}>
+          <Eye skin={currentSkin} handleClick={handleClick} blink={true}>
             {tentacles.map((tentacle, idx) => (
               <div
                 aria-hidden={true}
