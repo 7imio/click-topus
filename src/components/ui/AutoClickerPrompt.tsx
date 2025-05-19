@@ -45,7 +45,11 @@ const AutoClickerPrompt: FC = () => {
     canAfford && (
       <>
         <div className="fixed top-5 w-full px-4 text-right animate-sucker-pop z-50">
-          <button className="text-3xl p-6" onClick={handleDisplay}>
+          <button
+            className="text-4xl p-4 animate-glow bg-neutral-50/25 backdrop-blur-md text-shadow-md 
+            rounded-full"
+            onClick={handleDisplay}
+          >
             📜
           </button>
         </div>

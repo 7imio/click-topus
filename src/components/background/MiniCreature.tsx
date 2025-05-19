@@ -12,8 +12,7 @@ type MiniCreatureProps = {
 
 const MiniCreature: FC<MiniCreatureProps> = ({ creature, isCentered }) => {
   const globalCreature = useAppSelector((state) => state.creatures);
-  const { bodyColor, suckerColor, irisColor, retinaColor, eyeWhiteColor } =
-    creature.skin;
+  const { skin } = creature;
   const [creatureData] = useState<
     Pick<
       CreatureState,
@@ -34,13 +33,7 @@ const MiniCreature: FC<MiniCreatureProps> = ({ creature, isCentered }) => {
   const [size] = useState(20 + Math.random() * 10);
   const uuid = creature.creatureId;
 
-  const [actualSkin] = useState({
-    bodyColor,
-    suckerColor,
-    irisColor,
-    retinaColor,
-    eyeWhiteColor,
-  });
+  const [actualSkin] = useState(skin);
 
   const creatureRef = useRef<HTMLDivElement>(null);
   const [position] = useState(() => {
@@ -90,8 +83,8 @@ const MiniCreature: FC<MiniCreatureProps> = ({ creature, isCentered }) => {
                     creatureData.segmentsType *
                     creatureData.essencePerSegment
                   }
-                  bodyColor={actualSkin.bodyColor}
-                  suctionColor={actualSkin.suckerColor}
+                  bodyColor={actualSkin.skin.bodyColor}
+                  suctionColor={actualSkin.skin.suckerColor}
                 />
               </div>
             ))}
