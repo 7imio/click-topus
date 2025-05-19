@@ -1,19 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit';
-import toastReducer, { ToastState } from './slices/toast/toastSlice';
+import { configureStore, Middleware } from '@reduxjs/toolkit';
+import { versionMiddleware } from './middlewares/versionMiddleware';
+import animationReducer, { AnimationState } from './slices/animationSlice';
+import attacksReducer, { AttacksState } from './slices/attackSlice';
+import autoClickerReducer, { AutoClickerState } from './slices/autoClickerSlice';
+import corruptionReducer, { CorruptionState } from './slices/corruptionSlice';
+import countriesReducer, { CountryState } from './slices/countrySlice';
+import creatureReducer, { CreatureState } from './slices/creatureSlice';
+import debugReducer, { DebugState } from './slices/debugSlice';
 import essenceReducer, { EssenceState } from './slices/essenceSlice';
+import fervorReducer, { FervorState } from './slices/fervorSlice';
+import hydrationReducer, { HydrationState } from './slices/hydrationSlice';
 import skinReducer, { SkinState } from './slices/skinSlice';
 import tentacleReducer, { TentacleState } from './slices/tentacleSlice';
-import creatureReducer, { CreatureState } from './slices/creatureSlice';
-import autoClickerReducer, {
-  AutoClickerState,
-} from './slices/autoClickerSlice';
-import animationReducer, { AnimationState } from './slices/animationSlice';
-import debugReducer, { DebugState } from './slices/debugSlice';
-import corruptionReducer, { CorruptionState } from './slices/corruptionSlice';
-import hydrationReducer, { HydrationState } from './slices/hydrationSlice';
-import fervorReducer, { FervorState } from './slices/fervorSlice';
-import countriesReducer, { CountryState } from './slices/countrySlice';
-import attacksReducer, { AttacksState } from './slices/attackSlice';
+import toastReducer, { ToastState } from './slices/toast/toastSlice';
 
 export interface GlobalState {
   toast: ToastState;
@@ -31,7 +30,7 @@ export interface GlobalState {
   attacks: AttacksState;
 }
 
-export const store = configureStore<GlobalState>({
+export const store = configureStore({
   reducer: {
     toast: toastReducer,
     essence: essenceReducer,
@@ -47,6 +46,7 @@ export const store = configureStore<GlobalState>({
     countries: countriesReducer,
     attacks: attacksReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(versionMiddleware as Middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
