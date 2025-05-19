@@ -1,16 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
-import toastReducer, { ToastState } from './slices/toast/toastSlice';
-import essenceReducer, { EssenceState } from './slices/essenceSlice';
-import skinReducer, { SkinState } from './slices/skinSlice';
-import tentacleReducer, { TentacleState } from './slices/tentacleSlice';
-import creatureReducer, { CreatureState } from './slices/creatureSlice';
+import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
+import { versionMiddleware } from './middlewares/versionMiddleware';
+import animationReducer, { AnimationState } from './slices/animationSlice';
 import autoClickerReducer, {
   AutoClickerState,
 } from './slices/autoClickerSlice';
-import animationReducer, { AnimationState } from './slices/animationSlice';
-import debugReducer, { DebugState } from './slices/debugSlice';
 import corruptionReducer, { CorruptionState } from './slices/corruptionSlice';
+import creatureReducer, { CreatureState } from './slices/creatureSlice';
+import debugReducer, { DebugState } from './slices/debugSlice';
+import essenceReducer, { EssenceState } from './slices/essenceSlice';
 import hydrationReducer, { HydrationState } from './slices/hydrationSlice';
+import skinReducer, { SkinState } from './slices/skinSlice';
+import tentacleReducer, { TentacleState } from './slices/tentacleSlice';
+import toastReducer, { ToastState } from './slices/toast/toastSlice';
 
 export interface GlobalState {
   toast: ToastState;
@@ -25,7 +26,7 @@ export interface GlobalState {
   hydration: HydrationState;
 }
 
-export const store = configureStore<GlobalState>({
+export const store: EnhancedStore<GlobalState> = configureStore({
   reducer: {
     toast: toastReducer,
     essence: essenceReducer,
@@ -38,6 +39,8 @@ export const store = configureStore<GlobalState>({
     corruption: corruptionReducer,
     hydration: hydrationReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(versionMiddleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
