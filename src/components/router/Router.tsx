@@ -12,6 +12,7 @@ import OctopodeSkillSelector from '../ui/octopodes/OctopodeSkillSelector';
 import ErrorPage from '../ui/error/ErrorPage';
 import RedirectToError from '../error/RedirectToError';
 import CountryAttack from '../ui/conquest/attack/CountryAttack';
+import Thanks from '../ui/Thanks';
 
 const Router: FC = () => {
   return (
@@ -20,10 +21,12 @@ const Router: FC = () => {
       <Route path="/game" element={<Abyss />} />
       <Route path="/about" element={<About />} />
       <Route path="/info" element={<Informations />} />
+      <Route path="/reset" element={<ResetScreen />} />
+      <Route path="/thanks" element={<Thanks />} />
+
       <Route path="/conquest" element={<ConquestScreen />} />
       <Route path="/conquest/:ISO_A2" element={<CountryAttack />} />
 
-      <Route path="/reset" element={<ResetScreen />} />
       <Route path="/octopodes" element={<Octopodes />} />
       <Route path="/octopodes/:creatureId" element={<OctopodeDetails />} />
       <Route path="/octopodes/:creatureId/skills" element={<OctopodeSkillSelector />} />
