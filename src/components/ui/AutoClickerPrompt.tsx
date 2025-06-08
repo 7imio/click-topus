@@ -1,24 +1,20 @@
 import { FC, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import {
-  buyFirstAutoclicker,
-  buyAutoClicker,
-  upgradeAutoclicker,
-} from '../../store/slices/autoClickerSlice';
+import { buyFirstAutoclicker, buyAutoClicker, upgradeAutoclicker } from '../../store/slices/autoClickerSlice';
 import { buyEssenceItem } from '../../store/slices/essenceSlice';
+import Modal from '../generics/Modal';
 
 const AutoClickerPrompt: FC = () => {
   const dispatch = useAppDispatch();
-
   const { speed, currentCost } = useAppSelector((state) => state.autoClicker);
   const { essence } = useAppSelector((state) => state.essence);
-  const [isDisplaying, setIsDisplaying] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const canAfford: boolean = essence >= currentCost;
+  const canAfford = essence >= currentCost;
 
   useEffect(() => {
     if (!canAfford) {
-      setIsDisplaying(false);
+      setIsOpen(false);
     }
   }, [canAfford]);
 
@@ -37,45 +33,50 @@ const AutoClickerPrompt: FC = () => {
     dispatch(upgradeAutoclicker());
   };
 
-  const handleDisplay = () => {
-    setIsDisplaying(!isDisplaying);
-  };
-
   return (
     canAfford && (
       <>
+        {/* Open Button */}
         <div className="fixed top-5 w-full px-4 text-right animate-sucker-pop z-50">
           <button
             className="text-4xl p-4 animate-glow bg-neutral-50/25 backdrop-blur-md text-shadow-md 
             rounded-full"
-            onClick={handleDisplay}
+            onClick={() => setIsOpen(true)}
           >
             📜
           </button>
         </div>
-        {isDisplaying && (
-          <div className="fixed top-15 w-full max-w-xs bg-black/80 text-white px-4 py-3 rounded-lg shadow-xl border border-green-500 animate-fadeIn z-50">
-            <p className="text-xs mb-2">Cost: {currentCost} essence</p>
-            <div className="flex flex-col">
+
+        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          <p className="text-center text-md mb-4 text-white">Cost: {currentCost} essence</p>
+
+          <div className="flex justify-center">
+            <div className="flex flex-col space-y-3 items-center">
               {speed === 0 ? (
                 <button
-                  className={`text-sm px-3 py-1 rounded my-1 transition-colors ${canAfford ? 'bg-green-600 hover:bg-green-700' : 'bg-neutral-600 disabled'}`}
+                  className={`text-sm px-4 py-3 rounded transition-colors w-[24rem] ${
+                    canAfford ? 'bg-green-600 hover:bg-green-700' : 'bg-neutral-600 disabled'
+                  }`}
                   disabled={!canAfford}
-                  onClick={() => handleBuyFirstAutoclicker()}
+                  onClick={handleBuyFirstAutoclicker}
                 >
                   Recruit First Cultist
                 </button>
               ) : (
                 <>
                   <button
-                    className={`text-sm px-3 py-1 rounded my-1 transition-colors ${canAfford ? 'bg-green-600 hover:bg-green-700' : 'bg-neutral-600 disabled'}`}
+                    className={`text-sm px-4 py-3 rounded transition-colors w-[24rem] ${
+                      canAfford ? 'bg-green-600 hover:bg-green-700' : 'bg-neutral-600 disabled'
+                    }`}
                     disabled={!canAfford}
                     onClick={() => handleBuyAutoclicker('Cult Strenght')}
                   >
                     Upgrade Cult Strenght
                   </button>
                   <button
-                    className={`text-sm px-3 py-1 rounded my-1 transition-colors ${canAfford ? 'bg-green-600 hover:bg-green-700' : 'bg-neutral-600 disabled'}`}
+                    className={`text-sm px-4 py-3 rounded transition-colors w-[24rem] ${
+                      canAfford ? 'bg-green-600 hover:bg-green-700' : 'bg-neutral-600 disabled'
+                    }`}
                     disabled={!canAfford}
                     onClick={() => handleUpgradeAutoclicker('Cultist')}
                   >
@@ -85,7 +86,7 @@ const AutoClickerPrompt: FC = () => {
               )}
             </div>
           </div>
-        )}
+        </Modal>
       </>
     )
   );
