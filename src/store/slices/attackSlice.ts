@@ -18,17 +18,13 @@ const initialState: AttacksState = {
   ongoingAttack: [],
 };
 
-const findAttack = (state: AttacksState, id: string) =>
-  state.ongoingAttack.find((a) => a.id === id);
+const findAttack = (state: AttacksState, id: string) => state.ongoingAttack.find((a) => a.id === id);
 
 const attackSlice = createSlice({
   name: 'attack',
   initialState,
   reducers: {
-    startAttack: (
-      state,
-      action: PayloadAction<Omit<Attack, 'id' | 'elapsedTime' | 'isActive'>>
-    ) => {
+    startAttack: (state, action: PayloadAction<Omit<Attack, 'id' | 'elapsedTime' | 'isActive'>>) => {
       const newAttack: Attack = {
         id: crypto.randomUUID(),
         elapsedTime: 0,
@@ -63,6 +59,13 @@ const attackSlice = createSlice({
       const attack = findAttack(state, id);
       if (attack && !attack.octopodesId.includes(octopodeId)) {
         attack.octopodesId.push(action.payload.octopodeId);
+      }
+    },
+    removeOctopodeFromAttack: (state, action: PayloadAction<{ id: string; octopodeId: string }>) => {
+      const { id, octopodeId } = action.payload;
+      const attack = findAttack(state, id);
+      if (attack && attack.octopodesId.includes(octopodeId)) {
+        attack.octopodesId = attack.octopodesId.filter((octo) => octo !== octopodeId);
       }
     },
 
@@ -104,6 +107,7 @@ export const {
   startAttack,
   updateAttackTime,
   addOctopodeToAttack,
+  removeOctopodeFromAttack,
   endAttack,
   resetAttacks,
   pauseAttack,

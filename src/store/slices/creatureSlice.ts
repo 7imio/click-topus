@@ -139,7 +139,7 @@ const creatureSlice = createSlice({
       const { creatureId } = action.payload;
       const creature = findCreatureByItsIdInState(state, creatureId);
       if (!creature) return;
-      if (creature.isInConquest) creature.isInConquest = false;
+      creature.isInConquest = false;
     },
 
     markAsDead: (state, action: PayloadAction<{ creatureId: string }>) => {
