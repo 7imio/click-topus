@@ -11,6 +11,7 @@ import {
   updateEssence,
 } from '../store/slices/creatureSlice';
 
+
 const TICK_INTERVAL = 100; // ms
 const ATTACK_DURATION = 30; // seconds
 
@@ -62,9 +63,10 @@ const useManageAttack = () => {
 
           if (newEssence <= 0) {
             dispatch(markAsDead({ creatureId: octo.creatureId }));
-          } else {
-            dispatch(updateConquestState({ creatureId: octo.creatureId, inConquest: true }));
           }
+          // else {
+          //   dispatch(updateConquestState({ creatureId: octo.creatureId, inConquest: true }));
+          // }
         });
 
         if (totalIndoctrinationThisTick > 0) {
@@ -77,9 +79,27 @@ const useManageAttack = () => {
         }
 
         const isConquered = (country.indoctrinationLevel || 0) >= country.population;
-        const isTimedOut = attack.elapsedTime >= ATTACK_DURATION;
 
-        if (isConquered || allOctopodesDead || isTimedOut) {
+
+        if (isConquered) {
+          attack.octopodesId.forEach((octopodeId) => {
+            dispatch(incrementVictories({ creatureId: octopodeId }));
+            dispatch(updateConquestState({ creatureId: octopodeId, inConquest: false }));
+            dispatch(endOctopodeAttack({ creatureId: octopodeId }));
+          });
+          dispatch(endAttack(attack.id));
+          return;
+        }
+
+        if (allOctopodesDead) {
+          attack.octopodesId.forEach((octopodeId) => {
+            dispatch(updateConquestState({ creatureId: octopodeId, inConquest: false }));
+          });
+          dispatch(endAttack(attack.id));
+          return;
+        }
+
+        if (attack.elapsedTime > ATTACK_DURATION) {
           attack.octopodesId.forEach((octopodeId) => {
             dispatch(updateConquestState({ creatureId: octopodeId, inConquest: false }));
             dispatch(endOctopodeAttack({ creatureId: octopodeId }));
@@ -88,11 +108,15 @@ const useManageAttack = () => {
             }
           });
           dispatch(endAttack(attack.id));
+          return;
         }
       });
     }, TICK_INTERVAL);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+    }
+      ;
   }, [ongoingAttack, dispatch, countries, creatures]);
 
   return null;

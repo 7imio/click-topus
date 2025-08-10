@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { GlobalState } from '../store';
 
 const STORAGE_KEY = 'abyss-game-save';
@@ -20,7 +21,7 @@ export const loadGame = (): Partial<GlobalState> | undefined => {
     }
 
     const parsed = JSON.parse(data);
-    console.log('Game loaded !');
+    toast('Game loaded !');
     return parsed;
   } catch (err) {
     console.error('Error while loading save ! ', err);

@@ -37,12 +37,11 @@ const Router: FC = () => {
       />
 
       <Route
-        path="/test"
+        path="/*"
         element={
-          <RedirectToError errorStatus={403} errorMessage="La route test retourne une erreur avec un message." />
+          <RedirectToError errorStatus={404} errorMessage="page not Found." />
         }
       />
-      <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
 };

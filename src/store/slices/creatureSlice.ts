@@ -96,14 +96,14 @@ const creatureSlice = createSlice({
       state.segmentsType = 2;
     },
 
-    setCreatedCreatures: (state, action: { payload: number }) => {
+    setCreatedCreatures: (state, action: { payload: number; }) => {
       state.created = action.payload;
     },
     updateTentacleEssenceNeed: (state) => {
       const adjustedEssencePerSegment = Math.floor(state.essencePerSegment + getExponentialGrowth(state.created));
       state.essencePerSegment = adjustedEssencePerSegment;
     },
-    updateCreature: (state, action: PayloadAction<{ creatureId: string; creature: Creature }>) => {
+    updateCreature: (state, action: PayloadAction<{ creatureId: string; creature: Creature; }>) => {
       const { creatureId, creature } = action.payload;
 
       if (!Array.isArray(state.creatures)) return;
@@ -119,7 +119,7 @@ const creatureSlice = createSlice({
       state.creatures.push(action.payload);
       state.created = state.creatures.length;
     },
-    resetCreatureSkills: (state, action: PayloadAction<{ creatureId: string }>) => {
+    resetCreatureSkills: (state, action: PayloadAction<{ creatureId: string; }>) => {
       const { creatureId } = action.payload;
       const creature = findCreatureByItsIdInState(state, creatureId);
       if (!creature) return;
@@ -128,21 +128,21 @@ const creatureSlice = createSlice({
       creature.skillWeaknesses = [];
       creature.canConquest = false;
     },
-    incrementVictories: (state, action: PayloadAction<{ creatureId: string }>) => {
+    incrementVictories: (state, action: PayloadAction<{ creatureId: string; }>) => {
       const { creatureId } = action.payload;
       const creature = findCreatureByItsIdInState(state, creatureId);
       if (!creature) return;
       if (!creature.victories) creature.victories = 0;
       creature.victories += 1;
     },
-    endOctopodeAttack: (state, action: PayloadAction<{ creatureId: string }>) => {
+    endOctopodeAttack: (state, action: PayloadAction<{ creatureId: string; }>) => {
       const { creatureId } = action.payload;
       const creature = findCreatureByItsIdInState(state, creatureId);
       if (!creature) return;
       creature.isInConquest = false;
     },
 
-    markAsDead: (state, action: PayloadAction<{ creatureId: string }>) => {
+    markAsDead: (state, action: PayloadAction<{ creatureId: string; }>) => {
       const { creatureId } = action.payload;
       const creature = findCreatureByItsIdInState(state, creatureId);
       if (!creature) return;
@@ -151,14 +151,16 @@ const creatureSlice = createSlice({
       creature.canConquest = false;
       creature.deathDate = Date.now();
     },
-    updateConquestState: (state, action: PayloadAction<{ creatureId: string; inConquest: boolean }>) => {
+
+    updateConquestState: (state, action: PayloadAction<{ creatureId: string; inConquest: boolean; }>) => {
       const { inConquest, creatureId } = action.payload;
       const creature = findCreatureByItsIdInState(state, creatureId);
       if (!creature) return;
       creature.isInConquest = inConquest;
       creature.canConquest = !creature.isDead && creature.essence > 0;
     },
-    updateEssence: (state, action: PayloadAction<{ creatureId: string; newEssence: number }>) => {
+
+    updateEssence: (state, action: PayloadAction<{ creatureId: string; newEssence: number; }>) => {
       const { creatureId, newEssence } = action.payload;
       const creature = findCreatureByItsIdInState(state, creatureId);
       if (!creature) return;
@@ -167,7 +169,7 @@ const creatureSlice = createSlice({
       creature.canConquest = creature.essence <= 0 && !creature.isDead;
     },
 
-    farewellCreature: (state, action: PayloadAction<{ creatureId: string }>) => {
+    farewellCreature: (state, action: PayloadAction<{ creatureId: string; }>) => {
       const { creatureId } = action.payload;
       const creatureIndex = state.creatures?.findIndex((c) => c.creatureId === creatureId);
       if (creatureIndex !== undefined && creatureIndex !== -1) {
