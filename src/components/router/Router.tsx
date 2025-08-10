@@ -1,16 +1,16 @@
-import { Route, Routes } from 'react-router-dom';
-import Abyss from '../main/Abyss';
 import { FC } from 'react';
-import StartScreen from '../ui/menu/StartScreen';
-import ResetScreen from '../ui/menu/ResetScreen';
+import { Route, Routes } from 'react-router-dom';
+import RedirectToError from '../error/RedirectToError';
+import Abyss from '../main/Abyss';
+import CountryAttack from '../ui/conquest/attack/CountryAttack';
+import ConquestScreen from '../ui/conquest/ConquestScreen';
 import About from '../ui/menu/About';
 import Informations from '../ui/menu/Informations';
-import Octopodes from '../ui/octopodes/Octopodes';
+import ResetScreen from '../ui/menu/ResetScreen';
+import StartScreen from '../ui/menu/StartScreen';
 import OctopodeDetails from '../ui/octopodes/OctopodeDetails';
-import ConquestScreen from '../ui/conquest/ConquestScreen';
+import Octopodes from '../ui/octopodes/Octopodes';
 import OctopodeSkillSelector from '../ui/octopodes/OctopodeSkillSelector';
-import RedirectToError from '../error/RedirectToError';
-import CountryAttack from '../ui/conquest/attack/CountryAttack';
 import Thanks from '../ui/Thanks';
 
 const Router: FC = () => {
@@ -30,11 +30,26 @@ const Router: FC = () => {
       <Route path="/octopodes/:creatureId" element={<OctopodeDetails />} />
       <Route path="/octopodes/:creatureId/skills" element={<OctopodeSkillSelector />} />
 
+      <Route path="/octopodes/:creatureId/level/" element={
+        <div className="text-white">
+          octopode status page with level up logic, coming soon...
+        </div>
+      } />
+      <Route path='/merge' element=
+        {
+          <div className="text-white">
+            Merge adults octopods to make a stronger new one
+          </div>
+
+        } />
       <Route
         path="/memoriam"
-        element={<div className="text-white">En mémoire de tous les octopodes perdus dans l'oubli...</div>}
+        element={
+          <div className="text-white">
+            Octopod cemetary, to honor dead ones
+          </div>
+        }
       />
-
       <Route
         path="/*"
         element={
