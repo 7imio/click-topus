@@ -9,7 +9,6 @@ import Octopodes from '../ui/octopodes/Octopodes';
 import OctopodeDetails from '../ui/octopodes/OctopodeDetails';
 import ConquestScreen from '../ui/conquest/ConquestScreen';
 import OctopodeSkillSelector from '../ui/octopodes/OctopodeSkillSelector';
-import ErrorPage from '../ui/error/ErrorPage';
 import RedirectToError from '../error/RedirectToError';
 import CountryAttack from '../ui/conquest/attack/CountryAttack';
 import Thanks from '../ui/Thanks';
