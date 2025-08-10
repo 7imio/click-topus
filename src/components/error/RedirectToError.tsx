@@ -9,13 +9,17 @@ const RedirectToError: FC<ErrorState> = ({
     const navigate = useNavigate();
 
     useEffect(() => {
-        navigate('*', {
+        navigate('/error', {
             replace: true,
             state: { errorStatus, errorMessage }
         });
-    }, [navigate, errorStatus, errorMessage]);
+    }, [errorStatus, errorMessage]);
 
-    return null;
+    return (<>
+        <h1 className='text-5xl text-red-500 p-4'>{errorStatus}</h1>
+        <p className='text-xl text-neutral-200'>{errorMessage}</p>
+    </>
+    );
 };
 
 export default RedirectToError;

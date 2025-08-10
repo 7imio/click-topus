@@ -9,7 +9,6 @@ import Octopodes from '../ui/octopodes/Octopodes';
 import OctopodeDetails from '../ui/octopodes/OctopodeDetails';
 import ConquestScreen from '../ui/conquest/ConquestScreen';
 import OctopodeSkillSelector from '../ui/octopodes/OctopodeSkillSelector';
-import ErrorPage from '../ui/error/ErrorPage';
 import RedirectToError from '../error/RedirectToError';
 import CountryAttack from '../ui/conquest/attack/CountryAttack';
 import Thanks from '../ui/Thanks';
@@ -37,12 +36,11 @@ const Router: FC = () => {
       />
 
       <Route
-        path="/test"
+        path="/*"
         element={
-          <RedirectToError errorStatus={403} errorMessage="La route test retourne une erreur avec un message." />
+          <RedirectToError errorStatus={404} errorMessage="page not Found." />
         }
       />
-      <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
 };

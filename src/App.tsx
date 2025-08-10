@@ -39,22 +39,24 @@ function App() {
   useDecayIndoctrination();
 
   useEffect(() => {
-    const game = loadGame();
-    if (game) {
-      if (game.essence) dispatch(hydrateEssence(game.essence));
-      if (game.corruption) dispatch(hydrateCorruption(game.corruption));
-      if (game.fervor) dispatch(hydrateFervor(game.fervor));
-      if (game.skin) dispatch(hydrateSkin(game.skin));
-      if (game.tentacles) dispatch(hydrateTentacles(game.tentacles));
-      if (game.creatures) dispatch(hydrateCreatures(game.creatures));
-      if (game.autoClicker) dispatch(hydrateAutoClickers(game.autoClicker));
-      if (game.countries) dispatch(hydrateCountries(game.countries));
-      if (game.attacks) dispatch(hydrateAttacks(game.attacks));
-      if (game.debug) dispatch(hydrateDebug(game.debug));
-      // hydrate countries
+    if (loading) {
+      const game = loadGame();
+      if (game) {
+        if (game.essence) dispatch(hydrateEssence(game.essence));
+        if (game.corruption) dispatch(hydrateCorruption(game.corruption));
+        if (game.fervor) dispatch(hydrateFervor(game.fervor));
+        if (game.skin) dispatch(hydrateSkin(game.skin));
+        if (game.tentacles) dispatch(hydrateTentacles(game.tentacles));
+        if (game.creatures) dispatch(hydrateCreatures(game.creatures));
+        if (game.autoClicker) dispatch(hydrateAutoClickers(game.autoClicker));
+        if (game.countries) dispatch(hydrateCountries(game.countries));
+        if (game.attacks) dispatch(hydrateAttacks(game.attacks));
+        if (game.debug) dispatch(hydrateDebug(game.debug));
+        // hydrate countries
+      }
+      dispatch(setHydrated(true));
+      setLoading(false);
     }
-    dispatch(setHydrated(true));
-    setLoading(false);
   }, [hydrated]);
 
   return (
