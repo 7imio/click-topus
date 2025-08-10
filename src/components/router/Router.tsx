@@ -35,7 +35,7 @@ const Router: FC = () => {
           octopode status page with level up logic, coming soon...
         </div>
       } />
-      <Route path='/merge' element=
+      <Route path='/octopodes/merge' element=
         {
           <div className="text-white">
             Merge adults octopods to make a stronger new one
